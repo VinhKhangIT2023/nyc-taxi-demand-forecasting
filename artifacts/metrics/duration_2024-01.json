@@ -1,0 +1,643 @@
+{
+  "source": "data/interim/pickup_zones_2024-01/zone_candidates.parquet",
+  "sha256": "d8b7a4f6be83193626f7e3c2a8e5404b0392902b2d67e4bf0a0fda49b31446a6",
+  "input_unchanged": true,
+  "rows": 2952588,
+  "pyarrow_version": "19.0.1",
+  "duration_definition": "dropoff minus pickup in source wall-clock time; no timezone conversion",
+  "groups": {
+    "missing_time": {
+      "rows": 0,
+      "distance_zero": 0,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 0,
+      "total_negative": 0,
+      "total_zero": 0,
+      "passenger_missing": 0
+    },
+    "negative": {
+      "rows": 8,
+      "distance_zero": 0,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 0,
+      "total_negative": 0,
+      "total_zero": 0,
+      "passenger_missing": 0
+    },
+    "zero": {
+      "rows": 709,
+      "distance_zero": 670,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 2,
+      "total_negative": 2,
+      "total_zero": 42,
+      "passenger_missing": 57
+    },
+    "(0,1] min": {
+      "rows": 32964,
+      "distance_zero": 22229,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 5048,
+      "total_negative": 5080,
+      "total_zero": 163,
+      "passenger_missing": 727
+    },
+    "(1,5] min": {
+      "rows": 337571,
+      "distance_zero": 4670,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 6484,
+      "total_negative": 6357,
+      "total_zero": 72,
+      "passenger_missing": 8024
+    },
+    "(5,15] min": {
+      "rows": 1522028,
+      "distance_zero": 15811,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 15507,
+      "total_negative": 14273,
+      "total_zero": 52,
+      "passenger_missing": 68048
+    },
+    "(15,30] min": {
+      "rows": 790175,
+      "distance_zero": 11651,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 7322,
+      "total_negative": 6726,
+      "total_zero": 24,
+      "passenger_missing": 52825
+    },
+    "(30,60] min": {
+      "rows": 238734,
+      "distance_zero": 3372,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 2648,
+      "total_negative": 2623,
+      "total_zero": 11,
+      "passenger_missing": 9509
+    },
+    "(1,2] hours": {
+      "rows": 27683,
+      "distance_zero": 373,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 251,
+      "total_negative": 254,
+      "total_zero": 3,
+      "passenger_missing": 516
+    },
+    "(2,6] hours": {
+      "rows": 957,
+      "distance_zero": 26,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 8,
+      "total_negative": 8,
+      "total_zero": 2,
+      "passenger_missing": 6
+    },
+    "(6,24] hours": {
+      "rows": 1743,
+      "distance_zero": 16,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 4,
+      "total_negative": 5,
+      "total_zero": 2,
+      "passenger_missing": 2
+    },
+    ">24 hours": {
+      "rows": 16,
+      "distance_zero": 4,
+      "distance_negative": 0,
+      "distance_missing": 0,
+      "fare_negative": 1,
+      "total_negative": 1,
+      "total_zero": 0,
+      "passenger_missing": 0
+    }
+  },
+  "quantiles_all_nonmissing_minutes": {
+    "0": -13.566666666666666,
+    "0.01": 0.7,
+    "0.05": 3.3,
+    "0.25": 7.166666666666667,
+    "0.5": 11.633333333333333,
+    "0.75": 18.683333333333334,
+    "0.95": 37.93333333333333,
+    "0.99": 60.43333333333333,
+    "0.999": 114.39710000000584,
+    "1": 9455.4
+  },
+  "quantiles_positive_minutes": {
+    "0": 0.016666666666666666,
+    "0.01": 0.75,
+    "0.05": 3.316666666666667,
+    "0.25": 7.166666666666667,
+    "0.5": 11.633333333333333,
+    "0.75": 18.683333333333334,
+    "0.95": 37.93333333333333,
+    "0.99": 60.43333333333333,
+    "0.999": 114.41883333333148,
+    "1": 9455.4
+  },
+  "first_three_examples_per_band": {
+    "missing_time": [],
+    "negative": [
+      {
+        "tpep_pickup_datetime": "2024-01-02 10:00:00",
+        "tpep_dropoff_datetime": "2024-01-02 09:53:56",
+        "PULocationID": 75,
+        "DOLocationID": 95,
+        "trip_distance": 7.2,
+        "fare_amount": 38.5,
+        "total_amount": 46.94,
+        "passenger_count": 1,
+        "input_row_index": 87518,
+        "duration_minutes": -6.066666666666666
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-04 12:30:00",
+        "tpep_dropoff_datetime": "2024-01-04 12:18:23",
+        "PULocationID": 165,
+        "DOLocationID": 222,
+        "trip_distance": 4.8,
+        "fare_amount": 31.5,
+        "total_amount": 33.0,
+        "passenger_count": 1,
+        "input_row_index": 251853,
+        "duration_minutes": -11.616666666666667
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-04 14:00:00",
+        "tpep_dropoff_datetime": "2024-01-04 13:55:50",
+        "PULocationID": 95,
+        "DOLocationID": 80,
+        "trip_distance": 5.6,
+        "fare_amount": 27.5,
+        "total_amount": 29.0,
+        "passenger_count": 1,
+        "input_row_index": 262762,
+        "duration_minutes": -4.166666666666667
+      }
+    ],
+    "zero": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:14:29",
+        "tpep_dropoff_datetime": "2024-01-01 00:14:29",
+        "PULocationID": 236,
+        "DOLocationID": 264,
+        "trip_distance": 0.0,
+        "fare_amount": 3.0,
+        "total_amount": 8.0,
+        "passenger_count": 1,
+        "input_row_index": 23,
+        "duration_minutes": 0.0
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 02:47:57",
+        "tpep_dropoff_datetime": "2024-01-01 02:47:57",
+        "PULocationID": 61,
+        "DOLocationID": 61,
+        "trip_distance": 0.0,
+        "fare_amount": 52.5,
+        "total_amount": 54.0,
+        "passenger_count": 1,
+        "input_row_index": 16701,
+        "duration_minutes": 0.0
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 03:18:03",
+        "tpep_dropoff_datetime": "2024-01-01 03:18:03",
+        "PULocationID": 246,
+        "DOLocationID": 264,
+        "trip_distance": 0.0,
+        "fare_amount": 33.99,
+        "total_amount": 33.99,
+        "passenger_count": 1,
+        "input_row_index": 17185,
+        "duration_minutes": 0.0
+      }
+    ],
+    "(0,1] min": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:52:09",
+        "tpep_dropoff_datetime": "2024-01-01 00:52:28",
+        "PULocationID": 237,
+        "DOLocationID": 237,
+        "trip_distance": 0.0,
+        "fare_amount": 3.0,
+        "total_amount": 8.0,
+        "passenger_count": 1,
+        "input_row_index": 17,
+        "duration_minutes": 0.31666666666666665
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:08:48",
+        "tpep_dropoff_datetime": "2024-01-01 00:09:33",
+        "PULocationID": 246,
+        "DOLocationID": 68,
+        "trip_distance": 0.05,
+        "fare_amount": 3.0,
+        "total_amount": 8.08,
+        "passenger_count": 1,
+        "input_row_index": 82,
+        "duration_minutes": 0.75
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:26:02",
+        "tpep_dropoff_datetime": "2024-01-01 00:26:21",
+        "PULocationID": 42,
+        "DOLocationID": 42,
+        "trip_distance": 2.3,
+        "fare_amount": 3.0,
+        "total_amount": 15.5,
+        "passenger_count": 1,
+        "input_row_index": 221,
+        "duration_minutes": 0.31666666666666665
+      }
+    ],
+    "(1,5] min": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:28:08",
+        "tpep_dropoff_datetime": "2024-01-01 00:29:16",
+        "PULocationID": 113,
+        "DOLocationID": 113,
+        "trip_distance": 0.04,
+        "fare_amount": 3.0,
+        "total_amount": 8.0,
+        "passenger_count": 1,
+        "input_row_index": 9,
+        "duration_minutes": 1.1333333333333333
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:43:27",
+        "tpep_dropoff_datetime": "2024-01-01 00:47:11",
+        "PULocationID": 68,
+        "DOLocationID": 90,
+        "trip_distance": 0.4,
+        "fare_amount": 5.8,
+        "total_amount": 12.05,
+        "passenger_count": 2,
+        "input_row_index": 13,
+        "duration_minutes": 3.7333333333333334
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:51:53",
+        "tpep_dropoff_datetime": "2024-01-01 00:55:43",
+        "PULocationID": 90,
+        "DOLocationID": 68,
+        "trip_distance": 0.8,
+        "fare_amount": 6.5,
+        "total_amount": 11.5,
+        "passenger_count": 1,
+        "input_row_index": 14,
+        "duration_minutes": 3.8333333333333335
+      }
+    ],
+    "(5,15] min": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:03:00",
+        "tpep_dropoff_datetime": "2024-01-01 00:09:36",
+        "PULocationID": 140,
+        "DOLocationID": 236,
+        "trip_distance": 1.8,
+        "fare_amount": 10.0,
+        "total_amount": 18.75,
+        "passenger_count": 1,
+        "input_row_index": 1,
+        "duration_minutes": 6.6
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:36:38",
+        "tpep_dropoff_datetime": "2024-01-01 00:44:56",
+        "PULocationID": 79,
+        "DOLocationID": 211,
+        "trip_distance": 1.4,
+        "fare_amount": 10.0,
+        "total_amount": 17.0,
+        "passenger_count": 1,
+        "input_row_index": 3,
+        "duration_minutes": 8.3
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:46:51",
+        "tpep_dropoff_datetime": "2024-01-01 00:52:57",
+        "PULocationID": 211,
+        "DOLocationID": 148,
+        "trip_distance": 0.8,
+        "fare_amount": 7.9,
+        "total_amount": 16.1,
+        "passenger_count": 1,
+        "input_row_index": 4,
+        "duration_minutes": 6.1
+      }
+    ],
+    "(15,30] min": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:57:55",
+        "tpep_dropoff_datetime": "2024-01-01 01:17:43",
+        "PULocationID": 186,
+        "DOLocationID": 79,
+        "trip_distance": 1.72,
+        "fare_amount": 17.7,
+        "total_amount": 22.7,
+        "passenger_count": 1,
+        "input_row_index": 0,
+        "duration_minutes": 19.8
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:17:06",
+        "tpep_dropoff_datetime": "2024-01-01 00:35:01",
+        "PULocationID": 236,
+        "DOLocationID": 79,
+        "trip_distance": 4.7,
+        "fare_amount": 23.3,
+        "total_amount": 31.3,
+        "passenger_count": 1,
+        "input_row_index": 2,
+        "duration_minutes": 17.916666666666668
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:49:44",
+        "tpep_dropoff_datetime": "2024-01-01 01:15:47",
+        "PULocationID": 138,
+        "DOLocationID": 181,
+        "trip_distance": 10.82,
+        "fare_amount": 45.7,
+        "total_amount": 64.95,
+        "passenger_count": 2,
+        "input_row_index": 6,
+        "duration_minutes": 26.05
+      }
+    ],
+    "(30,60] min": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:54:08",
+        "tpep_dropoff_datetime": "2024-01-01 01:26:31",
+        "PULocationID": 148,
+        "DOLocationID": 141,
+        "trip_distance": 4.7,
+        "fare_amount": 29.6,
+        "total_amount": 41.5,
+        "passenger_count": 1,
+        "input_row_index": 5,
+        "duration_minutes": 32.38333333333333
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:35:16",
+        "tpep_dropoff_datetime": "2024-01-01 01:11:52",
+        "PULocationID": 246,
+        "DOLocationID": 190,
+        "trip_distance": 8.2,
+        "fare_amount": 59.0,
+        "total_amount": 85.09,
+        "passenger_count": 2,
+        "input_row_index": 12,
+        "duration_minutes": 36.6
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:36:30",
+        "tpep_dropoff_datetime": "2024-01-01 01:13:53",
+        "PULocationID": 246,
+        "DOLocationID": 170,
+        "trip_distance": 1.7,
+        "fare_amount": 29.6,
+        "total_amount": 41.5,
+        "passenger_count": 2,
+        "input_row_index": 21,
+        "duration_minutes": 37.38333333333333
+      }
+    ],
+    "(1,2] hours": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:38:11",
+        "tpep_dropoff_datetime": "2024-01-01 01:39:04",
+        "PULocationID": 231,
+        "DOLocationID": 24,
+        "trip_distance": 6.9,
+        "fare_amount": 54.1,
+        "total_amount": 67.97,
+        "passenger_count": 1,
+        "input_row_index": 243,
+        "duration_minutes": 60.88333333333333
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:36:16",
+        "tpep_dropoff_datetime": "2024-01-01 01:41:52",
+        "PULocationID": 114,
+        "DOLocationID": 166,
+        "trip_distance": 6.38,
+        "fare_amount": 56.9,
+        "total_amount": 74.28,
+        "passenger_count": 3,
+        "input_row_index": 1152,
+        "duration_minutes": 65.6
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:35:21",
+        "tpep_dropoff_datetime": "2024-01-01 01:47:22",
+        "PULocationID": 231,
+        "DOLocationID": 42,
+        "trip_distance": 9.2,
+        "fare_amount": 59.0,
+        "total_amount": 76.8,
+        "passenger_count": 1,
+        "input_row_index": 1683,
+        "duration_minutes": 72.01666666666667
+      }
+    ],
+    "(2,6] hours": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:24:25",
+        "tpep_dropoff_datetime": "2024-01-01 02:38:56",
+        "PULocationID": 50,
+        "DOLocationID": 48,
+        "trip_distance": 0.99,
+        "fare_amount": 12.8,
+        "total_amount": 21.36,
+        "passenger_count": 1,
+        "input_row_index": 14084,
+        "duration_minutes": 134.51666666666668
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 12:27:05",
+        "tpep_dropoff_datetime": "2024-01-01 14:33:59",
+        "PULocationID": 48,
+        "DOLocationID": 132,
+        "trip_distance": 15.5,
+        "fare_amount": 70.0,
+        "total_amount": 80.94,
+        "passenger_count": 1,
+        "input_row_index": 34515,
+        "duration_minutes": 126.9
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 13:10:43",
+        "tpep_dropoff_datetime": "2024-01-01 15:22:30",
+        "PULocationID": 230,
+        "DOLocationID": 132,
+        "trip_distance": 23.25,
+        "fare_amount": 70.0,
+        "total_amount": 85.94,
+        "passenger_count": 4,
+        "input_row_index": 39089,
+        "duration_minutes": 131.78333333333333
+      }
+    ],
+    "(6,24] hours": [
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:39:11",
+        "tpep_dropoff_datetime": "2024-01-02 00:34:19",
+        "PULocationID": 43,
+        "DOLocationID": 137,
+        "trip_distance": 2.75,
+        "fare_amount": 17.7,
+        "total_amount": 28.38,
+        "passenger_count": 5,
+        "input_row_index": 3974,
+        "duration_minutes": 1435.1333333333334
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:51:24",
+        "tpep_dropoff_datetime": "2024-01-02 00:44:13",
+        "PULocationID": 79,
+        "DOLocationID": 263,
+        "trip_distance": 4.9,
+        "fare_amount": 33.1,
+        "total_amount": 49.53,
+        "passenger_count": 1,
+        "input_row_index": 4923,
+        "duration_minutes": 1432.8166666666666
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-01 00:40:40",
+        "tpep_dropoff_datetime": "2024-01-02 00:34:25",
+        "PULocationID": 79,
+        "DOLocationID": 137,
+        "trip_distance": 1.18,
+        "fare_amount": 7.2,
+        "total_amount": 12.2,
+        "passenger_count": 1,
+        "input_row_index": 5204,
+        "duration_minutes": 1433.75
+      }
+    ],
+    ">24 hours": [
+      {
+        "tpep_pickup_datetime": "2024-01-02 22:59:31",
+        "tpep_dropoff_datetime": "2024-01-04 06:18:25",
+        "PULocationID": 166,
+        "DOLocationID": 166,
+        "trip_distance": 0.7,
+        "fare_amount": 7.2,
+        "total_amount": 9.7,
+        "passenger_count": 1,
+        "input_row_index": 138787,
+        "duration_minutes": 1878.9
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-03 12:10:35",
+        "tpep_dropoff_datetime": "2024-01-04 16:28:46",
+        "PULocationID": 7,
+        "DOLocationID": 179,
+        "trip_distance": 0.8,
+        "fare_amount": 9.3,
+        "total_amount": 10.8,
+        "passenger_count": 1,
+        "input_row_index": 170606,
+        "duration_minutes": 1698.1833333333334
+      },
+      {
+        "tpep_pickup_datetime": "2024-01-06 17:18:12",
+        "tpep_dropoff_datetime": "2024-01-07 22:03:04",
+        "PULocationID": 134,
+        "DOLocationID": 215,
+        "trip_distance": 8.42,
+        "fare_amount": 41.5,
+        "total_amount": 43.0,
+        "passenger_count": 1,
+        "input_row_index": 478787,
+        "duration_minutes": 1724.8666666666666
+      }
+    ]
+  },
+  "five_longest": [
+    {
+      "tpep_pickup_datetime": "2024-01-24 17:03:14",
+      "tpep_dropoff_datetime": "2024-01-31 06:38:38",
+      "PULocationID": 237,
+      "DOLocationID": 170,
+      "trip_distance": 2.26,
+      "fare_amount": 30.3,
+      "total_amount": 36.8,
+      "passenger_count": 1,
+      "input_row_index": 2102613,
+      "duration_minutes": 9455.4
+    },
+    {
+      "tpep_pickup_datetime": "2024-01-12 01:20:50",
+      "tpep_dropoff_datetime": "2024-01-14 13:42:36",
+      "PULocationID": 132,
+      "DOLocationID": 42,
+      "trip_distance": 35.7,
+      "fare_amount": 150.4,
+      "total_amount": 181.41,
+      "passenger_count": 1,
+      "input_row_index": 938490,
+      "duration_minutes": 3621.766666666667
+    },
+    {
+      "tpep_pickup_datetime": "2024-01-14 10:08:11",
+      "tpep_dropoff_datetime": "2024-01-16 13:54:22",
+      "PULocationID": 220,
+      "DOLocationID": 220,
+      "trip_distance": 31.95,
+      "fare_amount": 2221.3,
+      "total_amount": 2225.3,
+      "passenger_count": 1,
+      "input_row_index": 1154799,
+      "duration_minutes": 3106.1833333333334
+    },
+    {
+      "tpep_pickup_datetime": "2024-01-31 12:39:24",
+      "tpep_dropoff_datetime": "2024-02-02 13:56:52",
+      "PULocationID": 207,
+      "DOLocationID": 260,
+      "trip_distance": 0.0,
+      "fare_amount": 3.0,
+      "total_amount": 4.5,
+      "passenger_count": 1,
+      "input_row_index": 2747582,
+      "duration_minutes": 2957.4666666666667
+    },
+    {
+      "tpep_pickup_datetime": "2024-01-17 05:31:17",
+      "tpep_dropoff_datetime": "2024-01-19 05:12:10",
+      "PULocationID": 162,
+      "DOLocationID": 162,
+      "trip_distance": 0.2,
+      "fare_amount": 28.9,
+      "total_amount": 33.9,
+      "passenger_count": 1,
+      "input_row_index": 1387369,
+      "duration_minutes": 2860.883333333333
+    }
+  ],
+  "limitations": [
+    "Bands are descriptive only, not approved removal thresholds.",
+    "Examples are first rows per band, not random representative samples.",
+    "Cross-check columns overlap; their counts must not be summed as removals.",
+    "No cleaning, imputation or causal explanation applied."
+  ]
+}

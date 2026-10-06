@@ -1,0 +1,4 @@
+# Proposed Linux Spark job environment: Python 3.11 and Java 17.
+# Build and test the container before locking transitive dependencies.
+pyspark==3.5.7
+happybase==1.2.0

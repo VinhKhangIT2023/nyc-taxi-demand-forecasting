@@ -1,0 +1,265 @@
+{
+  "year": 2024,
+  "complete": true,
+  "months": [
+    {
+      "month": "2024-01",
+      "raw_rows": 2964624,
+      "outside_month": 18,
+      "unspecified_zone": 12018,
+      "nonpositive_duration": 717,
+      "retained_rows": 2951871,
+      "flags": {
+        "q_duration_gt_24h": 16,
+        "q_distance_zero": 58152,
+        "q_distance_negative": 0,
+        "q_fare_negative": 37273,
+        "q_total_negative": 35327,
+        "q_passenger_missing": 139657,
+        "q_passenger_zero": 30998
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-01.parquet",
+      "trips_sha256": "7f4873a513646f0235bf8ca00da9a2361ee5e732c5caa73a46627b8401e9c0d7",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-01/trips.parquet"
+    },
+    {
+      "month": "2024-02",
+      "raw_rows": 3007526,
+      "outside_month": 15,
+      "unspecified_zone": 11093,
+      "nonpositive_duration": 733,
+      "retained_rows": 2995685,
+      "flags": {
+        "q_duration_gt_24h": 12,
+        "q_distance_zero": 66077,
+        "q_distance_negative": 0,
+        "q_fare_negative": 40503,
+        "q_total_negative": 35926,
+        "q_passenger_missing": 185369,
+        "q_passenger_zero": 33504
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-02.parquet",
+      "trips_sha256": "c47675d6b701d683ded1b70eeab8e3dbe9f7186df2324d605dc3cc4c4ab0e708",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-02/trips.parquet"
+    },
+    {
+      "month": "2024-03",
+      "raw_rows": 3582628,
+      "outside_month": 23,
+      "unspecified_zone": 13648,
+      "nonpositive_duration": 921,
+      "retained_rows": 3568036,
+      "flags": {
+        "q_duration_gt_24h": 19,
+        "q_distance_zero": 84491,
+        "q_distance_negative": 0,
+        "q_fare_negative": 58248,
+        "q_total_negative": 44096,
+        "q_passenger_missing": 425335,
+        "q_passenger_zero": 39578
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-03.parquet",
+      "trips_sha256": "f60e78cf9259a8ad7c7259096d0dec3225dc1ba744984ac7d0631cff14404e4c",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-03/trips.parquet"
+    },
+    {
+      "month": "2024-04",
+      "raw_rows": 3514289,
+      "outside_month": 9,
+      "unspecified_zone": 12848,
+      "nonpositive_duration": 969,
+      "retained_rows": 3500463,
+      "flags": {
+        "q_duration_gt_24h": 26,
+        "q_distance_zero": 43159,
+        "q_distance_negative": 0,
+        "q_fare_negative": 57366,
+        "q_total_negative": 43549,
+        "q_passenger_missing": 407876,
+        "q_passenger_zero": 38690
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-04.parquet",
+      "trips_sha256": "f53d961d33e52c328de68d42b7e1725f16001c5ac6c8a9c6a4148a13c85bc26d",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-04/trips.parquet"
+    },
+    {
+      "month": "2024-05",
+      "raw_rows": 3723833,
+      "outside_month": 33,
+      "unspecified_zone": 13863,
+      "nonpositive_duration": 1036,
+      "retained_rows": 3708901,
+      "flags": {
+        "q_duration_gt_24h": 15,
+        "q_distance_zero": 46922,
+        "q_distance_negative": 0,
+        "q_fare_negative": 59743,
+        "q_total_negative": 48791,
+        "q_passenger_missing": 404044,
+        "q_passenger_zero": 38879
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-05.parquet",
+      "trips_sha256": "55bf906fe2487516a5c8ed411a9725a4dd090a08c66e76c9012842b33421037c",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-05/trips.parquet"
+    },
+    {
+      "month": "2024-06",
+      "raw_rows": 3539193,
+      "outside_month": 51,
+      "unspecified_zone": 13514,
+      "nonpositive_duration": 1063,
+      "retained_rows": 3524565,
+      "flags": {
+        "q_duration_gt_24h": 20,
+        "q_distance_zero": 49940,
+        "q_distance_negative": 0,
+        "q_fare_negative": 61465,
+        "q_total_negative": 48587,
+        "q_passenger_missing": 410449,
+        "q_passenger_zero": 35050
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-06.parquet",
+      "trips_sha256": "b4621d63cd7725586ecdf7cfe357aba6fd557f177451dd8adb87f599f4f840af",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-06/trips.parquet"
+    },
+    {
+      "month": "2024-07",
+      "raw_rows": 3076903,
+      "outside_month": 47,
+      "unspecified_zone": 11728,
+      "nonpositive_duration": 1005,
+      "retained_rows": 3064123,
+      "flags": {
+        "q_duration_gt_24h": 24,
+        "q_distance_zero": 45054,
+        "q_distance_negative": 0,
+        "q_fare_negative": 58380,
+        "q_total_negative": 50110,
+        "q_passenger_missing": 278723,
+        "q_passenger_zero": 28397
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-07.parquet",
+      "trips_sha256": "d7885559cad4a7269912f08f297d1de79ee63cfea0085de9326adb781fcbbd9b",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-07/trips.parquet"
+    },
+    {
+      "month": "2024-08",
+      "raw_rows": 2979183,
+      "outside_month": 51,
+      "unspecified_zone": 10398,
+      "nonpositive_duration": 936,
+      "retained_rows": 2967798,
+      "flags": {
+        "q_duration_gt_24h": 24,
+        "q_distance_zero": 54586,
+        "q_distance_negative": 0,
+        "q_fare_negative": 58016,
+        "q_total_negative": 52702,
+        "q_passenger_missing": 258462,
+        "q_passenger_zero": 25703
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-08.parquet",
+      "trips_sha256": "c15dfef20adcfa0d3d3ad4f2569af63222aa2f62872de5aa4b801c805d9b6964",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-08/trips.parquet"
+    },
+    {
+      "month": "2024-09",
+      "raw_rows": 3633030,
+      "outside_month": 49,
+      "unspecified_zone": 11728,
+      "nonpositive_duration": 1110,
+      "retained_rows": 3620143,
+      "flags": {
+        "q_duration_gt_24h": 24,
+        "q_distance_zero": 78078,
+        "q_distance_negative": 0,
+        "q_fare_negative": 72832,
+        "q_total_negative": 55854,
+        "q_passenger_missing": 483400,
+        "q_passenger_zero": 29674
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-09.parquet",
+      "trips_sha256": "6ed2a1eb2da23b40d173ce89359df94bea1a352dfe74070cb1d5ab1f45221c83",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-09/trips.parquet"
+    },
+    {
+      "month": "2024-10",
+      "raw_rows": 3833771,
+      "outside_month": 40,
+      "unspecified_zone": 12453,
+      "nonpositive_duration": 943,
+      "retained_rows": 3820335,
+      "flags": {
+        "q_duration_gt_24h": 17,
+        "q_distance_zero": 78727,
+        "q_distance_negative": 0,
+        "q_fare_negative": 75158,
+        "q_total_negative": 61204,
+        "q_passenger_missing": 393578,
+        "q_passenger_zero": 35037
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-10.parquet",
+      "trips_sha256": "3d9502247d45e165c5192a1688a0b26e9cbab8a00238d5a01987182f49c5f781",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-10/trips.parquet"
+    },
+    {
+      "month": "2024-11",
+      "raw_rows": 3646369,
+      "outside_month": 50,
+      "unspecified_zone": 11175,
+      "nonpositive_duration": 1812,
+      "retained_rows": 3633332,
+      "flags": {
+        "q_duration_gt_24h": 11,
+        "q_distance_zero": 66156,
+        "q_distance_negative": 0,
+        "q_fare_negative": 71277,
+        "q_total_negative": 60371,
+        "q_passenger_missing": 373182,
+        "q_passenger_zero": 27993
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-11.parquet",
+      "trips_sha256": "600401bfe19c374a4e906620462fca57b2e8cad18c2d3cb898988bbe7b3e88ff",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-11/trips.parquet"
+    },
+    {
+      "month": "2024-12",
+      "raw_rows": 3668371,
+      "outside_month": 34,
+      "unspecified_zone": 11733,
+      "nonpositive_duration": 1138,
+      "retained_rows": 3655466,
+      "flags": {
+        "q_duration_gt_24h": 18,
+        "q_distance_zero": 72971,
+        "q_distance_negative": 0,
+        "q_fare_negative": 78181,
+        "q_total_negative": 70235,
+        "q_passenger_missing": 325915,
+        "q_passenger_zero": 29838
+      },
+      "trips_file": "data/processed/yellow_2024_v1/trips/part-2024-12.parquet",
+      "trips_sha256": "cb235dd09c700b7d733d2374ba55c81f9e0161ea4101e3b1a887712e44286ce2",
+      "pre_normalization_file": "data/processed/yellow_2024_v1/2024-12/trips.parquet"
+    }
+  ],
+  "totals": {
+    "raw_rows": 41169720,
+    "outside_month": 420,
+    "unspecified_zone": 146199,
+    "nonpositive_duration": 12383,
+    "retained_rows": 41010718
+  },
+  "hourly_observed_rows": 1045734,
+  "elapsed_seconds": 343.63,
+  "schema": "VendorID: int64\ntpep_pickup_datetime: timestamp[us]\ntpep_dropoff_datetime: timestamp[us]\npassenger_count: double\ntrip_distance: double\nRatecodeID: double\nstore_and_fwd_flag: large_string\nPULocationID: int64\nDOLocationID: int64\npayment_type: int64\nfare_amount: double\nextra: double\nmta_tax: double\ntip_amount: double\ntolls_amount: double\nimprovement_surcharge: double\ntotal_amount: double\ncongestion_surcharge: double\nAirport_fee: double\ncbd_congestion_fee: double\nduration_minutes: double\nq_duration_gt_24h: bool\nq_distance_zero: bool\nq_distance_negative: bool\nq_fare_negative: bool\nq_total_negative: bool\nq_passenger_missing: bool\nq_passenger_zero: bool",
+  "pyarrow_version": "19.0.1",
+  "reference_sha256": "1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed",
+  "hourly_sha256": "6aeb7be02264fd96b8ec0b6caa1b931f90fe5697bfb4cef47bb1486c2ab2b945",
+  "limitations": [
+    "Full-row duplicate audit is separate; no automatic deduplication.",
+    "Out-of-source-month rows retained in quarantine, not reassigned across files.",
+    "Local wall-clock timestamps: DST repeated hours may be collapsed; no UTC reconstruction.",
+    "Absent zone-hours are not imputed. Flags are not model predictors."
+  ]
+}

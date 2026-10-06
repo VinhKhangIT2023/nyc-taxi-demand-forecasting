@@ -1,0 +1,26 @@
+{
+  "version": "stage2-v1",
+  "intervals": "start inclusive, end exclusive; America/New_York wall-clock labels",
+  "target": "retrospectively cleaned recorded pickups per zone per hour",
+  "horizon_hours": 1,
+  "experiments": {
+    "A_2024_only": {"train_start": "2024-01-01T00:00:00"},
+    "B_add_2023": {"train_start": "2023-01-01T00:00:00"}
+  },
+  "validation_folds": [
+    {"train_end": "2024-10-01T00:00:00", "validation_start": "2024-10-01T00:00:00", "validation_end": "2024-11-01T00:00:00"},
+    {"train_end": "2024-11-01T00:00:00", "validation_start": "2024-11-01T00:00:00", "validation_end": "2024-12-01T00:00:00"},
+    {"train_end": "2024-12-01T00:00:00", "validation_start": "2024-12-01T00:00:00", "validation_end": "2025-01-01T00:00:00"}
+  ],
+  "final_train_end": "2025-01-01T00:00:00",
+  "test_start": "2025-01-01T00:00:00",
+  "test_end": "2026-01-01T00:00:00",
+  "rules": [
+    "Select hyperparameters and history length using 2024 validation only.",
+    "The 2025 holdout may be checked for schema and data quality, not model selection.",
+    "Only model_eligible rows may be targets; fit all learned transforms on training rows.",
+    "Features must use hours earlier than the target hour; never include target-hour quality flags.",
+    "Never forward-fill masked DST or missing-source labels. Lag/window features depending on missing labels are unavailable.",
+    "Evaluation is retrospective one-step forecasting, not proof of real-time source availability."
+  ]
+}

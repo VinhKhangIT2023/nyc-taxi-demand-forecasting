@@ -1,0 +1,38 @@
+{
+  "source": "data/interim/pickup_zones_2024-01/zone_candidates.parquet",
+  "source_sha256": "d8b7a4f6be83193626f7e3c2a8e5404b0392902b2d67e4bf0a0fda49b31446a6",
+  "input_unchanged": true,
+  "input_rows": 2952588,
+  "retained_rows": 2951871,
+  "quarantined_rows": 717,
+  "quarantine_reasons": {
+    "negative_duration": 8,
+    "zero_duration": 709
+  },
+  "retained_flag_counts": {
+    "q_duration_gt_24h": 16,
+    "q_distance_zero": 58152,
+    "q_distance_negative": 0,
+    "q_fare_negative": 37273,
+    "q_total_negative": 35327,
+    "q_passenger_missing": 139657,
+    "q_passenger_zero": 30998
+  },
+  "observed_zone_hours": 76190,
+  "affected_zone_hours": 662,
+  "max_hourly_count_difference": 4,
+  "pyarrow_version": "19.0.1",
+  "output_sha256": {
+    "trips.parquet": "0be145efd93196c3fc39e091d2a1012c32a81cc00bd2e2b74a1e1196ea216ea6",
+    "duration_quarantine.parquet": "f1b4ae2c45731291f63511f78806cdd58a5a30632f8cbd60e2c86e46e06223e0",
+    "hourly_observed.csv": "fa1d9ef49eea69cf0f80739120ca78199812cd84a3b6fbc9f7a4e5e59ad2629b",
+    "duration_sensitivity.csv": "7f43b3dbaf318873503a97ea8472b41ec06b7376cfe9d51581683003108c15f5"
+  },
+  "limitations": [
+    "Trial counts of served trips, not latent demand.",
+    "No absent zone-hours filled with zero; hourly file is not a model-ready dense grid.",
+    "Quality flags can overlap. Values of source columns were not imputed or corrected.",
+    "Retrospective cleaning uses dropoff information; not a real-time availability simulation.",
+    "No upper-distance exclusion threshold is applied. Extremely large distances remain unchanged."
+  ]
+}

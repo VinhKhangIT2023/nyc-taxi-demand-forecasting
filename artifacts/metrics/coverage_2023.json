@@ -1,0 +1,10 @@
+{
+  "observed_wall_clock_hours": 8759,
+  "distinct_zones": 261,
+  "missing_wall_clock_hours": [
+    "2023-03-12T02:00:00"
+  ],
+  "unexpected_hours": [],
+  "trip_sum": 37909554,
+  "note": "Clock hours without UTC offsets; presence does not prove complete reporting."
+}

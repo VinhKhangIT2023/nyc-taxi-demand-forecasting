@@ -1,0 +1,87 @@
+{
+  "complete": true,
+  "years": [
+    {
+      "year": 2023,
+      "raw_rows": 38310226,
+      "outside_month": 730,
+      "unspecified_zone": 387192,
+      "nonpositive_duration": 12750,
+      "retained_rows": 37909554,
+      "grid_rows": 2303880,
+      "model_eligible_rows": 2291256,
+      "duplicate_excess_retained": 2,
+      "missing_source_hours": [
+        "2023-03-12T02:00:00"
+      ]
+    },
+    {
+      "year": 2024,
+      "raw_rows": 41169720,
+      "outside_month": 420,
+      "unspecified_zone": 146199,
+      "nonpositive_duration": 12383,
+      "retained_rows": 41010718,
+      "grid_rows": 2310192,
+      "model_eligible_rows": 2297568,
+      "duplicate_excess_retained": 4,
+      "missing_source_hours": [
+        "2024-03-10T02:00:00"
+      ]
+    },
+    {
+      "year": 2025,
+      "raw_rows": 48722602,
+      "outside_month": 214,
+      "unspecified_zone": 103043,
+      "nonpositive_duration": 545589,
+      "retained_rows": 48073756,
+      "grid_rows": 2303880,
+      "model_eligible_rows": 2291256,
+      "duplicate_excess_retained": 1,
+      "missing_source_hours": [
+        "2025-03-09T02:00:00"
+      ]
+    }
+  ],
+  "total_retained_trips": 126994028,
+  "split_counts": {
+    "A_2024_only": [
+      {
+        "fold": 0,
+        "train_labels": 1723176,
+        "validation_labels": 195672
+      },
+      {
+        "fold": 1,
+        "train_labels": 1918848,
+        "validation_labels": 183048
+      },
+      {
+        "fold": 2,
+        "train_labels": 2101896,
+        "validation_labels": 195672
+      }
+    ],
+    "B_add_2023": [
+      {
+        "fold": 0,
+        "train_labels": 4014432,
+        "validation_labels": 195672
+      },
+      {
+        "fold": 1,
+        "train_labels": 4210104,
+        "validation_labels": 183048
+      },
+      {
+        "fold": 2,
+        "train_labels": 4393152,
+        "validation_labels": 195672
+      }
+    ]
+  },
+  "holdout_2025_labels": 2291256,
+  "split_config_sha256": "be7b86e843a06dcb14b5826345b8309dca3e732625f143ae8f040e085b69b854",
+  "scope": "Data preparation only; no predictive model trained or evaluated."
+}

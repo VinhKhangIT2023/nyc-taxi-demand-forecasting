@@ -1,0 +1,39 @@
+# Python environments and caches
+.venv/
+.python/
+.tools/
+.uv-cache/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Downloaded and generated data
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/reference/*
+!data/reference/.gitkeep
+artifacts/models/*
+!artifacts/models/.gitkeep
+*.log
+logs/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Office temporary files and OS metadata
+~$*
+Thumbs.db
+.DS_Store
+
+/Ke hoach Do an mon hoc Nhap mon Big data_SV.docx
