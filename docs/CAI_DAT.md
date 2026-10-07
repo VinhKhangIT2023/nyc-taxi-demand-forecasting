@@ -2,6 +2,24 @@
 
 ## 1. Trạng thái đã kiểm tra
 
+### Môi trường hiện hành từ 07/10/2026
+
+Người dùng đã duyệt chuyển Python Windows sang bản chính thức có chữ ký do Smart App Control chặn bản standalone cũ. Đã cài **CPython 3.13.16 x64** cho tài khoản người dùng tại `C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\`, không đổi PATH, không gỡ Python 3.14. Bộ cài từ python.org có chữ ký hợp lệ Python Software Foundation; SHA256 `fb4f9f5d438b2396da0086dc70b935c530cb578e37adc6d354f7ad2037fee83b` khớp trang phát hành.
+
+`.venv` hiện được tạo mới bằng Python 3.13.16. Môi trường 3.11 cũ được giữ trong `.tools/venv311-blocked-backup/` chỉ để tham chiếu, không chạy hoặc di chuyển ngược để sử dụng. Python nền cũ `.python/` vẫn còn nhưng không được dùng cho venv hiện hành. Smart App Control giữ bật. Xóa dự án không gỡ Python 3.13 đã cài ngoài dự án; gỡ riêng qua Installed apps nếu không còn dùng.
+
+Cách tạo trên máy khác có Python 3.13.16 chính thức (chỉ tạo khi chưa có `.venv`):
+
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-stage3-windows.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+Trong VSCode chọn `.venv/Scripts/python.exe`, đóng terminal cũ và mở terminal mới. Gọi executable tường minh nếu chưa kích hoạt. `python` ngoài venv vẫn có thể trả về 3.14; đó không phải lỗi. File `requirements-stage3-windows.txt` khóa thư viện đã kiểm tra cho xử lý dữ liệu và client HBase, chưa phải toàn bộ dashboard. Spark trong Docker vẫn là môi trường riêng theo kế hoạch; không áp dụng Python Windows 3.13 cho Spark một cách tự động.
+
+### Lịch sử thiết lập và đề xuất ban đầu (được thay thế bởi mục hiện hành ở trên)
+
 Cập nhật: theo yêu cầu của người dùng, Python 3.11.17 đã được cài riêng tại `.python/cpython-3.11.17-windows-x86_64-none/`; `.venv` được tạo từ Python này. Không cần cài Python 3.11 toàn máy theo phương án ban đầu bên dưới. Công cụ tải là uv cục bộ trong `.tools/uv/`, dùng bản CPython độc lập của Astral. `.tools/`, `.python/`, `.uv-cache/` và `.venv/` đều được Git bỏ qua.
 
 Trong VSCode chọn **Python: Select Interpreter → Enter interpreter path → .venv/Scripts/python.exe**. Kiểm tra bằng `.\.venv\Scripts\python.exe --version`. Đã cài PyArrow 19.0.1 để khảo sát, ghi phiên bản trong `requirements-profile.txt`; chưa cài toàn bộ thư viện ứng dụng. Python 3.14 của người dùng không bị thay thế.

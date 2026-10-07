@@ -1,5 +1,11 @@
 # Nhật ký quyết định
 
+## Quyết định 010 — Python Windows có chữ ký, ngày 07/10/2026
+
+Người dùng xác nhận máy cá nhân, Smart App Control On và đồng ý cài Python 3.13 chính thức ngoài dự án để thử trước khi thay venv. Python 3.14 hiện có được giữ; PyArrow 19 hỗ trợ đến 3.13 nên chưa dùng 3.14 cho bộ thư viện hiện tại. Đã kiểm tra checksum/chữ ký bộ cài Python 3.13.16, cài theo tài khoản, không đổi PATH. Venv thử chạy được và đạt 15 kiểm thử; HappyBase đọc danh sách bảng HBase thành công sau khi bổ sung setuptools 80.9.0 (HappyBase 1.2.0 cần pkg_resources). Sau đó tạo lại `.venv` ở đúng đường dẫn, giữ bản cũ trong `.tools/venv311-blocked-backup/`.
+
+Không tắt Smart App Control. Các phiên bản đã thử được lưu trong requirements-stage3-windows.txt; chưa xác nhận toàn bộ dashboard hoặc Spark chạy trên Python 3.13. Không còn áp dụng yêu cầu xóa project là xóa Python nền cho môi trường Windows mới; người dùng đã đồng ý thay đổi này. Xem CAI_DAT.md mục môi trường hiện hành.
+
 ## Quyết định 001 — Phạm vi khảo sát ban đầu
 
 Trạng thái: người dùng đã đồng ý trong cuộc trao đổi ngày 05/10/2026.

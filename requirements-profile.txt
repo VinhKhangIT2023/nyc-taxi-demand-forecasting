@@ -1,2 +1,2 @@
-# Verified standalone profiling environment (Python 3.11).
+# Data profiling: originally verified on Python 3.11, also tested on 3.13.16.
 pyarrow==19.0.1

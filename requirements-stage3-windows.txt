@@ -1,0 +1,10 @@
+# Verified on official CPython 3.13.16 Windows x64.
+# Data preparation + HBase client only; not the full dashboard environment.
+pyarrow==19.0.1
+happybase==1.2.0
+thriftpy2==0.7.1
+ijson==3.5.1
+ply==3.11
+six==1.17.0
+# HappyBase 1.2.0 imports pkg_resources, removed in newer setuptools.
+setuptools==80.9.0

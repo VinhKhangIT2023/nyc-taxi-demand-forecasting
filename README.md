@@ -10,6 +10,8 @@ Phạm vi đề xuất: dự báo số chuyến taxi đón khách theo khu vực
 
 ## Bắt đầu
 
+**Môi trường Windows hiện hành:** Python 3.13.16 chính thức, venv tại `.venv`, thư viện xử lý dữ liệu/HBase tại `requirements-stage3-windows.txt`. Đã kiểm tra 15 tests và đối soát lại dataset. Xem đầu [CAI_DAT.md](docs/CAI_DAT.md); các ghi chép Python 3.11 là lịch sử hoặc kế hoạch riêng cho Spark trong Docker.
+
 **Tổng kết tiến độ:** mỗi giai đoạn trong kế hoạch 6 giai đoạn có file `docs/TONG_KET_GIAI_DOAN_N.md`. Đã có [giai đoạn 1](docs/TONG_KET_GIAI_DOAN_1.md) và [giai đoạn 2](docs/TONG_KET_GIAI_DOAN_2.md), ghi công việc, kết quả, bằng chứng kiểm tra và vấn đề còn lại.
 
 1. Đọc [kế hoạch chi tiết](docs/KE_HOACH.md), có phân công, mốc tuần, yêu cầu báo cáo và tiêu chí hoàn thành.
