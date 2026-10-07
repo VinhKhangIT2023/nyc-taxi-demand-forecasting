@@ -1,3 +1,5 @@
+> Luồng đầy đủ 36 tháng dùng `compose.full.yaml` và `src/processing/spark_full.py`, tiếp đến `src/storage/spark_hbase_full.py`. Xem [hướng dẫn toàn bộ](../../docs/CHAY_GIAI_DOAN_3_DAY_DU.md). Các lệnh thử tháng 01/2024 bên dưới được giữ để giải thích bước kiểm tra ban đầu.
+
 # Spark thử nghiệm tháng 01/2024
 
 Môi trường đã được người dùng duyệt: PySpark 3.5.7, Python 3.11, Java 17; local[2], driver heap 2 GiB, container tối đa 2 CPU và 4 GiB RAM (không thêm swap). Đây là xử lý trên một máy, không phải cụm nhiều máy. Python Windows 3.13 và venv Windows không được đưa vào image.

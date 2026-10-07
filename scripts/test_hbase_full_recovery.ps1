@@ -1,5 +1,6 @@
 # Run from the project root in PowerShell. Full dataset offline backup into a fresh, isolated volume. Source is restarted in finally.
 $ErrorActionPreference = 'Stop'
+$taskTimer = [System.Diagnostics.Stopwatch]::StartNew()
 $taskRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 Set-Location -LiteralPath $taskRoot
 $taskImage = 'dajobe/hbase@sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe'
@@ -70,7 +71,9 @@ try {
     [ordered]@{ complete=$true; source_container=$taskId; restored_container=$taskRestoredId;
         source_volume=$taskSourceVolume; restored_volume=$taskRestoreVolume;
         clean_stop_exit_code=$taskStopped.State.ExitCode; archive='.tools/hbase-backups/stage3-full.tar';
-        archive_sha256=$taskHash; image=$taskImage;
+        archive_sha256=$taskHash; archive_bytes=(Get-Item -LiteralPath $taskArchive).Length;
+        elapsed_seconds=[math]::Round($taskTimer.Elapsed.TotalSeconds,2);
+        finished_at_utc=[DateTime]::UtcNow.ToString('o'); image=$taskImage;
         scope='Offline backup of managed full dataset, restored into new container and volume; original hbase-demo unchanged.'
     } | ConvertTo-Json -Depth 6 | Set-Content -Encoding utf8 artifacts/metrics/hbase_full_recovery.json
     # Keep recovery artifacts, but avoid leaving an unnecessary extra server using RAM.

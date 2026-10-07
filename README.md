@@ -1,10 +1,8 @@
-> Cập nhật 07/10/2026: giai đoạn 3 đang triển khai toàn bộ 2023–2025 theo yêu cầu đã duyệt. Kết quả thử nghiệm bên dưới chưa phải nghiệm thu toàn bộ. Chỉ chốt khi Spark đủ 36 tháng, HBase đủ 6.917.952 dòng, nạp lại và phục hồi được đối chiếu đầy đủ.
-
 # Phân tích và dự báo nhu cầu sử dụng xe công cộng
 
 Đồ án Nhập môn Big Data của Đào Văn Hiếu và Nguyễn Đặng Vĩnh Khang. Công nghệ được ghi trong danh sách đăng ký: Apache HBase.
 
-**Trạng thái dữ liệu:** đã tải và xử lý đủ 36 tháng Yellow Taxi 2023–2025, giữ **126.994.028 chuyến** theo quy tắc v1. Có lưới 263 vùng theo giờ, phân biệt số 0 và thiếu dữ liệu, đồng thời che nhãn ngày đổi giờ mùa hè. Xem [giai đoạn 2 và kết quả nghiệm thu](docs/GIAI_DOAN_2.md). Chưa triển khai pipeline Spark, mô hình, dashboard hoặc Docker Compose.
+**Trạng thái dữ liệu:** đã tải và xử lý đủ 36 tháng Yellow Taxi 2023–2025, giữ **126.994.028 chuyến** theo quy tắc v1. Có lưới 263 vùng theo giờ, phân biệt số 0 và thiếu dữ liệu, đồng thời che nhãn ngày đổi giờ mùa hè. Xem [giai đoạn 2 và kết quả nghiệm thu](docs/GIAI_DOAN_2.md). Spark đã xử lý và đối chiếu đủ 36 tháng; có Docker Compose cho Spark/HBase. HBase đã lưu và đối chiếu đầy đủ lưới 2023–2025; mô hình và dashboard chưa triển khai.
 
 **Phạm vi thực nghiệm:** so sánh lịch sử 2024 với 2023–2024 trên cùng validation cuối 2024; giữ 2025 cho đánh giá cuối. Dùng loader `src.ingestion.open_dataset` để không đọc trùng tập thử tháng 01/2024 hoặc các bản trung gian. Các tài liệu tập thử và năm 2023 ghi lại các mốc cũ.
 
@@ -12,9 +10,9 @@ Phạm vi đề xuất: dự báo số chuyến taxi đón khách theo khu vực
 
 ## Bắt đầu
 
-**Giai đoạn 3 đã hoàn thành phạm vi hạ tầng và tích hợp thử:** Spark đối soát 76.190 nhóm vùng–giờ không sai khác; Spark → HBase đạt trên 168 giờ/26.365 chuyến, ghi lặp không nhân đôi; HBase tái lập và backup/restore sang container/volume mới đạt. Có 19 kiểm thử thành công. Xem [tổng kết giai đoạn 3](docs/TONG_KET_GIAI_DOAN_3.md), [hướng dẫn Spark](docker/spark/README.md) và [hướng dẫn HBase](docker/hbase/README.md). Chưa nạp HBase đầy đủ hoặc huấn luyện mô hình.
+**Giai đoạn 3 đã hoàn thành đầy đủ (08/10/2026):** Spark xử lý 36 tháng; HBase lưu 6.917.952 dòng vùng–giờ, nạp hai lần không nhân đôi; đối chiếu từng ô và phục hồi từ archive sang volume mới đều không sai lệch. Có 21/21 tests đạt. Xem [tổng kết giai đoạn 3](docs/TONG_KET_GIAI_DOAN_3.md), [hướng dẫn vận hành](docs/CHAY_GIAI_DOAN_3_DAY_DU.md) và [nghiệm thu](artifacts/metrics/stage3_full_acceptance.json). HBase ứng dụng dùng Thrift 19090/UI 16011, bảng `transport_demand_hourly_v1`. Chưa huấn luyện mô hình hoặc làm dashboard.
 
-**Môi trường Windows hiện hành:** Python 3.13.16 chính thức, venv tại `.venv`, thư viện xử lý dữ liệu/HBase tại `requirements-stage3-windows.txt`. Đã kiểm tra 15 tests và đối soát lại dataset. Xem đầu [CAI_DAT.md](docs/CAI_DAT.md); các ghi chép Python 3.11 là lịch sử hoặc kế hoạch riêng cho Spark trong Docker.
+**Môi trường Windows hiện hành:** Python 3.13.16 chính thức, venv tại `.venv`, thư viện xử lý dữ liệu/HBase tại `requirements-stage3-windows.txt`. Bộ kiểm thử hiện hành có 21 tests đạt. Xem đầu [CAI_DAT.md](docs/CAI_DAT.md); các ghi chép Python 3.11 là lịch sử hoặc kế hoạch riêng cho Spark trong Docker.
 
 **Tổng kết tiến độ:** mỗi giai đoạn trong kế hoạch 6 giai đoạn có file `docs/TONG_KET_GIAI_DOAN_N.md`. Đã có [giai đoạn 1](docs/TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](docs/TONG_KET_GIAI_DOAN_2.md) và [giai đoạn 3](docs/TONG_KET_GIAI_DOAN_3.md), ghi công việc, kết quả, bằng chứng kiểm tra và vấn đề còn lại.
 
@@ -66,4 +64,3 @@ DoAn_BigData/
 ```
 
 Các thư mục chưa triển khai có `.gitkeep` để Git theo dõi. File Word yêu cầu môn học ở gốc được giữ nguyên. `.venv/` sẽ được tạo riêng trên mỗi máy và bị Git bỏ qua.
-

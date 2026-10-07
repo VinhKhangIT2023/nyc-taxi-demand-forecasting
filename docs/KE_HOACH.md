@@ -1,4 +1,4 @@
-> Cập nhật 07/10/2026: giai đoạn 3 đang triển khai toàn bộ 2023–2025 theo yêu cầu đã duyệt. Kết quả thử nghiệm bên dưới chưa phải nghiệm thu toàn bộ. Chỉ chốt khi Spark đủ 36 tháng, HBase đủ 6.917.952 dòng, nạp lại và phục hồi được đối chiếu đầy đủ.
+> Hoàn thành đầy đủ ngày 08/10/2026: Spark đủ 36 tháng 2023–2025; HBase đủ 6.917.952 dòng, hai lượt nạp và phục hồi được đối chiếu từng ô, 0 sai lệch, 21/21 tests đạt. Xem [tổng kết giai đoạn 3](TONG_KET_GIAI_DOAN_3.md) và [hướng dẫn hiện hành](CHAY_GIAI_DOAN_3_DAY_DU.md). Các mốc thử nghiệm bên dưới là lịch sử triển khai.
 
 # Kế hoạch triển khai đồ án phân tích và dự báo nhu cầu sử dụng xe công cộng
 
@@ -223,4 +223,3 @@ Kịch bản demo gợi ý 5–7 phút, điều chỉnh theo thời lượng đ�
 7. Docker Compose: network, volume, healthcheck, log và khóa phiên bản.
 
 Các nguồn kỹ thuật đã đối chiếu ngày 05/10/2026: [Spark 3.5.7](https://spark.apache.org/docs/3.5.7/), [HBase](https://hbase.apache.org/docs/getting-started/), [HappyBase](https://happybase.readthedocs.io/en/latest/api.html), [VSCode Python](https://code.visualstudio.com/docs/python/environments), [Docker Windows](https://docs.docker.com/desktop/setup/install/windows-install/). Kiến trúc và phân công là đề xuất của kế hoạch, không phải yêu cầu nguyên văn của các nguồn này.
-

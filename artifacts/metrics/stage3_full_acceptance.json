@@ -1,1 +1,37 @@
-{"complete": false, "scope": "2023-2025 full dataset", "status": "implementation in progress"}
+{
+  "complete": false,
+  "verified_at_utc": "2026-10-08T00:58:16.941856+07:00",
+  "scope": "Spark all 36 months, full hourly HBase twice, full offline restore",
+  "raw_rows": 128202548,
+  "retained_trips": 126994028,
+  "hbase_rows": 6917952,
+  "content_sha256": "e7a9cdeb6332fd07c6458f42661ade814f792fcf5bb9997c540842fc2373615d",
+  "unit_tests_passed": 21,
+  "evidence_sha256": {
+    "spark_full.json": "6b68ae4503df56af23a35f4e32e7e5aa618a0b64f6de8d533ec0c1c3d5f8b393",
+    "hbase_full_load_pass1.json": "11930c2d4052087327d62eaed0dab438787cb5320226f1414510d2da0c5d581b",
+    "hbase_full_verify_pass1.json": "0c68d2ff51fc19af31cb489cb621ced1ba5c55bf289a936b6b85988c292de14b",
+    "hbase_full_load_pass2.json": "02290fcf3ac924af9f8031275c891fd820ab36e7aba378244e21dd408a188555",
+    "hbase_full_verify_pass2.json": "880ce5825c8636d1f692533291505358349d0b36722b55483a639e284fd7e9db",
+    "hbase_full_after_restore.json": "248a34413f7bc7b0755456e990fe43ce69acb828eb5da1875238aa02b0beec11",
+    "hbase_full_recovery.json": "b6c2df5149a76afc9cd45e62b7f8547c5da23332c1701705ea8d7cb9d730d40c",
+    "hbase_full_restored_trial_readback.json": "728010d446391238e6bcad1836b5100a798f01c77a358f5862d7eb46bdd9ab20"
+  },
+  "limitations": [
+    "Single-machine local[2] Spark and standalone HBase; no cluster performance claim.",
+    "Offline clean-shutdown backup verified; abrupt crash recovery is not proven.",
+    "Trips remain in Parquet. HBase stores the full 2023–2025 hourly grid.",
+    "Models, dashboard and final Word/PPT are later phases."
+  ],
+  "code_sha256": {
+    "src/processing/spark_full.py": "601701493957849fe14ea837867f2e95188ea6a91aee3823a99b7d147f5f9650",
+    "src/storage/spark_hbase_full.py": "1a62c236686892aaba7e2709d8f89d1ec2316d4b29f23dd98430e55626129657",
+    "src/storage/hourly_codec.py": "b2b9fc42e33fc53c0591470927c312dc0432979dbe4a8c9c4357158dc5ccc8c5",
+    "src/storage/verify_hbase_full.py": "a3aa70d68bc6ece0f46b4c6ccb68811ab6a6972b9cafc8fb7038dcfaa64ffa7b",
+    "scripts/test_hbase_full_recovery.ps1": "8207330253a8c2e3ce2629deef2d10c9ce55606c81e68af9de6f350699724cb3",
+    "docker/spark/compose.full.yaml": "9570c26e35276479babfde31c9efc5b6decd6115ff581371104b84c9c16f594c",
+    "docker/hbase/compose.yaml": "7fd085218313869946d9f2c180531bdda00c240be1de6bc8a5b61bb42836f7f6",
+    "docker/hbase/hbase-site.xml": "6758a3b6659d0ad78d08ec79f7b713767db2397a10858880e03a7ea25fb3d2d6"
+  },
+  "status": "Final source readback pending after ZooKeeper session expiry and restart"
+}

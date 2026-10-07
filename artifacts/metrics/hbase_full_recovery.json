@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "source_container": "561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb",
+  "restored_container": "9657e2fc1ef4fe3f06e31616bd46e82c0e9be42746f6f3a8b01f3016126b011e",
+  "source_volume": "bigdata-hbase_hbase_data",
+  "restored_volume": "bigdata-hbase-full-restore_hbase_data",
+  "clean_stop_exit_code": 0,
+  "archive": ".tools/hbase-backups/stage3-full.tar",
+  "archive_sha256": "1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7",
+  "archive_bytes": 17174343680,
+  "elapsed_seconds": 1346.65,
+  "finished_at_utc": "2026-10-07T17:56:51.5435383Z",
+  "image": "dajobe/hbase@sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+  "scope": "Offline backup of managed full dataset, restored into new container and volume; original hbase-demo unchanged."
+}

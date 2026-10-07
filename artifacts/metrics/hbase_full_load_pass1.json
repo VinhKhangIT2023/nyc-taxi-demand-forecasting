@@ -1,0 +1,194 @@
+{
+  "complete": true,
+  "table": "transport_demand_hourly_v1",
+  "pass_number": 1,
+  "months": [
+    {
+      "month": "2023-01",
+      "rows": 195672,
+      "elapsed_seconds": 17.14
+    },
+    {
+      "month": "2023-02",
+      "rows": 176736,
+      "elapsed_seconds": 9.31
+    },
+    {
+      "month": "2023-03",
+      "rows": 195672,
+      "elapsed_seconds": 9.38
+    },
+    {
+      "month": "2023-04",
+      "rows": 189360,
+      "elapsed_seconds": 8.45
+    },
+    {
+      "month": "2023-05",
+      "rows": 195672,
+      "elapsed_seconds": 10.16
+    },
+    {
+      "month": "2023-06",
+      "rows": 189360,
+      "elapsed_seconds": 8.11
+    },
+    {
+      "month": "2023-07",
+      "rows": 195672,
+      "elapsed_seconds": 8.53
+    },
+    {
+      "month": "2023-08",
+      "rows": 195672,
+      "elapsed_seconds": 10.35
+    },
+    {
+      "month": "2023-09",
+      "rows": 189360,
+      "elapsed_seconds": 8.95
+    },
+    {
+      "month": "2023-10",
+      "rows": 195672,
+      "elapsed_seconds": 9.02
+    },
+    {
+      "month": "2023-11",
+      "rows": 189360,
+      "elapsed_seconds": 8.26
+    },
+    {
+      "month": "2023-12",
+      "rows": 195672,
+      "elapsed_seconds": 10.06
+    },
+    {
+      "month": "2024-01",
+      "rows": 195672,
+      "elapsed_seconds": 9.3
+    },
+    {
+      "month": "2024-02",
+      "rows": 183048,
+      "elapsed_seconds": 8.72
+    },
+    {
+      "month": "2024-03",
+      "rows": 195672,
+      "elapsed_seconds": 8.46
+    },
+    {
+      "month": "2024-04",
+      "rows": 189360,
+      "elapsed_seconds": 8.9
+    },
+    {
+      "month": "2024-05",
+      "rows": 195672,
+      "elapsed_seconds": 9.19
+    },
+    {
+      "month": "2024-06",
+      "rows": 189360,
+      "elapsed_seconds": 8.34
+    },
+    {
+      "month": "2024-07",
+      "rows": 195672,
+      "elapsed_seconds": 8.18
+    },
+    {
+      "month": "2024-08",
+      "rows": 195672,
+      "elapsed_seconds": 11.88
+    },
+    {
+      "month": "2024-09",
+      "rows": 189360,
+      "elapsed_seconds": 9.66
+    },
+    {
+      "month": "2024-10",
+      "rows": 195672,
+      "elapsed_seconds": 9.24
+    },
+    {
+      "month": "2024-11",
+      "rows": 189360,
+      "elapsed_seconds": 8.51
+    },
+    {
+      "month": "2024-12",
+      "rows": 195672,
+      "elapsed_seconds": 12.32
+    },
+    {
+      "month": "2025-01",
+      "rows": 195672,
+      "elapsed_seconds": 9.38
+    },
+    {
+      "month": "2025-02",
+      "rows": 176736,
+      "elapsed_seconds": 9.19
+    },
+    {
+      "month": "2025-03",
+      "rows": 195672,
+      "elapsed_seconds": 9.4
+    },
+    {
+      "month": "2025-04",
+      "rows": 189360,
+      "elapsed_seconds": 9.69
+    },
+    {
+      "month": "2025-05",
+      "rows": 195672,
+      "elapsed_seconds": 10.6
+    },
+    {
+      "month": "2025-06",
+      "rows": 189360,
+      "elapsed_seconds": 8.28
+    },
+    {
+      "month": "2025-07",
+      "rows": 195672,
+      "elapsed_seconds": 8.66
+    },
+    {
+      "month": "2025-08",
+      "rows": 195672,
+      "elapsed_seconds": 10.89
+    },
+    {
+      "month": "2025-09",
+      "rows": 189360,
+      "elapsed_seconds": 8.37
+    },
+    {
+      "month": "2025-10",
+      "rows": 195672,
+      "elapsed_seconds": 9.1
+    },
+    {
+      "month": "2025-11",
+      "rows": 189360,
+      "elapsed_seconds": 8.51
+    },
+    {
+      "month": "2025-12",
+      "rows": 195672,
+      "elapsed_seconds": 11.49
+    }
+  ],
+  "started_at_utc": "2026-10-07T17:11:44.553022+00:00",
+  "rows": 6917952,
+  "elapsed_seconds": 347.79,
+  "endpoint": "host.docker.internal:19090",
+  "wal": true,
+  "batch_size": 500,
+  "spark": "3.5.7"
+}

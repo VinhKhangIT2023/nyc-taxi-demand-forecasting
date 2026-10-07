@@ -1,0 +1,46 @@
+{
+  "complete": true,
+  "table": "transport_demand_hourly_v1",
+  "port": 19090,
+  "rows": 6917952,
+  "started_at_utc": "2026-10-07T17:17:35.224838+00:00",
+  "elapsed_seconds": 310.31,
+  "mismatches": 0,
+  "content_sha256": "e7a9cdeb6332fd07c6458f42661ade814f792fcf5bb9997c540842fc2373615d",
+  "totals": {
+    "2023": {
+      "rows": 2303880,
+      "recorded_sum": 37909554,
+      "target_sum": 37709280,
+      "q_source_hour_missing": 263,
+      "q_dst_day": 12624,
+      "q_zero_recorded": 1434065,
+      "model_eligible": 2291256
+    },
+    "2024": {
+      "rows": 2310192,
+      "recorded_sum": 41010718,
+      "target_sum": 40785663,
+      "q_source_hour_missing": 263,
+      "q_dst_day": 12624,
+      "q_zero_recorded": 1264195,
+      "model_eligible": 2297568
+    },
+    "2025": {
+      "rows": 2303880,
+      "recorded_sum": 48073756,
+      "target_sum": 47809126,
+      "q_source_hour_missing": 263,
+      "q_dst_day": 12624,
+      "q_zero_recorded": 889072,
+      "model_eligible": 2291256
+    }
+  },
+  "source_sha256": {
+    "2023": "ddafd49e65955e00bf0150c225336f6f4e1e2ee86e8ad5b9167ba022c69ef86e",
+    "2024": "ef2ef62ff5ce140215337d0726a3db93b0d530b1d5b4959e6ff4cb22fc8713da",
+    "2025": "ac04dd1e8db46b599b2738182c80955411540e5049c89dae7f84e903ebd9ae7e"
+  },
+  "range_queries": 3,
+  "point_queries": 6
+}

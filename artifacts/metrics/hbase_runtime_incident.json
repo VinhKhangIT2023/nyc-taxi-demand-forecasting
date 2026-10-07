@@ -1,0 +1,11 @@
+{
+  "observed_at_utc": "2026-10-07T17:58:22Z",
+  "container": "bigdata-hbase-hbase-1",
+  "logged_pause_ms": 50314,
+  "failure": "ZooKeeper SessionExpiredException followed by HMaster abort",
+  "docker_oom_killed": false,
+  "container_exit_code": 0,
+  "cause_of_pause": "Not established; log suggests long pause, cannot distinguish GC from host/VM scheduling or suspend with available evidence",
+  "action": "Restarted managed HBase; health became healthy; full readback requested",
+  "readback_report": "artifacts/metrics/hbase_full_post_restart.json"
+}

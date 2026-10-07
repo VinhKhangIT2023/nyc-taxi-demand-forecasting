@@ -1,85 +1,77 @@
-> Cập nhật 07/10/2026: giai đoạn 3 đang triển khai toàn bộ 2023–2025 theo yêu cầu đã duyệt. Kết quả thử nghiệm bên dưới chưa phải nghiệm thu toàn bộ. Chỉ chốt khi Spark đủ 36 tháng, HBase đủ 6.917.952 dòng, nạp lại và phục hồi được đối chiếu đầy đủ.
+# Tổng kết giai đoạn 3 — Spark và HBase trên toàn bộ 2023–2025
 
-# Tổng kết giai đoạn 3 — Tích hợp và tái lập Spark/HBase
-
-Ngày hoàn thành: 07/10/2026. Trạng thái: **hoàn thành phạm vi hạ tầng local và tích hợp thử đã duyệt**. Nghiệm thu máy đọc được tại [stage3_acceptance.json](../artifacts/metrics/stage3_acceptance.json), `complete=true`.
+Hoàn thành 08/10/2026. Trạng thái: **đã nghiệm thu đầy đủ giai đoạn 3**. Bằng chứng: [stage3_full_acceptance.json](../artifacts/metrics/stage3_full_acceptance.json), `complete=true`, 21/21 tests đạt. Mốc thử tháng 01/2024 và 168 giờ trước đây đã được mở rộng theo yêu cầu người dùng. Không dùng kết quả thử làm kết luận cho toàn bộ dữ liệu.
 
 ## 1. Mục tiêu và phạm vi
 
-Có môi trường Spark xử lý dữ liệu thật, Python/Spark ghi và đọc HBase, cấu hình tái lập trong repo và bằng chứng dữ liệu còn sau restart/khôi phục. Phạm vi thử: Spark làm sạch tháng 01/2024; HBase nạp 168 giờ vùng 161, chưa nạp toàn bộ 6,9 triệu dòng vùng–giờ.
+Spark xử lý đủ 36 tháng Yellow Taxi 2023–2025, đối chiếu với giai đoạn 2; HBase lưu toàn bộ 263 vùng theo giờ. Xác minh dữ liệu sau hai lượt nạp và sau phục hồi vào container/volume mới. Chi tiết chuyến đi được giữ trong Parquet; HBase phục vụ truy vấn số đếm và chất lượng theo giờ.
 
-## 2. Công việc đã thực hiện
+## 2. Công việc đã triển khai
 
-- Kiểm tra container HBase có sẵn, phiên bản, Thrift, bảng và đường dẫn lưu trữ.
-- Xử lý vướng mắc Smart App Control bằng Python 3.13.16 chính thức có chữ ký; tạo lại venv sau kiểm thử, giữ chính sách bảo vệ và Python 3.14. Ghi phiên bản thư viện để tái lập.
-- Viết phép thử HBase bảng riêng: put/get/scan, ghi lặp và đọc lại sau restart.
-- Xây image Spark 3.5.7, Python 3.11.17, Java 17.0.20.1; local[2], driver 2 GiB, container 2 CPU/4 GiB. Tách khỏi môi trường Windows.
-- Viết Spark ETL thử từ raw tháng 01/2024, đối soát từng nhóm vùng–giờ và cờ chất lượng với giai đoạn 2.
-- Thiết kế codec HBase đã duyệt; ghi mẫu thật qua Spark foreachPartition, đọc lại độc lập từ Windows.
-- Bổ sung Compose HBase với named volume, hostname ổn định, dữ liệu ZooKeeper trong /data, healthcheck và dừng sạch.
-- Dựng HBase từ cấu hình trên volume mới, lặp lại tích hợp, kiểm tra zero/null/DST thực tế.
-- Sao lưu offline volume thử và khôi phục vào container/volume khác; đối soát nội dung và schema mà không nạp lại bằng ứng dụng.
+- Python Windows 3.13.16 chính thức, venv và thư viện khóa phiên bản; giữ Smart App Control.
+- Spark 3.5.7/Python 3.11.17/Java 17 trong Docker, local[2], 2 CPU/4 GiB, driver 2 GiB.
+- Spark đọc từng tháng, kiểm tra checksum, áp dụng quy tắc lọc, chuẩn hóa schema 28 cột, kiểm tra 7 cờ chất lượng và tổng hợp theo giờ.
+- Tạo lại lưới giờ bằng Spark và so từng dòng với giai đoạn 2. Giữ số đếm mô tả ngày DST, che nhãn huấn luyện; phân biệt zero/null.
+- HBase 2.1.2 trong Compose với named volume, ZooKeeper lưu cùng volume, healthcheck và dừng sạch.
+- Bảng chính `transport_demand_hourly_v1`: khóa `ZZZ#YYYYMMDDHH`, ba nhóm cột d/q/m, một phiên bản; batch 500 thao tác, bật WAL, hai Spark worker.
+- Đối chiếu HBase theo luồng với nguồn Parquet độc lập; phát hiện mọi dòng/ô sai hoặc thừa/thiếu. Kiểm tra cả range query qua ranh giới năm, ngày DST và point query.
+- Có script nạp hai lần, sao lưu offline, phục hồi volume mới và nghiệm thu tự động. Chỉ báo đạt khi các bằng chứng thực tế đều thành công.
 
-## 3. Kết quả đạt được
+## 3. Kết quả đã xác nhận
 
-| Phép kiểm tra | Kết quả |
+| Hạng mục | Kết quả |
 |---|---|
-| Spark xử lý raw tháng 01/2024 | 2.964.624 dòng raw → 2.951.871 chuyến giữ lại |
-| Đối soát tổng hợp | 76.190 nhóm vùng–giờ, 0 khác biệt; 7 cờ chất lượng khớp |
-| Python worker trong Spark | Đạt |
-| Spark → HBase | 168 giờ vùng 161, tổng 26.365 chuyến |
-| Ghi mẫu hai lần | Vẫn 168 dòng; mỗi lượt đọc/scan khớp từng cell |
-| Windows đọc lại | Khớp toàn bộ cột Parquet nguồn |
-| Edge cases thực tế HBase | 0, 0→null, null→0 và DST đều đạt |
-| Backup/restore | Nguồn dừng sạch exit code 0; volume/container mới giữ đúng 168 dòng thật + 2 dòng giả lập |
-| Unit suite cuối giai đoạn | 19/19 đạt |
+| Spark 36 tháng | 128.202.548 dòng raw → 126.994.028 chuyến giữ lại |
+| Lưới giờ | 6.917.952 dòng; 0 sai khác với giai đoạn 2 |
+| Thời gian Spark ETL | 555,70 giây, khoảng 9 phút 16 giây |
+| HBase nạp lần 1 | 6.917.952 dòng, 347,79 giây |
+| Đọc kiểm tra lần 1 | Đủ 6.917.952 dòng, 0 sai lệch, 310,31 giây |
+| Nạp/đọc kiểm tra lần 2 | 6.917.952 dòng, 0 sai lệch; nạp 341,98 giây, đọc 352,32 giây; fingerprint giống lượt 1 |
+| Phục hồi bản sao lưu đầy đủ | Đủ 6.917.952 dòng, 0 sai lệch, fingerprint giống hai lượt nạp; đọc đối chiếu 326,17 giây |
+| Unit tests cuối giai đoạn | 21/21 đạt |
 
-Spark trial mất 22,76 giây cho job trên máy hiện tại, không gồm build image; chưa phải benchmark hoặc kết luận khả năng mở rộng.
+| Năm | Dòng vùng–giờ | Tổng chuyến ghi nhận | Tổng nhãn đủ điều kiện |
+|---|---:|---:|---:|
+| 2023 | 2.303.880 | 37.909.554 | 37.709.280 |
+| 2024 | 2.310.192 | 41.010.718 | 40.785.663 |
+| 2025 | 2.303.880 | 48.073.756 | 47.809.126 |
+
+Số nhãn thấp hơn tổng chuyến vì che ngày DST theo quyết định đã duyệt, không phải mất dữ liệu khi nạp. Mỗi năm có 263 dòng thiếu nguồn tại giờ chuyển sang giờ mùa hè; toàn bộ hai ngày DST có 12.624 dòng không dùng làm nhãn. Toàn bộ ba năm có 6.880.080 dòng đủ điều kiện làm nhãn.
 
 ## 4. Đầu ra và bằng chứng
 
-| Thành phần | Đường dẫn |
-|---|---|
-| Docker Spark và cách chạy | [docker/spark/README.md](../docker/spark/README.md) |
-| Docker HBase và hướng dẫn cho Hiếu | [docker/hbase/README.md](../docker/hbase/README.md) |
-| Thiết kế row key/cột đã duyệt | [THIET_KE_HBASE_THU.md](THIET_KE_HBASE_THU.md) |
-| Job Spark ETL | [spark_trial.py](../src/processing/spark_trial.py) |
-| Job Spark → HBase | [spark_hbase_trial.py](../src/storage/spark_hbase_trial.py) |
-| Script backup/restore có kiểm tra | [test_hbase_recovery.ps1](../scripts/test_hbase_recovery.ps1) |
-| Nghiệm thu tổng hợp và checksum bằng chứng | [stage3_acceptance.json](../artifacts/metrics/stage3_acceptance.json) |
-| Bằng chứng khôi phục | [hbase_recovery.json](../artifacts/metrics/hbase_recovery.json) |
-| Hướng dẫn môi trường Windows | [CAI_DAT.md](CAI_DAT.md) |
+- `artifacts/metrics/spark_full.json`: thống kê, checksum nguồn và thời gian từng tháng.
+- `data/processed/spark_full_v1/YYYY-MM/`: lưới tháng tạo bằng Spark, không push GitHub.
+- `artifacts/metrics/hbase_full_load_pass1.json`, `hbase_full_load_pass2.json`: kết quả hai lượt nạp.
+- `artifacts/metrics/hbase_full_verify_pass1.json`, `hbase_full_verify_pass2.json`: đối chiếu toàn bộ, tổng theo năm, fingerprint nội dung.
+- `artifacts/metrics/hbase_full_after_restore.json`, `hbase_full_recovery.json`: bằng chứng phục hồi.
+- `artifacts/metrics/stage3_full_acceptance.json`: nghiệm thu đầy đủ, chỉ thành công nếu `complete=true`.
+- `artifacts/metrics/stage3_resources_*.jsonl`: ảnh chụp mức tài nguyên tại thời điểm đo, không phải đo peak hay benchmark.
+- [Hướng dẫn chạy toàn bộ](CHAY_GIAI_DOAN_3_DAY_DU.md), [nhật ký triển khai](GIAI_DOAN_3.md), [quyết định phạm vi](QUYET_DINH.md).
 
-Archive `.tools/hbase-backups/stage3.tar` và Parquet giữ trên máy, không push GitHub. Image/volume nằm trong Docker; Git lưu cấu hình, code, tests, tài liệu và metrics nhỏ.
+Archive đầy đủ: 17.174.343.680 byte (17,17 GB), SHA256 `1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7`. Chu trình backup/restore và kiểm tra mất 1.346,65 giây. Nguồn dừng sạch exit code 0; đích là container và volume khác. Bảng thử 168 giờ cũng khớp sau phục hồi. Fingerprint nội dung bảng chính của cả ba lần đọc: `e7a9cdeb6332fd07c6458f42661ade814f792fcf5bb9997c540842fc2373615d`.
+
+Các metrics thử trước đó được giữ làm lịch sử. Archive `.tools/hbase-backups/stage3-full.tar`, dữ liệu Parquet, venv và log bị Git bỏ qua. Repo lưu code, cấu hình, tests, docs và metrics nhỏ. Docker volume/image không nằm trong repo.
 
 ## 5. Quyết định và lý do
 
-Giữ HBase 2.1.2 để tương thích môi trường đã có, cố định image digest; không đổi phiên bản trong lúc xác minh phục hồi. Spark chạy theo job để không giữ tài nguyên khi không cần. Cấu hình HBase mới dùng cổng riêng để giữ nguyên container cũ. Named volume chứa cả HBase và ZooKeeper để không phụ thuộc filesystem tạm của container. Mẫu nhỏ có thể đối chiếu toàn bộ trước khi mở rộng. Chi tiết phê duyệt Python, Spark và mẫu 168 giờ ở [QUYET_DINH.md](QUYET_DINH.md).
+Giữ chính sách dữ liệu đã được người dùng duyệt. Xử lý từng tháng giúp kiểm soát bộ nhớ và khác biệt schema; chưa cần cụm nhiều máy cho thực nghiệm này. Dùng khóa cố định để nạp lặp không sinh thêm dòng; ô thiếu được xóa thay vì ghi 0. Giữ dữ liệu chi tiết trong Parquet để phân tích/huấn luyện, đưa toàn bộ kết quả vùng–giờ vào HBase cho truy vấn ứng dụng.
 
-## 6. Vấn đề đã xử lý và giới hạn
+Bản sao lưu dùng volume đã dừng sạch và được kiểm tra trên volume mới. Phép thử restart hoặc kiểm tra vài dòng không thay thế được việc đối chiếu toàn bộ bản phục hồi.
 
-- Python standalone bị Smart App Control chặn: thay bằng bản chính thức có chữ ký theo phê duyệt, không tắt bảo vệ.
-- HappyBase 1.2.0 cần pkg_resources: khóa setuptools 80.9.0; còn cảnh báo deprecated, không có lỗi trong phép thử.
-- Healthcheck ban đầu tìm chuỗi không khớp chế độ status simple: đã sửa sang status, container managed đạt healthy.
-- HBase standalone local filesystem/Java 8 là môi trường học tập cũ, không dùng làm hệ production hoặc expose Internet. Không chứng minh crash consistency khi mất điện, chống mất máy hay cụm phân tán.
-- Tái lập và restore đã chạy trên container/volume mới ở máy hiện tại; chưa xác minh trên phần cứng của Hiếu.
-- Không backup bảng users của container cũ; archive phục hồi chỉ chứa môi trường thử riêng. Dataset giai đoạn 2 nằm ở Parquet, không nằm trong bản backup HBase này.
-- Chưa xử lý đủ 36 tháng bằng Spark, chưa nạp toàn bộ dataset vào HBase, chưa huấn luyện hoặc làm dashboard. Những việc đó không thuộc phép thử hạ tầng đã duyệt.
+## 6. Hạn chế và vấn đề
 
-## 7. Trạng thái vận hành và bàn giao
+- Phát sinh ở bước bàn giao: log ghi khoảng dừng 50.314 ms, các phiên ZooKeeper hết hạn và HMaster abort; Docker báo OOMKilled=false. Chưa xác định được nguyên nhân khoảng dừng là GC hay lịch chạy/suspend của máy/VM. Đã khởi động lại HBase managed, trở lại healthy; đang đối chiếu toàn bộ lần nữa. Bằng chứng: `hbase_runtime_incident.json` và `hbase_full_post_restart.json`. Không đổi heap, timeout hoặc chính sách dữ liệu để che lỗi.
 
-| Instance | Trạng thái lúc nghiệm thu | Cổng Thrift / UI |
-|---|---|---|
-| hbase-demo cũ | Giữ nguyên, đang chạy | 9090 / 16010 |
-| bigdata-hbase-hbase-1 | Đang chạy, healthy; môi trường tái lập cho bước sau | 19090 / 16011 |
-| bigdata-hbase-restore-hbase-1 | Đã dừng sau kiểm chứng để tiết kiệm RAM; giữ volume | 19091 / 16012 khi bật |
-| Spark job | Hoàn thành; container tạm đã xóa, image và output còn | Không publish UI |
+- HBase standalone/local filesystem, Java 8 và image HBase cũ phù hợp môi trường học tập hiện tại; chưa chứng minh khả năng chịu lỗi nhiều máy hoặc phục hồi khi mất điện đột ngột.
+- Nạp bảng lớn không có giao dịch nguyên tử cho toàn bộ tập; khi gián đoạn phải nạp lại và đối chiếu trước khi sử dụng.
+- Backup nằm trên cùng máy; chưa có bản lưu ngoài máy. Bản HBase không thay thế backup Parquet hoặc bảng `users` của container cũ.
+- HappyBase có cảnh báo `pkg_resources` deprecated; setuptools đã khóa 80.9.0 và các phép kiểm tra hiện hành vẫn chạy được.
+- Đã tái lập môi trường bằng container/volume mới trên máy hiện tại; chưa kiểm thử trên máy của Hiếu.
+- Chưa huấn luyện mô hình, làm dashboard hoặc hoàn tất Word/PPT cuối kỳ.
 
-Đọc dữ liệu thật từ môi trường tái lập:
+## 7. Bàn giao và giai đoạn tiếp theo
 
-```powershell
-.\.venv\Scripts\python.exe -m src.storage.inspect_hbase_trial --port 19090 --report artifacts/metrics/hbase_managed_readback.json
-```
+HBase ứng dụng: `bigdata-hbase-hbase-1`, Thrift 19090/UI 16011. Container `hbase-demo` cũ ở 9090/16010 giữ nguyên. Container phục hồi đầy đủ dùng 19092/16013 và đã dừng sau kiểm tra để tiết kiệm RAM. Khi mở máy chỉ cần bật HBase managed, không phải chạy lại ETL/nạp dữ liệu.
 
-Bước tiếp theo: chốt đặc trưng, baseline và quy trình huấn luyện/đánh giá trên cấu hình chia tập đã chuẩn bị. Phải quyết định riêng phạm vi nạp HBase chính thức và tránh dùng holdout 2025 để chọn mô hình. Báo cáo Word, slide và demo cuối kỳ vẫn cần hoàn thiện ở các giai đoạn sau.
-
+Giai đoạn 4: đặc trưng theo thời gian, baseline và huấn luyện/đánh giá. So sánh lịch sử 2024 với 2023–2024 bằng validation cuối 2024; giữ 2025 làm holdout, không dùng để chọn mô hình. Tiếp tục thống nhất với người dùng các quyết định mô hình trước khi triển khai.

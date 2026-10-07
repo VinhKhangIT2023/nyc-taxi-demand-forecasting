@@ -1,3 +1,5 @@
+> Luồng đầy đủ 2023–2025: dùng bảng `transport_demand_hourly_v1` trên instance managed 19090/16011. Xem [hướng dẫn toàn bộ](../../docs/CHAY_GIAI_DOAN_3_DAY_DU.md) và [tổng kết hiện hành](../../docs/TONG_KET_GIAI_DOAN_3.md). Phần backup thử bên dưới là lịch sử của mẫu 168 giờ; khi bảng đầy đủ đã tồn tại, dùng `scripts/test_hbase_full_recovery.ps1`, không dùng script audit giới hạn bảng thử.
+
 # HBase tái lập cho giai đoạn 3
 
 Đã kiểm thử ngày 07/10/2026. Dùng cùng HBase 2.1.2/Java 8 như container cũ, khóa image bằng registry digest trong Compose. Đây là môi trường standalone cho học tập, không phải cụm production. [Tài liệu Apache HBase 2.1](https://hbase.apache.org/2.1/book.html) mô tả standalone và giới hạn độ bền khi dùng local filesystem.
