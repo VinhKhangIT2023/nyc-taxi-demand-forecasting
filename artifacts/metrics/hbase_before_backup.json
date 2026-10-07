@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "port": 19090,
+  "tables": {
+    "bigdata_edge_de43aef398e34716b0b31b51f0c9f87c": {
+      "rows": 2,
+      "sha256": "fa60f324c90a64e8b25f97450fb929d7e8089eed550509ad48bb3ff89c9e2977",
+      "family_versions": {
+        "d": 1,
+        "m": 1,
+        "q": 1
+      }
+    },
+    "transport_demand_hourly_trial_v1": {
+      "rows": 168,
+      "sha256": "9e47d78224b9cb82f2276654cce9a019b927bed1cabef198669270f8cab413fa",
+      "family_versions": {
+        "d": 1,
+        "m": 1,
+        "q": 1
+      }
+    }
+  },
+  "compared_with": null
+}

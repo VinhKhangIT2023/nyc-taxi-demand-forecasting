@@ -1,6 +1,6 @@
 # Giai đoạn 3 — Tích hợp môi trường Spark và HBase
 
-Ngày bắt đầu: 07/10/2026. Trạng thái: đang kiểm tra môi trường, chưa nghiệm thu.
+Ngày bắt đầu và hoàn thành: 07/10/2026. **Đã nghiệm thu phạm vi hạ tầng/tích hợp thử**, xem [TONG_KET_GIAI_DOAN_3.md](TONG_KET_GIAI_DOAN_3.md). Các trạng thái chưa hoàn thành bên dưới là nhật ký từng bước, được thay thế bởi kết quả tổng kết. Cấu hình HBase tái lập, edge cases thực tế và backup/restore sang container/volume mới đều đạt; 19/19 kiểm thử thành công.
 
 ## Mục tiêu triển khai
 

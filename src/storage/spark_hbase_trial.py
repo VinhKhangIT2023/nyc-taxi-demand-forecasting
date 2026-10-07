@@ -15,7 +15,7 @@ START, STOP = b'161#2024010100', b'161#2024010800'
 
 def connect():
     return happybase.Connection(host=os.environ.get('HBASE_HOST', 'host.docker.internal'),
-                                port=9090, timeout=10000, transport='buffered', protocol='binary')
+                                port=int(os.environ.get('HBASE_PORT', '9090')), timeout=10000, transport='buffered', protocol='binary')
 
 
 def write_partition(rows):
@@ -45,7 +45,7 @@ def verify(table, expected):
 
 
 def main():
-    metrics = Path('artifacts/metrics/spark_hbase_trial.json')
+    metrics = Path(os.environ.get('HBASE_TRIAL_METRICS', 'artifacts/metrics/spark_hbase_trial.json'))
     result = {'complete': False, 'table': TABLE, 'zone': 161,
               'start': '2024-01-01T00:00:00', 'end_exclusive': '2024-01-08T00:00:00',
               'started_at_utc': datetime.now(timezone.utc).isoformat()}
@@ -94,7 +94,7 @@ def main():
         result.update(complete=True, created_table=created, source_sha256=h.hexdigest(),
                       row_count=168, write_passes=2, checks=checks,
                       spark=spark.version, master=spark.sparkContext.master,
-                      endpoint=os.environ.get('HBASE_HOST', 'host.docker.internal') + ':9090',
+                      endpoint=os.environ.get('HBASE_HOST', 'host.docker.internal') + ':' + os.environ.get('HBASE_PORT', '9090'),
                       finished_at_utc=datetime.now(timezone.utc).isoformat(),
                       limitations=['January sample does not exercise DST/missing labels in HBase.',
                                    'No full-year load or model training; no multi-row transaction guarantee.'])

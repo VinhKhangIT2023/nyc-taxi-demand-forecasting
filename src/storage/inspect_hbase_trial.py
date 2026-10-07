@@ -1,5 +1,6 @@
 """Read the approved HBase trial from Windows and compare it with the local Parquet source."""
 from datetime import datetime, timezone
+import argparse
 import json
 from pathlib import Path
 
@@ -9,11 +10,15 @@ from src.ingestion.open_dataset import open_hourly
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--port', type=int, default=9090)
+    parser.add_argument('--report', default='artifacts/metrics/hbase_windows_readback.json')
+    args = parser.parse_args()
     source = open_hourly([2024]).to_table(filter=(ds.field('PULocationID') == 161)
         & (ds.field('pickup_hour') >= datetime(2024, 1, 1))
         & (ds.field('pickup_hour') < datetime(2024, 1, 8)))
     expected = sorted(source.to_pylist(), key=lambda r: r['pickup_hour'])
-    connection = happybase.Connection(host='127.0.0.1', port=9090, timeout=10000)
+    connection = happybase.Connection(host='127.0.0.1', port=args.port, timeout=10000)
     try:
         table = connection.table('transport_demand_hourly_trial_v1')
         rows = list(table.scan(row_start=b'161#2024010100', row_stop=b'161#2024010800', limit=169))
@@ -36,10 +41,10 @@ def main():
         if len(actual) != 168 or actual != expected:
             raise AssertionError('Windows HBase readback differs from Parquet')
         result = {'complete': True, 'verified_at_utc': datetime.now(timezone.utc).isoformat(),
-                  'table': 'transport_demand_hourly_trial_v1', 'rows': len(actual), 'mismatches': 0,
+                  'port': args.port, 'table': 'transport_demand_hourly_trial_v1', 'rows': len(actual), 'mismatches': 0,
                   'recorded_trips': sum(r['recorded_trip_count'] or 0 for r in actual),
                   'examples': actual[:3]}
-        Path('artifacts/metrics/hbase_windows_readback.json').write_text(json.dumps(result, indent=2, default=str) + '\n')
+        Path(args.report).write_text(json.dumps(result, indent=2, default=str) + '\n')
         print(json.dumps(result, indent=2, default=str))
     finally:
         connection.close()

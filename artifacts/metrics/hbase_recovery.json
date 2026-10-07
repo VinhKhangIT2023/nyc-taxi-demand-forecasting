@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "source_container": "561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb",
+  "restored_container": "ee291f456915ff5d745de7f9884314701a60df69c80d8b4fc336fcf2613e9451",
+  "source_volume": "bigdata-hbase_hbase_data",
+  "restored_volume": "bigdata-hbase-restore_hbase_data",
+  "clean_stop_exit_code": 0,
+  "archive": ".tools/hbase-backups/stage3.tar",
+  "archive_sha256": "CC267210C06FA3608D09E7B3B2770F3E2BD8B3B587D937A6E4A98450C147D248",
+  "image": "dajobe/hbase@sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+  "scope": "Offline backup of isolated managed trial, restored into new container and volume; original hbase-demo unchanged."
+}

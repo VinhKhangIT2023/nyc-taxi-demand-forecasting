@@ -1,0 +1,25 @@
+services:
+  hbase:
+    image: dajobe/hbase@sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe
+    hostname: hbase-managed
+    entrypoint: ["/bin/bash", "/project-config/start.sh"]
+    environment:
+      HBASE_HEAPSIZE: "512"
+      HBASE_CONF_DIR: /tmp/project-hbase-conf
+    mem_limit: 2g
+    stop_grace_period: 60s
+    ports:
+      - "127.0.0.1:${HBASE_THRIFT_PORT:-19090}:9090"
+      - "127.0.0.1:${HBASE_UI_PORT:-16011}:16010"
+    volumes:
+      - ./start.sh:/project-config/start.sh:ro
+      - ./hbase-site.xml:/project-config/hbase-site.xml:ro
+      - hbase_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "printf 'status\\n' | hbase --config /tmp/project-hbase-conf shell -n 2>/dev/null | grep -q '1 active master'"]
+      interval: 30s
+      timeout: 20s
+      start_period: 40s
+      retries: 5
+volumes:
+  hbase_data:

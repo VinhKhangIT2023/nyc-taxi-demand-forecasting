@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "port": 19090,
+  "table": "bigdata_edge_de43aef398e34716b0b31b51f0c9f87c",
+  "synthetic_only": true,
+  "passed_cases": [
+    "zero",
+    "zero_to_missing",
+    "missing_to_zero",
+    "dst"
+  ],
+  "final_rows": 2
+}

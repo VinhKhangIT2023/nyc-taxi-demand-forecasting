@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "verified_at_utc": "2026-10-07T12:31:17.594520+00:00",
+  "unit_tests_passed": 19,
+  "scope": "Local Spark/HBase infrastructure and bounded integration trials",
+  "evidence_sha256": {
+    "spark_trial_2024-01.json": "b4277d36a2f81c5664751efd676084f9020e9fd361a2fbc3fe4235483fcf9af3",
+    "spark_output_readback.json": "d7c120332ecd8eba412a12f3d6af15125958fb311ce2b4d7408fab5fc9e9ea41",
+    "spark_hbase_trial.json": "8e14326909836a88bd6083ab3182785efdf6230ea5fdf94537dc969f0f4d85be",
+    "spark_hbase_managed_trial.json": "bd40d3b8707674d4154b8d939203b467f481374b555442057983eb8d33b54d54",
+    "hbase_edge_cases.json": "f399c6f7168b356f07f3c64255725fdce9391b16a209debb7df8e4a9e25bf484",
+    "hbase_recovery.json": "7fb85fd0e97a2d1af39cc38c3010bed67c985e0a8f761c58d7cfaf7a5bc29077",
+    "hbase_before_backup.json": "5fe0d258119fe19bf99a75c4720479be20cb6c1cb15f70192d6fcde1733992fb",
+    "hbase_after_restore.json": "01e2364ed502cb462c87fceae525305652015b0b4648c645421fc3388559f1b9",
+    "hbase_restored_readback.json": "2ce681ba74e4d40f7b63334bd66027d32da1b4173b0bbfed0a87ec9389b679a0"
+  },
+  "limitations": [
+    "Not a production cluster or crash-consistency guarantee.",
+    "No full-dataset HBase load, model training, or dashboard.",
+    "Fresh container/volume tested locally, not yet executed on teammate hardware."
+  ]
+}

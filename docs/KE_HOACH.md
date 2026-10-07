@@ -14,7 +14,7 @@ Theo yêu cầu người dùng ngày 07/10/2026, dự án có 6 giai đoạn tri
 
 Mỗi bản tổng kết phải ghi: mục tiêu/phạm vi, công việc thực tế đã làm, kết quả và số liệu, file đầu ra kèm bằng chứng kiểm tra, quyết định và lý do, vấn đề/hạn chế còn lại, công việc bàn giao cho giai đoạn sau. Không ghi kế hoạch thành kết quả, không tự gán đóng góp cho thành viên. Nếu có sửa đổi sau nghiệm thu, ghi ngày và nội dung cập nhật.
 
-Hiện có [tổng kết giai đoạn 1](TONG_KET_GIAI_DOAN_1.md) và [tổng kết giai đoạn 2](TONG_KET_GIAI_DOAN_2.md). Giai đoạn 3–6 chưa hoàn thành; tạo bản tổng kết tương ứng khi có kết quả thực tế. Dùng [mẫu tổng kết](MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
+Hiện có [tổng kết giai đoạn 1](TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](TONG_KET_GIAI_DOAN_2.md) và [giai đoạn 3](TONG_KET_GIAI_DOAN_3.md). Giai đoạn 4–6 chưa hoàn thành; tạo bản tổng kết tương ứng khi có kết quả thực tế. Dùng [mẫu tổng kết](MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
 
 Nguồn đối chiếu: file `Ke hoach Do an mon hoc Nhap mon Big data_SV.docx`, mục II, III và IV; ảnh danh sách đăng ký ghi đề tài 10 và Apache HBase.
 
