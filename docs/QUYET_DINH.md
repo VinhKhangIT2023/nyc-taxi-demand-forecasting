@@ -77,3 +77,11 @@ Cập nhật 07/10/2026: theo yêu cầu hoàn thành giai đoạn 2, đã tải
 Người dùng đã trả lời “Đồng ý chính sách bảo thủ này”: giữ chuyến trên hai ngày đổi giờ mỗi năm cho mô tả, che toàn bộ nhãn hai ngày đó khi học/đánh giá; nếu cả nguồn không có bản ghi trong giờ thì để thiếu, chỉ điền 0 cho vùng không có chuyến được giữ khi nguồn có bản ghi trong giờ. Lý do: timestamp không có UTC offset nên không thể khôi phục chính xác giờ lặp.
 
 Cấu hình thực nghiệm lưu tại configs/temporal_splits.json: A bắt đầu 2024, B bắt đầu 2023; cùng ba fold validation tháng 10–12/2024 và holdout 2025. Đây là cấu hình để triển khai kịch bản so sánh, chưa phải kết luận mở rộng lịch sử giúp dự báo tốt hơn. Hướng dẫn hiện hành: GIAI_DOAN_2.md.
+
+## Quyết định 010 — Giai đoạn 3 trên toàn bộ dữ liệu (07/10/2026)
+
+Người dùng yêu cầu “hoàn thành toàn bộ giai đoạn 3 theo mục tiêu”, sau khi thống nhất Spark xử lý đủ 36 tháng 2023–2025 và HBase lưu đủ lưới 6.917.952 vùng–giờ. Các kiểm thử tháng 01/2024 và 168 giờ trước đây là tiền đề, chưa đáp ứng nghiệm thu đầy đủ.
+
+Giữ quy tắc làm sạch/DST/zero/null đã duyệt. Spark đọc từng tháng để tránh xung đột schema và giới hạn RAM, chuẩn hóa kiểu dữ liệu, đối chiếu cờ chất lượng, tổng hợp và tạo lại lưới giờ. Giữ 126.994.028 chuyến chi tiết trong Parquet; bảng HBase ứng dụng `transport_demand_hourly_v1` lưu kết quả vùng–giờ phục vụ truy vấn, dùng cùng khóa `ZZZ#YYYYMMDDHH`, nhóm cột d/q/m và max_versions=1 như mẫu đã duyệt. Không đưa chuyến chi tiết vào HBase vì truy vấn ứng dụng cần số đếm theo giờ, không cần tra cứu từng cuốc xe.
+
+Nghiệm thu gồm hai lượt nạp đầy đủ, đọc đối chiếu từng ô sau mỗi lượt, kiểm tra range/point query qua ranh giới năm và ngày DST; sau đó dừng sạch, sao lưu volume và phục hồi vào volume mới để đối chiếu lại toàn bộ. Không coi phép thử restart là thay thế cho backup/restore. Các nguồn và đầu ra giai đoạn 2 được giữ nguyên.

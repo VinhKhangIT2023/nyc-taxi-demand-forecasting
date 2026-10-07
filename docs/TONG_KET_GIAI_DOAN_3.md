@@ -1,3 +1,5 @@
+> Cập nhật 07/10/2026: giai đoạn 3 đang triển khai toàn bộ 2023–2025 theo yêu cầu đã duyệt. Kết quả thử nghiệm bên dưới chưa phải nghiệm thu toàn bộ. Chỉ chốt khi Spark đủ 36 tháng, HBase đủ 6.917.952 dòng, nạp lại và phục hồi được đối chiếu đầy đủ.
+
 # Tổng kết giai đoạn 3 — Tích hợp và tái lập Spark/HBase
 
 Ngày hoàn thành: 07/10/2026. Trạng thái: **hoàn thành phạm vi hạ tầng local và tích hợp thử đã duyệt**. Nghiệm thu máy đọc được tại [stage3_acceptance.json](../artifacts/metrics/stage3_acceptance.json), `complete=true`.
@@ -80,3 +82,4 @@ Giữ HBase 2.1.2 để tương thích môi trường đã có, cố định ima
 ```
 
 Bước tiếp theo: chốt đặc trưng, baseline và quy trình huấn luyện/đánh giá trên cấu hình chia tập đã chuẩn bị. Phải quyết định riêng phạm vi nạp HBase chính thức và tránh dùng holdout 2025 để chọn mô hình. Báo cáo Word, slide và demo cuối kỳ vẫn cần hoàn thiện ở các giai đoạn sau.
+

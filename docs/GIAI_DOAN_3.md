@@ -1,3 +1,5 @@
+> Cập nhật 07/10/2026: giai đoạn 3 đang triển khai toàn bộ 2023–2025 theo yêu cầu đã duyệt. Kết quả thử nghiệm bên dưới chưa phải nghiệm thu toàn bộ. Chỉ chốt khi Spark đủ 36 tháng, HBase đủ 6.917.952 dòng, nạp lại và phục hồi được đối chiếu đầy đủ.
+
 # Giai đoạn 3 — Tích hợp môi trường Spark và HBase
 
 Ngày bắt đầu và hoàn thành: 07/10/2026. **Đã nghiệm thu phạm vi hạ tầng/tích hợp thử**, xem [TONG_KET_GIAI_DOAN_3.md](TONG_KET_GIAI_DOAN_3.md). Các trạng thái chưa hoàn thành bên dưới là nhật ký từng bước, được thay thế bởi kết quả tổng kết. Cấu hình HBase tái lập, edge cases thực tế và backup/restore sang container/volume mới đều đạt; 19/19 kiểm thử thành công.
@@ -109,3 +111,4 @@ Bằng chứng tại `artifacts/metrics/spark_hbase_trial.json` và `hbase_windo
 - Luồng tích hợp thử có thể chạy lại, không tạo bản ghi logic trùng.
 - Có hướng dẫn và cấu hình tái lập, ghi rõ chế độ chạy thực tế và giới hạn.
 - Tạo `TONG_KET_GIAI_DOAN_3.md` với công việc, kết quả, bằng chứng, vấn đề còn lại trước khi thông báo hoàn thành.
+

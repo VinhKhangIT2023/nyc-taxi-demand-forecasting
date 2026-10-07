@@ -1,0 +1,18 @@
+name: bigdata-spark-full
+services:
+  spark:
+    image: bigdata-spark:3.5.7-py311
+    platform: linux/amd64
+    cpus: 2.0
+    mem_limit: 4g
+    memswap_limit: 4g
+    init: true
+    environment:
+      PYTHONPATH: /workspace
+      HBASE_HOST: host.docker.internal
+      HBASE_PORT: "19090"
+    volumes:
+      - ../../src:/workspace/src:ro
+      - ../../data:/workspace/data:ro
+      - ../../artifacts/metrics:/workspace/artifacts/metrics
+      - ../../data/processed/spark_full_v1:/output

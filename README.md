@@ -1,3 +1,5 @@
+> Cập nhật 07/10/2026: giai đoạn 3 đang triển khai toàn bộ 2023–2025 theo yêu cầu đã duyệt. Kết quả thử nghiệm bên dưới chưa phải nghiệm thu toàn bộ. Chỉ chốt khi Spark đủ 36 tháng, HBase đủ 6.917.952 dòng, nạp lại và phục hồi được đối chiếu đầy đủ.
+
 # Phân tích và dự báo nhu cầu sử dụng xe công cộng
 
 Đồ án Nhập môn Big Data của Đào Văn Hiếu và Nguyễn Đặng Vĩnh Khang. Công nghệ được ghi trong danh sách đăng ký: Apache HBase.
@@ -64,3 +66,4 @@ DoAn_BigData/
 ```
 
 Các thư mục chưa triển khai có `.gitkeep` để Git theo dõi. File Word yêu cầu môn học ở gốc được giữ nguyên. `.venv/` sẽ được tạo riêng trên mỗi máy và bị Git bỏ qua.
+
