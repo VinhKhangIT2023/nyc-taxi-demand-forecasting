@@ -1,0 +1,38 @@
+{
+  "table": "bigdata_smoke_90fa76d5692c49ab94723477ac619e62",
+  "host": "127.0.0.1",
+  "port": 9090,
+  "created_at_utc": "2026-10-07T07:09:29.673394+00:00",
+  "synthetic_only": true,
+  "expected": {
+    "001#2024010100": {
+      "d:recorded": "3",
+      "q:eligible": "1",
+      "m:synthetic": "1"
+    },
+    "001#2024010101": {
+      "d:recorded": "0",
+      "q:eligible": "1",
+      "m:synthetic": "1"
+    },
+    "002#2024010100": {
+      "d:recorded": "5",
+      "q:eligible": "1",
+      "m:synthetic": "1"
+    }
+  },
+  "before_restart": {
+    "point_reads": 3,
+    "range_scan_rows": 2,
+    "table_rows": 3,
+    "passed": true,
+    "identical_batches_written": 2
+  },
+  "after_restart": {
+    "point_reads": 3,
+    "range_scan_rows": 2,
+    "table_rows": 3,
+    "passed": true,
+    "verified_at_utc": "2026-10-07T07:10:58.528378+00:00"
+  }
+}

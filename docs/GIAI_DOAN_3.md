@@ -55,7 +55,54 @@ Venv chính mới đạt 15/15 kiểm thử, `pip check` thành công, chạy l�
 
 Các phiên bản lưu trong `requirements-stage3-windows.txt`. HappyBase 1.2.0 cần setuptools 80.9.0 để có `pkg_resources`; hiện còn cảnh báo API deprecated, không phải lỗi kết nối. Đây là môi trường xử lý dữ liệu và client HBase đã kiểm tra, chưa xác nhận toàn bộ dashboard. Hướng dẫn hiện hành nằm đầu CAI_DAT.md.
 
-### Checklist nghiệm thu còn lại
+### Kiểm thử HBase ghi/đọc và restart — 07/10/2026
+
+Đã chạy `src/storage/smoke_hbase.py` qua venv Python 3.13.16. Tạo riêng bảng `bigdata_smoke_90fa76d5692c49ab94723477ac619e62`, chứa 3 dòng tổng hợp giả lập (không phải dữ liệu NYC). Ghi cùng batch hai lần với khóa và timestamp cố định: vẫn đúng 3 dòng. Point get cả 3 dòng khớp nội dung, range scan cho vùng 001 trả đúng 2 dòng. Bảng users không bị sửa.
+
+Sau `docker restart --timeout 60 hbase-demo`, thời điểm StartedAt thay đổi từ `2026-10-07T06:48:25.780614744Z` thành `2026-10-07T07:10:48.441696005Z`; container ID và volume /data giữ nguyên. Chạy verify chỉ đọc, cả 3 dòng và range scan vẫn đúng. Bằng chứng: `artifacts/metrics/hbase_smoke.json` và `artifacts/metrics/hbase_restart.json`. Container hiện chạy lại bình thường. Bảng thử được giữ để minh họa.
+
+Phạm vi kiểm chứng: dữ liệu tồn tại qua restart cùng container. Chưa kiểm tra tái tạo container mới từ volume, sao lưu/khôi phục hoặc mất máy; không suy rộng thành khả năng chịu lỗi của cụm phân tán. Cấu hình lưu ZooKeeper bền vững vẫn cần kiểm tra trước khi tái lập container trên máy khác.
+
+Đọc lại phép thử hiện có (không ghi, không restart):
+
+```powershell
+.\.venv\Scripts\python.exe -m src.storage.smoke_hbase verify
+```
+
+Không chạy lại prepare với cùng file state; lệnh cố ý từ chối ghi đè bằng chứng. Nếu cần phép thử mới, chọn `--state artifacts/metrics/hbase_smoke_<ten_moi>.json`; cả prepare và verify phải dùng cùng đường dẫn đó. Thao tác restart là riêng, verify không tự restart; đối chiếu file hbase_restart.json khi dùng kết quả làm bằng chứng lưu bền.
+
+### Cấu hình Spark thử đề xuất để người dùng chốt
+
+Giữ kế hoạch PySpark 3.5.7, Python 3.11 và Java 17 trong container Linux riêng. Bắt đầu `local[2]`, driver heap 2 GB, giới hạn container 4 GB RAM; Docker hiện thấy khoảng 7,63 GiB RAM nên cần theo dõi khi chạy cùng HBase. Đọc một tháng Parquet trước, đối soát vùng/giờ với đầu ra giai đoạn 2 rồi mới mở rộng. Đây là cấu hình thử chưa được build/nghiệm thu, không phải mô hình cụm nhiều máy. Chưa thay yêu cầu Spark hoặc nạp dữ liệu thật vào HBase.
+
+### Kết quả thử Spark — 07/10/2026
+
+Người dùng đã duyệt cấu hình Spark thử ở trên. Đã tạo Dockerfile, Compose, `.dockerignore` và job `src/processing/spark_trial.py`; build image `bigdata-spark:3.5.7-py311` thành công. Phiên bản thực tế: Spark 3.5.7, Python 3.11.17, Java 17.0.20.1; driver 2 GiB, local[2], cgroup 2 CPU/4 GiB đúng cấu hình.
+
+Kết quả từ raw tháng 01/2024:
+
+| Chỉ tiêu | Spark | Đối soát giai đoạn 2 |
+|---|---:|---|
+| Raw | 2.964.624 | Khớp |
+| Ngoài tháng | 18 | Khớp |
+| Vùng 264/265 sau kiểm tra tháng | 12.018 | Khớp |
+| Thời lượng không dương sau kiểm tra vùng | 717 | Khớp |
+| Chuyến giữ lại | 2.951.871 | Khớp |
+| Nhóm vùng–giờ quan sát | 76.190 | Khớp từng nhóm; 0 sai khác |
+
+Bảy cờ chất lượng đều khớp. Tác vụ Python worker đạt. Spark ghi Parquet tổng hợp vào thư mục thử riêng; không thay dataset giai đoạn 2. Đã đọc lại các file bằng PyArrow Windows, kiểm tra toàn bộ 76.190 nhóm với CSV đối chứng. Thời gian job 22,76 giây không gồm build và không được coi là benchmark khả năng mở rộng.
+
+Bằng chứng: `artifacts/metrics/spark_trial_2024-01.json`, `spark_environment.json`, `spark_output_readback.json`. Cách build/chạy: `docker/spark/README.md`. Container job tự kết thúc và được xóa bằng --rm; image và đầu ra vẫn còn, HBase vẫn chạy. Đây chưa phải luồng Spark → HBase, chưa kiểm chứng Spark cho cả 36 tháng hoặc ngày DST. Giai đoạn 3 còn phần tích hợp ghi/đọc dữ liệu thật và cấu hình lưu trữ HBase có thể tái lập; chưa thông báo hoàn thành toàn giai đoạn.
+
+### Tiêu chí nghiệm thu toàn giai đoạn
+
+### Tích hợp Spark → HBase đạt với mẫu 168 giờ
+
+Người dùng đã duyệt bảng riêng `transport_demand_hourly_trial_v1`, row key `ZZZ#YYYYMMDDHH`, families d/q/m và cách biểu diễn null. Đã triển khai và chạy thành công: vùng 161, `[2024-01-01, 2024-01-08)`, 168 dòng; hai lượt ghi đều đối chiếu từng cell thành công, không nhân đôi dòng. Python Windows đọc lại độc lập khớp toàn bộ Parquet nguồn, 26.365 chuyến. Tổng 19 kiểm thử đạt. Chi tiết và lệnh đọc thử: [THIET_KE_HBASE_THU.md](THIET_KE_HBASE_THU.md).
+
+Bằng chứng tại `artifacts/metrics/spark_hbase_trial.json` và `hbase_windows_readback.json`. Chưa nạp toàn bộ 6,9 triệu dòng. Null/DST đã có unit tests codec nhưng chưa có mẫu tích hợp HBase tương ứng. Cấu hình HBase tái lập, lưu ZooKeeper và khôi phục sang container mới vẫn chưa nghiệm thu; do đó chưa chốt hoàn thành giai đoạn 3 hoặc tạo bản tổng kết hoàn thành.
+
+### Checklist nghiệm thu
 
 - Có kết quả Spark đọc/tổng hợp và đối chiếu đúng với dữ liệu giai đoạn 2.
 - Có bằng chứng ghi/đọc/scan HBase và lưu bền qua restart.

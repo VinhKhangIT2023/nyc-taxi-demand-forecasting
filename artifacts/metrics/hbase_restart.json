@@ -1,0 +1,31 @@
+{
+  "container_id": "ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b",
+  "before_started_at": "2026-10-07T06:48:25.780614744Z",
+  "before_mounts": [
+    {
+      "Type": "volume",
+      "Name": "ee5e68e6753f94290d0d414792142c6143f8d48825b4bb9da538a179641a7189",
+      "Source": "/var/lib/docker/volumes/ee5e68e6753f94290d0d414792142c6143f8d48825b4bb9da538a179641a7189/_data",
+      "Destination": "/data",
+      "Driver": "local",
+      "Mode": "",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "after_started_at": "2026-10-07T07:10:48.441696005Z",
+  "after_mounts": [
+    {
+      "Type": "volume",
+      "Name": "ee5e68e6753f94290d0d414792142c6143f8d48825b4bb9da538a179641a7189",
+      "Source": "/var/lib/docker/volumes/ee5e68e6753f94290d0d414792142c6143f8d48825b4bb9da538a179641a7189/_data",
+      "Destination": "/data",
+      "Driver": "local",
+      "Mode": "",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "same_container": true,
+  "restart_observed": true
+}

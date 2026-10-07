@@ -10,6 +10,8 @@ Phạm vi đề xuất: dự báo số chuyến taxi đón khách theo khu vực
 
 ## Bắt đầu
 
+**Tiến độ giai đoạn 3:** Python đã ghi/đọc bảng thử HBase và kiểm chứng dữ liệu tồn tại qua restart. Spark Docker đã xử lý tháng 01/2024, đối chiếu đủ 76.190 nhóm vùng–giờ không sai khác. Luồng Spark → HBase đã đạt trên mẫu 168 giờ vùng 161; đọc lại từ Windows khớp 26.365 chuyến, ghi hai lần không nhân đôi dòng. Xem [hướng dẫn Spark](docker/spark/README.md), [thiết kế HBase thử](docs/THIET_KE_HBASE_THU.md) và [tiến độ giai đoạn 3](docs/GIAI_DOAN_3.md). Chưa nạp dữ liệu đầy đủ hoặc nghiệm thu toàn giai đoạn 3.
+
 **Môi trường Windows hiện hành:** Python 3.13.16 chính thức, venv tại `.venv`, thư viện xử lý dữ liệu/HBase tại `requirements-stage3-windows.txt`. Đã kiểm tra 15 tests và đối soát lại dataset. Xem đầu [CAI_DAT.md](docs/CAI_DAT.md); các ghi chép Python 3.11 là lịch sử hoặc kế hoạch riêng cho Spark trong Docker.
 
 **Tổng kết tiến độ:** mỗi giai đoạn trong kế hoạch 6 giai đoạn có file `docs/TONG_KET_GIAI_DOAN_N.md`. Đã có [giai đoạn 1](docs/TONG_KET_GIAI_DOAN_1.md) và [giai đoạn 2](docs/TONG_KET_GIAI_DOAN_2.md), ghi công việc, kết quả, bằng chứng kiểm tra và vấn đề còn lại.

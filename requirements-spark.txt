@@ -1,4 +1,9 @@
-# Proposed Linux Spark job environment: Python 3.11 and Java 17.
-# Build and test the container before locking transitive dependencies.
+# Linux Spark trial environment: Python 3.11 and Java 17.
 pyspark==3.5.7
+py4j==0.10.9.7
 happybase==1.2.0
+thriftpy2==0.7.1
+ijson==3.5.1
+ply==3.11
+six==1.17.0
+setuptools==80.9.0

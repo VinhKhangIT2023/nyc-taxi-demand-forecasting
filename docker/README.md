@@ -1,6 +1,8 @@
 # Thiết kế Docker cần triển khai
 
-Ưu tiên dùng lại container `hbase-demo` đang có. Chưa có Compose/Dockerfile trong repo; sau khi kiểm tra container sẽ ghi lại cấu hình tái lập cho máy Hiếu. Xem `docs/CAI_DAT.md`.
+Cập nhật 07/10/2026: HBase 2.1.2 trong container hiện có đã vượt qua phép thử Python ghi/get/scan 3 dòng giả lập, ghi lặp không tăng số dòng và đọc lại đúng sau restart cùng container/volume. Bằng chứng tại `artifacts/metrics/hbase_smoke.json` và `hbase_restart.json`; hướng dẫn tại `docs/GIAI_DOAN_3.md`. Các mục chưa xác nhận dưới đây ghi lại trạng thái khảo sát ban đầu; việc tái tạo container/khôi phục volume và lưu ZooKeeper vẫn chưa nghiệm thu.
+
+Ưu tiên dùng lại container `hbase-demo` đang có. Đã có Compose/Dockerfile riêng cho Spark và đã kiểm thử tháng 01/2024, xem [hướng dẫn Spark](spark/README.md). Chưa có Compose tái lập HBase; cấu hình này cần hoàn thiện sau kiểm tra lưu trữ. Xem `docs/CAI_DAT.md`.
 
 ## Cấu hình đã xác nhận từ kết quả người dùng
 

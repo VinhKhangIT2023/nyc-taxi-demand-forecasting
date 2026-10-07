@@ -1,0 +1,32 @@
+{
+  "complete": true,
+  "table": "transport_demand_hourly_trial_v1",
+  "zone": 161,
+  "start": "2024-01-01T00:00:00",
+  "end_exclusive": "2024-01-08T00:00:00",
+  "started_at_utc": "2026-10-07T12:11:55.219806+00:00",
+  "created_table": true,
+  "source_sha256": "ef2ef62ff5ce140215337d0726a3db93b0d530b1d5b4959e6ff4cb22fc8713da",
+  "row_count": 168,
+  "write_passes": 2,
+  "checks": [
+    {
+      "point_reads": 168,
+      "scan_rows": 168,
+      "mismatches": 0
+    },
+    {
+      "point_reads": 168,
+      "scan_rows": 168,
+      "mismatches": 0
+    }
+  ],
+  "spark": "3.5.7",
+  "master": "local[2]",
+  "endpoint": "host.docker.internal:9090",
+  "finished_at_utc": "2026-10-07T12:12:04.472162+00:00",
+  "limitations": [
+    "January sample does not exercise DST/missing labels in HBase.",
+    "No full-year load or model training; no multi-row transaction guarantee."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "complete": true,
+  "created_at_utc": "2026-10-07T07:18:07.739194+00:00",
+  "scope": "January 2024 raw cleaning and observed hourly aggregation; no dense grid/model/HBase writes",
+  "spark": "3.5.7",
+  "python": "3.11.17",
+  "java": "17.0.20.1",
+  "master": "local[2]",
+  "driver_memory": "2g",
+  "shuffle_partitions": "8",
+  "timestamp_policy": "UTC session preserves naive source wall-clock labels; no timezone conversion or UTC reconstruction",
+  "totals": {
+    "raw_rows": 2964624,
+    "outside_month": 18,
+    "unspecified_zone": 12018,
+    "nonpositive_duration": 717,
+    "retained_rows": 2951871
+  },
+  "quality_flags": {
+    "q_duration_gt_24h": 16,
+    "q_distance_zero": 58152,
+    "q_distance_negative": 0,
+    "q_fare_negative": 37273,
+    "q_total_negative": 35327,
+    "q_passenger_missing": 139657,
+    "q_passenger_zero": 30998
+  },
+  "observed_zone_hours": 76190,
+  "mismatched_zone_hours": 0,
+  "python_worker_passed": true,
+  "source_sha256": "c4d59da7bbc8abaeeeb1727947ee93d9891a71acb42854bd80db1571b2030510",
+  "reference_hourly_sha256": "fa1d9ef49eea69cf0f80739120ca78199812cd84a3b6fbc9f7a4e5e59ad2629b",
+  "cgroup_memory_max": "4294967296",
+  "cgroup_cpu_max": "200000 100000",
+  "elapsed_seconds": 22.76
+}

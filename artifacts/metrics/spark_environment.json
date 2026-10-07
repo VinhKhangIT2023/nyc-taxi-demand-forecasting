@@ -1,0 +1,6 @@
+{
+  "image_id": "sha256:4d013b1253ab02dd9ca2dc03812d9424962a3d40872566257be3f50f5f0bf386",
+  "image_created": "2026-10-07T07:17:15.55123743Z",
+  "base": "python:3.11.17-slim-bookworm@sha256:0a310eeecf4e1f5a0743f9a6520c90c88d089c903ca5fd283f501e3a805f5f89",
+  "image_size_bytes": 453720220
+}

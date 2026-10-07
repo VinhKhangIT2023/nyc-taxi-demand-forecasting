@@ -1,5 +1,13 @@
 # Nhật ký quyết định
 
+## Quyết định 012 — Thử ghi dữ liệu giờ vào HBase, ngày 07/10/2026
+
+Người dùng trả lời “Duyệt phương án thử 168 giờ”: dùng bảng `transport_demand_hourly_trial_v1`, khóa vùng 3 chữ số + nhãn giờ, families d/q/m, null không thành 0. Mẫu vùng 161 trong 01–07/01/2024 giúp kiểm chứng luồng và ghi lặp trước khi mở rộng. Thiết kế và kết quả tại THIET_KE_HBASE_THU.md. Chưa phê duyệt nạp toàn bộ dataset hoặc dùng bảng thử làm schema ứng dụng cuối cùng.
+
+## Quyết định 011 — Cấu hình Spark thử đã duyệt, ngày 07/10/2026
+
+Người dùng đồng ý PySpark 3.5.7, Python 3.11, Java 17 trong Docker; local[2], driver 2 GiB và container giới hạn 4 GiB. Thử một tháng trước khi mở rộng để đối chiếu quy tắc đã nghiệm thu. Đã chạy tháng 01/2024 thành công, không thay đổi chính sách dữ liệu. Xem GIAI_DOAN_3.md và docker/spark/README.md. Chưa chốt schema HBase chính thức hoặc quy mô nạp dữ liệu thật trong bước thử này.
+
 ## Quyết định 010 — Python Windows có chữ ký, ngày 07/10/2026
 
 Người dùng xác nhận máy cá nhân, Smart App Control On và đồng ý cài Python 3.13 chính thức ngoài dự án để thử trước khi thay venv. Python 3.14 hiện có được giữ; PyArrow 19 hỗ trợ đến 3.13 nên chưa dùng 3.14 cho bộ thư viện hiện tại. Đã kiểm tra checksum/chữ ký bộ cài Python 3.13.16, cài theo tài khoản, không đổi PATH. Venv thử chạy được và đạt 15 kiểm thử; HappyBase đọc danh sách bảng HBase thành công sau khi bổ sung setuptools 80.9.0 (HappyBase 1.2.0 cần pkg_resources). Sau đó tạo lại `.venv` ở đúng đường dẫn, giữ bản cũ trong `.tools/venv311-blocked-backup/`.

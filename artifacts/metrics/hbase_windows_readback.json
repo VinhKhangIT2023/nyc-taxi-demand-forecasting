@@ -1,0 +1,40 @@
+{
+  "complete": true,
+  "verified_at_utc": "2026-10-07T12:12:53.134440+00:00",
+  "table": "transport_demand_hourly_trial_v1",
+  "rows": 168,
+  "mismatches": 0,
+  "recorded_trips": 26365,
+  "examples": [
+    {
+      "PULocationID": 161,
+      "pickup_hour": "2024-01-01 00:00:00",
+      "recorded_trip_count": 254,
+      "target_trip_count": 254,
+      "q_source_hour_missing": false,
+      "q_dst_day": false,
+      "q_zero_recorded": false,
+      "model_eligible": true
+    },
+    {
+      "PULocationID": 161,
+      "pickup_hour": "2024-01-01 01:00:00",
+      "recorded_trip_count": 197,
+      "target_trip_count": 197,
+      "q_source_hour_missing": false,
+      "q_dst_day": false,
+      "q_zero_recorded": false,
+      "model_eligible": true
+    },
+    {
+      "PULocationID": 161,
+      "pickup_hour": "2024-01-01 02:00:00",
+      "recorded_trip_count": 191,
+      "target_trip_count": 191,
+      "q_source_hour_missing": false,
+      "q_dst_day": false,
+      "q_zero_recorded": false,
+      "model_eligible": true
+    }
+  ]
+}
