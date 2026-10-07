@@ -10,6 +10,8 @@ Phạm vi đề xuất: dự báo số chuyến taxi đón khách theo khu vực
 
 ## Bắt đầu
 
+**Tổng kết tiến độ:** mỗi giai đoạn trong kế hoạch 6 giai đoạn có file `docs/TONG_KET_GIAI_DOAN_N.md`. Đã có [giai đoạn 1](docs/TONG_KET_GIAI_DOAN_1.md) và [giai đoạn 2](docs/TONG_KET_GIAI_DOAN_2.md), ghi công việc, kết quả, bằng chứng kiểm tra và vấn đề còn lại.
+
 1. Đọc [kế hoạch chi tiết](docs/KE_HOACH.md), có phân công, mốc tuần, yêu cầu báo cáo và tiêu chí hoàn thành.
 2. Làm theo [hướng dẫn môi trường và GitHub](docs/CAI_DAT.md).
 3. Ghi nguồn dữ liệu vào [danh mục dữ liệu](data/README.md).
