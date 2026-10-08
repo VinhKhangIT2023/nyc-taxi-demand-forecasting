@@ -31,6 +31,35 @@ spark-warehouse/
 metastore_db/
 derby.log
 
+# Machine-specific resource snapshots; experiment metrics remain public.
+artifacts/metrics/*resources*.jsonl
+
+# Local database/Docker disks, build outputs and tooling caches
+*.vhd
+*.vhdx
+*.rdb
+appendonlydir/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+node_modules/
+.playwright/
+
+# Large dataset/model files and local backup archives
+*.parquet
+*.sqlite
+*.sqlite3
+*.db
+*.pkl
+*.pickle
+*.joblib
+*.tar
+*.tar.gz
+*.zip
+backups/
+docker-data/
+
 # Office temporary files and OS metadata
 ~$*
 Thumbs.db

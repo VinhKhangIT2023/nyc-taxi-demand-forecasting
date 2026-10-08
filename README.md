@@ -1,86 +1,200 @@
-# NYC Taxi Demand — Spark & HBase
+# NYC Taxi Demand Forecasting
 
-Phân tích và chuẩn bị dữ liệu dự báo số lượt đón taxi theo khu vực và giờ tại New York. Dự án dùng NYC TLC Yellow Taxi 2023–2025, Apache Spark để xử lý và Apache HBase để lưu kết quả theo giờ. Số chuyến đã phục vụ là đại diện cho nhu cầu quan sát được, không phải toàn bộ nhu cầu giao thông công cộng.
+Phân tích và dự báo số lượt đón taxi theo khu vực và giờ tại New York với **Apache Spark, Apache HBase, Random Forest và Streamlit**.
 
-## Trạng thái
+Dự án sử dụng dữ liệu **NYC TLC Yellow Taxi từ 01/2023 đến 12/2025** để xây dựng pipeline thu thập, làm sạch, tổng hợp, huấn luyện và trực quan hóa. Dashboard cho phép khám phá lịch sử nhu cầu và đối chiếu dự báo một giờ với số lượt đón thực tế trong năm 2025.
 
-- Hoàn thành giai đoạn 1–5: môi trường, dữ liệu, Spark/HBase, mô hình và dashboard.
-- Đã xử lý 36 tháng: 128.202.548 dòng nguồn, giữ 126.994.028 chuyến; lưới 263 vùng có 6.917.952 dòng vùng–giờ.
-- Hai lượt nạp HBase và phục hồi từ archive được đối chiếu đầy đủ, không sai lệch. Bộ kiểm thử tại lần nghiệm thu: 21/21 đạt.
-- Đã so sánh 12 lượt validation và khóa Random Forest dùng lịch sử 2023–2024. Test 2025 đủ 2.291.256 nhãn: MAE 3,851 so với baseline 5,320 (giảm 27,61%); 27 unit tests và 5 nhóm kiểm tra cửa sổ Spark đạt.
-- Dashboard có 5 trang, đọc dữ liệu thật từ HBase; đủ 2.291.256 dự báo 2025 và 297.716 tổng hợp ngày/tháng được đối chiếu đầy đủ. 36 unit tests và kiểm thử Web/DST/dự phòng/CSV/mobile đạt. Báo cáo Word/PPT cuối kỳ còn ở giai đoạn 6.
+Đây là đồ án môn Nhập môn Big Data. Số chuyến được phục vụ phản ánh nhu cầu quan sát được, không bao gồm khách chưa được phục vụ hoặc toàn bộ giao thông công cộng. Spark và HBase chạy trên một máy để thực nghiệm, chưa phải cụm production.
 
-Các con số trên là kết quả của snapshot đã nghiệm thu, không phải kết quả tự có sau khi clone repo. Xem [tổng kết từng giai đoạn](docs/tong-ket/) và [bằng chứng nghiệm thu](artifacts/metrics/stage3_full_acceptance.json).
+## Chức năng
 
-## Bắt đầu trên máy mới
+- **Tổng quan:** lượt đón, xu hướng theo ngày/tháng và các vùng có nhiều chuyến.
+- **Bản đồ:** số lượt đón theo giờ trên ranh giới chính thức của 263 vùng taxi.
+- **Phân tích vùng:** lịch sử theo giờ, so sánh khu vực và nhịp nhu cầu theo thứ.
+- **Dự báo & kiểm chứng:** dự báo, baseline, dự phòng, số thực tế, sai số và xuất CSV.
+- **Dữ liệu & mô hình:** nguồn, quy tắc xử lý, chia tập, đặc trưng và giới hạn.
+- Giao diện **Light/Dark**, bố cục màn hình nhỏ và trạng thái kết nối HBase.
 
-Môi trường đã kiểm thử: Windows, PowerShell, Git, VSCode, Python 3.13.16 chính thức và Docker Desktop chạy Linux containers. Spark dùng Python 3.11/Java 17 trong Docker; không cần cài Spark hoặc Java trực tiếp vào Windows.
+## Dữ liệu
+
+Nguồn: [NYC TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page). Yellow Taxi có dữ liệu công khai theo tháng, thời điểm đón và mã vùng phù hợp để xây dựng chuỗi số đếm theo giờ. Phạm vi ba năm hỗ trợ so sánh độ dài lịch sử và giữ một năm riêng để đánh giá.
+
+| Lớp dữ liệu | Số dòng | Đơn vị |
+|---|---:|---|
+| Nguồn, 36 tháng 2023–2025 | 128.202.548 | Chuyến taxi |
+| Sau làm sạch | 126.994.028 | Chuyến được giữ lại |
+| Lưới theo giờ | 6.917.952 | Vùng–giờ |
+| Train cuối, đủ đặc trưng | 4.367.904 | Vùng–giờ của 2023–2024 |
+| Test 2025 hợp lệ | 2.291.256 | Vùng–giờ |
+| Tổng hợp cho dashboard | 297.716 | Vùng–ngày hoặc vùng–tháng |
+
+Bảng tổng hợp nhỏ hơn vì nhiều chuyến được cộng thành một số đếm. **297.716 dòng không phải tập train**: mô hình dùng lịch sử theo giờ, còn chuyến chi tiết được giữ trong Parquet. Tổng hợp ngày/tháng phục vụ các trang thống kê.
+
+Pipeline giữ raw, lưu checksum và cách ly các dòng ngoài tháng nguồn, vùng không xác định hoặc thời lượng không dương. Giá trị thiếu được phân biệt với số 0. Timestamp nguồn không có UTC offset: ngày chuyển giờ DST vẫn giữ số đếm để phân tích nhưng không dùng làm nhãn huấn luyện/đánh giá. [Nguồn tải, schema và thống kê trước/sau](docs/DU_LIEU.md).
+
+## Kiến trúc
+
+```mermaid
+flowchart LR
+    TLC[NYC TLC · Parquet theo tháng] --> ETL[Làm sạch và kiểm tra]
+    ETL --> Spark[Spark · tổng hợp vùng–giờ]
+    Spark --> Hourly[Parquet theo giờ]
+    Hourly --> ML[Spark ML · baseline và Random Forest]
+    Hourly --> HBase[HBase · lịch sử, dự báo, tổng hợp]
+    ML --> HBase
+    HBase --> Web[Streamlit dashboard]
+```
+
+| Thành phần | Vai trò |
+|---|---|
+| Parquet/PyArrow | Lưu chuyến đi, đọc theo batch, kiểm tra chất lượng |
+| Spark 3.5.7 | Xử lý 36 tháng, tạo đặc trưng, huấn luyện và đánh giá |
+| HBase 2.1.2 | Lưu/truy vấn lịch sử, dự báo và tổng hợp theo khóa vùng/thời gian |
+| Streamlit/Plotly | Dashboard, bộ lọc, biểu đồ, bản đồ và kiểm chứng |
+| Docker | Tái lập môi trường Spark/HBase; Spark chạy theo job |
+
+## Mô hình và kết quả
+
+Baseline dùng số chuyến **cùng giờ tuần trước**. Random Forest dùng số đếm trễ 1, 2, 24, 168 giờ; trung bình quá khứ 24/168 giờ; giờ, thứ và mã vùng. Đặc trưng chỉ lấy thông tin trước giờ đích.
+
+Hai độ dài lịch sử (2024 và 2023–2024) được so sánh qua ba fold validation tháng 10, 11, 12/2024. Mỗi fold chỉ học từ thời gian trước tháng validation. Sau 12 lượt validation, phương án được khóa là **Random Forest 20 cây, maxDepth=12, lịch sử 2023–2024**. Model cuối học từ 2023–2024 rồi đánh giá trên năm 2025.
+
+Thiếu đặc trưng: chuyển sang baseline; nếu thiếu lịch sử tuần, dùng trung bình vùng học từ train, cuối cùng là trung bình toàn train. Kết quả dưới đây tính trên cùng **2.291.256 nhãn test**, gồm các lượt dự phòng:
+
+| Phương án | MAE · lượt/vùng–giờ | RMSE · lượt/vùng–giờ | WAPE |
+|---|---:|---:|---:|
+| Baseline | 5,320 | 17,320 | 25,50% |
+| Random Forest + dự phòng | **3,851** | **11,753** | **18,46%** |
+
+MAE giảm **27,61%** so với baseline. WAPE là tỷ lệ sai số tổng hợp, không phải accuracy. Sai số trung bình không bảo đảm từng điểm dự báo đạt cùng mức sai số.
+
+![So sánh baseline và hệ thống dự báo trên test 2025](reports/figures/stage4_test_comparison.png)
+
+[Chi tiết mô hình](docs/MO_HINH.md) · [Kết quả test](artifacts/metrics/stage4_final.json) · [Tổng kết thực nghiệm](docs/tong-ket/TONG_KET_GIAI_DOAN_4.md).
+
+## Tiến độ
+
+| Giai đoạn | Nội dung | Trạng thái |
+|---|---|---|
+| [1](docs/tong-ket/TONG_KET_GIAI_DOAN_1.md) | Môi trường, khảo sát và chọn nguồn dữ liệu | Hoàn thành |
+| [2](docs/tong-ket/TONG_KET_GIAI_DOAN_2.md) | Làm sạch 36 tháng, chuẩn hóa schema, tạo lưới giờ | Hoàn thành |
+| [3](docs/tong-ket/TONG_KET_GIAI_DOAN_3.md) | Spark, HBase, đối chiếu dữ liệu, sao lưu/phục hồi | Hoàn thành |
+| [4](docs/tong-ket/TONG_KET_GIAI_DOAN_4.md) | Đặc trưng, baseline, Random Forest và đánh giá | Hoàn thành |
+| [5](docs/tong-ket/TONG_KET_GIAI_DOAN_5.md) | Dashboard và kiểm chứng dự báo | Hoàn thành |
+| 6 | Báo cáo Word, slide, sơ đồ và hồ sơ nộp đồ án | Chưa hoàn thành |
+
+Mỗi giai đoạn có bản tổng kết về phạm vi, công việc, kết quả, bằng chứng và hạn chế. [Kế hoạch đầy đủ](docs/KE_HOACH.md).
+
+## Cài đặt
+
+Môi trường đã kiểm thử: **Windows, PowerShell, Python 3.13.16 x64, Docker Desktop với Linux containers**. Spark dùng Python 3.11/Java 17 trong Docker; không cần cài Java/Spark trực tiếp lên Windows. VSCode là tùy chọn.
 
 ```powershell
-git clone <URL_REPOSITORY> nyc-taxi-demand
-cd nyc-taxi-demand
+git clone https://github.com/VinhKhangIT2023/nyc-taxi-demand-forecasting.git
+cd nyc-taxi-demand-forecasting
 py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m unittest discover -s tests
 ```
 
-Thay `<URL_REPOSITORY>` bằng URL của repo. Trong VSCode, chọn **Python: Select Interpreter → .venv/Scripts/python.exe**. Có thể kích hoạt bằng `.\.venv\Scripts\Activate.ps1`; các lệnh ở đây gọi Python trực tiếp nên không phụ thuộc việc kích hoạt terminal. Xem [cài đặt](docs/CAI_DAT.md).
+Trong VSCode, chọn **Python: Select Interpreter → .venv/Scripts/python.exe**. Có thể kích hoạt bằng `.\.venv\Scripts\Activate.ps1`; các lệnh dưới gọi Python trực tiếp nên không phụ thuộc activation. [Hướng dẫn môi trường](docs/CAI_DAT.md).
 
-Repo không chứa dataset, venv, Docker volume hoặc archive sao lưu. Có hai tình huống:
+## Chuẩn bị dữ liệu và chạy ứng dụng
 
-1. **Máy mới chưa có dữ liệu:** làm theo [chuẩn bị dữ liệu](docs/DU_LIEU.md), tải đủ ba năm và Taxi Zone Lookup, chạy làm sạch rồi nghiệm thu giai đoạn 2. Tiếp tục [vận hành Spark/HBase](docs/VAN_HANH.md) để build image, xử lý 36 tháng và nạp bảng. Dự trù dung lượng cho cả dữ liệu trên ổ làm việc và đĩa ảo Docker; các phép thử phục hồi tạo thêm một bản sao lớn.
-2. **Máy đã có dữ liệu và volume:** bật Docker Desktop rồi dùng các lệnh sau; không tải hoặc nạp lại mỗi lần mở máy.
+**Dataset, model và volume HBase không đi kèm repository.** Clone code không tự tạo các kết quả thực nghiệm. Máy mới cần chuẩn bị theo thứ tự:
+
+1. [Tải và xử lý dữ liệu](docs/DU_LIEU.md): lookup, 36 file tháng, làm sạch và lưới theo giờ.
+2. [Chạy Spark/HBase](docs/VAN_HANH.md): build image, xử lý, nạp và kiểm tra bảng lịch sử.
+3. [Huấn luyện mô hình](docs/MO_HINH.md): đặc trưng, validation, khóa phương án và đánh giá test.
+4. [Chuẩn bị dashboard](docs/DASHBOARD.md): snapshot phục vụ, ranh giới vùng và bảng dự báo/tổng hợp.
+
+Từ thư mục gốc, khi dữ liệu và model đã sẵn sàng:
 
 ```powershell
 docker compose -p bigdata-hbase -f docker/hbase/compose.yaml up -d
 docker compose -p bigdata-hbase -f docker/hbase/compose.yaml ps
-# Chờ HBase healthy rồi chạy kiểm tra chỉ đọc:
-docker compose -f docker/spark/compose.full.yaml run --rm spark /workspace/src/storage/check_stage3_services.py
-```
-
-HBase: Thrift `localhost:19090`, giao diện [localhost:16011](http://localhost:16011), bảng `transport_demand_hourly_v1`. Spark chạy theo job và tự kết thúc; việc không có container Spark thường trực là bình thường. `up -d` trên máy mới chỉ tạo dịch vụ trống, không tự nạp dữ liệu.
-
-## Chạy dashboard
-
-Trên máy đã có dữ liệu/model giai đoạn 1–4, lần đầu chuẩn bị bảng phục vụ:
-
-```powershell
+# Chờ HBase healthy. Chỉ chạy ba bước chuẩn bị trong lần đầu:
 .\scripts\run_stage5.ps1 -Step Prepare
 .\scripts\run_stage5.ps1 -Step Geometry
 .\scripts\run_stage5.ps1 -Step Load
 .\scripts\run_stage5.ps1 -Step App
 ```
 
-Mở [localhost:8501](http://127.0.0.1:8501). Máy đã nghiệm thu giai đoạn 5 chỉ cần bật HBase và chạy bước App. Xem [hướng dẫn dashboard](docs/DASHBOARD.md) và [tổng kết giai đoạn 5](docs/tong-ket/TONG_KET_GIAI_DOAN_5.md). Web phát lại dự báo một giờ năm 2025, có số thực tế để đối chiếu; không tự train hoặc giả nguồn trực tiếp. Dữ liệu nguồn có 128,20 triệu chuyến, dữ liệu sạch giữ 126,99 triệu chuyến; bảng phục vụ nhỏ là dữ liệu tổng hợp, không phải cắt còn 297 nghìn chuyến.
+Mở [http://127.0.0.1:8501](http://127.0.0.1:8501). Các lần sau chỉ cần bật HBase và chạy `-Step App`. Đổi giao diện qua **⋮ → Light/Dark**. Thrift HBase: `127.0.0.1:19090`; giao diện HBase: [localhost:16011](http://localhost:16011).
 
-## Dữ liệu và cách tiếp tục phát triển
+Demo gợi ý: **vùng 161, ngày 07/01/2025, 12:00** → xem dự báo → mở số thực tế → xem sai số. Dự báo được tính sẵn từ model đã kiểm chứng; chọn giờ không huấn luyện lại. Dừng Web bằng Ctrl+C; dừng HBase bằng:
 
-Chuyến chi tiết nằm trong Parquet; HBase chứa số đếm theo vùng–giờ, nhãn và cờ chất lượng. Phân biệt số 0 với thiếu dữ liệu; che nhãn hai ngày DST mỗi năm. Không đọc đệ quy toàn bộ `data/processed`, vì có bản trung gian và tập thử. Dùng loader `src.ingestion.open_dataset` hoặc `src.ingestion.load_split` theo [hợp đồng dữ liệu](docs/DU_LIEU.md).
-
-Giai đoạn 4 đã nghiệm thu theo [hướng dẫn mô hình](docs/MO_HINH.md) và [tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_4.md): so sánh lịch sử 2024 với 2023–2024 trên cùng validation cuối 2024, giữ 2025 làm holdout. Model và dự báo lưu trên D, bị Git bỏ qua; Spark chạy theo scripts/run_stage4.ps1. Giai đoạn 5 đã tích hợp dự báo vào HBase/dashboard. Các quyết định về mô hình và đánh giá ghi trong [nhật ký quyết định](docs/QUYET_DINH.md). Sau mỗi giai đoạn có một bản tổng kết theo [mẫu](docs/tong-ket/MAU_TONG_KET_GIAI_DOAN.md).
-
-## Cấu trúc repo
-
-```text
-configs/          Cấu hình chia tập theo thời gian
-src/              ingestion, processing, storage, models, dashboard
-tests/            Kiểm thử dữ liệu, mã hóa HBase, độ đo và lựa chọn mô hình
-scripts/          Các bước nghiệm thu và backup/restore
-docker/           Dockerfile, Compose và cấu hình dịch vụ
-data/             Raw, reference, intermediate, processed (không đưa dữ liệu lên Git)
-artifacts/metrics/ Manifest và bằng chứng kiểm tra nhỏ, được theo dõi bằng Git
-artifacts/models/ Mô hình và encoder đã sinh ra (không push)
-docs/             Hướng dẫn hiện hành và kế hoạch
-  tong-ket/       Một file tổng kết cho mỗi giai đoạn
-  LICH_SU.md     Lịch sử khảo sát/thử nghiệm đã gộp, không dùng để cài đặt
-reports/          Biểu đồ đánh giá; báo cáo/slide cuối kỳ chưa hoàn thành
-notebooks/        Dành cho khảo sát khi cần
+```powershell
+docker compose -p bigdata-hbase -f docker/hbase/compose.yaml stop
 ```
 
-[Danh mục tài liệu](docs/README.md) giúp chọn đúng hướng dẫn. `.gitkeep` chỉ giữ những thư mục chưa có file được Git theo dõi. `requirements.txt` dùng lock dashboard giai đoạn 5 đã kiểm thử; các lock giai đoạn 3–4 giữ để tái lập lịch sử. Spark dùng `requirements-spark.txt`.
+`stop` giữ volume; `down -v` xóa volume và dữ liệu HBase. Docker có thể lưu dữ liệu trên ổ hệ thống dù repo nằm ở ổ khác. [Dung lượng và vận hành](docs/VAN_HANH.md#dung-lượng-và-dọn-dẹp).
 
-## Lưu trữ và đóng dịch vụ
+## Kiểm tra kết quả
 
-`docker compose -p bigdata-hbase -f docker/hbase/compose.yaml stop` giữ volume. Không dùng `down -v` khi còn cần dữ liệu. Docker có thể lưu đĩa ảo trên C dù repo nằm ở D; xem [ghi chú dung lượng](docs/VAN_HANH.md#dung-lượng-và-dọn-dẹp).
+- **36 unit tests** đạt tại lần kiểm tra giai đoạn 5.
+- Spark đối chiếu đủ 36 tháng; HBase đối chiếu đủ 6.917.952 dòng lịch sử qua các lượt nạp/phục hồi.
+- Model tải lại khớp toàn bộ 2.291.256 dự báo test.
+- Bảng dashboard có đủ dự báo/tổng hợp, đối chiếu nguồn không sai lệch.
+- Web đã kiểm tra các trang, CSV, DST, dự phòng, Light/Dark và điều hướng màn hình nhỏ.
 
-Chỉ push code, cấu hình, requirements, tài liệu và metrics nhỏ. `.gitignore` đã loại dữ liệu lớn, `.venv`, `.tools`, cache, log và file Word yêu cầu môn học. Không gửi nguyên venv sang máy khác; tạo lại từ requirements.
+Bằng chứng: [dữ liệu](artifacts/metrics/stage2_acceptance.json), [Spark/HBase](artifacts/metrics/stage3_full_acceptance.json), [mô hình](artifacts/metrics/stage4_acceptance.json), [dashboard](artifacts/metrics/stage5_acceptance.json). Đây là kết quả của lần thực nghiệm được lưu trong repo; xác minh trên máy mới cần chạy các bước tương ứng.
+
+## Cấu trúc repository
+
+```text
+configs/                 Cấu hình chia tập, mô hình và dashboard
+src/
+  ingestion/             Tải, khảo sát và đọc dữ liệu
+  processing/            Làm sạch, chuẩn hóa và tổng hợp Python/Spark
+  storage/               Mã hóa, nạp và kiểm tra HBase
+  models/                Đặc trưng, huấn luyện, đánh giá và biểu đồ
+  dashboard/             Streamlit và truy vấn dữ liệu
+scripts/                 Lệnh chạy giai đoạn và kiểm tra phục hồi
+tests/                   Kiểm thử dữ liệu, lưu trữ, mô hình và Web
+docker/                  Dockerfile, Compose và cấu hình dịch vụ
+data/                    Dataset cục bộ; bị Git bỏ qua
+artifacts/metrics/       Manifest và bằng chứng thực nghiệm nhỏ
+artifacts/models/        Model sinh khi huấn luyện; bị Git bỏ qua
+reports/                 Biểu đồ kết quả, báo cáo và slide
+docs/                    Hướng dẫn, kế hoạch, quyết định và tổng kết
+.streamlit/              Cấu hình giao diện/máy chủ Web
+.vscode/                 Cấu hình editor dùng đường dẫn tương đối
+```
+
+## Tài liệu
+
+| Nội dung | File |
+|---|---|
+| Cài đặt | [CAI_DAT.md](docs/CAI_DAT.md) |
+| Nguồn, schema, làm sạch, chia tập | [DU_LIEU.md](docs/DU_LIEU.md) |
+| Docker, Spark/HBase, nạp và phục hồi | [VAN_HANH.md](docs/VAN_HANH.md) |
+| Đặc trưng, mô hình, đánh giá | [MO_HINH.md](docs/MO_HINH.md) |
+| Chạy Web và kịch bản demo | [DASHBOARD.md](docs/DASHBOARD.md) |
+| Kế hoạch sáu giai đoạn | [KE_HOACH.md](docs/KE_HOACH.md) |
+| Lý do lựa chọn kỹ thuật | [QUYET_DINH.md](docs/QUYET_DINH.md) |
+| Tổng kết từng giai đoạn | [docs/tong-ket/](docs/tong-ket/) |
+
+`docs/LICH_SU.md` lưu thử nghiệm trước đây, không dùng để khởi tạo hiện hành. `docs/NHAT_KY_NHOM.md` dành cho ghi đóng góp thực tế của đồ án.
+
+## File cục bộ và đầu ra sinh tự động
+
+`.gitignore` loại `.venv/`, `.env`, cache, log, `.tools/`, dataset và model. Các thành phần sau không cần push:
+
+| Nội dung | Cách tạo lại |
+|---|---|
+| `.venv/` | Tạo venv, cài `requirements.txt` |
+| `data/raw/`, `data/reference/` | Lệnh tải dữ liệu; bước Geometry tải ranh giới |
+| `data/interim/`, `data/processed/` | Pipeline xử lý, đặc trưng và dự báo |
+| `artifacts/models/` | Huấn luyện bằng `scripts/run_stage4.ps1` |
+| `__pycache__/`, cache, log | Sinh khi chạy chương trình |
+| `.tools/` | Công cụ/file tạm cục bộ; backup tạo từ volume nguồn |
+| Docker image/container/volume | Build/run Compose; volume cần nạp hoặc phục hồi |
+
+Giữ **`docker/`, `.streamlit/`, code, configs và requirements** trên Git vì cần chạy lại. Giữ JSON/CSV kết quả nhỏ và biểu đồ được chọn để người đọc kiểm tra thực nghiệm; có thể sinh lại nhưng chúng không phải file rác. Lock theo giai đoạn giữ môi trường đã kiểm thử; `requirements.txt` trỏ tới lock hiện hành. `.gitkeep` chỉ giữ các thư mục trống cần cho dữ liệu/model/báo cáo.
+
+## Giới hạn và hướng phát triển
+
+Ứng dụng phát lại lịch sử năm 2025 và dự báo **một giờ**. Chưa có nguồn trực tiếp, dự báo 2026, dự báo nhiều bước hoặc khoảng bất định. Làm sạch được áp dụng hồi cứu; triển khai trực tiếp cần xác định độ trễ và thời điểm dữ liệu thực sự sẵn có.
+
+Hướng mở rộng: đánh giá dữ liệu mới bằng phiên bản riêng, thử mô hình khác trên validation theo thời gian, xây khoảng bất định và phục vụ nhiều người dùng. Redis có thể bổ sung cache dùng chung nếu đo được nhu cầu; hiện dashboard dùng cache Streamlit và bảng HBase tổng hợp.

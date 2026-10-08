@@ -48,7 +48,7 @@ Số nhãn thấp hơn tổng chuyến vì che ngày DST theo quyết định đ
 - `artifacts/metrics/hbase_full_verify_pass1.json`, `hbase_full_verify_pass2.json`: đối chiếu toàn bộ, tổng theo năm, fingerprint nội dung.
 - `artifacts/metrics/hbase_full_after_restore.json`, `hbase_full_recovery.json`: bằng chứng phục hồi.
 - `artifacts/metrics/stage3_full_acceptance.json`: nghiệm thu đầy đủ, chỉ thành công nếu `complete=true`.
-- `artifacts/metrics/stage3_resources_*.jsonl`: ảnh chụp mức tài nguyên tại thời điểm đo, không phải đo peak hay benchmark.
+- `artifacts/metrics/stage3_resources_*.jsonl`: ảnh chụp mức tài nguyên cục bộ tại thời điểm đo, không phải đo peak hay benchmark. Các log này được giữ trên máy thực nghiệm và bị Git bỏ qua; không cần để chạy pipeline trên máy khác.
 - [Hướng dẫn chạy toàn bộ](../VAN_HANH.md), [nhật ký triển khai](../LICH_SU.md#giai-doan-3), [quyết định phạm vi](../QUYET_DINH.md).
 
 Archive đầy đủ: 17.174.343.680 byte (17,17 GB), SHA256 `1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7`. Chu trình backup/restore và kiểm tra mất 1.346,65 giây. Nguồn dừng sạch exit code 0; đích là container và volume khác. Bảng thử 168 giờ cũng khớp sau phục hồi. Fingerprint nội dung bảng chính của cả ba lần đọc: `e7a9cdeb6332fd07c6458f42661ade814f792fcf5bb9997c540842fc2373615d`.
@@ -63,7 +63,7 @@ Bản sao lưu dùng volume đã dừng sạch và được kiểm tra trên vol
 
 ## 6. Hạn chế và vấn đề
 
-- Phát sinh ở bước bàn giao: log ghi khoảng dừng 50.314 ms, các phiên ZooKeeper hết hạn và HMaster abort; Docker báo OOMKilled=false. Chưa xác định được nguyên nhân khoảng dừng là GC hay lịch chạy/suspend của máy/VM. Đã khởi động lại HBase managed, trở lại healthy; đối chiếu lại đủ 6.917.952 dòng đạt 0 sai lệch trong 279,56 giây, cùng fingerprint trước đó. Người dùng sau đó báo đã tắt máy/Docker rồi bật lại: đã bật lại HBase và chạy Spark kiểm tra 24 point query cùng 3 range query ở cả ba năm, đều khớp. Bằng chứng: `hbase_runtime_incident.json` và `hbase_full_post_restart.json`. Không đổi heap, timeout hoặc chính sách dữ liệu để che lỗi.
+- Phát sinh ở bước kiểm tra sau tích hợp: log ghi khoảng dừng 50.314 ms, các phiên ZooKeeper hết hạn và HMaster abort; Docker báo OOMKilled=false. Chưa xác định được nguyên nhân khoảng dừng là GC hay lịch chạy/suspend của máy/VM. Đã khởi động lại HBase managed, trở lại healthy; đối chiếu lại đủ 6.917.952 dòng đạt 0 sai lệch trong 279,56 giây, cùng fingerprint trước đó. Người dùng sau đó báo đã tắt máy/Docker rồi bật lại: đã bật lại HBase và chạy Spark kiểm tra 24 point query cùng 3 range query ở cả ba năm, đều khớp. Bằng chứng: `hbase_runtime_incident.json` và `hbase_full_post_restart.json`. Không đổi heap, timeout hoặc chính sách dữ liệu để che lỗi.
 
 - HBase standalone/local filesystem, Java 8 và image HBase cũ phù hợp môi trường học tập hiện tại; chưa chứng minh khả năng chịu lỗi nhiều máy hoặc phục hồi khi mất điện đột ngột.
 - Nạp bảng lớn không có giao dịch nguyên tử cho toàn bộ tập; khi gián đoạn phải nạp lại và đối chiếu trước khi sử dụng.
@@ -72,7 +72,7 @@ Bản sao lưu dùng volume đã dừng sạch và được kiểm tra trên vol
 - Đã tái lập môi trường bằng container/volume mới trên máy hiện tại; chưa kiểm thử trên máy của Hiếu.
 - Chưa huấn luyện mô hình, làm dashboard hoặc hoàn tất Word/PPT cuối kỳ.
 
-## 7. Bàn giao và giai đoạn tiếp theo
+## 7. Công việc tiếp theo
 
 HBase ứng dụng: `bigdata-hbase-hbase-1`, Thrift 19090/UI 16011. Container `hbase-demo` cũ ở 9090/16010 giữ nguyên. Container phục hồi đầy đủ dùng 19092/16013 và đã dừng sau kiểm tra để tiết kiệm RAM. Khi mở máy chỉ cần bật HBase managed, không phải chạy lại ETL/nạp dữ liệu.
 

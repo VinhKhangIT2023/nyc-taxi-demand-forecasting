@@ -16,7 +16,7 @@ Người dùng trả lời “Duyệt phương án thử 168 giờ”: dùng b�
 
 ## Quyết định 011 — Cấu hình Spark thử đã duyệt, ngày 07/10/2026
 
-Người dùng đồng ý PySpark 3.5.7, Python 3.11, Java 17 trong Docker; local[2], driver 2 GiB và container giới hạn 4 GiB. Thử một tháng trước khi mở rộng để đối chiếu quy tắc đã nghiệm thu. Đã chạy tháng 01/2024 thành công, không thay đổi chính sách dữ liệu. Xem LICH_SU.md#giai-doan-3 và docker/spark/README.md. Chưa chốt schema HBase chính thức hoặc quy mô nạp dữ liệu thật trong bước thử này.
+Người dùng đồng ý PySpark 3.5.7, Python 3.11, Java 17 trong Docker; local[2], driver 2 GiB và container giới hạn 4 GiB. Thử một tháng trước khi mở rộng để đối chiếu quy tắc đã nghiệm thu. Đã chạy tháng 01/2024 thành công, không thay đổi chính sách dữ liệu. Xem LICH_SU.md#giai-doan-3 và docs/VAN_HANH.md. Chưa chốt schema HBase chính thức hoặc quy mô nạp dữ liệu thật trong bước thử này.
 
 ## Quyết định 010 — Python Windows có chữ ký, ngày 07/10/2026
 

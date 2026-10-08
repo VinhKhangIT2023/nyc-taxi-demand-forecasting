@@ -44,7 +44,7 @@ RF dùng dự phòng 88,368 lần (3.86% nếu RF là phương án phục vụ).
 
 ![Sai số theo giờ](../../reports/figures/stage4_hourly_error.png)
 
-## 5. Quyết định, hạn chế và bàn giao
+## 5. Quyết định, hạn chế và công việc tiếp theo
 
 Phương án và dự phòng đã được người dùng duyệt, ghi quyết định 014. Bảng validation so sánh hai độ dài lịch sử; không mặc định thêm dữ liệu sẽ tốt hơn.
 

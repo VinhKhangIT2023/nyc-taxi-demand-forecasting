@@ -2,6 +2,10 @@
 
 ## Phạm vi
 
+Nguồn: [NYC TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page), Yellow Taxi. URL file tháng có dạng `https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_YYYY-MM.parquet`. Danh mục đầy đủ gồm URL, ngày tải, SHA256, dung lượng, schema và số dòng nằm trong `artifacts/metrics/download_manifest_YYYY.json`. Checksum nhận diện snapshot tải, không phải checksum được nhà cung cấp chứng nhận.
+
+`data/raw/` giữ nguồn; `data/interim/` giữ trung gian; `data/processed/` giữ đầu ra; `data/reference/` giữ danh mục/hình học vùng. Nội dung dữ liệu bị Git bỏ qua. Taxi Zone Lookup: [CSV chính thức](https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv), snapshot 05/10/2026 có 265 dòng/4 cột, mã vùng duy nhất. Đây là danh mục tải tại thời điểm thực nghiệm, chưa xác minh phiên bản lịch sử cho từng năm. Ranh giới bản đồ tải bằng Geometry trong [hướng dẫn dashboard](DASHBOARD.md). Tham khảo điều khoản NYC TLC trước khi phân phối lại dữ liệu.
+
 Chuẩn bị đủ Yellow Taxi 2023, 2024 và 2025. So sánh hai cách chọn lịch sử: A dùng 2024, B dùng 2023 cộng 2024. Năm 2025 là holdout tương lai. Kiểm tra schema/chất lượng holdout được phép; chưa dùng sai số mô hình trên holdout để lựa chọn phương án.
 
 **Đã hoàn thành và nghiệm thu ngày 07/10/2026.** Cả ba năm đạt kiểm tra toàn bộ dữ liệu, kết quả `complete=true` tại `artifacts/metrics/stage2_acceptance.json`; 15/15 kiểm thử đạt. Đã thử đọc chung 36 partition bằng loader, nhận đúng 126.994.028 dòng và cột phí mới null ở các năm cũ. Không xem một thư mục có file là bằng chứng pipeline đã chạy thành công: các manifest phải có complete=true.
@@ -105,7 +109,7 @@ Chạy từ thư mục gốc bằng Python trong venv, cài thư viện tại `r
 .\.venv\Scripts\python.exe -m src.processing.build_hourly_grid --year 2023
 ```
 
-Thay tham số năm cho hai năm còn lại. Cần có `data/reference/taxi_zone_lookup.csv` đúng checksum; URL nằm trong `data/README.md`. Bước tạo lưới từ chối thư mục đầu ra đã tồn tại để tránh ghi đè. Với dữ liệu đã tạo, chạy nghiệm thu thay vì tạo lại:
+Thay tham số năm cho hai năm còn lại. Cần có `data/reference/taxi_zone_lookup.csv` đúng checksum theo mục trên. Bước tạo lưới từ chối thư mục đầu ra đã tồn tại để tránh ghi đè. Với dữ liệu đã tạo, chạy nghiệm thu thay vì tạo lại:
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v

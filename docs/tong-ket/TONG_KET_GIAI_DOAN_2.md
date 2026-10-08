@@ -46,6 +46,6 @@ Theo [nhật ký quyết định](../QUYET_DINH.md), bảo toàn dữ liệu ngu
 
 Năm 2025 có 545.589 dòng thời lượng không dương được cách ly (543.355 bằng 0, 2.234 âm), tăng mạnh so với hai năm trước; chưa xác định nguyên nhân từ nguồn. Có bảng ảnh hưởng theo vùng/giờ để phục vụ diễn giải. Dữ liệu phản ánh chuyến đã phục vụ sau làm sạch, không đo toàn bộ nhu cầu tiềm ẩn. Làm sạch dùng thời điểm trả nên chưa phải mô phỏng khả năng có dữ liệu theo thời gian thực.
 
-## 7. Bàn giao
+## 7. Công việc tiếp theo
 
 Dữ liệu và cấu hình chia tập đã sẵn sàng. Các phần còn lại của dự án gồm tích hợp Spark/HBase, đặc trưng và mô hình, dashboard, báo cáo/slide/demo; chưa coi các phần này là hoàn thành. Không cộng lại tập thử tháng 01/2024 khi đọc dữ liệu cả năm. Hướng mở rộng lịch sử chỉ được kết luận sau thực nghiệm validation.

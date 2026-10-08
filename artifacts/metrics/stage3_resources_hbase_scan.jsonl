@@ -1,2 +1,0 @@
-{"BlockIO":"4.98GB / 11.8GB","CPUPerc":"49.95%","Container":"561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb","ID":"561612dc5c5e","MemPerc":"66.15%","MemUsage":"1.323GiB / 2GiB","Name":"bigdata-hbase-hbase-1","NetIO":"2.65GB / 273MB","PIDs":"607"}
-{"BlockIO":"201MB / 27.3MB","CPUPerc":"1.32%","Container":"ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b","ID":"ec4869da0295","MemPerc":"8.65%","MemUsage":"676MiB / 7.628GiB","Name":"hbase-demo","NetIO":"205kB / 513kB","PIDs":"367"}

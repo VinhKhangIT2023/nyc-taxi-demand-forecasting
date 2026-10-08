@@ -38,6 +38,6 @@ Python được đặt trong thư mục dự án để có thể xóa cùng dự
 
 Chưa xác minh tích hợp HBase put/get/scan, chưa triển khai Spark hoặc Docker Compose. Có container không đồng nghĩa ứng dụng đã kết nối HBase. Cấu hình tự kích hoạt venv không chứng minh mọi terminal người dùng đang dùng venv; các lệnh xử lý dùng đường dẫn Python tường minh. Bản tổng kết này không xác nhận đã cài toàn bộ thư viện ứng dụng hay mọi máy thành viên đã chạy được.
 
-## 7. Bàn giao
+## 7. Công việc tiếp theo
 
 Môi trường đã phục vụ giai đoạn 2: tải, khảo sát, xử lý và kiểm tra dữ liệu. Xem [tổng kết giai đoạn 2](TONG_KET_GIAI_DOAN_2.md). Phần chuẩn bị GitHub được hướng dẫn riêng; không coi việc hướng dẫn push là bằng chứng đã push thành công.

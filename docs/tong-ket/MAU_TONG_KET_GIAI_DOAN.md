@@ -28,7 +28,7 @@ Ngày lập/cập nhật: [ngày]. Trạng thái: [đang thực hiện / hoàn t
 
 [Lỗi đã giải quyết; vấn đề còn tồn tại; phần chưa kiểm chứng.]
 
-## 7. Bàn giao sang giai đoạn tiếp theo
+## 7. Công việc của giai đoạn tiếp theo
 
 [Đầu vào đã sẵn sàng, việc tiếp theo, quyết định còn cần chốt.]
 

@@ -12,8 +12,8 @@ New-Item -ItemType Directory -Force data/processed/spark_full_v1 | Out-Null
 ```
 
 - Docker Desktop Linux containers đang chạy.
-- Image `bigdata-spark:3.5.7-py311` đã build theo `docker/spark/Dockerfile`; xem README trong thư mục đó nếu cần dựng lại.
-- Windows `.venv` dùng Python 3.13, thư viện trong `requirements-stage3-windows.txt`.
+- Image `bigdata-spark:3.5.7-py311` build theo `docker/spark/Dockerfile`: Spark 3.5.7, Python 3.11.17, Java 17. Base image khóa digest; gói Java tải từ Debian khi build nên image rebuild không nhất thiết giống từng byte.
+- Windows `.venv` dùng Python 3.13 và `requirements.txt` cho môi trường hiện hành. `requirements-stage3-windows.txt` là môi trường tối thiểu từng dùng riêng cho dữ liệu/client HBase.
 - Có dữ liệu raw đủ 36 tháng, lookup, các manifest và dữ liệu giai đoạn 2 đã nghiệm thu. Dữ liệu không được tải kèm khi clone GitHub.
 
 ```powershell
@@ -23,6 +23,10 @@ docker compose -p bigdata-hbase -f docker/hbase/compose.yaml ps
 ```
 
 Chờ `healthy`. HBase ứng dụng: Thrift `127.0.0.1:19090`, giao diện `http://localhost:16011`, bảng `transport_demand_hourly_v1`, volume `bigdata-hbase_hbase_data`. Container `hbase-demo` cũ dùng 9090/16010, không phải nơi chứa bộ dữ liệu đầy đủ của luồng này.
+
+HBase 2.1.2/Java 8 dùng image khóa digest trong `docker/hbase/compose.yaml`; cấu hình tại `hbase-site.xml` và `start.sh`. Container giới hạn 2 GiB, heap master/thrift 512 MiB mỗi tiến trình; healthcheck dùng HBase shell. Đây là standalone dùng filesystem cục bộ, không phải cụm production nhiều máy.
+
+`docker/spark/compose.full.yaml` chạy 36 tháng, đọc HBase qua `host.docker.internal:19090`. `compose.yaml` giữ lệnh thử tháng 01/2024 và dùng để build image. `.dockerignore` giới hạn build context để không gửi dataset/venv vào image. Mô hình dùng `Dockerfile.models` và `compose.models.yaml`, mở rộng image bằng NumPy 1.26.4; xem [MO_HINH.md](MO_HINH.md). Các script thử vẫn có module chung/kiểm thử phụ thuộc, không phải bản thay thế luồng đầy đủ.
 
 ## 2. Spark xử lý đủ 36 tháng
 
@@ -79,7 +83,7 @@ Job kiểm tra 24 point query và 3 range query ở ba năm, gồm đầu/cuối
 
 Đưa code, cấu hình Docker, requirements, tài liệu và các JSON metrics nhỏ lên GitHub. `.gitignore` loại dữ liệu lớn, `.venv`, `.tools` (gồm archive), cache và log. Volume Docker nằm ngoài cây repo; không push volume hay image vào Git. Người clone repo cần dựng môi trường và chuẩn bị dữ liệu theo hướng dẫn, hoặc nhận archive ngoài Git để phục hồi vào volume riêng.
 
-126.994.028 chuyến chi tiết nằm trong Parquet; HBase chứa toàn bộ lưới theo giờ phục vụ ứng dụng. Mô hình, dashboard và báo cáo Word/PPT cuối kỳ là các giai đoạn tiếp theo.
+126.994.028 chuyến chi tiết nằm trong Parquet; HBase chứa toàn bộ lưới theo giờ phục vụ ứng dụng. Mô hình và dashboard đã hoàn thành; xem [MO_HINH.md](MO_HINH.md) và [DASHBOARD.md](DASHBOARD.md). Báo cáo Word/PPT cuối kỳ thuộc giai đoạn 6.
 
 ## Dung lượng và dọn dẹp
 

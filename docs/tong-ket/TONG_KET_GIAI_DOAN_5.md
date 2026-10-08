@@ -65,7 +65,7 @@ Tổng hợp nhỏ và cache 300 giây tránh quét toàn bộ lưới theo gi�
 - Hai video TikTok không truy cập được: đã báo người dùng, không tuyên bố đạt các lỗi cụ thể chưa xem. Đã kiểm tra các yêu cầu UI rõ ràng được mô tả trong trao đổi.
 - Dữ liệu/model/volume không nằm trong Git; máy clone phải làm các giai đoạn chuẩn bị theo hướng dẫn. Nếu nguồn mới cần phiên bản và nghiệm thu mới, không ghi đè bằng chứng cũ.
 
-## 7. Bàn giao sang giai đoạn 6
+## 7. Công việc của giai đoạn 6
 
 Ứng dụng chạy tại http://127.0.0.1:8501. HBase volume giữ lịch sử, dự báo, tổng hợp. Code, config, lock, metrics và hướng dẫn có thể đưa lên Git; không tự commit/push.
 

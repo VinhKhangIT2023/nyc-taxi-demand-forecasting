@@ -18,7 +18,7 @@ Kế hoạch hướng đến một sản phẩm chạy được trên máy cá n
 
 Theo yêu cầu người dùng ngày 07/10/2026, dự án có 6 giai đoạn triển khai. Sau mỗi giai đoạn phải có một file riêng `docs/tong-ket/TONG_KET_GIAI_DOAN_N.md` (N từ 1 đến 6), được cập nhật trước khi thông báo hoàn thành giai đoạn. Đây là mốc triển khai nội bộ, không đồng nhất với các đợt nộp của môn học hoặc lịch 10 tuần bên dưới.
 
-Mỗi bản tổng kết phải ghi: mục tiêu/phạm vi, công việc thực tế đã làm, kết quả và số liệu, file đầu ra kèm bằng chứng kiểm tra, quyết định và lý do, vấn đề/hạn chế còn lại, công việc bàn giao cho giai đoạn sau. Không ghi kế hoạch thành kết quả, không tự gán đóng góp cho thành viên. Nếu có sửa đổi sau nghiệm thu, ghi ngày và nội dung cập nhật.
+Mỗi bản tổng kết phải ghi: mục tiêu/phạm vi, công việc thực tế đã làm, kết quả và số liệu, file đầu ra kèm bằng chứng kiểm tra, quyết định và lý do, vấn đề/hạn chế còn lại, công việc của giai đoạn sau. Không ghi kế hoạch thành kết quả, không tự gán đóng góp cho thành viên. Nếu có sửa đổi sau nghiệm thu, ghi ngày và nội dung cập nhật.
 
 Hiện có [tổng kết giai đoạn 1](tong-ket/TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](tong-ket/TONG_KET_GIAI_DOAN_2.md), [giai đoạn 3](tong-ket/TONG_KET_GIAI_DOAN_3.md), [giai đoạn 4](tong-ket/TONG_KET_GIAI_DOAN_4.md) và [giai đoạn 5](tong-ket/TONG_KET_GIAI_DOAN_5.md). Giai đoạn 6 chưa hoàn thành; tạo bản tổng kết khi có kết quả thực tế. Dùng [mẫu tổng kết](tong-ket/MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
 

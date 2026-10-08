@@ -46,7 +46,7 @@ Cấu hình đã có: [temporal_splits.json](../configs/temporal_splits.json).
 | 4.2 Baseline và pilot | Chạy baseline đầy đủ validation; thử RF nhỏ để đo RAM/thời gian và save/load; pilot giữ 2025 ngoài đánh giá | Metrics baseline, thời gian pilot; báo người dùng nếu RAM/thời gian buộc đổi cấu hình |
 | 4.3 Validation | Hai độ dài lịch sử × hai cấu hình RF × ba fold, tổng tối đa 12 lượt fit; chạy tuần tự, tái dùng feature cache | Bảng metrics, coverage/dự phòng, tham số và thời gian; cấu hình thắng đã khóa |
 | 4.4 Train cuối và test | Fit phương án khóa, predict 2025, tính sai số theo vùng/giờ/tháng, phân tích giờ cao điểm và vùng ít chuyến | Model/version, manifest đầu vào, bảng lỗi, predictions, biểu đồ dùng được cho báo cáo |
-| 4.5 Bàn giao | Thử save/load dự đoán trùng khớp; lệnh tái lập, nghiệm thu và tổng kết | stage4_acceptance.json và tong-ket/TONG_KET_GIAI_DOAN_4.md chỉ ghi hoàn thành khi mọi bước đạt |
+| 4.5 Kiểm tra và tài liệu | Thử save/load dự đoán trùng khớp; lệnh tái lập, nghiệm thu và tổng kết | stage4_acceptance.json và tong-ket/TONG_KET_GIAI_DOAN_4.md chỉ ghi hoàn thành khi mọi bước đạt |
 
 Không ấn định thời gian train khi chưa đo pilot. Sau pilot sẽ báo thời gian một lượt và ước lượng toàn bộ. Người dùng chỉ cần Docker Desktop hoạt động; Spark chạy theo job rồi kết thúc. Huấn luyện đọc Parquet, có thể để HBase dừng để giảm RAM; giai đoạn 5 kết nối dự báo với HBase/dashboard. Bảng dự báo HBase sẽ được thiết kế và chốt khi tích hợp phục vụ, không tự đổi bảng lịch sử ở giai đoạn này.
 

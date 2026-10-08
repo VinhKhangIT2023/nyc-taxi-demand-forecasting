@@ -8,7 +8,7 @@ Thực hiện từ thư mục gốc repo. Môi trường đã kiểm thử là P
 - Python 3.13 x64 từ [python.org](https://www.python.org/downloads/windows/), có Python Launcher; phiên bản đã nghiệm thu là 3.13.16.
 - Docker Desktop với Linux containers/WSL2. Các image được cố định trong Dockerfile/Compose của repo.
 
-Không cần cài Java/Spark trực tiếp lên Windows, không cần thêm một cơ sở dữ liệu SQL cho luồng hiện hành. Mô hình/dashboard chưa được triển khai.
+Không cần cài Java/Spark trực tiếp lên Windows hoặc thêm một cơ sở dữ liệu SQL cho luồng hiện hành. Mô hình được huấn luyện trong Docker; dashboard chạy bằng venv Windows và đọc HBase.
 
 ## Venv và VSCode
 
@@ -17,7 +17,7 @@ Chỉ tạo venv mới khi chưa có `.venv`:
 ```powershell
 py -3.13 --version
 py -3.13 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-stage3-windows.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m unittest discover -s tests
 ```
 

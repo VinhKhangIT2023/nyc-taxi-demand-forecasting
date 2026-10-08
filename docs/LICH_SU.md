@@ -46,7 +46,7 @@ Xóa toàn bộ thư mục dự án sẽ xóa cả Python nền cục bộ và v
 
 Các đoạn dưới mô tả kế hoạch cài ban đầu và các bước triển khai ứng dụng tiếp theo; lệnh `py -3.11 -m venv` có thể thay bằng `.\.python\cpython-3.11.17-windows-x86_64-none\python.exe -m venv .venv` khi cần tạo lại venv cục bộ.
 
-Ngày 05/10/2026, kết quả người dùng chạy trong PowerShell xác nhận Docker CLI hoạt động và có container `hbase-demo`, image `dajobe/hbase`. Cổng host 9090 và 16010 được ánh xạ vào cùng cổng container, trên mọi địa chỉ IPv4/IPv6. Có volume Docker gắn tại `/data`. Ưu tiên dùng lại container này; xem `docker/README.md` để kiểm tra tiếp.
+Ngày 05/10/2026, kết quả người dùng chạy trong PowerShell xác nhận Docker CLI hoạt động và có container `hbase-demo`, image `dajobe/hbase`. Cổng host 9090 và 16010 được ánh xạ vào cùng cổng container, trên mọi địa chỉ IPv4/IPv6. Có volume Docker gắn tại `/data`. Ưu tiên dùng lại container này; xem `docs/VAN_HANH.md` để kiểm tra tiếp.
 
 Chưa xác nhận container đang chạy, dịch vụ Thrift hoạt động, phiên bản HBase hoặc cấu hình dữ liệu thực sự trỏ vào `/data`. Phiên terminal của công cụ hỗ trợ vẫn chưa nhận `docker` trên PATH; điều này khác với terminal người dùng. Chưa tạo `.venv` hoặc cài package; Python của người dùng chưa được xác minh. Không sử dụng Python nội bộ của công cụ hỗ trợ làm Python nền cho dự án của nhóm.
 
@@ -145,7 +145,7 @@ Khi sẵn sàng, khởi tạo repo ở đúng thư mục gốc:
 git init
 git branch -M main
 git status --short
-git add README.md .gitignore .gitattributes .env.example .vscode requirements.txt requirements-spark.txt docs configs data/README.md docker src notebooks scripts tests artifacts reports
+git add README.md .gitignore .gitattributes .env.example .vscode requirements.txt requirements-spark.txt docs configs docker src scripts tests artifacts reports
 git diff --cached --stat
 git commit -m "docs: add project plan and initial structure"
 ```
@@ -394,7 +394,7 @@ Chỉ tiếp tục khi `docker version` có phần Server. Nếu container hiệ
 
 Cập nhật lỗi Python: người dùng xác nhận CMD cũng báo Device Guard chặn `.venv/Scripts/python.exe`. Kiểm tra chữ ký cả executable venv và Python nền cho kết quả `NotSigned`. Nhật ký CodeIntegrity sự kiện 3077 xác nhận policy `{0283ac0f-fff1-49ae-ada1-8a933130cad6}` chặn cùng file từ CMD, VSCode và phiên công cụ. Chưa xác định tên/nguồn quản lý policy (lệnh đọc danh sách policy bị từ chối truy cập), vì vậy chưa kết luận Smart App Control hay chính sách tổ chức. Cần xác định quyền quản lý máy và phương án Python được chính sách cho phép trước khi thay môi trường; không tắt hoặc né chính sách. Dữ liệu đã xử lý và kết quả giai đoạn 2 được giữ nguyên.
 
-1. Kiểm tra container, image/digest, phiên bản HBase, log, cổng Thrift và vị trí dữ liệu bền vững. Xem `docker/README.md`.
+1. Kiểm tra container, image/digest, phiên bản HBase, log, cổng Thrift và vị trí dữ liệu bền vững. Xem `docs/VAN_HANH.md`.
 2. Trình bày cấu hình môi trường tái lập cho hai máy; giải thích các thay đổi cần thiết trước khi thực hiện.
 3. Thử client Python kết nối Thrift, ghi/đọc/scan một bảng thử riêng; ghi bằng chứng và xác minh dữ liệu còn sau restart có kiểm soát.
 4. Thiết lập Spark trong Docker, đọc một partition Parquet và tổng hợp vùng/giờ theo đúng chính sách giai đoạn 2; đối chiếu tổng và từng nhóm với kết quả đã có.
@@ -450,7 +450,7 @@ Kết quả từ raw tháng 01/2024:
 
 Bảy cờ chất lượng đều khớp. Tác vụ Python worker đạt. Spark ghi Parquet tổng hợp vào thư mục thử riêng; không thay dataset giai đoạn 2. Đã đọc lại các file bằng PyArrow Windows, kiểm tra toàn bộ 76.190 nhóm với CSV đối chứng. Thời gian job 22,76 giây không gồm build và không được coi là benchmark khả năng mở rộng.
 
-Bằng chứng: `artifacts/metrics/spark_trial_2024-01.json`, `spark_environment.json`, `spark_output_readback.json`. Cách build/chạy: `docker/spark/README.md`. Container job tự kết thúc và được xóa bằng --rm; image và đầu ra vẫn còn, HBase vẫn chạy. Đây chưa phải luồng Spark → HBase, chưa kiểm chứng Spark cho cả 36 tháng hoặc ngày DST. Giai đoạn 3 còn phần tích hợp ghi/đọc dữ liệu thật và cấu hình lưu trữ HBase có thể tái lập; chưa thông báo hoàn thành toàn giai đoạn.
+Bằng chứng: `artifacts/metrics/spark_trial_2024-01.json`, `spark_environment.json`, `spark_output_readback.json`. Cách build/chạy: `docs/VAN_HANH.md`. Container job tự kết thúc và được xóa bằng --rm; image và đầu ra vẫn còn, HBase vẫn chạy. Đây chưa phải luồng Spark → HBase, chưa kiểm chứng Spark cho cả 36 tháng hoặc ngày DST. Giai đoạn 3 còn phần tích hợp ghi/đọc dữ liệu thật và cấu hình lưu trữ HBase có thể tái lập; chưa thông báo hoàn thành toàn giai đoạn.
 
 ##### Tiêu chí nghiệm thu toàn giai đoạn
 
