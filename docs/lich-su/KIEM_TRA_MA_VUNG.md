@@ -1,3 +1,5 @@
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
 # Kiểm tra mã vùng đón khách tháng 01 năm 2024
 
 Đã đối chiếu toàn bộ 2.964.606 bản ghi sau bước giới hạn thời điểm đón. Bước kiểm tra chỉ đọc dữ liệu. Sau đó, người dùng đã duyệt bước tách mã 264/265; kết quả triển khai ghi ở cuối tài liệu.

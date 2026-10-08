@@ -1,3 +1,5 @@
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
 # Thiết kế thử Spark → HBase
 
 Trạng thái: người dùng đã duyệt phương án thử 168 giờ; phép thử tích hợp đã đạt ngày 07/10/2026. Đây chưa phải nghiệm thu toàn bộ giai đoạn 3 hoặc nạp đầy đủ dữ liệu.

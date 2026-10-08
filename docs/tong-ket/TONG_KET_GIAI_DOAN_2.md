@@ -30,17 +30,17 @@ Lưới có 6.917.952 dòng vùng–giờ, trong đó 6.880.080 dòng đủ đi�
 
 | File hoặc thư mục | Vai trò / bằng chứng |
 |---|---|
-| [GIAI_DOAN_2.md](GIAI_DOAN_2.md) | Hướng dẫn chi tiết, số liệu cách ly và cách tái lập |
-| [stage2_acceptance.json](../artifacts/metrics/stage2_acceptance.json) | Kết quả nghiệm thu `complete=true` của cả ba năm |
-| [temporal_splits.json](../configs/temporal_splits.json) | Khoảng train, validation và test |
+| [DU_LIEU.md](../DU_LIEU.md) | Hướng dẫn chi tiết, số liệu cách ly và cách tái lập |
+| [stage2_acceptance.json](../../artifacts/metrics/stage2_acceptance.json) | Kết quả nghiệm thu `complete=true` của cả ba năm |
+| [temporal_splits.json](../../configs/temporal_splits.json) | Khoảng train, validation và test |
 | `data/processed/yellow_YYYY_v1/trips/` | Partition chuyến theo tháng; lưu cục bộ, không push dữ liệu |
 | `data/processed/hourly_grid_v1/YYYY/` | Lưới vùng–giờ và audit |
-| [open_dataset.py](../src/ingestion/open_dataset.py), [load_split.py](../src/ingestion/load_split.py) | Đọc đúng partition và chọn nhãn theo thời gian |
-| [verify_stage2.py](../src/processing/verify_stage2.py) | Đối soát checksum, bảo toàn dòng, lưới đủ/duy nhất, 0/null/DST và chia tập |
+| [open_dataset.py](../../src/ingestion/open_dataset.py), [load_split.py](../../src/ingestion/load_split.py) | Đọc đúng partition và chọn nhãn theo thời gian |
+| [verify_stage2.py](../../src/processing/verify_stage2.py) | Đối soát checksum, bảo toàn dòng, lưới đủ/duy nhất, 0/null/DST và chia tập |
 
 ## 5. Quyết định và lý do
 
-Theo [nhật ký quyết định](QUYET_DINH.md), bảo toàn dữ liệu nguồn, chỉ áp dụng quy tắc đã duyệt. Mask cả ngày DST vì timestamp không có UTC offset để phân biệt giờ lặp. Không xóa trùng tự động vì không có ID chuyến duy nhất. Thí nghiệm A dùng lịch sử 2024, B thêm 2023; cùng validation tháng 10–12/2024, dành 2025 cho đánh giá cuối để tránh chọn mô hình bằng dữ liệu test.
+Theo [nhật ký quyết định](../QUYET_DINH.md), bảo toàn dữ liệu nguồn, chỉ áp dụng quy tắc đã duyệt. Mask cả ngày DST vì timestamp không có UTC offset để phân biệt giờ lặp. Không xóa trùng tự động vì không có ID chuyến duy nhất. Thí nghiệm A dùng lịch sử 2024, B thêm 2023; cùng validation tháng 10–12/2024, dành 2025 cho đánh giá cuối để tránh chọn mô hình bằng dữ liệu test.
 
 ## 6. Vấn đề và giới hạn
 

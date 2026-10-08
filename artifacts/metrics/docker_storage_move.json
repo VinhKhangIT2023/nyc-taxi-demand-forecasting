@@ -1,0 +1,8 @@
+{
+  "source": "C:\\Users\\ADMIN\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+  "source_file_bytes": 39321600000,
+  "destination": "D:\\DockerData",
+  "c_free_bytes": 81982947328,
+  "d_free_bytes": 195204431872,
+  "status": "preparing"
+}

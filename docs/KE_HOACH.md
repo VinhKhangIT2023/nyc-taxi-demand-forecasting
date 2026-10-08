@@ -1,10 +1,10 @@
-> Hoàn thành đầy đủ ngày 08/10/2026: Spark đủ 36 tháng 2023–2025; HBase đủ 6.917.952 dòng, hai lượt nạp và phục hồi được đối chiếu từng ô, 0 sai lệch, 21/21 tests đạt. Xem [tổng kết giai đoạn 3](TONG_KET_GIAI_DOAN_3.md) và [hướng dẫn hiện hành](CHAY_GIAI_DOAN_3_DAY_DU.md). Các mốc thử nghiệm bên dưới là lịch sử triển khai.
+> Hoàn thành đầy đủ ngày 08/10/2026: Spark đủ 36 tháng 2023–2025; HBase đủ 6.917.952 dòng, hai lượt nạp và phục hồi được đối chiếu từng ô, 0 sai lệch, 21/21 tests đạt. Xem [tổng kết giai đoạn 3](tong-ket/TONG_KET_GIAI_DOAN_3.md) và [hướng dẫn hiện hành](VAN_HANH.md). Các mốc thử nghiệm bên dưới là lịch sử triển khai.
 
 # Kế hoạch triển khai đồ án phân tích và dự báo nhu cầu sử dụng xe công cộng
 
 Ngày lập: 05/10/2026. Thành viên: Đào Văn Hiếu và Nguyễn Đặng Vĩnh Khang.
 
-Cập nhật phạm vi dữ liệu 07/10/2026: đã mở rộng và xử lý đủ 2023–2025 theo quyết định sau khảo sát. Các đề xuất sáu tháng dưới đây là kế hoạch ban đầu; phạm vi và cách đọc hiện hành nằm trong [GIAI_DOAN_2.md](GIAI_DOAN_2.md), quyết định tại [QUYET_DINH.md](QUYET_DINH.md). “Giai đoạn 2” chuẩn bị dữ liệu trong tiến trình làm việc này không có nghĩa đã hoàn thành toàn bộ đợt nộp giai đoạn 2 của môn học.
+Cập nhật phạm vi dữ liệu 07/10/2026: đã mở rộng và xử lý đủ 2023–2025 theo quyết định sau khảo sát. Các đề xuất sáu tháng dưới đây là kế hoạch ban đầu; phạm vi và cách đọc hiện hành nằm trong [DU_LIEU.md](DU_LIEU.md), quyết định tại [QUYET_DINH.md](QUYET_DINH.md). “Giai đoạn 2” chuẩn bị dữ liệu trong tiến trình làm việc này không có nghĩa đã hoàn thành toàn bộ đợt nộp giai đoạn 2 của môn học.
 
 Kế hoạch hướng đến một sản phẩm chạy được trên máy cá nhân: chọn khu vực, xem lịch sử nhu cầu, xem dự báo giờ tiếp theo và kiểm tra sai số. Spark xử lý dữ liệu chuyến đi; HBase phục vụ lưu trữ và truy vấn kết quả; Streamlit hiển thị dashboard. Phân công dưới đây là đề xuất để hai thành viên thống nhất.
 
@@ -12,11 +12,11 @@ Kế hoạch hướng đến một sản phẩm chạy được trên máy cá n
 
 ### Quy ước tổng kết 6 giai đoạn triển khai
 
-Theo yêu cầu người dùng ngày 07/10/2026, dự án có 6 giai đoạn triển khai. Sau mỗi giai đoạn phải có một file riêng `docs/TONG_KET_GIAI_DOAN_N.md` (N từ 1 đến 6), được cập nhật trước khi thông báo hoàn thành giai đoạn. Đây là mốc triển khai nội bộ, không đồng nhất với các đợt nộp của môn học hoặc lịch 10 tuần bên dưới.
+Theo yêu cầu người dùng ngày 07/10/2026, dự án có 6 giai đoạn triển khai. Sau mỗi giai đoạn phải có một file riêng `docs/tong-ket/TONG_KET_GIAI_DOAN_N.md` (N từ 1 đến 6), được cập nhật trước khi thông báo hoàn thành giai đoạn. Đây là mốc triển khai nội bộ, không đồng nhất với các đợt nộp của môn học hoặc lịch 10 tuần bên dưới.
 
 Mỗi bản tổng kết phải ghi: mục tiêu/phạm vi, công việc thực tế đã làm, kết quả và số liệu, file đầu ra kèm bằng chứng kiểm tra, quyết định và lý do, vấn đề/hạn chế còn lại, công việc bàn giao cho giai đoạn sau. Không ghi kế hoạch thành kết quả, không tự gán đóng góp cho thành viên. Nếu có sửa đổi sau nghiệm thu, ghi ngày và nội dung cập nhật.
 
-Hiện có [tổng kết giai đoạn 1](TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](TONG_KET_GIAI_DOAN_2.md) và [giai đoạn 3](TONG_KET_GIAI_DOAN_3.md). Giai đoạn 4–6 chưa hoàn thành; tạo bản tổng kết tương ứng khi có kết quả thực tế. Dùng [mẫu tổng kết](MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
+Hiện có [tổng kết giai đoạn 1](tong-ket/TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](tong-ket/TONG_KET_GIAI_DOAN_2.md) và [giai đoạn 3](tong-ket/TONG_KET_GIAI_DOAN_3.md). Giai đoạn 4–6 chưa hoàn thành; tạo bản tổng kết tương ứng khi có kết quả thực tế. Dùng [mẫu tổng kết](tong-ket/MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
 
 Nguồn đối chiếu: file `Ke hoach Do an mon hoc Nhap mon Big data_SV.docx`, mục II, III và IV; ảnh danh sách đăng ký ghi đề tài 10 và Apache HBase.
 
@@ -49,7 +49,7 @@ Tên triển khai đề xuất: **Phân tích và dự báo nhu cầu taxi theo 
 - Đơn vị dữ liệu đầu ra: một khu vực × một giờ.
 - Biến cần dự báo: số chuyến đón khách trong giờ tiếp theo.
 - Thời điểm dự báo: khi giờ hiện tại đã kết thúc, có đầy đủ số đếm đến giờ đó.
-- Dữ liệu đề xuất: Yellow Taxi NYC TLC, 6 tháng liên tiếp năm 2024, từ tháng 1 đến tháng 6. Bắt đầu 1 tháng để kiểm tra luồng, sau đó mở rộng.
+- Phạm vi đã triển khai: Yellow Taxi NYC TLC đủ 36 tháng 2023–2025. Mẫu tháng 01/2024 là bước khảo sát lịch sử, không còn là giới hạn dataset.
 - Demo là dự báo trên dữ liệu lịch sử được phát lại theo thời gian. Giao diện phải ghi ngày dữ liệu, mốc dự báo và phân biệt lịch sử với tương lai mô phỏng.
 - Số chuyến đã phục vụ là đại diện cho nhu cầu quan sát được; không đo được khách không gọi được xe, nhu cầu tiềm ẩn hoặc nhu cầu của toàn bộ giao thông công cộng.
 

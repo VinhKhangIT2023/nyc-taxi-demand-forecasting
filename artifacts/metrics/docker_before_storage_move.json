@@ -1,0 +1,553 @@
+[
+    {
+        "Id": "561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb",
+        "Created": "2026-10-07T12:28:54.042909503Z",
+        "Path": "/bin/bash",
+        "Args": [
+            "/project-config/start.sh"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 486,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-08T05:42:06.610051758Z",
+            "FinishedAt": "2026-10-07T19:35:10.587221299Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2026-10-08T06:17:27.734563418Z",
+                        "End": "2026-10-08T06:17:31.725212358Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-08T06:18:01.725240077Z",
+                        "End": "2026-10-08T06:18:06.062678986Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-08T06:18:36.061923076Z",
+                        "End": "2026-10-08T06:18:40.445594532Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-08T06:19:10.445375844Z",
+                        "End": "2026-10-08T06:19:14.921759685Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-08T06:19:44.921114451Z",
+                        "End": "2026-10-08T06:19:49.038620695Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+        "ResolvConfPath": "/var/lib/docker/containers/561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb/hostname",
+        "HostsPath": "/var/lib/docker/containers/561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb/hosts",
+        "LogPath": "/var/lib/docker/containers/561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb/561612dc5c5e82b98824b4d36a926ea2ffafd72b2b9114dcda2419119d0d1ffb-json.log",
+        "Name": "/bigdata-hbase-hbase-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "bigdata-hbase_hbase_data:/data:rw",
+                "/run/desktop/mnt/host/d/BaiTapVeNha/BigData/DoAn_BigData/docker/hbase/start.sh:/project-config/start.sh:ro",
+                "/run/desktop/mnt/host/d/BaiTapVeNha/BigData/DoAn_BigData/docker/hbase/hbase-site.xml:/project-config/hbase-site.xml:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bigdata-hbase_default",
+            "PortBindings": {
+                "16010/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "16011"
+                    }
+                ],
+                "9090/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "19090"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 2147483648,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 4294967296,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "bigdata-hbase_hbase_data",
+                "Source": "/var/lib/docker/volumes/bigdata-hbase_hbase_data/_data",
+                "Destination": "/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "bind",
+                "Source": "/run/desktop/mnt/host/d/BaiTapVeNha/BigData/DoAn_BigData/docker/hbase/hbase-site.xml",
+                "Destination": "/project-config/hbase-site.xml",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/run/desktop/mnt/host/d/BaiTapVeNha/BigData/DoAn_BigData/docker/hbase/start.sh",
+                "Destination": "/project-config/start.sh",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "hbase-managed",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "16010/tcp": {},
+                "2181/tcp": {},
+                "8080/tcp": {},
+                "8085/tcp": {},
+                "9090/tcp": {},
+                "9095/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "HBASE_CONF_DIR=/tmp/project-hbase-conf",
+                "HBASE_HEAPSIZE=512",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HBASE_VERSION=2.1.2"
+            ],
+            "Cmd": null,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "printf 'status\\n' | hbase --config /tmp/project-hbase-conf shell -n 2\u003e/dev/null | grep -q '1 active master'"
+                ],
+                "Interval": 30000000000,
+                "Timeout": 20000000000,
+                "StartPeriod": 40000000000,
+                "Retries": 5
+            },
+            "Image": "dajobe/hbase@sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+            "Volumes": {
+                "/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/bin/bash",
+                "/project-config/start.sh"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "4aea794bcbc526dfb29eb8ef2252192020910f2c2179019fd67dc60d199790e8",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "bigdata-hbase",
+                "com.docker.compose.project.config_files": "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docker\\hbase\\compose.yaml",
+                "com.docker.compose.project.working_dir": "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docker\\hbase",
+                "com.docker.compose.replace": "hbase-1",
+                "com.docker.compose.service": "hbase",
+                "com.docker.compose.version": "5.4.0"
+            },
+            "StopTimeout": 60
+        },
+        "NetworkSettings": {
+            "SandboxID": "eb2fa418d8b818d60b4ddad15c0e3ef0269c553e5a371e880a389310b932138a",
+            "SandboxKey": "/var/run/docker/netns/eb2fa418d8b8",
+            "Ports": {
+                "16010/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "16011"
+                    }
+                ],
+                "9090/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "19090"
+                    }
+                ]
+            },
+            "Networks": {
+                "bigdata-hbase_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "bigdata-hbase-hbase-1",
+                        "hbase"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "3306c5fb3cd8cce700769a3bf6104c3f4e61bc0735c426916258e380d6ac9e1f",
+                    "EndpointID": "3d96218bc7a3ff446e3962a953bb8413ebe3e55481c2fd98cd2d99555bd2fc22",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.2",
+                    "MacAddress": "1a:c5:b6:cf:77:ce",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "bigdata-hbase-hbase-1",
+                        "hbase",
+                        "561612dc5c5e",
+                        "hbase-managed"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+            "digest": "sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+            "size": 2399,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    },
+    {
+        "Id": "ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b",
+        "Created": "2026-08-31T12:29:53.965575623Z",
+        "Path": "/opt/hbase-server",
+        "Args": [],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-07T12:09:20.863123266Z",
+            "FinishedAt": "2026-10-07T17:59:07.260385069Z"
+        },
+        "Image": "sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+        "ResolvConfPath": "/var/lib/docker/containers/ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b/hostname",
+        "HostsPath": "/var/lib/docker/containers/ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b/hosts",
+        "LogPath": "/var/lib/docker/containers/ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b/ec4869da0295dcefcd2b164bf7620a1eea5949e55de04b41123a214b6732347b-json.log",
+        "Name": "/hbase-demo",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "16010/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "16010"
+                    }
+                ],
+                "9090/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "9090"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                30,
+                120
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "ee5e68e6753f94290d0d414792142c6143f8d48825b4bb9da538a179641a7189",
+                "Source": "/var/lib/docker/volumes/ee5e68e6753f94290d0d414792142c6143f8d48825b4bb9da538a179641a7189/_data",
+                "Destination": "/data",
+                "Driver": "local",
+                "Mode": "",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "ec4869da0295",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "16010/tcp": {},
+                "2181/tcp": {},
+                "8080/tcp": {},
+                "8085/tcp": {},
+                "9090/tcp": {},
+                "9095/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HBASE_VERSION=2.1.2"
+            ],
+            "Cmd": [
+                "/opt/hbase-server"
+            ],
+            "Image": "dajobe/hbase",
+            "Volumes": {
+                "/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "03f4b77a1fe60614cbeeea5780b5271a98e97b285d42305365a7c4c464d61c0a",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "MacAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+            "digest": "sha256:daa36a6d90b118ced866b6c76fcd918e7da73302b0e4971f506f0f61f645a9fe",
+            "size": 2399,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

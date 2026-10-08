@@ -1,3 +1,5 @@
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
 # Dữ liệu Yellow Taxi năm 2023
 
 ## Phạm vi và nguồn

@@ -1,4 +1,6 @@
-> Hoàn thành đầy đủ ngày 08/10/2026: Spark đủ 36 tháng 2023–2025; HBase đủ 6.917.952 dòng, hai lượt nạp và phục hồi được đối chiếu từng ô, 0 sai lệch, 21/21 tests đạt. Xem [tổng kết giai đoạn 3](TONG_KET_GIAI_DOAN_3.md) và [hướng dẫn hiện hành](CHAY_GIAI_DOAN_3_DAY_DU.md). Các mốc thử nghiệm bên dưới là lịch sử triển khai.
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
+> Hoàn thành đầy đủ ngày 08/10/2026: Spark đủ 36 tháng 2023–2025; HBase đủ 6.917.952 dòng, hai lượt nạp và phục hồi được đối chiếu từng ô, 0 sai lệch, 21/21 tests đạt. Xem [tổng kết giai đoạn 3](../tong-ket/TONG_KET_GIAI_DOAN_3.md) và [hướng dẫn hiện hành](../VAN_HANH.md). Các mốc thử nghiệm bên dưới là lịch sử triển khai.
 
 # Giai đoạn 3 — Tích hợp môi trường Spark và HBase
 

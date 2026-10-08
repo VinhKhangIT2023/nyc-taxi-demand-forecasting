@@ -1,6 +1,6 @@
 # Tổng kết giai đoạn 3 — Spark và HBase trên toàn bộ 2023–2025
 
-Hoàn thành 08/10/2026. Trạng thái: **đã nghiệm thu đầy đủ giai đoạn 3**. Bằng chứng: [stage3_full_acceptance.json](../artifacts/metrics/stage3_full_acceptance.json), `complete=true`, 21/21 tests đạt. Mốc thử tháng 01/2024 và 168 giờ trước đây đã được mở rộng theo yêu cầu người dùng. Không dùng kết quả thử làm kết luận cho toàn bộ dữ liệu.
+Hoàn thành 08/10/2026. Trạng thái: **đã nghiệm thu đầy đủ giai đoạn 3**. Bằng chứng: [stage3_full_acceptance.json](../../artifacts/metrics/stage3_full_acceptance.json), `complete=true`, 21/21 tests đạt. Mốc thử tháng 01/2024 và 168 giờ trước đây đã được mở rộng theo yêu cầu người dùng. Không dùng kết quả thử làm kết luận cho toàn bộ dữ liệu.
 
 ## 1. Mục tiêu và phạm vi
 
@@ -49,7 +49,7 @@ Số nhãn thấp hơn tổng chuyến vì che ngày DST theo quyết định đ
 - `artifacts/metrics/hbase_full_after_restore.json`, `hbase_full_recovery.json`: bằng chứng phục hồi.
 - `artifacts/metrics/stage3_full_acceptance.json`: nghiệm thu đầy đủ, chỉ thành công nếu `complete=true`.
 - `artifacts/metrics/stage3_resources_*.jsonl`: ảnh chụp mức tài nguyên tại thời điểm đo, không phải đo peak hay benchmark.
-- [Hướng dẫn chạy toàn bộ](CHAY_GIAI_DOAN_3_DAY_DU.md), [nhật ký triển khai](GIAI_DOAN_3.md), [quyết định phạm vi](QUYET_DINH.md).
+- [Hướng dẫn chạy toàn bộ](../VAN_HANH.md), [nhật ký triển khai](../lich-su/GIAI_DOAN_3.md), [quyết định phạm vi](../QUYET_DINH.md).
 
 Archive đầy đủ: 17.174.343.680 byte (17,17 GB), SHA256 `1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7`. Chu trình backup/restore và kiểm tra mất 1.346,65 giây. Nguồn dừng sạch exit code 0; đích là container và volume khác. Bảng thử 168 giờ cũng khớp sau phục hồi. Fingerprint nội dung bảng chính của cả ba lần đọc: `e7a9cdeb6332fd07c6458f42661ade814f792fcf5bb9997c540842fc2373615d`.
 
@@ -77,3 +77,7 @@ Bản sao lưu dùng volume đã dừng sạch và được kiểm tra trên vol
 HBase ứng dụng: `bigdata-hbase-hbase-1`, Thrift 19090/UI 16011. Container `hbase-demo` cũ ở 9090/16010 giữ nguyên. Container phục hồi đầy đủ dùng 19092/16013 và đã dừng sau kiểm tra để tiết kiệm RAM. Khi mở máy chỉ cần bật HBase managed, không phải chạy lại ETL/nạp dữ liệu.
 
 Giai đoạn 4: đặc trưng theo thời gian, baseline và huấn luyện/đánh giá. So sánh lịch sử 2024 với 2023–2024 bằng validation cuối 2024; giữ 2025 làm holdout, không dùng để chọn mô hình. Tiếp tục thống nhất với người dùng các quyết định mô hình trước khi triển khai.
+
+## Cập nhật sau nghiệm thu — dọn dẹp 08/10/2026
+
+Theo yêu cầu dọn repo và dung lượng, đã kiểm tra archive đầy đủ còn nguyên rồi xóa container/volume phục hồi thử (17,17 GB). Các mô tả giữ volume phục hồi ở trên là trạng thái tại thời điểm nghiệm thu; hiện chỉ giữ archive trên D và các metrics kiểm chứng. HBase chính không bị xóa. Xem [vận hành và dung lượng](../VAN_HANH.md#dung-lượng-và-dọn-dẹp) và cleanup_2026-10-08.json.

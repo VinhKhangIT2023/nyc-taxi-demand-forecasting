@@ -1,3 +1,5 @@
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
 # Dữ liệu thử nghiệm tháng 01 năm 2024 phiên bản 1
 
 Đã hoàn tất các quy tắc được duyệt ngày 06/10/2026. Đây là dữ liệu thử nghiệm có quy tắc rõ ràng và truy vết được, không phải cam kết mọi bản ghi đều đúng. Pipeline hiện chạy bằng PyArrow trên máy cá nhân; chưa chuyển sang Spark hoặc nạp HBase.

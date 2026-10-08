@@ -86,6 +86,16 @@ Lưới có 6.917.952 dòng vùng–giờ, trong đó 6.880.080 dòng đủ đi�
 
 ## Tái lập và kiểm tra
 
+Trên máy mới, tải danh mục vùng trước khi chạy pipeline (nếu file chưa có):
+
+```powershell
+New-Item -ItemType Directory -Force data/reference | Out-Null
+Invoke-WebRequest -Uri 'https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv' -OutFile data/reference/taxi_zone_lookup.csv
+Get-FileHash data/reference/taxi_zone_lookup.csv -Algorithm SHA256
+```
+
+Checksum snapshot đã nghiệm thu: `1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed`. Nếu nguồn đã thay đổi, kiểm tra phiên bản và ảnh hưởng trước khi thay manifest hoặc ép kết quả kiểm thử thành công.
+
 Chạy từ thư mục gốc bằng Python trong venv, cài thư viện tại `requirements-profile.txt`. Trên máy chưa có đầu ra, thực hiện lần lượt cho từng năm 2023, 2024, 2025:
 
 ```powershell

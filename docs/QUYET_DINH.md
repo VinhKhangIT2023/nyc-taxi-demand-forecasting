@@ -2,11 +2,11 @@
 
 ## Quyết định 012 — Thử ghi dữ liệu giờ vào HBase, ngày 07/10/2026
 
-Người dùng trả lời “Duyệt phương án thử 168 giờ”: dùng bảng `transport_demand_hourly_trial_v1`, khóa vùng 3 chữ số + nhãn giờ, families d/q/m, null không thành 0. Mẫu vùng 161 trong 01–07/01/2024 giúp kiểm chứng luồng và ghi lặp trước khi mở rộng. Thiết kế và kết quả tại THIET_KE_HBASE_THU.md. Chưa phê duyệt nạp toàn bộ dataset hoặc dùng bảng thử làm schema ứng dụng cuối cùng.
+Người dùng trả lời “Duyệt phương án thử 168 giờ”: dùng bảng `transport_demand_hourly_trial_v1`, khóa vùng 3 chữ số + nhãn giờ, families d/q/m, null không thành 0. Mẫu vùng 161 trong 01–07/01/2024 giúp kiểm chứng luồng và ghi lặp trước khi mở rộng. Thiết kế và kết quả tại lich-su/THIET_KE_HBASE_THU.md. Chưa phê duyệt nạp toàn bộ dataset hoặc dùng bảng thử làm schema ứng dụng cuối cùng.
 
 ## Quyết định 011 — Cấu hình Spark thử đã duyệt, ngày 07/10/2026
 
-Người dùng đồng ý PySpark 3.5.7, Python 3.11, Java 17 trong Docker; local[2], driver 2 GiB và container giới hạn 4 GiB. Thử một tháng trước khi mở rộng để đối chiếu quy tắc đã nghiệm thu. Đã chạy tháng 01/2024 thành công, không thay đổi chính sách dữ liệu. Xem GIAI_DOAN_3.md và docker/spark/README.md. Chưa chốt schema HBase chính thức hoặc quy mô nạp dữ liệu thật trong bước thử này.
+Người dùng đồng ý PySpark 3.5.7, Python 3.11, Java 17 trong Docker; local[2], driver 2 GiB và container giới hạn 4 GiB. Thử một tháng trước khi mở rộng để đối chiếu quy tắc đã nghiệm thu. Đã chạy tháng 01/2024 thành công, không thay đổi chính sách dữ liệu. Xem lich-su/GIAI_DOAN_3.md và docker/spark/README.md. Chưa chốt schema HBase chính thức hoặc quy mô nạp dữ liệu thật trong bước thử này.
 
 ## Quyết định 010 — Python Windows có chữ ký, ngày 07/10/2026
 
@@ -50,7 +50,7 @@ Người dùng đồng ý và yêu cầu tiếp tục sau khi đã giải thích
 
 ## Quyết định 005 — Đối chiếu danh mục vùng
 
-Người dùng đồng ý tải Taxi Zone Lookup chính thức và đối chiếu trước, chưa loại dòng. Đã tải ngày 05/10/2026 và kiểm tra PULocationID trên tập trong tháng. Kết quả tại `KIEM_TRA_MA_VUNG.md`: 10.360 chuyến mã 264, 1.658 chuyến mã 265; không có mã null hoặc không có trong danh mục. Đề xuất tách hai nhóm này khỏi tập dự báo vùng cụ thể đang chờ người dùng duyệt. Chưa thay đổi dữ liệu.
+Người dùng đồng ý tải Taxi Zone Lookup chính thức và đối chiếu trước, chưa loại dòng. Đã tải ngày 05/10/2026 và kiểm tra PULocationID trên tập trong tháng. Kết quả tại `lich-su/KIEM_TRA_MA_VUNG.md`: 10.360 chuyến mã 264, 1.658 chuyến mã 265; không có mã null hoặc không có trong danh mục. Đề xuất tách hai nhóm này khỏi tập dự báo vùng cụ thể đang chờ người dùng duyệt. Chưa thay đổi dữ liệu.
 
 ## Quyết định 006 — Tách riêng mã vùng 264 và 265
 
@@ -66,7 +66,7 @@ Ngày 06/10/2026, người dùng duyệt triển khai phương án đã trình b
 
 ## Quyết định 008 — Bổ sung toàn bộ năm 2023
 
-Người dùng yêu cầu thêm năm 2023 ngay để chuẩn bị kịch bản so sánh đã bàn và xử lý dữ liệu để sử dụng. Đã tải đủ 12 tháng từ TLC, áp dụng cùng quy tắc v1 và chuẩn hóa schema không làm mất giá trị. Kết quả giữ 37.909.554 dòng; dữ liệu raw và mọi nhóm cách ly được giữ lại. Xem `DU_LIEU_2023.md`.
+Người dùng yêu cầu thêm năm 2023 ngay để chuẩn bị kịch bản so sánh đã bàn và xử lý dữ liệu để sử dụng. Đã tải đủ 12 tháng từ TLC, áp dụng cùng quy tắc v1 và chuẩn hóa schema không làm mất giá trị. Kết quả giữ 37.909.554 dòng; dữ liệu raw và mọi nhóm cách ly được giữ lại. Xem `lich-su/DU_LIEU_2023.md`.
 
 Đây là phê duyệt mở rộng dữ liệu, chưa phải bằng chứng rằng thêm lịch sử cải thiện mô hình. Tập so sánh vẫn cần phần 2024 đầy đủ; 2025 dành cho kiểm tra cuối. Chưa tải thêm các tháng 2024/2025 trong lần bổ sung 2023 này.
 
@@ -76,9 +76,9 @@ Cập nhật 07/10/2026: theo yêu cầu hoàn thành giai đoạn 2, đã tải
 
 Người dùng đã trả lời “Đồng ý chính sách bảo thủ này”: giữ chuyến trên hai ngày đổi giờ mỗi năm cho mô tả, che toàn bộ nhãn hai ngày đó khi học/đánh giá; nếu cả nguồn không có bản ghi trong giờ thì để thiếu, chỉ điền 0 cho vùng không có chuyến được giữ khi nguồn có bản ghi trong giờ. Lý do: timestamp không có UTC offset nên không thể khôi phục chính xác giờ lặp.
 
-Cấu hình thực nghiệm lưu tại configs/temporal_splits.json: A bắt đầu 2024, B bắt đầu 2023; cùng ba fold validation tháng 10–12/2024 và holdout 2025. Đây là cấu hình để triển khai kịch bản so sánh, chưa phải kết luận mở rộng lịch sử giúp dự báo tốt hơn. Hướng dẫn hiện hành: GIAI_DOAN_2.md.
+Cấu hình thực nghiệm lưu tại configs/temporal_splits.json: A bắt đầu 2024, B bắt đầu 2023; cùng ba fold validation tháng 10–12/2024 và holdout 2025. Đây là cấu hình để triển khai kịch bản so sánh, chưa phải kết luận mở rộng lịch sử giúp dự báo tốt hơn. Hướng dẫn hiện hành: DU_LIEU.md.
 
-## Quyết định 010 — Giai đoạn 3 trên toàn bộ dữ liệu (07/10/2026)
+## Quyết định 013 — Giai đoạn 3 trên toàn bộ dữ liệu (07/10/2026)
 
 Người dùng yêu cầu “hoàn thành toàn bộ giai đoạn 3 theo mục tiêu”, sau khi thống nhất Spark xử lý đủ 36 tháng 2023–2025 và HBase lưu đủ lưới 6.917.952 vùng–giờ. Các kiểm thử tháng 01/2024 và 168 giờ trước đây là tiền đề, chưa đáp ứng nghiệm thu đầy đủ.
 

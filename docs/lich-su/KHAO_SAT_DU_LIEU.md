@@ -1,3 +1,5 @@
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
 # Khảo sát dữ liệu Yellow Taxi tháng 01 năm 2024
 
 ## Kết quả thực tế

@@ -1,66 +1,72 @@
-# Phân tích và dự báo nhu cầu sử dụng xe công cộng
+# NYC Taxi Demand — Spark & HBase
 
-Đồ án Nhập môn Big Data của Đào Văn Hiếu và Nguyễn Đặng Vĩnh Khang. Công nghệ được ghi trong danh sách đăng ký: Apache HBase.
+Phân tích và chuẩn bị dữ liệu dự báo số lượt đón taxi theo khu vực và giờ tại New York. Dự án dùng NYC TLC Yellow Taxi 2023–2025, Apache Spark để xử lý và Apache HBase để lưu kết quả theo giờ. Số chuyến đã phục vụ là đại diện cho nhu cầu quan sát được, không phải toàn bộ nhu cầu giao thông công cộng.
 
-**Trạng thái dữ liệu:** đã tải và xử lý đủ 36 tháng Yellow Taxi 2023–2025, giữ **126.994.028 chuyến** theo quy tắc v1. Có lưới 263 vùng theo giờ, phân biệt số 0 và thiếu dữ liệu, đồng thời che nhãn ngày đổi giờ mùa hè. Xem [giai đoạn 2 và kết quả nghiệm thu](docs/GIAI_DOAN_2.md). Spark đã xử lý và đối chiếu đủ 36 tháng; có Docker Compose cho Spark/HBase. HBase đã lưu và đối chiếu đầy đủ lưới 2023–2025; mô hình và dashboard chưa triển khai.
+## Trạng thái
 
-**Phạm vi thực nghiệm:** so sánh lịch sử 2024 với 2023–2024 trên cùng validation cuối 2024; giữ 2025 cho đánh giá cuối. Dùng loader `src.ingestion.open_dataset` để không đọc trùng tập thử tháng 01/2024 hoặc các bản trung gian. Các tài liệu tập thử và năm 2023 ghi lại các mốc cũ.
+- Hoàn thành giai đoạn 1–3: môi trường, dữ liệu và tích hợp Spark/HBase.
+- Đã xử lý 36 tháng: 128.202.548 dòng nguồn, giữ 126.994.028 chuyến; lưới 263 vùng có 6.917.952 dòng vùng–giờ.
+- Hai lượt nạp HBase và phục hồi từ archive được đối chiếu đầy đủ, không sai lệch. Bộ kiểm thử tại lần nghiệm thu: 21/21 đạt.
+- Chưa triển khai mô hình dự báo, dashboard và báo cáo Word/PPT cuối kỳ. Đây chưa phải ứng dụng hoàn chỉnh để người dùng cuối sử dụng.
 
-Phạm vi đề xuất: dự báo số chuyến taxi đón khách theo khu vực trong giờ tiếp theo, sử dụng dữ liệu NYC TLC. Đây là lựa chọn triển khai của nhóm cần chốt với giảng viên, không phải bộ dữ liệu đã được giảng viên chỉ định.
+Các con số trên là kết quả của snapshot đã nghiệm thu, không phải kết quả tự có sau khi clone repo. Xem [tổng kết từng giai đoạn](docs/tong-ket/) và [bằng chứng nghiệm thu](artifacts/metrics/stage3_full_acceptance.json).
 
-## Bắt đầu
+## Bắt đầu trên máy mới
 
-**Giai đoạn 3 đã hoàn thành đầy đủ (08/10/2026):** Spark xử lý 36 tháng; HBase lưu 6.917.952 dòng vùng–giờ, nạp hai lần không nhân đôi; đối chiếu từng ô và phục hồi từ archive sang volume mới đều không sai lệch. Có 21/21 tests đạt. Xem [tổng kết giai đoạn 3](docs/TONG_KET_GIAI_DOAN_3.md), [hướng dẫn vận hành](docs/CHAY_GIAI_DOAN_3_DAY_DU.md) và [nghiệm thu](artifacts/metrics/stage3_full_acceptance.json). HBase ứng dụng dùng Thrift 19090/UI 16011, bảng `transport_demand_hourly_v1`. Chưa huấn luyện mô hình hoặc làm dashboard.
+Môi trường đã kiểm thử: Windows, PowerShell, Git, VSCode, Python 3.13.16 chính thức và Docker Desktop chạy Linux containers. Spark dùng Python 3.11/Java 17 trong Docker; không cần cài Spark hoặc Java trực tiếp vào Windows.
 
-**Môi trường Windows hiện hành:** Python 3.13.16 chính thức, venv tại `.venv`, thư viện xử lý dữ liệu/HBase tại `requirements-stage3-windows.txt`. Bộ kiểm thử hiện hành có 21 tests đạt. Xem đầu [CAI_DAT.md](docs/CAI_DAT.md); các ghi chép Python 3.11 là lịch sử hoặc kế hoạch riêng cho Spark trong Docker.
-
-**Tổng kết tiến độ:** mỗi giai đoạn trong kế hoạch 6 giai đoạn có file `docs/TONG_KET_GIAI_DOAN_N.md`. Đã có [giai đoạn 1](docs/TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](docs/TONG_KET_GIAI_DOAN_2.md) và [giai đoạn 3](docs/TONG_KET_GIAI_DOAN_3.md), ghi công việc, kết quả, bằng chứng kiểm tra và vấn đề còn lại.
-
-1. Đọc [kế hoạch chi tiết](docs/KE_HOACH.md), có phân công, mốc tuần, yêu cầu báo cáo và tiêu chí hoàn thành.
-2. Làm theo [hướng dẫn môi trường và GitHub](docs/CAI_DAT.md).
-3. Ghi nguồn dữ liệu vào [danh mục dữ liệu](data/README.md).
-4. Cập nhật [nhật ký nhóm](docs/NHAT_KY_NHOM.md) hằng tuần.
-5. Xem [khảo sát dữ liệu](docs/KHAO_SAT_DU_LIEU.md) và [nhật ký quyết định](docs/QUYET_DINH.md) trước khi triển khai làm sạch.
-
-## Cấu trúc hiện tại
-
-```text
-DoAn_BigData/
-├── README.md
-├── .gitignore
-├── .gitattributes
-├── .env.example
-├── .vscode/                  # Interpreter và extension đề xuất
-├── requirements.txt         # Thư viện ứng dụng; chưa phải lock đã kiểm thử
-├── requirements-spark.txt   # Thư viện cho container Spark
-├── configs/                 # Tham số dữ liệu, mô hình, đường dẫn
-├── data/
-│   ├── README.md
-│   ├── raw/                 # File tải gốc, không push
-│   ├── interim/             # Kết quả trung gian, không push
-│   ├── processed/           # Dữ liệu sạch và bảng theo giờ, không push
-│   └── reference/           # Danh mục khu vực và dữ liệu bản đồ
-├── docker/
-│   ├── README.md            # Thiết kế các service cần xây dựng
-│   ├── hbase/
-│   └── spark/
-├── src/
-│   ├── ingestion/           # Tải và kiểm tra nguồn
-│   ├── processing/          # Spark ETL và đặc trưng
-│   ├── storage/             # Schema và đọc ghi HBase
-│   ├── models/              # Baseline, train, evaluate, predict
-│   └── dashboard/           # Streamlit
-├── notebooks/               # Khảo sát; logic dùng lại chuyển vào src
-├── scripts/                 # Các lệnh vận hành sẽ bổ sung khi triển khai
-├── tests/                   # Kiểm tra dữ liệu, đặc trưng, tích hợp
-├── artifacts/
-│   ├── models/              # Mô hình sinh ra, không push
-│   └── metrics/             # CSV/JSON đánh giá để đưa vào báo cáo
-├── reports/
-│   ├── figures/
-│   ├── report/              # Báo cáo Word cuối kỳ
-│   └── slides/              # Slide thuyết trình
-└── docs/                    # Kế hoạch, hướng dẫn, nhật ký
+```powershell
+git clone <URL_REPOSITORY> nyc-taxi-demand
+cd nyc-taxi-demand
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-stage3-windows.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests
 ```
 
-Các thư mục chưa triển khai có `.gitkeep` để Git theo dõi. File Word yêu cầu môn học ở gốc được giữ nguyên. `.venv/` sẽ được tạo riêng trên mỗi máy và bị Git bỏ qua.
+Thay `<URL_REPOSITORY>` bằng URL của repo. Trong VSCode, chọn **Python: Select Interpreter → .venv/Scripts/python.exe**. Có thể kích hoạt bằng `.\.venv\Scripts\Activate.ps1`; các lệnh ở đây gọi Python trực tiếp nên không phụ thuộc việc kích hoạt terminal. Xem [cài đặt](docs/CAI_DAT.md).
+
+Repo không chứa dataset, venv, Docker volume hoặc archive sao lưu. Có hai tình huống:
+
+1. **Máy mới chưa có dữ liệu:** làm theo [chuẩn bị dữ liệu](docs/DU_LIEU.md), tải đủ ba năm và Taxi Zone Lookup, chạy làm sạch rồi nghiệm thu giai đoạn 2. Tiếp tục [vận hành Spark/HBase](docs/VAN_HANH.md) để build image, xử lý 36 tháng và nạp bảng. Dự trù dung lượng cho cả dữ liệu trên ổ làm việc và đĩa ảo Docker; các phép thử phục hồi tạo thêm một bản sao lớn.
+2. **Máy đã có dữ liệu và volume:** bật Docker Desktop rồi dùng các lệnh sau; không tải hoặc nạp lại mỗi lần mở máy.
+
+```powershell
+docker compose -p bigdata-hbase -f docker/hbase/compose.yaml up -d
+docker compose -p bigdata-hbase -f docker/hbase/compose.yaml ps
+# Chờ HBase healthy rồi chạy kiểm tra chỉ đọc:
+docker compose -f docker/spark/compose.full.yaml run --rm spark /workspace/src/storage/check_stage3_services.py
+```
+
+HBase: Thrift `localhost:19090`, giao diện [localhost:16011](http://localhost:16011), bảng `transport_demand_hourly_v1`. Spark chạy theo job và tự kết thúc; việc không có container Spark thường trực là bình thường. `up -d` trên máy mới chỉ tạo dịch vụ trống, không tự nạp dữ liệu.
+
+## Dữ liệu và cách tiếp tục phát triển
+
+Chuyến chi tiết nằm trong Parquet; HBase chứa số đếm theo vùng–giờ, nhãn và cờ chất lượng. Phân biệt số 0 với thiếu dữ liệu; che nhãn hai ngày DST mỗi năm. Không đọc đệ quy toàn bộ `data/processed`, vì có bản trung gian và tập thử. Dùng loader `src.ingestion.open_dataset` hoặc `src.ingestion.load_split` theo [hợp đồng dữ liệu](docs/DU_LIEU.md).
+
+Giai đoạn tiếp theo là tạo đặc trưng và huấn luyện: so sánh lịch sử 2024 với 2023–2024 trên cùng validation cuối 2024, giữ 2025 làm holdout. Các quyết định về mô hình và đánh giá cần ghi vào [nhật ký quyết định](docs/QUYET_DINH.md). Sau mỗi giai đoạn tạo một bản tổng kết theo [mẫu](docs/tong-ket/MAU_TONG_KET_GIAI_DOAN.md).
+
+## Cấu trúc repo
+
+```text
+configs/          Cấu hình chia tập theo thời gian
+src/              ingestion, processing, storage; models/dashboard chưa triển khai
+tests/            Kiểm thử quy tắc dữ liệu và mã hóa HBase
+scripts/          Các bước nghiệm thu và backup/restore
+docker/           Dockerfile, Compose và cấu hình dịch vụ
+data/             Raw, reference, intermediate, processed (không đưa dữ liệu lên Git)
+artifacts/metrics/ Manifest và bằng chứng kiểm tra nhỏ, được theo dõi bằng Git
+artifacts/models/ Mô hình sinh ra (chưa triển khai, không push)
+docs/             Hướng dẫn hiện hành và kế hoạch
+  tong-ket/       Một file tổng kết cho mỗi giai đoạn
+  lich-su/        Khảo sát/thử nghiệm cũ, không dùng để cài đặt hiện hành
+reports/          Hình, báo cáo và slide cuối kỳ (chưa hoàn thành)
+notebooks/        Dành cho khảo sát khi cần
+```
+
+[Danh mục tài liệu](docs/README.md) giúp chọn đúng hướng dẫn. `.gitkeep` chỉ giữ những thư mục chưa có file được Git theo dõi. Các thư viện ứng dụng dự kiến trong `requirements.txt` chưa phải môi trường dashboard đã nghiệm thu; môi trường hiện dùng `requirements-stage3-windows.txt`, Spark dùng `requirements-spark.txt`.
+
+## Lưu trữ và đóng dịch vụ
+
+`docker compose -p bigdata-hbase -f docker/hbase/compose.yaml stop` giữ volume. Không dùng `down -v` khi còn cần dữ liệu. Docker có thể lưu đĩa ảo trên C dù repo nằm ở D; xem [ghi chú dung lượng](docs/VAN_HANH.md#dung-lượng-và-dọn-dẹp).
+
+Chỉ push code, cấu hình, requirements, tài liệu và metrics nhỏ. `.gitignore` đã loại dữ liệu lớn, `.venv`, `.tools`, cache, log và file Word yêu cầu môn học. Không gửi nguyên venv sang máy khác; tạo lại từ requirements.

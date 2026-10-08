@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-08",
+  "removed_restore_container": "bigdata-hbase-full-restore-hbase-1",
+  "removed_restore_volume": "bigdata-hbase-full-restore_hbase_data",
+  "restored_volume_bytes_approx": 17170000000,
+  "retained_archive": ".tools/hbase-backups/stage3-full.tar",
+  "archive_sha256": "1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7",
+  "verified_archive_before_removal": true,
+  "removed_obsolete_workspace_bytes": 379152813,
+  "docker_vhd_path": "C:\\Users\\ADMIN\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+  "docker_vhd_file_bytes_before": 39321600000,
+  "scope": "Scoped cleanup of verified disposable restore copy and obsolete environments; primary HBase, current venv, all datasets, images and backups retained",
+  "vhd_compacted": false
+}

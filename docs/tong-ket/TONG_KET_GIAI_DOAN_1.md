@@ -23,12 +23,12 @@ Có workspace và Python riêng dùng được để thực thi pipeline. Việc
 
 | File hoặc thư mục | Vai trò / bằng chứng |
 |---|---|
-| [KE_HOACH.md](KE_HOACH.md) | Bài toán, yêu cầu, kiến trúc dự kiến, lịch và hồ sơ nộp |
-| [CAI_DAT.md](CAI_DAT.md) | Cách dùng Python riêng, VSCode và môi trường dự kiến |
-| [QUYET_DINH.md](QUYET_DINH.md) | Quyết định nguồn dữ liệu, Python và PyArrow |
-| [requirements-profile.txt](../requirements-profile.txt) | Phiên bản thư viện xử lý dữ liệu |
-| [.vscode/settings.json](../.vscode/settings.json) | Interpreter workspace và cấu hình editor |
-| [.gitignore](../.gitignore) | Loại dữ liệu/môi trường khỏi Git |
+| [KE_HOACH.md](../KE_HOACH.md) | Bài toán, yêu cầu, kiến trúc dự kiến, lịch và hồ sơ nộp |
+| [CAI_DAT.md](../CAI_DAT.md) | Cách dùng Python riêng, VSCode và môi trường dự kiến |
+| [QUYET_DINH.md](../QUYET_DINH.md) | Quyết định nguồn dữ liệu, Python và PyArrow |
+| [requirements-profile.txt](../../requirements-profile.txt) | Phiên bản thư viện xử lý dữ liệu |
+| [.vscode/settings.json](../../.vscode/settings.json) | Interpreter workspace và cấu hình editor |
+| [.gitignore](../../.gitignore) | Loại dữ liệu/môi trường khỏi Git |
 
 ## 5. Quyết định và lý do
 

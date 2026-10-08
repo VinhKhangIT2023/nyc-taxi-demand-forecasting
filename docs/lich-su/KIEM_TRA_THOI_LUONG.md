@@ -1,3 +1,5 @@
+> Tài liệu lịch sử: giữ để truy vết quyết định/thử nghiệm; không dùng làm hướng dẫn cài đặt hiện hành. Xem [mục lục](../README.md).
+
 # Kết quả khảo sát thời lượng và phương án hoàn tất tập thử
 
 Khảo sát trên 2.952.588 dòng ứng viên sau hai quy tắc đã duyệt: giới hạn tháng theo giờ đón và tách mã vùng 264/265. File nguồn không đổi. Kết quả đầy đủ tại `artifacts/metrics/duration_2024-01.json`.

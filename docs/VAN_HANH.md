@@ -4,6 +4,13 @@ Phạm vi: 36 tháng 2023–2025, 263 vùng, 6.917.952 dòng vùng–giờ. Th�
 
 ## 1. Môi trường
 
+Trên máy mới, sau khi cài Docker và chuẩn bị dữ liệu giai đoạn 2, build image Spark từ thư mục gốc:
+
+```powershell
+docker compose -f docker/spark/compose.yaml build
+New-Item -ItemType Directory -Force data/processed/spark_full_v1 | Out-Null
+```
+
 - Docker Desktop Linux containers đang chạy.
 - Image `bigdata-spark:3.5.7-py311` đã build theo `docker/spark/Dockerfile`; xem README trong thư mục đó nếu cần dựng lại.
 - Windows `.venv` dùng Python 3.13, thư viện trong `requirements-stage3-windows.txt`.
@@ -70,6 +77,18 @@ docker compose -f docker/spark/compose.full.yaml run --rm spark /workspace/src/s
 
 Job kiểm tra 24 point query và 3 range query ở ba năm, gồm đầu/cuối năm và DST; kết quả tại `artifacts/metrics/stage3_services_ready.json`. Đây là kiểm tra sẵn sàng có giới hạn, không thay thế các lượt đối chiếu toàn bộ lúc nghiệm thu. Spark tự kết thúc sau job; không cần một container Spark chạy thường trực. Nếu máy/VM dừng lâu làm phiên ZooKeeper hết hạn, kiểm tra log, khởi động lại HBase và đọc kiểm tra trước khi sử dụng; không xóa volume hoặc nạp lại raw để xử lý lỗi kết nối.
 
-Đưa code, cấu hình Docker, requirements, tài liệu và các JSON metrics nhỏ lên GitHub. `.gitignore` loại dữ liệu lớn, `.venv`, `.tools` (gồm archive), cache và log. Volume Docker nằm ngoài cây repo; không push volume hay image vào Git. Hiếu cần dựng môi trường và chuẩn bị dữ liệu theo hướng dẫn, hoặc nhận archive ngoài Git để phục hồi vào volume riêng.
+Đưa code, cấu hình Docker, requirements, tài liệu và các JSON metrics nhỏ lên GitHub. `.gitignore` loại dữ liệu lớn, `.venv`, `.tools` (gồm archive), cache và log. Volume Docker nằm ngoài cây repo; không push volume hay image vào Git. Người clone repo cần dựng môi trường và chuẩn bị dữ liệu theo hướng dẫn, hoặc nhận archive ngoài Git để phục hồi vào volume riêng.
 
 126.994.028 chuyến chi tiết nằm trong Parquet; HBase chứa toàn bộ lưới theo giờ phục vụ ứng dụng. Mô hình, dashboard và báo cáo Word/PPT cuối kỳ là các giai đoạn tiếp theo.
+
+## Dung lượng và dọn dẹp
+
+Kiểm tra bằng `docker system df -v`. Repo ở D không có nghĩa Docker cũng lưu trên D: trên máy nghiệm thu, đĩa Docker nằm ở `C:\Users\ADMIN\AppData\Local\Docker\wsl\disk\docker_data.vhdx`.
+
+Ngày 08/10/2026, trước dọn dẹp: VHD có kích thước 39.321.600.000 byte, volume chính khoảng 4,07 GB, bản phục hồi thử khoảng 17,17 GB, hai image khoảng 2,04 GB. Trước đó volume chính từng khoảng 16 GiB trong quá trình ghi lặp. Dung lượng VHD là mức đĩa ảo đã mở rộng, không bằng tổng dữ liệu đang dùng; không cộng build cache được chia sẻ với image thêm lần nữa.
+
+Đã kiểm tra SHA256 archive đầy đủ trên D khớp bằng chứng nghiệm thu, rồi xóa đúng container/volume phục hồi thử. HBase chính, container cũ `hbase-demo`, dữ liệu và archive được giữ. Bản phục hồi đã bị dọn, nhưng kết quả nghiệm thu của lần phục hồi vẫn là bằng chứng lịch sử hợp lệ; muốn có bản phục hồi để chạy lại cần giải nén archive vào volume mới.
+
+Xóa volume tạo chỗ trống trong filesystem Linux; kích thước VHD trên C có thể chưa giảm tương ứng. Thu gọn VHD hoặc chuyển nơi lưu Docker sang D là thao tác riêng, phải dừng dịch vụ và dùng công cụ phù hợp của Windows/Docker. Không xóa trực tiếp VHD, không dùng `docker system prune --volumes` để dọn toàn bộ máy. Docker hướng dẫn vị trí lưu dữ liệu và đổi vị trí tại [WSL backend](https://docs.docker.com/desktop/features/wsl/).
+
+Archive `.tools/hbase-backups/stage3-full.tar` chiếm 17,17 GB trên **D**, giữ lại để phục hồi; đây không phải tệp làm ổ C tăng. Bộ Python/venv thử cũ trên D đã được dọn; `.venv` đang dùng và Python 3.13 cài trên Windows vẫn còn.
