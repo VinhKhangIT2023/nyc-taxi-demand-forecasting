@@ -1,0 +1,35 @@
+{
+  "complete": true,
+  "mode": "historical_replay",
+  "tables": {
+    "transport_demand_forecast_v1": {
+      "loaded_rows": 2291256,
+      "load_seconds": 177.67
+    },
+    "transport_demand_summary_v1": {
+      "loaded_rows": 297716,
+      "load_seconds": 8.72
+    }
+  },
+  "started_at_utc": "2026-10-08T14:14:37.935884+00:00",
+  "verification": {
+    "transport_demand_forecast_v1": {
+      "rows": 2291256,
+      "mismatches": 0,
+      "content_sha256": "7945d58e15faba6784a718d18691ed1a9bf92d9a879f65e82facbb8928541036",
+      "point_reads": 3,
+      "elapsed_seconds": 103.23
+    },
+    "transport_demand_summary_v1": {
+      "rows": 297716,
+      "mismatches": 0,
+      "content_sha256": "53b6dfbfa0dfe4bac81ab702802813ed272bae220568b670c27e34eed7060450",
+      "point_reads": 3,
+      "elapsed_seconds": 6.15
+    }
+  },
+  "prepared_sha256": "5170316f3a58ccfe5085430cbdc4d1c6b6b97b08d924c538b128f12ce42ec1dd",
+  "wal": true,
+  "batch_size": 500,
+  "ended_at_utc": "2026-10-08T14:19:35.862984+00:00"
+}

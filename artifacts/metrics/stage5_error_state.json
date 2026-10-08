@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "exceptions": [],
+  "errors": [
+    "Không đọc được dữ liệu đầy đủ. Màn hình không tự thay dữ liệu thiếu bằng 0."
+  ],
+  "scenario": "Unavailable HBase endpoint, no fake data"
+}

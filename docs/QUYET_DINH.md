@@ -40,6 +40,16 @@ Chưa chốt: số tháng dùng cho mô hình, quy tắc làm sạch, môi trư�
 
 Trước mỗi quyết định về dữ liệu, làm sạch, công nghệ hoặc mô hình: nêu vấn đề, các phương án, lý do đề xuất và chờ người dùng chốt trước khi triển khai. Khảo sát phải giữ nguyên dữ liệu gốc; thống kê vấn đề không đồng nghĩa với quyết định loại bản ghi.
 
+## Quyết định 015 — Dashboard giai đoạn 5 có số thực tế kiểm chứng
+
+Ngày 08/10/2026, người dùng yêu cầu “bám sát yêu cầu của file kế hoạch, dự đoán có số liệu để kiểm chứng là oke” và cho phép triển khai giai đoạn 5. Tham khảo dashboard nền tối đã gửi, giữ nguồn 36 tháng và model giai đoạn 4. Không tải 2026, không sửa mô hình hoặc chính sách dữ liệu.
+
+Streamlit theo kiến trúc kế hoạch; 5 trang Tổng quan, Bản đồ, Phân tích vùng, Dự báo & kiểm chứng, Dữ liệu & mô hình. Dự báo một giờ năm 2025 được tính sẵn từ model đã kiểm tra tải lại, nạp vào bảng HBase riêng; dữ liệu thực tế đọc riêng để đối chiếu. Hiển thị rõ phát lại lịch sử, thời gian snapshot và phương án dự phòng; không giả thời gian thực hoặc accuracy phân lớp.
+
+Chi tiết kỹ thuật phục vụ trong phạm vi được duyệt: bảng forecast khóa vùng/giờ đích/model/horizon, nhóm p/q/m, max_versions=1; bảng tổng hợp ngày/tháng có khóa thời gian/vùng để tránh quét toàn lưới trong mỗi lần lọc. Giữ bảng lịch sử nguyên trạng, bật WAL, đối chiếu đầy đủ sau ghi. Xem [DASHBOARD.md](DASHBOARD.md).
+
+Hai video TikTok không truy cập được, đã báo người dùng. Chưa coi các yêu cầu chưa xem được trong video là đã đáp ứng. Áp dụng và kiểm tra các yêu cầu giao diện đã mô tả trong trao đổi: chữ/đơn vị rõ, loading/error/empty, zero/null, nhãn mô phỏng, phạm vi độ đo và màn hình nhỏ.
+
 ## Quyết định 002 — Python riêng trong thư mục dự án
 
 Người dùng đã đồng ý Python 3.11 và yêu cầu có thể xóa cùng dự án. Vì venv cần Python nền, đặt bản CPython độc lập trong `.python/` rồi tạo `.venv/` từ bản đó. Công cụ uv được tải vào `.tools/`, cache chỉ định tại `.uv-cache/`; không đăng ký Python vào Windows registry hoặc thêm executable vào PATH toàn máy.

@@ -1,0 +1,59 @@
+{
+  "complete": true,
+  "hbase_daily_rows_checked": 3682,
+  "monthly_rows_checked": 9468,
+  "monthly_recorded_sum": 126994028,
+  "cases": [
+    {
+      "zone": 161,
+      "day": "2025-01-07",
+      "hours": 24,
+      "valid_forecasts": 24,
+      "methods": {
+        "random_forest": 24
+      }
+    },
+    {
+      "zone": 132,
+      "day": "2025-03-10",
+      "hours": 24,
+      "valid_forecasts": 24,
+      "methods": {
+        "fallback_weekly": 24
+      }
+    },
+    {
+      "zone": 1,
+      "day": "2025-12-31",
+      "hours": 24,
+      "valid_forecasts": 24,
+      "methods": {
+        "random_forest": 24
+      }
+    },
+    {
+      "zone": 263,
+      "day": "2025-01-01",
+      "hours": 24,
+      "valid_forecasts": 24,
+      "methods": {
+        "random_forest": 24
+      }
+    },
+    {
+      "zone": 161,
+      "day": "2025-03-09",
+      "hours": 24,
+      "valid_forecasts": 0,
+      "methods": {}
+    },
+    {
+      "zone": 161,
+      "day": "2025-11-02",
+      "hours": 24,
+      "valid_forecasts": 0,
+      "methods": {}
+    }
+  ],
+  "elapsed_seconds": 0.74
+}

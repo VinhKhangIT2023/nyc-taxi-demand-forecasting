@@ -1,10 +1,2 @@
-# Proposed Windows app/notebook dependencies; not yet integration-tested.
-# Generate requirements-lock.txt only after a successful installation and smoke run.
-pandas>=2.2,<3
-pyarrow>=15,<20
-streamlit>=1.35,<2
-plotly>=5.22,<7
-happybase==1.2.0
-python-dotenv>=1,<2
-ipykernel>=6,<7
-pytest>=8,<9
+# Current validated Windows dashboard environment.
+-r requirements-stage5-windows-lock.txt

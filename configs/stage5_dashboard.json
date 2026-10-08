@@ -1,0 +1,10 @@
+{
+  "version": "dashboard_v1",
+  "hourly_table": "transport_demand_hourly_v1",
+  "forecast_table": "transport_demand_forecast_v1",
+  "summary_table": "transport_demand_summary_v1",
+  "model_version": "stage4_final",
+  "max_days": 31,
+  "timezone": "America/New_York",
+  "geometry_source": "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zones.zip"
+}
