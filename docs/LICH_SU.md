@@ -22,7 +22,7 @@ Gộp từ 8 tài liệu thử nghiệm ngày 08/10/2026 để giảm số file;
 
 ##### Môi trường hiện hành từ 07/10/2026
 
-Người dùng đã duyệt chuyển Python Windows sang bản chính thức có chữ ký do Smart App Control chặn bản standalone cũ. Đã cài **CPython 3.13.16 x64** cho tài khoản người dùng tại `C:\Users\ADMIN\AppData\Local\Programs\Python\Python313\`, không đổi PATH, không gỡ Python 3.14. Bộ cài từ python.org có chữ ký hợp lệ Python Software Foundation; SHA256 `fb4f9f5d438b2396da0086dc70b935c530cb578e37adc6d354f7ad2037fee83b` khớp trang phát hành.
+Người dùng đã duyệt chuyển Python Windows sang bản chính thức có chữ ký do Smart App Control chặn bản standalone cũ. Đã cài **CPython 3.13.16 x64** cho tài khoản người dùng tại `%LOCALAPPDATA%\Programs\Python\Python313\`, không đổi PATH, không gỡ Python 3.14. Bộ cài từ python.org có chữ ký hợp lệ Python Software Foundation; SHA256 `fb4f9f5d438b2396da0086dc70b935c530cb578e37adc6d354f7ad2037fee83b` khớp trang phát hành.
 
 `.venv` hiện được tạo mới bằng Python 3.13.16. Môi trường 3.11 cũ được giữ trong `.tools/venv311-blocked-backup/` chỉ để tham chiếu, không chạy hoặc di chuyển ngược để sử dụng. Python nền cũ `.python/` vẫn còn nhưng không được dùng cho venv hiện hành. Smart App Control giữ bật. Xóa dự án không gỡ Python 3.13 đã cài ngoài dự án; gỡ riêng qua Installed apps nếu không còn dùng.
 
@@ -72,7 +72,7 @@ Mục tiêu tài nguyên để lập kế hoạch, chưa phải số đo máy hi
 
 #### 3. Tạo venv trong VSCode
 
-Mở đúng thư mục `D:\BaiTapVeNha\BigData\DoAn_BigData` bằng File → Open Folder. Mở terminal PowerShell mới rồi chạy từng lệnh:
+Mở đúng thư mục `<PROJECT_ROOT>` bằng File → Open Folder. Mở terminal PowerShell mới rồi chạy từng lệnh:
 
 ```powershell
 py -3.11 --version
@@ -755,5 +755,5 @@ Lệnh nạp từ chối schema bảng khác hoặc khóa/metadata ngoài phạm
 
 ## Các dấu vết thử đã được thay thế
 
-- Việc chuyển đĩa Docker sang D mới ở bước chuẩn bị và đã được người dùng dừng; không coi trạng thái `preparing` là kết quả chuyển thành công. Đĩa Docker vẫn ở C. Bản sao trước khi thử vẫn giữ tại `D:\BaiTapVeNha\BigData\DoAn_BigData\.tools\hbase-backups\before-docker-disk-move.tar`; SHA256 `64281AF68A7ED6E89AACAA08D0CDB8CCFA1693D0EA95DC16456ECF71EF59FA55`. Ba JSON riêng về bước chuẩn bị chuyển đĩa đã được bỏ khỏi metrics vì không thuộc nghiệm thu pipeline.
+- Việc chuyển đĩa Docker sang D mới ở bước chuẩn bị và đã được người dùng dừng; không coi trạng thái `preparing` là kết quả chuyển thành công. Đĩa Docker vẫn ở C. Bản sao trước khi thử vẫn giữ tại `.tools/hbase-backups/before-docker-disk-move.tar`; SHA256 `64281AF68A7ED6E89AACAA08D0CDB8CCFA1693D0EA95DC16456ECF71EF59FA55`. Ba JSON riêng về bước chuẩn bị chuyển đĩa đã được bỏ khỏi metrics vì không thuộc nghiệm thu pipeline.
 - Lần tạo đặc trưng đầu tiên lỗi cast trực tiếp `TIMESTAMP_NTZ` sang `BIGINT`. Đã sửa trong code và kiểm tra thành công; JSON lỗi cũ được bỏ, giữ manifest `stage4_features.json`, kiểm tra cửa sổ và nghiệm thu giai đoạn 4.

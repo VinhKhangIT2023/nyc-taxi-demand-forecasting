@@ -48,4 +48,4 @@ Năm 2025 có 545.589 dòng thời lượng không dương được cách ly (54
 
 ## 7. Công việc tiếp theo
 
-Dữ liệu và cấu hình chia tập đã sẵn sàng. Các phần còn lại của dự án gồm tích hợp Spark/HBase, đặc trưng và mô hình, dashboard, báo cáo/slide/demo; chưa coi các phần này là hoàn thành. Không cộng lại tập thử tháng 01/2024 khi đọc dữ liệu cả năm. Hướng mở rộng lịch sử chỉ được kết luận sau thực nghiệm validation.
+Dữ liệu và cấu hình chia tập đã sẵn sàng. Các phần còn lại của dự án gồm tích hợp Spark/HBase, đặc trưng và mô hình, dashboard, demo; chưa coi các phần này là hoàn thành. Không cộng lại tập thử tháng 01/2024 khi đọc dữ liệu cả năm. Hướng mở rộng lịch sử chỉ được kết luận sau thực nghiệm validation.

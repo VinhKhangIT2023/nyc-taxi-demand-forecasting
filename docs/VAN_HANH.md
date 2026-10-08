@@ -83,11 +83,11 @@ Job kiểm tra 24 point query và 3 range query ở ba năm, gồm đầu/cuối
 
 Đưa code, cấu hình Docker, requirements, tài liệu và các JSON metrics nhỏ lên GitHub. `.gitignore` loại dữ liệu lớn, `.venv`, `.tools` (gồm archive), cache và log. Volume Docker nằm ngoài cây repo; không push volume hay image vào Git. Người clone repo cần dựng môi trường và chuẩn bị dữ liệu theo hướng dẫn, hoặc nhận archive ngoài Git để phục hồi vào volume riêng.
 
-126.994.028 chuyến chi tiết nằm trong Parquet; HBase chứa toàn bộ lưới theo giờ phục vụ ứng dụng. Mô hình và dashboard đã hoàn thành; xem [MO_HINH.md](MO_HINH.md) và [DASHBOARD.md](DASHBOARD.md). Báo cáo Word/PPT cuối kỳ thuộc giai đoạn 6.
+126.994.028 chuyến chi tiết nằm trong Parquet; HBase chứa toàn bộ lưới theo giờ phục vụ ứng dụng. Mô hình và dashboard đã hoàn thành; xem [MO_HINH.md](MO_HINH.md) và [DASHBOARD.md](DASHBOARD.md).
 
 ## Dung lượng và dọn dẹp
 
-Kiểm tra bằng `docker system df -v`. Repo ở D không có nghĩa Docker cũng lưu trên D: trên máy nghiệm thu, đĩa Docker nằm ở `C:\Users\ADMIN\AppData\Local\Docker\wsl\disk\docker_data.vhdx`.
+Kiểm tra bằng `docker system df -v`. Repo ở D không có nghĩa Docker cũng lưu trên D: trên máy nghiệm thu, đĩa Docker nằm ở `%LOCALAPPDATA%\Docker\wsl\disk\docker_data.vhdx`.
 
 Ngày 08/10/2026, trước dọn dẹp: VHD có kích thước 39.321.600.000 byte, volume chính khoảng 4,07 GB, bản phục hồi thử khoảng 17,17 GB, hai image khoảng 2,04 GB. Trước đó volume chính từng khoảng 16 GiB trong quá trình ghi lặp. Dung lượng VHD là mức đĩa ảo đã mở rộng, không bằng tổng dữ liệu đang dùng; không cộng build cache được chia sẻ với image thêm lần nữa.
 

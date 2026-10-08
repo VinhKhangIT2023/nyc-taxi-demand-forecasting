@@ -14,6 +14,8 @@
   "spark_version": "3.5.7",
   "linux_python": "3.11.17",
   "numpy_linux": "1.26.4",
-  "temp_and_output_root": "D:\\BaiTapVeNha\\BigData\\DoAn_BigData",
-  "resource_measurement": "snapshot only, not peak or cluster benchmark"
+  "temp_and_output_root": "<PROJECT_ROOT>",
+  "resource_measurement": "snapshot only, not peak or cluster benchmark",
+  "publication_note": "Machine-specific paths normalized for publication; measured results unchanged.",
+  "original_report_sha256": "244bc1310030965d8f5ee029be04bd9b6038d92523e7029930f061a4243245c5"
 }

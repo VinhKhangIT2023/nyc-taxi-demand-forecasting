@@ -50,7 +50,7 @@ Phương án và dự phòng đã được người dùng duyệt, ghi quyết �
 
 RF tốt nhất với 2024 có MAE validation 3.530719; thêm 2023 đạt 3.508892, cải thiện 0.62%. Lợi ích lịch sử bổ sung nhỏ trong ba fold này; chưa kiểm định ý nghĩa thống kê và không suy ra càng thêm nhiều năm càng tốt. Năm 2025 chỉ đánh giá phương án đã khóa.
 
-Các nhãn đã làm sạch hồi cứu, nguồn TLC không có tính sẵn có thời gian thực. Loại ngày DST khỏi nhãn test và công bố các dự báo dự phòng. Đánh giá một bước dùng giờ thực đã kết thúc, không chứng minh dự báo 24 giờ. Spark chạy một máy; chưa có khoảng bất định. Báo cáo Word/PPT hoàn chỉnh thuộc giai đoạn 6.
+Các nhãn đã làm sạch hồi cứu, nguồn TLC không có tính sẵn có thời gian thực. Loại ngày DST khỏi nhãn test và công bố các dự báo dự phòng. Đánh giá một bước dùng giờ thực đã kết thúc, không chứng minh dự báo 24 giờ. Spark chạy một máy; chưa có khoảng bất định.
 
 Giai đoạn 5: tích hợp truy vấn lịch sử và dự báo vào HBase/Streamlit, chọn mốc lịch sử phát lại, hiển thị model/version/nguồn dự phòng và sai số. Không cần tải hoặc làm sạch lại dataset.
 

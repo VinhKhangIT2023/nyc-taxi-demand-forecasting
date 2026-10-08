@@ -65,14 +65,15 @@ Tổng hợp nhỏ và cache 300 giây tránh quét toàn bộ lưới theo gi�
 - Hai video TikTok không truy cập được: đã báo người dùng, không tuyên bố đạt các lỗi cụ thể chưa xem. Đã kiểm tra các yêu cầu UI rõ ràng được mô tả trong trao đổi.
 - Dữ liệu/model/volume không nằm trong Git; máy clone phải làm các giai đoạn chuẩn bị theo hướng dẫn. Nếu nguồn mới cần phiên bản và nghiệm thu mới, không ghi đè bằng chứng cũ.
 
-## 7. Công việc của giai đoạn 6
+## 7. Sử dụng và phát triển tiếp
 
-Ứng dụng chạy tại http://127.0.0.1:8501. HBase volume giữ lịch sử, dự báo, tổng hợp. Code, config, lock, metrics và hướng dẫn có thể đưa lên Git; không tự commit/push.
+Ứng dụng chạy tại http://127.0.0.1:8501. Volume HBase giữ lịch sử, dự báo và tổng hợp. Máy mới cần chuẩn bị dataset, model và bảng phục vụ theo [hướng dẫn dashboard](../DASHBOARD.md).
 
-Giai đoạn 6 còn: viết báo cáo Word cuối kỳ theo yêu cầu môn học, PPT, sơ đồ kiến trúc, ảnh/chứng cứ demo, đối chiếu rubric, thông tin đóng góp được xác nhận, hướng dẫn và kiểm tra bộ nộp trên máy khác. Không coi Word giải thích đã tạo rồi xóa ở cuộc trao đổi trước là báo cáo cuối kỳ đã nộp. Chỉ bổ sung tính năng lớn nếu được chốt riêng.
+Phạm vi dashboard đã hoàn thành. Khi mở rộng, cần đo độ trễ và tải nhiều người dùng, đánh giá dữ liệu mới theo phiên bản riêng hoặc kiểm thử triển khai trên máy khác. Dự báo nhiều bước, nguồn trực tiếp và cache dùng chung là hướng phát triển, chưa phải kết quả đã kiểm chứng.
 
 ## Lịch sử cập nhật
 
 - 08/10/2026: nghiệm thu giai đoạn 5 sau đối chiếu lại HBase và kiểm thử Web.
 - 08/10/2026: bổ sung Light/Dark native qua menu ⋮, cấu hình cả hai nền và màu biểu đồ nhất quán; sidebar bổ sung phạm vi dữ liệu, chỉ số kiểm chứng và hướng dẫn nhanh. Kiểm tra bổ sung ghi trong mục `appearance` của `stage5_browser.json`; dữ liệu và mô hình giữ nguyên.
 - 09/10/2026: gom lock/danh sách thư viện Windows vào `requirements/`, giữ điểm cài đặt `requirements.txt`, bỏ hai danh sách bổ sung stage 4/5 trùng chức năng với lock. Cập nhật đường dẫn trong tài liệu và công cụ kiểm chứng; nội dung lock, phiên bản, dữ liệu và model giữ nguyên.
+- 09/10/2026: chỉnh tài liệu công khai, bổ sung sơ đồ SVG và tách hồ sơ cá nhân khỏi Git; dữ liệu và model giữ nguyên.

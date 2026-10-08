@@ -7,7 +7,7 @@
   "archive_sha256": "1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7",
   "verified_archive_before_removal": true,
   "removed_obsolete_workspace_bytes": 379152813,
-  "docker_vhd_path": "C:\\Users\\ADMIN\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+  "docker_vhd_path": "%LOCALAPPDATA%\\Docker\\wsl\\disk\\docker_data.vhdx",
   "docker_vhd_file_bytes_before": 39321600000,
   "scope": "Scoped cleanup of verified disposable restore copy and obsolete environments; primary HBase, current venv, all datasets, images and backups retained",
   "vhd_compacted": false,
@@ -16,25 +16,25 @@
     "removed_file_count": 56,
     "removed_bytes": 520781,
     "removed_paths": [
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\CAI_DAT_CU.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\DU_LIEU_2023.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\DU_LIEU_THU_NGHIEM_V1.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\GIAI_DOAN_3.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\KHAO_SAT_DU_LIEU.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\KIEM_TRA_MA_VUNG.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\KIEM_TRA_THOI_LUONG.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\docs\\lich-su\\THIET_KE_HBASE_THU.md",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\artifacts\\metrics\\docker_before_storage_move.json",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\artifacts\\metrics\\docker_storage_move.json",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\artifacts\\metrics\\docker_storage_move_backup.json",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\artifacts\\metrics\\stage4_features_failed_ntz.json",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\src\\ingestion\\__pycache__",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\src\\models\\__pycache__",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\src\\processing\\__pycache__",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\src\\storage\\__pycache__",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\tests\\__pycache__",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\.tools\\stage4-smoke",
-      "D:\\BaiTapVeNha\\BigData\\DoAn_BigData\\.tools\\stage4-tmp"
+      "docs/lich-su/CAI_DAT_CU.md",
+      "docs/lich-su/DU_LIEU_2023.md",
+      "docs/lich-su/DU_LIEU_THU_NGHIEM_V1.md",
+      "docs/lich-su/GIAI_DOAN_3.md",
+      "docs/lich-su/KHAO_SAT_DU_LIEU.md",
+      "docs/lich-su/KIEM_TRA_MA_VUNG.md",
+      "docs/lich-su/KIEM_TRA_THOI_LUONG.md",
+      "docs/lich-su/THIET_KE_HBASE_THU.md",
+      "artifacts/metrics/docker_before_storage_move.json",
+      "artifacts/metrics/docker_storage_move.json",
+      "artifacts/metrics/docker_storage_move_backup.json",
+      "artifacts/metrics/stage4_features_failed_ntz.json",
+      "src/ingestion/__pycache__",
+      "src/models/__pycache__",
+      "src/processing/__pycache__",
+      "src/storage/__pycache__",
+      "tests/__pycache__",
+      ".tools/stage4-smoke",
+      ".tools/stage4-tmp"
     ],
     "combined_history": "docs/LICH_SU.md",
     "original_document_sha256": {
@@ -62,5 +62,7 @@
       "code/config/tests",
       "HBase-Demo"
     ]
-  }
+  },
+  "publication_note": "Machine-specific paths normalized for publication; measured results unchanged.",
+  "original_report_sha256": "bfb6d7d29a84d64a3efd98921ccbc5cc3ddd72864e405e0cfafb8bb87053ea56"
 }

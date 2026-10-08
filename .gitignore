@@ -61,6 +61,13 @@ backups/
 docker-data/
 
 # Office temporary files and OS metadata
+*.doc
+*.docx
+*.ppt
+*.pptx
+reports/report/
+reports/slides/
+docs/NHAT_KY_NHOM.md
 ~$*
 Thumbs.db
 .DS_Store

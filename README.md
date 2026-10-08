@@ -34,16 +34,11 @@ Pipeline giữ raw, lưu checksum và cách ly các dòng ngoài tháng nguồn,
 
 ## Kiến trúc
 
-```mermaid
-flowchart LR
-    TLC[NYC TLC · Parquet theo tháng] --> ETL[Làm sạch và kiểm tra]
-    ETL --> Spark[Spark · tổng hợp vùng–giờ]
-    Spark --> Hourly[Parquet theo giờ]
-    Hourly --> ML[Spark ML · baseline và Random Forest]
-    Hourly --> HBase[HBase · lịch sử, dự báo, tổng hợp]
-    ML --> HBase
-    HBase --> Web[Streamlit dashboard]
-```
+![Kiến trúc xử lý dữ liệu và phục vụ dự báo](docs/assets/architecture.svg)
+
+Luồng batch tạo dữ liệu và dự báo trước; dashboard truy vấn HBase theo vùng/thời gian. Nhãn thực tế được đọc riêng khi kiểm chứng. Chi tiết chuyến vẫn nằm trong Parquet.
+
+Có thể tạo lại sơ đồ kiến trúc bằng `.\.venv\Scripts\python.exe scripts/render_readme_diagrams.py`; [mã vẽ sơ đồ](scripts/render_readme_diagrams.py) chỉ dùng thư viện chuẩn Python.
 
 | Thành phần | Vai trò |
 |---|---|
@@ -74,14 +69,13 @@ MAE giảm **27,61%** so với baseline. WAPE là tỷ lệ sai số tổng hợ
 
 ## Tiến độ
 
-| Giai đoạn | Nội dung | Trạng thái |
-|---|---|---|
-| [1](docs/tong-ket/TONG_KET_GIAI_DOAN_1.md) | Môi trường, khảo sát và chọn nguồn dữ liệu | Hoàn thành |
-| [2](docs/tong-ket/TONG_KET_GIAI_DOAN_2.md) | Làm sạch 36 tháng, chuẩn hóa schema, tạo lưới giờ | Hoàn thành |
-| [3](docs/tong-ket/TONG_KET_GIAI_DOAN_3.md) | Spark, HBase, đối chiếu dữ liệu, sao lưu/phục hồi | Hoàn thành |
-| [4](docs/tong-ket/TONG_KET_GIAI_DOAN_4.md) | Đặc trưng, baseline, Random Forest và đánh giá | Hoàn thành |
-| [5](docs/tong-ket/TONG_KET_GIAI_DOAN_5.md) | Dashboard và kiểm chứng dự báo | Hoàn thành |
-| 6 | Báo cáo Word, slide, sơ đồ và hồ sơ nộp đồ án | Chưa hoàn thành |
+| Giai đoạn | Nội dung | Trạng thái | Tài liệu |
+|---|---|---|---|
+| 1 | Môi trường, khảo sát và chọn nguồn dữ liệu | ✅ Hoàn thành | [Tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_1.md) · [Cài đặt](docs/CAI_DAT.md) |
+| 2 | Làm sạch 36 tháng, chuẩn hóa schema, tạo lưới giờ | ✅ Hoàn thành | [Tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_2.md) · [Dữ liệu](docs/DU_LIEU.md) |
+| 3 | Spark, HBase, đối chiếu dữ liệu, sao lưu/phục hồi | ✅ Hoàn thành | [Tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_3.md) · [Vận hành](docs/VAN_HANH.md) |
+| 4 | Đặc trưng, baseline, Random Forest và đánh giá | ✅ Hoàn thành | [Tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_4.md) · [Mô hình](docs/MO_HINH.md) |
+| 5 | Dashboard và kiểm chứng dự báo | ✅ Hoàn thành | [Tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_5.md) · [Dashboard](docs/DASHBOARD.md) |
 
 Mỗi giai đoạn có bản tổng kết về phạm vi, công việc, kết quả, bằng chứng và hạn chế. [Kế hoạch đầy đủ](docs/KE_HOACH.md).
 
@@ -140,27 +134,22 @@ docker compose -p bigdata-hbase -f docker/hbase/compose.yaml stop
 
 Bằng chứng: [dữ liệu](artifacts/metrics/stage2_acceptance.json), [Spark/HBase](artifacts/metrics/stage3_full_acceptance.json), [mô hình](artifacts/metrics/stage4_acceptance.json), [dashboard](artifacts/metrics/stage5_acceptance.json). Đây là kết quả của lần thực nghiệm được lưu trong repo; xác minh trên máy mới cần chạy các bước tương ứng.
 
-## Cấu trúc repository
+## Các thư mục và chức năng
 
 ```text
-configs/                 Cấu hình chia tập, mô hình và dashboard
-src/
-  ingestion/             Tải, khảo sát và đọc dữ liệu
-  processing/            Làm sạch, chuẩn hóa và tổng hợp Python/Spark
-  storage/               Mã hóa, nạp và kiểm tra HBase
-  models/                Đặc trưng, huấn luyện, đánh giá và biểu đồ
-  dashboard/             Streamlit và truy vấn dữ liệu
-scripts/                 Lệnh chạy giai đoạn và kiểm tra phục hồi
-tests/                   Kiểm thử dữ liệu, lưu trữ, mô hình và Web
-docker/                  Dockerfile, Compose và cấu hình dịch vụ
-data/                    Dataset cục bộ; bị Git bỏ qua
-artifacts/metrics/       Manifest và bằng chứng thực nghiệm nhỏ
-artifacts/models/        Model sinh khi huấn luyện; bị Git bỏ qua
-reports/                 Biểu đồ kết quả, báo cáo và slide
-docs/                    Hướng dẫn, kế hoạch, quyết định và tổng kết
-.streamlit/              Cấu hình giao diện/máy chủ Web
-.vscode/                 Cấu hình editor dùng đường dẫn tương đối
-requirements/            Lock Windows hiện hành và môi trường thực nghiệm trước
+nyc-taxi-demand-forecasting/
+├── src/            Mã nguồn thu thập, xử lý, lưu trữ, mô hình và Web
+├── configs/        Cấu hình dữ liệu, chia tập, mô hình và dashboard
+├── scripts/        Lệnh chạy pipeline, kiểm tra và phục hồi dữ liệu
+├── tests/          Kiểm thử dữ liệu, lưu trữ, mô hình và dashboard
+├── docker/         Dockerfile, Compose và cấu hình Spark/HBase
+├── requirements/   Danh sách và phiên bản thư viện Python đã khóa
+├── docs/           Hướng dẫn, quyết định, tổng kết giai đoạn và sơ đồ
+├── artifacts/      metrics/: kết quả thực nghiệm; models/: model cục bộ
+├── reports/        figures/: biểu đồ kết quả được chọn để công bố
+├── data/           Dataset gốc, tham chiếu, trung gian và sau xử lý
+├── .streamlit/     Cấu hình giao diện và máy chủ Web
+└── .vscode/        Cấu hình interpreter và môi trường làm việc VSCode
 ```
 
 ## Tài liệu
@@ -172,11 +161,11 @@ requirements/            Lock Windows hiện hành và môi trường thực ngh
 | Docker, Spark/HBase, nạp và phục hồi | [VAN_HANH.md](docs/VAN_HANH.md) |
 | Đặc trưng, mô hình, đánh giá | [MO_HINH.md](docs/MO_HINH.md) |
 | Chạy Web và kịch bản demo | [DASHBOARD.md](docs/DASHBOARD.md) |
-| Kế hoạch sáu giai đoạn | [KE_HOACH.md](docs/KE_HOACH.md) |
+| Kế hoạch triển khai | [KE_HOACH.md](docs/KE_HOACH.md) |
 | Lý do lựa chọn kỹ thuật | [QUYET_DINH.md](docs/QUYET_DINH.md) |
 | Tổng kết từng giai đoạn | [docs/tong-ket/](docs/tong-ket/) |
 
-`docs/LICH_SU.md` lưu thử nghiệm trước đây, không dùng để khởi tạo hiện hành. `docs/NHAT_KY_NHOM.md` dành cho ghi đóng góp thực tế của đồ án.
+`docs/LICH_SU.md` lưu thử nghiệm trước đây, không dùng để khởi tạo hiện hành. Hồ sơ môn học và nhật ký cá nhân được giữ cục bộ, tách khỏi tài liệu công khai.
 
 ## File cục bộ và đầu ra sinh tự động
 
@@ -191,8 +180,9 @@ requirements/            Lock Windows hiện hành và môi trường thực ngh
 | `__pycache__/`, cache, log | Sinh khi chạy chương trình |
 | `.tools/` | Công cụ/file tạm cục bộ; backup tạo từ volume nguồn |
 | Docker image/container/volume | Build/run Compose; volume cần nạp hoặc phục hồi |
+| File Word/PowerPoint, `reports/report/`, `reports/slides/` | Hồ sơ riêng, giữ cục bộ; không cần để chạy ứng dụng |
 
-Giữ **`docker/`, `.streamlit/`, code, configs và requirements** trên Git vì cần chạy lại. Giữ JSON/CSV kết quả nhỏ và biểu đồ được chọn để người đọc kiểm tra thực nghiệm; có thể sinh lại nhưng chúng không phải file rác. `.gitkeep` chỉ giữ các thư mục trống cần cho dữ liệu/model/báo cáo.
+Giữ **`docker/`, `.streamlit/`, code, configs và requirements** trên Git vì cần chạy lại. Giữ JSON/CSV kết quả nhỏ và biểu đồ được chọn để người đọc kiểm tra thực nghiệm; có thể sinh lại nhưng chúng không phải file rác. `.gitkeep` chỉ giữ các thư mục trống cần cho dữ liệu/model/biểu đồ.
 
 Hai điểm cài đặt chính: `requirements.txt` cho Windows/Web (trỏ tới lock trong `requirements/`) và `requirements-spark.txt` cho Linux trong Docker. Không gộp hai môi trường này. `requirements/` giữ nguyên các phiên bản đã kiểm thử cho xử lý dữ liệu và mô hình trước đây; cài toàn bộ ứng dụng chỉ cần `pip install -r requirements.txt`.
 

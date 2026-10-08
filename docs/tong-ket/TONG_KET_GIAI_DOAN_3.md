@@ -69,8 +69,8 @@ Bản sao lưu dùng volume đã dừng sạch và được kiểm tra trên vol
 - Nạp bảng lớn không có giao dịch nguyên tử cho toàn bộ tập; khi gián đoạn phải nạp lại và đối chiếu trước khi sử dụng.
 - Backup nằm trên cùng máy; chưa có bản lưu ngoài máy. Bản HBase không thay thế backup Parquet hoặc bảng `users` của container cũ.
 - HappyBase có cảnh báo `pkg_resources` deprecated; setuptools đã khóa 80.9.0 và các phép kiểm tra hiện hành vẫn chạy được.
-- Đã tái lập môi trường bằng container/volume mới trên máy hiện tại; chưa kiểm thử trên máy của Hiếu.
-- Chưa huấn luyện mô hình, làm dashboard hoặc hoàn tất Word/PPT cuối kỳ.
+- Đã tái lập môi trường bằng container/volume mới trên máy hiện tại; chưa kiểm thử trên máy khác.
+- Tại mốc giai đoạn 3, chưa huấn luyện mô hình hoặc làm dashboard.
 
 ## 7. Công việc tiếp theo
 

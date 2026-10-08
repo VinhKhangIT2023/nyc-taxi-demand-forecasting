@@ -119,7 +119,7 @@ Lỗi thử ban đầu TIMESTAMP_NTZ được sửa bằng phép cast timestamp 
 - Model và baseline có MAE/RMSE/WAPE; WAPE null khi tổng nhãn bằng 0, không tạo số sai.
 - Model nạp lại dự báo giống model trước lưu trên mẫu kiểm tra; lưu seed, phiên bản, checksum nguồn, tham số, thời gian và tài nguyên.
 - Có predictions để giai đoạn 5 dùng, giới hạn lịch sử phát lại được mô tả rõ.
-- File tổng kết riêng ghi kết quả thật và hạn chế. Giai đoạn 4 hoàn thành khi các bằng chứng đạt; báo cáo Word/PPT hoàn chỉnh ở giai đoạn 6.
+- File tổng kết riêng ghi kết quả thật và hạn chế. Giai đoạn 4 hoàn thành khi các bằng chứng đạt.
 
 ## Tài liệu kỹ thuật
 
