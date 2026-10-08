@@ -40,6 +40,12 @@ Kịch bản: vùng 161, 07/01/2025, 12:00; xem lịch sử trước mốc, dự
 
 ## Thiết kế phục vụ và giới hạn truy vấn
 
+### Giao diện sáng/tối và sidebar
+
+Mở menu **⋮** ở góc trên bên phải, chọn **Light** hoặc **Dark** (hoặc **System** để theo thiết bị). Hai theme native được cấu hình trong `.streamlit/config.toml`; màu chuỗi biểu đồ giữ nhất quán và đủ tương phản trên cả hai nền. Chuyển trang bằng menu điều hướng trong ứng dụng. Streamlit lưu lựa chọn theo đường dẫn mở app; mở một deep link trực tiếp có thể dùng lựa chọn riêng của đường dẫn đó.
+
+Sidebar có trạng thái HBase/nút kiểm tra lại, hướng dẫn đổi theme, phạm vi 36 tháng/263 vùng/số chuyến sạch, chỉ số kiểm chứng toàn test và hướng dẫn nhanh thu gọn. Không dùng số liệu của bộ lọc làm chỉ số toàn tập test.
+
 | Bảng | Khóa dòng | Nội dung |
 |---|---|---|
 | `transport_demand_hourly_v1` | `ZZZ#YYYYMMDDHH` | Lịch sử/cờ chất lượng có sẵn; giữ nguyên |
@@ -53,6 +59,8 @@ Prepare đọc Parquet đã được Spark nghiệm thu, kiểm tra SHA256, tạ
 Lịch sử một vùng tối đa 744 giờ; tổng hợp ngày tối đa 8.153 dòng; tổng hợp tháng 9.468 dòng; bản đồ dùng 263 point reads. Cache dữ liệu 300 giây, trạng thái 60 giây. Nút kiểm tra lại xóa cache; không biến lỗi HBase thành dữ liệu giả. App chỉ lắng nghe localhost, không mở ra Internet.
 
 ## Kiểm tra và bằng chứng
+
+Redis chưa được thêm: demo hiện chạy một tiến trình, đã có cache Streamlit và bảng HBase phục vụ nhỏ. Cân nhắc Redis khi cần cache chung cho nhiều tiến trình/người dùng và đã đo được nút thắt đọc. Redis bổ sung không làm tăng độ chính xác mô hình; cần thiết kế TTL/invalidation theo phiên bản nguồn nếu triển khai sau. Bản đồ dùng SVG thay WebGL sau khi phát hiện lỗi Map error trong kiểm thử thay kích thước; giữ đủ 263 polygon chính thức và hover xem số đếm.
 
 Unit tests kiểm tra phạm vi, zero/null, DST, metric trên cùng tập hợp lệ, trường hợp WAPE không xác định, khóa qua năm và payload forecast không chứa nhãn. Kiểm thử ứng dụng dùng HBase thật; kiểm tra các trang, đổi vùng/ngày, CSV, lỗi kết nối và màn hình nhỏ. Bằng chứng tại `artifacts/metrics/stage5_*.json`; bản tổng kết riêng ghi kết quả thực tế sau nghiệm thu.
 

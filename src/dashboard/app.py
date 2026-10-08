@@ -19,11 +19,11 @@ from src.dashboard import service as api
 st.set_page_config(page_title='NYC Taxi Demand', page_icon='🚕', layout='wide')
 st.html('''<style>
 [data-testid="stMainBlockContainer"]{max-width:1440px;padding-top:5rem;padding-bottom:3rem}
-[data-testid="stMetric"]{background:#222a36;border:1px solid #354052;border-radius:18px;padding:18px;min-height:130px}
+[data-testid="stMetric"]{background:rgba(128,128,128,.06);border:1px solid rgba(128,128,128,.25);border-radius:18px;padding:18px;min-height:130px}
 [data-testid="stMetricValue"]{font-variant-numeric:tabular-nums}
-[data-testid="stMetricLabel"]{color:#c0cada}
+[data-testid="stMetricLabel"]{opacity:.85}
 h1{letter-spacing:-.04em}h2,h3{letter-spacing:-.025em}
-button:focus-visible,a:focus-visible{outline:2px solid #bdff47!important;outline-offset:3px}
+button:focus-visible,a:focus-visible{outline:2px solid currentColor!important;outline-offset:3px}
 @media(max-width:700px){[data-testid="stMainBlockContainer"]{padding:4.8rem 1rem 2rem} [data-testid="stMetric"]{min-height:100px;padding:14px}}
 </style>''')
 
@@ -61,16 +61,11 @@ def fmt(value, decimals=0):
 
 
 def chart(fig, key):
-    for index,trace in enumerate(fig.data):
-        color=['#BDFF47','#9DB7FF','#FFBE6F'][index%3]
-        if trace.type=='scatter':trace.update(line_color=color,marker_color=color)
-        elif trace.type=='bar':trace.update(marker_color=color)
-    fig.update_layout(template='plotly_dark', paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)', font=dict(family='Segoe UI, Arial',size=13,color='#EEF1F6'),
+    # Native frontend theming updates charts immediately without a Python rerun.
+    fig.update_layout(template='streamlit', paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)', font=dict(family='Segoe UI, Arial',size=13),
         margin=dict(l=16,r=16,t=20,b=25), legend=dict(orientation='h',y=1.14),
-        hovermode='x unified', colorway=['#BDFF47','#9DB7FF','#FFBE6F'],
-        height=370, yaxis=dict(gridcolor='#354052',rangemode='tozero'),
-        xaxis=dict(gridcolor='#354052'))
+        hovermode='x unified', height=370, yaxis=dict(rangemode='tozero'))
     st.plotly_chart(fig, width='stretch', key=key,
         config={'displaylogo':False,'scrollZoom':False,'toImageButtonOptions':{'format':'png'}})
 
@@ -145,14 +140,14 @@ def map_page():
     if not path.exists():st.error('Chưa có ranh giới vùng chính thức. Chạy bước Geometry.');st.stop()
     geometry=json.loads(path.read_text(encoding='utf-8'))
     if frame.dst.any():st.warning('Ngày đổi giờ DST: giữ số đếm để mô tả; không dùng làm nhãn đánh giá model.')
-    fig=go.Figure(go.Choroplethmap(geojson=geometry,featureidkey='properties.zone',
+    fig=go.Figure(go.Choropleth(geojson=geometry,featureidkey='properties.zone',
         locations=frame.zone,z=frame.recorded,customdata=frame[['Zone','Borough']].to_numpy(),
-        colorscale=[[0,'#243342'],[0.25,'#497452'],[0.65,'#87BE45'],[1,'#BDFF47']],
-        marker_line_color='#8B99AC',marker_line_width=0.5,colorbar=dict(title='Lượt đón/giờ'),
+        colorscale=[[0,'#EDF3EA'],[0.25,'#A4C695'],[0.65,'#609944'],[1,'#347A25']],
+        marker_line_color='#8B99AC',marker_line_width=0.5,colorbar=dict(title='Lượt/giờ',thickness=12,len=0.75),
         hovertemplate='Vùng %{location} · %{customdata[0]}<br>%{customdata[1]}<br>%{z} lượt đón<extra></extra>'))
-    fig.update_layout(map=dict(style={'version':8,'sources':{},'layers':[{'id':'background','type':'background','paint':{'background-color':'#141922'}}]},
-        center=dict(lat=40.70,lon=-73.94),zoom=9.2),height=580,margin=dict(l=0,r=0,t=0,b=0),
-        paper_bgcolor='#141922',font=dict(color='#EEF1F6',size=13))
+    fig.update_layout(template='streamlit',geo=dict(visible=False,fitbounds='locations',projection_type='mercator',bgcolor='rgba(0,0,0,0)'),
+        height=500,margin=dict(l=0,r=0,t=0,b=0),
+        paper_bgcolor='rgba(0,0,0,0)',font=dict(size=13))
     st.plotly_chart(fig,width='stretch',key='zone_map',config={'displaylogo':False,'scrollZoom':False})
     st.caption(f'{day:%d/%m/%Y} · {hour:02d}:00–{hour+1:02d}:00 · Ranh giới chính thức NYC TLC · Có vùng Newark Airport ngoài NYC')
     st.dataframe(frame[['zone','Zone','Borough','recorded','dst','missing']].sort_values('recorded',ascending=False),
@@ -284,13 +279,27 @@ def information():
 st.caption('NYC TAXI DEMAND  /  PHÂN TÍCH & DỰ BÁO')
 st.caption('Dữ liệu lịch sử 2023–2025 · Giờ địa phương New York · Dự báo được kiểm chứng trên 2025')
 with st.sidebar:
-    st.markdown('### NYC Taxi Demand')
+    st.markdown('### 🚕 NYC Taxi Demand')
     st.caption('Spark · HBase · Random Forest')
     if st.button('Kiểm tra lại kết nối',width='stretch'):
         health.clear();cached.clear();st.rerun()
     checked(health)
     st.success('HBase đã kết nối')
-    st.caption('Dữ liệu thật · Phát lại lịch sử\nKhông có nguồn trực tiếp')
+    st.caption('Sáng / tối: mở **⋮ → Light / Dark** ở góc trên bên phải.')
+    with st.container(border=True):
+        st.markdown('**Phạm vi dữ liệu**')
+        st.write('2023–2025 · 36 tháng · 263 vùng')
+        st.caption('126.994.028 chuyến sau làm sạch')
+    with st.container(border=True):
+        st.markdown('**Kiểm chứng năm 2025**')
+        st.write('MAE **3,85** · WAPE **18,46%**')
+        st.caption('2.291.256 nhãn vùng–giờ · RF + dự phòng')
+        st.caption('MAE: lượt/giờ/vùng · WAPE: sai số')
+    with st.expander('Cách dùng nhanh'):
+        st.write('**1.** Tổng quan hoặc Bản đồ: xem lượt đón theo thời gian và khu vực.')
+        st.write('**2.** Dự báo & kiểm chứng: chọn giờ năm 2025, mở số thực tế rồi xem sai số.')
+        st.caption('Giờ địa phương: America/New_York. Ngày DST giữ số đếm nhưng không dùng làm nhãn đánh giá.')
+    st.caption('Phát lại lịch sử · Dự báo một giờ\n\nDữ liệu chưa cập nhật trực tiếp.')
 pages=[st.Page(overview,title='Tổng quan',url_path='tong-quan',default=True),
        st.Page(map_page,title='Bản đồ',url_path='ban-do'),
        st.Page(analysis,title='Phân tích vùng',url_path='phan-tich'),

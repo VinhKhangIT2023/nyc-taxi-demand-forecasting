@@ -14,7 +14,7 @@ from src.dashboard.service import ROOT
 
 def main():
     evidence={}
-    for name in ['stage5_prepared.json','stage5_storage.json','stage5_queries.json',
+    for name in ['stage5_prepared.json','stage5_storage.json','stage5_storage_recheck.json','stage5_queries.json',
                  'stage5_geometry.json','stage5_browser.json','stage5_error_state.json']:
         path=ROOT/'artifacts/metrics'/name
         item=json.loads(path.read_text(encoding='utf-8'))

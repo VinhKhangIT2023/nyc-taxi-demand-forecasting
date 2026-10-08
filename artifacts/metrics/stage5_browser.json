@@ -1,0 +1,233 @@
+{
+  "complete": true,
+  "pages": [
+    {
+      "route": "",
+      "title": "Hiểu nhu cầu. Theo dõi lượt đón.",
+      "charts": 3,
+      "elapsed_ms": 2350
+    },
+    {
+      "route": "ban-do",
+      "title": "Nhu cầu trên bản đồ",
+      "charts": 1,
+      "elapsed_ms": 7868
+    },
+    {
+      "route": "phan-tich",
+      "title": "Phân tích từng khu vực",
+      "charts": 2,
+      "elapsed_ms": 2197
+    },
+    {
+      "route": "du-bao",
+      "title": "Dự báo và kiểm chứng",
+      "charts": 3,
+      "elapsed_ms": 2310
+    },
+    {
+      "route": "thong-tin",
+      "title": "Dữ liệu và mô hình",
+      "charts": 0,
+      "elapsed_ms": 2190
+    }
+  ],
+  "mobile": [
+    {
+      "route": "",
+      "width": {
+        "viewport": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "route": "du-bao",
+      "width": {
+        "viewport": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "route": "ban-do",
+      "width": {
+        "viewport": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "route": "",
+      "width": {
+        "viewport": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "route": "du-bao",
+      "width": {
+        "viewport": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "route": "ban-do",
+      "width": {
+        "viewport": 320,
+        "scroll": 320
+      }
+    }
+  ],
+  "reveal_actual": true,
+  "dst": true,
+  "fallback": true,
+  "csv_download": true,
+  "page_errors": [],
+  "checked_at_utc": "2026-10-08T16:04:26.493Z",
+  "mobile_navigation": true,
+  "appearance": {
+    "complete": true,
+    "checked_at_utc": "2026-10-08T16:37:29.143Z",
+    "native_switch": true,
+    "theme_independent_series_palette": true,
+    "retained_on_navigation": true,
+    "desktop": [
+      {
+        "appearance": "Light",
+        "route": "",
+        "background": "rgb(247, 249, 252)",
+        "chart_text": [
+          "#808495",
+          "#808495",
+          "#808495"
+        ]
+      },
+      {
+        "appearance": "Light",
+        "route": "ban-do",
+        "background": "rgb(247, 249, 252)",
+        "chart_text": [
+          "#808495"
+        ]
+      },
+      {
+        "appearance": "Light",
+        "route": "phan-tich",
+        "background": "rgb(247, 249, 252)",
+        "chart_text": [
+          "#808495",
+          "#808495"
+        ]
+      },
+      {
+        "appearance": "Light",
+        "route": "du-bao",
+        "background": "rgb(247, 249, 252)",
+        "chart_text": [
+          "#808495",
+          "#808495",
+          "#808495"
+        ]
+      },
+      {
+        "appearance": "Light",
+        "route": "thong-tin",
+        "background": "rgb(247, 249, 252)",
+        "chart_text": []
+      },
+      {
+        "appearance": "Dark",
+        "route": "",
+        "background": "rgb(20, 25, 34)",
+        "chart_text": [
+          "#e6eaf1",
+          "#e6eaf1",
+          "#e6eaf1"
+        ]
+      },
+      {
+        "appearance": "Dark",
+        "route": "ban-do",
+        "background": "rgb(20, 25, 34)",
+        "chart_text": [
+          "#e6eaf1"
+        ]
+      },
+      {
+        "appearance": "Dark",
+        "route": "phan-tich",
+        "background": "rgb(20, 25, 34)",
+        "chart_text": [
+          "#e6eaf1",
+          "#e6eaf1"
+        ]
+      },
+      {
+        "appearance": "Dark",
+        "route": "du-bao",
+        "background": "rgb(20, 25, 34)",
+        "chart_text": [
+          "#e6eaf1",
+          "#e6eaf1",
+          "#e6eaf1"
+        ]
+      },
+      {
+        "appearance": "Dark",
+        "route": "thong-tin",
+        "background": "rgb(20, 25, 34)",
+        "chart_text": []
+      }
+    ],
+    "mobile": [
+      {
+        "appearance": "Light",
+        "route": "",
+        "width": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "appearance": "Light",
+        "route": "ban-do",
+        "width": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "appearance": "Light",
+        "route": "du-bao",
+        "width": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "appearance": "Dark",
+        "route": "",
+        "width": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "appearance": "Dark",
+        "route": "ban-do",
+        "width": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      },
+      {
+        "appearance": "Dark",
+        "route": "du-bao",
+        "width": {
+          "viewport": 390,
+          "scroll": 390
+        }
+      }
+    ],
+    "sidebar_information": true,
+    "page_errors": []
+  }
+}

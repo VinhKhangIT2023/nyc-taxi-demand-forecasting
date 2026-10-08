@@ -1,10 +1,26 @@
 [theme]
 base = "dark"
+font = "sans serif"
+
+[theme.dark]
 primaryColor = "#BDFF47"
 backgroundColor = "#141922"
 secondaryBackgroundColor = "#222A36"
 textColor = "#EEF1F6"
-font = "sans serif"
+borderColor = "#354052"
+chartCategoricalColors = ["#568C42", "#6585CA", "#C17B32"]
+
+[theme.light]
+primaryColor = "#347A25"
+backgroundColor = "#F7F9FC"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#182536"
+borderColor = "#D8E0EA"
+chartCategoricalColors = ["#568C42", "#6585CA", "#C17B32"]
+
+[theme.light.sidebar]
+backgroundColor = "#EDF2F7"
+secondaryBackgroundColor = "#FFFFFF"
 
 [server]
 address = "127.0.0.1"

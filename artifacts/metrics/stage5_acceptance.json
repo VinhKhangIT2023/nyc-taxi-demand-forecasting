@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "stage": 5,
+  "checked_at_utc": "2026-10-08T16:37:40.595850+00:00",
+  "scope": "HBase-backed historical replay; one-hour forecasts and actual comparison, 2025",
+  "unit_tests": 36,
+  "failures": 0,
+  "errors": 0,
+  "python_version": "3.13.16",
+  "pip_check": "No broken requirements found.",
+  "model_unchanged": true,
+  "evidence_sha256": {
+    "stage5_prepared.json": "5170316f3a58ccfe5085430cbdc4d1c6b6b97b08d924c538b128f12ce42ec1dd",
+    "stage5_storage.json": "df7051ee41e2fe948c10c45e5c71e8ff8332a22d82c45e99a05d508cb6924210",
+    "stage5_storage_recheck.json": "3e1e188dd0c68f52604ee376d7d5efcf969f2b612b315563a6827beabd3a10c2",
+    "stage5_queries.json": "8e2752f899d66dfede106776cf1adfc45c3208c9bf53ed60513a753bf3657bc9",
+    "stage5_geometry.json": "3d3c623bb7134994fd417ff0637c98b75e165d08a5ed506b195c01548c61f6b2",
+    "stage5_browser.json": "104eeee33d771cea960c26bb15f0d8dfaf4884b1426b8cc16b755b01afe32bd1",
+    "stage5_error_state.json": "92419d70113c48945feab5f7d2b854c29142df43c6ed40a1bef21c3daab116d2"
+  },
+  "implementation_sha256": {
+    "src\\dashboard\\app.py": "6dd2bd3201299a6e7582c2ac7c8c28fe92c8d3be2b2cf682327854424e9b6a64",
+    "src\\dashboard\\service.py": "cfd0a3f72ddb63f36c467027b9ef18d120016ef34c71d689e8cbe926cfcbcd4d",
+    "src\\dashboard\\prepare.py": "cc0222859848bbaea1fdf5a46e40a5c7553fcd32237276fcbb1a250cd2acc93d",
+    "src\\dashboard\\verify.py": "73f4dd75e5413e6f4042a3184d1b3b4097c3467e4ea576320bbddc71ebf7f8a2",
+    "src\\dashboard\\acceptance.py": "97270fe431845b477925096ff2b3c533f88e9987c4218a977c301e7e3c747b27",
+    "configs\\stage5_dashboard.json": "0aa8c5fb2cea48a326dd33121d9048b1b287502efceb8af25a0598494e7e8fa1",
+    ".streamlit\\config.toml": "1d4ec9f43773845eb24055e7cda1c696d3dd02b7eb54230be3dc72c013e56284",
+    "requirements-stage5-windows-lock.txt": "5993bd39f33af7a72f6400780434707fdd65a3bce6d6a432ef7b0da90d9aeec1",
+    "scripts\\run_stage5.ps1": "1cfbe88f058baf2a0f52601c327975ee519623c5d555a1e00264ff5104b92039"
+  },
+  "limitations": [
+    "Historical replay, not live streaming",
+    "Forecasts are precomputed from the accepted model",
+    "One-hour horizon only",
+    "TikTok videos were inaccessible; clip-specific requirements not verified"
+  ]
+}
