@@ -49,7 +49,7 @@ Số nhãn thấp hơn tổng chuyến vì che ngày DST theo quyết định đ
 - `artifacts/metrics/hbase_full_after_restore.json`, `hbase_full_recovery.json`: bằng chứng phục hồi.
 - `artifacts/metrics/stage3_full_acceptance.json`: nghiệm thu đầy đủ, chỉ thành công nếu `complete=true`.
 - `artifacts/metrics/stage3_resources_*.jsonl`: ảnh chụp mức tài nguyên tại thời điểm đo, không phải đo peak hay benchmark.
-- [Hướng dẫn chạy toàn bộ](../VAN_HANH.md), [nhật ký triển khai](../lich-su/GIAI_DOAN_3.md), [quyết định phạm vi](../QUYET_DINH.md).
+- [Hướng dẫn chạy toàn bộ](../VAN_HANH.md), [nhật ký triển khai](../LICH_SU.md#giai-doan-3), [quyết định phạm vi](../QUYET_DINH.md).
 
 Archive đầy đủ: 17.174.343.680 byte (17,17 GB), SHA256 `1CFF1D90784634C780D0C1B505D9F90DA2DEB79342986F300BFB628B779C70F7`. Chu trình backup/restore và kiểm tra mất 1.346,65 giây. Nguồn dừng sạch exit code 0; đích là container và volume khác. Bảng thử 168 giờ cũng khớp sau phục hồi. Fingerprint nội dung bảng chính của cả ba lần đọc: `e7a9cdeb6332fd07c6458f42661ade814f792fcf5bb9997c540842fc2373615d`.
 

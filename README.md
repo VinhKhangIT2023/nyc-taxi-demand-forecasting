@@ -59,7 +59,7 @@ artifacts/metrics/ Manifest và bằng chứng kiểm tra nhỏ, được theo d
 artifacts/models/ Mô hình và encoder đã sinh ra (không push)
 docs/             Hướng dẫn hiện hành và kế hoạch
   tong-ket/       Một file tổng kết cho mỗi giai đoạn
-  lich-su/        Khảo sát/thử nghiệm cũ, không dùng để cài đặt hiện hành
+  LICH_SU.md     Lịch sử khảo sát/thử nghiệm đã gộp, không dùng để cài đặt
 reports/          Biểu đồ đánh giá; báo cáo/slide cuối kỳ chưa hoàn thành
 notebooks/        Dành cho khảo sát khi cần
 ```

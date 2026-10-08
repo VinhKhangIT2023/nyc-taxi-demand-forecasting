@@ -9,6 +9,6 @@
 | Đặc trưng, huấn luyện và đánh giá giai đoạn 4 | [Mô hình](MO_HINH.md) |
 | Phân công và nhật ký công việc | [Nhật ký nhóm](NHAT_KY_NHOM.md) |
 | Kết quả, số liệu và bằng chứng từng giai đoạn | [Thư mục tổng kết](tong-ket/) |
-| Khảo sát và hướng dẫn cũ | [Thư mục lịch sử](lich-su/) |
+| Khảo sát và hướng dẫn cũ | [Lịch sử đã gộp](LICH_SU.md) |
 
-Hướng dẫn hiện hành nằm ở cấp này. Tài liệu trong `lich-su/` được giữ để truy vết, có thể mô tả trạng thái hoặc lệnh thử đã được thay thế; không dùng chúng làm hướng dẫn khởi tạo mới. Mỗi giai đoạn vẫn có một file tổng kết riêng theo yêu cầu của dự án.
+Hướng dẫn hiện hành nằm ở cấp này. Tài liệu `LICH_SU.md` được giữ để truy vết, có thể mô tả trạng thái hoặc lệnh thử đã được thay thế; không dùng chúng làm hướng dẫn khởi tạo mới. Mỗi giai đoạn vẫn có một file tổng kết riêng theo yêu cầu của dự án.

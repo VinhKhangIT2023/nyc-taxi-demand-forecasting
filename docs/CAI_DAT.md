@@ -30,7 +30,7 @@ python -c "import sys; print(sys.executable)"
 
 Nếu PowerShell không cho chạy activation script, có thể dùng trực tiếp `.\.venv\Scripts\python.exe`; không cần thay chính sách bảo vệ máy chỉ để kích hoạt. Không dùng Python 3.14 toàn máy thay cho interpreter đã chọn mà không kiểm thử lại thư viện.
 
-Python nền được cài ngoài repo. Xóa `.venv` hoặc xóa repo không gỡ Python đã cài trên Windows. Không copy hoặc di chuyển venv giữa các máy: tạo lại từ requirements. Môi trường thử cũ và hướng dẫn Python standalone đã được chuyển vào `lich-su/CAI_DAT_CU.md`; chúng không còn là phương án hiện hành.
+Python nền được cài ngoài repo. Xóa `.venv` hoặc xóa repo không gỡ Python đã cài trên Windows. Không copy hoặc di chuyển venv giữa các máy: tạo lại từ requirements. Môi trường thử cũ và hướng dẫn Python standalone nằm trong [lịch sử cài đặt](LICH_SU.md#cai-dat-cu); chúng không còn là phương án hiện hành.
 
 ## Docker và dữ liệu
 
