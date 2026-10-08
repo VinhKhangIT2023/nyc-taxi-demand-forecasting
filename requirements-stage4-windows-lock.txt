@@ -1,0 +1,17 @@
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.66.1
+happybase==1.2.0
+ijson==3.5.1
+kiwisolver==1.5.1
+matplotlib==3.10.0
+numpy==2.2.6
+packaging==26.3
+pillow==12.3.0
+ply==3.11
+pyarrow==19.0.1
+pyparsing==3.3.3
+python-dateutil==2.9.0.post0
+setuptools==80.9.0
+six==1.17.0
+thriftpy2==0.7.1

@@ -1,0 +1,73 @@
+{
+  "complete": true,
+  "mode": "validation",
+  "experiment": "B_add_2023",
+  "depth": 8,
+  "context_sha256": {
+    "configs/stage4_model.json": "3e8223c247640784188ed382ed9a5e475d0b1349b76f50666155f41167e604ff",
+    "configs/temporal_splits.json": "be7b86e843a06dcb14b5826345b8309dca3e732625f143ae8f040e085b69b854",
+    "artifacts/metrics/stage4_features.json": "a5d00e5e0b9c8c485357eb3f40006240c4e6778bb422c036089d2a7c8b0629d2",
+    "src/models/train.py": "62804be4bbd26f976ee483457f32ed2ab439a72e48806fa28285c1a76ce00842",
+    "src/models/features.py": "6d13a4072ddec8d3d86d69e0a547f35eb21b38cca208638f57146fc552854431",
+    "src/models/evaluation.py": "cf9d0c911b10d25db2a17695cb16f2009ce1675dd87a90b37148c72ffb10f39b",
+    "src/models/choose_model.py": "d72e4885cf7df32422f0b4aa85c3ffcf13c94aa9ec6f08087a87ce4d8dafa8c1",
+    "artifacts/metrics/stage4_feature_tests.json": "d7c57f608dc9fc1d7e43d80a86263b0dd7fe3770d20d88baf10af1c8bd98b078"
+  },
+  "started_at_utc": "2026-10-08T11:35:25.093372+00:00",
+  "fold": 2,
+  "intervals": {
+    "train_start": "2023-01-01T00:00:00",
+    "train_end": "2024-12-01T00:00:00",
+    "evaluation_start": "2024-12-01T00:00:00",
+    "evaluation_end": "2025-01-01T00:00:00"
+  },
+  "baseline": {
+    "n": 195672,
+    "absolute_error": 1283933.0,
+    "squared_error": 116005263.0,
+    "actual_sum": 3655466,
+    "mae": 6.5616593074124046,
+    "rmse": 24.348628557294987,
+    "wape": 0.35123647710032047
+  },
+  "baseline_methods": {
+    "weekly": 195672
+  },
+  "training_eligible_rows": 4393152,
+  "rf_training_rows": 4172232,
+  "training_seconds": 114.83110297100006,
+  "system": {
+    "n": 195672,
+    "absolute_error": 751197.3660169737,
+    "squared_error": 32630306.446848564,
+    "actual_sum": 3655466,
+    "mae": 3.8390641789166247,
+    "rmse": 12.913567418422245,
+    "wape": 0.2054997546186926
+  },
+  "methods": {
+    "random_forest": 195672
+  },
+  "features_ready_evaluation_rows": 195672,
+  "system_on_complete_features": {
+    "n": 195672,
+    "absolute_error": 751197.3660169737,
+    "squared_error": 32630306.446848564,
+    "actual_sum": 3655466,
+    "mae": 3.8390641789166247,
+    "rmse": 12.913567418422245,
+    "wape": 0.2054997546186926
+  },
+  "baseline_on_complete_features": {
+    "n": 195672,
+    "absolute_error": 1283933.0,
+    "squared_error": 116005263.0,
+    "actual_sum": 3655466,
+    "mae": 6.5616593074124046,
+    "rmse": 24.348628557294987,
+    "wape": 0.35123647710032047
+  },
+  "spark_version": "3.5.7",
+  "elapsed_seconds": 142.58549930899994,
+  "ended_at_utc": "2026-10-08T11:37:47.673916+00:00"
+}

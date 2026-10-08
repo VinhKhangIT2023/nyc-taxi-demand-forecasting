@@ -1,5 +1,7 @@
 > Hoàn thành đầy đủ ngày 08/10/2026: Spark đủ 36 tháng 2023–2025; HBase đủ 6.917.952 dòng, hai lượt nạp và phục hồi được đối chiếu từng ô, 0 sai lệch, 21/21 tests đạt. Xem [tổng kết giai đoạn 3](tong-ket/TONG_KET_GIAI_DOAN_3.md) và [hướng dẫn hiện hành](VAN_HANH.md). Các mốc thử nghiệm bên dưới là lịch sử triển khai.
 
+> Giai đoạn 4 hoàn thành 08/10/2026: 12 lượt validation; Random Forest 20 cây/depth 12 với lịch sử 2023–2024; test 2025 có 2.291.256 nhãn, MAE 3,851 so với baseline 5,320, 27 tests và 5 nhóm Spark window đạt. Xem [tổng kết giai đoạn 4](tong-ket/TONG_KET_GIAI_DOAN_4.md) và [hướng dẫn mô hình](MO_HINH.md). Giai đoạn 5–6 còn lại.
+
 # Kế hoạch triển khai đồ án phân tích và dự báo nhu cầu sử dụng xe công cộng
 
 Ngày lập: 05/10/2026. Thành viên: Đào Văn Hiếu và Nguyễn Đặng Vĩnh Khang.
@@ -16,7 +18,7 @@ Theo yêu cầu người dùng ngày 07/10/2026, dự án có 6 giai đoạn tri
 
 Mỗi bản tổng kết phải ghi: mục tiêu/phạm vi, công việc thực tế đã làm, kết quả và số liệu, file đầu ra kèm bằng chứng kiểm tra, quyết định và lý do, vấn đề/hạn chế còn lại, công việc bàn giao cho giai đoạn sau. Không ghi kế hoạch thành kết quả, không tự gán đóng góp cho thành viên. Nếu có sửa đổi sau nghiệm thu, ghi ngày và nội dung cập nhật.
 
-Hiện có [tổng kết giai đoạn 1](tong-ket/TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](tong-ket/TONG_KET_GIAI_DOAN_2.md) và [giai đoạn 3](tong-ket/TONG_KET_GIAI_DOAN_3.md). Giai đoạn 4–6 chưa hoàn thành; tạo bản tổng kết tương ứng khi có kết quả thực tế. Dùng [mẫu tổng kết](tong-ket/MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
+Hiện có [tổng kết giai đoạn 1](tong-ket/TONG_KET_GIAI_DOAN_1.md), [giai đoạn 2](tong-ket/TONG_KET_GIAI_DOAN_2.md), [giai đoạn 3](tong-ket/TONG_KET_GIAI_DOAN_3.md) và [giai đoạn 4](tong-ket/TONG_KET_GIAI_DOAN_4.md). Giai đoạn 5–6 chưa hoàn thành; tạo bản tổng kết tương ứng khi có kết quả thực tế. Dùng [mẫu tổng kết](tong-ket/MAU_TONG_KET_GIAI_DOAN.md) để giữ cấu trúc nhất quán. Các file Markdown này được đưa lên GitHub và làm tư liệu cho báo cáo Word cuối kỳ.
 
 Nguồn đối chiếu: file `Ke hoach Do an mon hoc Nhap mon Big data_SV.docx`, mục II, III và IV; ảnh danh sách đăng ký ghi đề tài 10 và Apache HBase.
 

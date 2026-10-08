@@ -1,0 +1,19 @@
+{
+  "complete": true,
+  "captured_at_utc": "2026-10-08T12:00:09.5524021Z",
+  "image_id": "sha256:1d6b1b8f6fa5098ce0593f13c9769e830301d1c4480b52da437e6849e0bfe60f",
+  "repo_digests": [
+    "bigdata-spark-ml@sha256:1d6b1b8f6fa5098ce0593f13c9769e830301d1c4480b52da437e6849e0bfe60f"
+  ],
+  "image_reported_bytes": 476180322,
+  "engine_version": "29.7.2",
+  "effective_cpu_limit": 2,
+  "container_memory_limit_gib": 4,
+  "driver_heap_gib": 2,
+  "spark_local_mode": "local[2]",
+  "spark_version": "3.5.7",
+  "linux_python": "3.11.17",
+  "numpy_linux": "1.26.4",
+  "temp_and_output_root": "D:\\BaiTapVeNha\\BigData\\DoAn_BigData",
+  "resource_measurement": "snapshot only, not peak or cluster benchmark"
+}

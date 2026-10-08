@@ -1,0 +1,9 @@
+{
+  "complete": true,
+  "scope": "all eligible 2025 forecasts, including fallback",
+  "checked_at_utc": "2026-10-08T12:13:28.348024+00:00",
+  "rows": 2291256,
+  "mismatches": 0,
+  "spark_version": "3.5.7",
+  "elapsed_seconds": 32.472687318
+}

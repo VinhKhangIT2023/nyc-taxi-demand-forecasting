@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "checked_at_utc": "2026-10-08T11:08:36.155055+00:00",
+  "python": "3.13.16 (tags/v3.13.16:cbc944f, Sep 30 2026, 19:17:50) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "year": 2023,
+      "file": "data\\processed\\hourly_grid_v1\\2023\\zone_hours.parquet",
+      "bytes": 22436216,
+      "rows": 2303880,
+      "sha256": "ddafd49e65955e00bf0150c225336f6f4e1e2ee86e8ad5b9167ba022c69ef86e",
+      "schema": {
+        "PULocationID": "int64",
+        "pickup_hour": "timestamp[us]",
+        "recorded_trip_count": "int64",
+        "target_trip_count": "int64",
+        "q_source_hour_missing": "bool",
+        "q_dst_day": "bool",
+        "q_zero_recorded": "bool",
+        "model_eligible": "bool"
+      }
+    },
+    {
+      "year": 2024,
+      "file": "data\\processed\\hourly_grid_v1\\2024\\zone_hours.parquet",
+      "bytes": 22798677,
+      "rows": 2310192,
+      "sha256": "ef2ef62ff5ce140215337d0726a3db93b0d530b1d5b4959e6ff4cb22fc8713da",
+      "schema": {
+        "PULocationID": "int64",
+        "pickup_hour": "timestamp[us]",
+        "recorded_trip_count": "int64",
+        "target_trip_count": "int64",
+        "q_source_hour_missing": "bool",
+        "q_dst_day": "bool",
+        "q_zero_recorded": "bool",
+        "model_eligible": "bool"
+      }
+    },
+    {
+      "year": 2025,
+      "file": "data\\processed\\hourly_grid_v1\\2025\\zone_hours.parquet",
+      "bytes": 23209492,
+      "rows": 2303880,
+      "sha256": "ac04dd1e8db46b599b2738182c80955411540e5049c89dae7f84e903ebd9ae7e",
+      "schema": {
+        "PULocationID": "int64",
+        "pickup_hour": "timestamp[us]",
+        "recorded_trip_count": "int64",
+        "target_trip_count": "int64",
+        "q_source_hour_missing": "bool",
+        "q_dst_day": "bool",
+        "q_zero_recorded": "bool",
+        "model_eligible": "bool"
+      }
+    }
+  ],
+  "scope": "input integrity and schema only; no model scores",
+  "temporal_config_sha256": "be7b86e843a06dcb14b5826345b8309dca3e732625f143ae8f040e085b69b854"
+}

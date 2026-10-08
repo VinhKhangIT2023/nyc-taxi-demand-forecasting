@@ -19,4 +19,6 @@ docker compose -f docker/spark/compose.full.yaml run --rm spark /workspace/src/s
 
 `.dockerignore` loại dataset, venv và tài liệu khỏi build context. Không cần giữ một container Spark chạy thường trực. Luồng nạp HBase và nghiệm thu xem [vận hành](../../docs/VAN_HANH.md).
 
+Giai đoạn 4 dùng Dockerfile.models mở rộng image hiện có bằng NumPy 1.26.4 và compose.models.yaml. Huấn luyện và đánh giá đọc Parquet; model, predictions, Spark spill và file tạm gắn thư mục trên D. [Hướng dẫn mô hình](../../docs/MO_HINH.md) có các bước prepare/pilot/validation/final/verify; giữ nguyên image và bằng chứng giai đoạn 3.
+
 `compose.yaml` còn giữ lệnh mặc định thử tháng 01/2024 để tái lập bằng chứng ban đầu; dùng `compose.full.yaml` cho toàn bộ 36 tháng. Các script thử vẫn được giữ vì có kiểm thử và module dùng chung phụ thuộc vào chúng.

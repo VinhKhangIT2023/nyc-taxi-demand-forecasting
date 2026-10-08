@@ -4,10 +4,11 @@ Phân tích và chuẩn bị dữ liệu dự báo số lượt đón taxi theo 
 
 ## Trạng thái
 
-- Hoàn thành giai đoạn 1–3: môi trường, dữ liệu và tích hợp Spark/HBase.
+- Hoàn thành giai đoạn 1–4: môi trường, dữ liệu, tích hợp Spark/HBase và mô hình dự báo.
 - Đã xử lý 36 tháng: 128.202.548 dòng nguồn, giữ 126.994.028 chuyến; lưới 263 vùng có 6.917.952 dòng vùng–giờ.
 - Hai lượt nạp HBase và phục hồi từ archive được đối chiếu đầy đủ, không sai lệch. Bộ kiểm thử tại lần nghiệm thu: 21/21 đạt.
-- Chưa triển khai mô hình dự báo, dashboard và báo cáo Word/PPT cuối kỳ. Đây chưa phải ứng dụng hoàn chỉnh để người dùng cuối sử dụng.
+- Đã so sánh 12 lượt validation và khóa Random Forest dùng lịch sử 2023–2024. Test 2025 đủ 2.291.256 nhãn: MAE 3,851 so với baseline 5,320 (giảm 27,61%); 27 unit tests và 5 nhóm kiểm tra cửa sổ Spark đạt.
+- Dashboard và báo cáo Word/PPT cuối kỳ chưa hoàn thành. Dự báo hiện là thử nghiệm một giờ tiếp theo trên lịch sử được phát lại.
 
 Các con số trên là kết quả của snapshot đã nghiệm thu, không phải kết quả tự có sau khi clone repo. Xem [tổng kết từng giai đoạn](docs/tong-ket/) và [bằng chứng nghiệm thu](artifacts/metrics/stage3_full_acceptance.json).
 
@@ -43,23 +44,23 @@ HBase: Thrift `localhost:19090`, giao diện [localhost:16011](http://localhost:
 
 Chuyến chi tiết nằm trong Parquet; HBase chứa số đếm theo vùng–giờ, nhãn và cờ chất lượng. Phân biệt số 0 với thiếu dữ liệu; che nhãn hai ngày DST mỗi năm. Không đọc đệ quy toàn bộ `data/processed`, vì có bản trung gian và tập thử. Dùng loader `src.ingestion.open_dataset` hoặc `src.ingestion.load_split` theo [hợp đồng dữ liệu](docs/DU_LIEU.md).
 
-Giai đoạn tiếp theo là tạo đặc trưng và huấn luyện: so sánh lịch sử 2024 với 2023–2024 trên cùng validation cuối 2024, giữ 2025 làm holdout. Các quyết định về mô hình và đánh giá cần ghi vào [nhật ký quyết định](docs/QUYET_DINH.md). Sau mỗi giai đoạn tạo một bản tổng kết theo [mẫu](docs/tong-ket/MAU_TONG_KET_GIAI_DOAN.md).
+Giai đoạn 4 đã nghiệm thu theo [hướng dẫn mô hình](docs/MO_HINH.md) và [tổng kết](docs/tong-ket/TONG_KET_GIAI_DOAN_4.md): so sánh lịch sử 2024 với 2023–2024 trên cùng validation cuối 2024, giữ 2025 làm holdout. Model và dự báo lưu trên D, bị Git bỏ qua; cài môi trường báo cáo từ requirements-stage4-windows-lock.txt, chạy từng bước bằng scripts/run_stage4.ps1. Giai đoạn 5 sẽ tích hợp dự báo vào HBase/dashboard. Các quyết định về mô hình và đánh giá ghi trong [nhật ký quyết định](docs/QUYET_DINH.md). Sau mỗi giai đoạn có một bản tổng kết theo [mẫu](docs/tong-ket/MAU_TONG_KET_GIAI_DOAN.md).
 
 ## Cấu trúc repo
 
 ```text
 configs/          Cấu hình chia tập theo thời gian
-src/              ingestion, processing, storage; models/dashboard chưa triển khai
-tests/            Kiểm thử quy tắc dữ liệu và mã hóa HBase
+src/              ingestion, processing, storage, models; dashboard chưa triển khai
+tests/            Kiểm thử dữ liệu, mã hóa HBase, độ đo và lựa chọn mô hình
 scripts/          Các bước nghiệm thu và backup/restore
 docker/           Dockerfile, Compose và cấu hình dịch vụ
 data/             Raw, reference, intermediate, processed (không đưa dữ liệu lên Git)
 artifacts/metrics/ Manifest và bằng chứng kiểm tra nhỏ, được theo dõi bằng Git
-artifacts/models/ Mô hình sinh ra (chưa triển khai, không push)
+artifacts/models/ Mô hình và encoder đã sinh ra (không push)
 docs/             Hướng dẫn hiện hành và kế hoạch
   tong-ket/       Một file tổng kết cho mỗi giai đoạn
   lich-su/        Khảo sát/thử nghiệm cũ, không dùng để cài đặt hiện hành
-reports/          Hình, báo cáo và slide cuối kỳ (chưa hoàn thành)
+reports/          Biểu đồ đánh giá; báo cáo/slide cuối kỳ chưa hoàn thành
 notebooks/        Dành cho khảo sát khi cần
 ```
 

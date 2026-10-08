@@ -1,0 +1,2 @@
+FROM bigdata-spark:3.5.7-py311
+RUN pip install --no-cache-dir numpy==1.26.4 && pip check

@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "scope": "synthetic infrastructure check, not a taxi experiment",
+  "checked_at_utc": "2026-10-08T11:12:01.272562+00:00",
+  "spark_version": "3.5.7",
+  "rows": 24,
+  "save_reload_predictions_equal": true
+}

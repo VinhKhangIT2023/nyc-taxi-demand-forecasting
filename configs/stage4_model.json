@@ -1,0 +1,13 @@
+{
+  "version": "stage4-v1",
+  "approved_at": "2026-10-08",
+  "horizon_hours": 1,
+  "lags": [1, 2, 24, 168],
+  "windows": [24, 168],
+  "feature_columns": ["lag_1", "lag_2", "lag_24", "lag_168", "mean_24", "mean_168", "hour", "weekday", "zone_index"],
+  "rf": {"seed": 42, "numTrees": 20, "maxDepth_candidates": [8, 12], "minInstancesPerNode": 20, "maxBins": 264, "maxMemoryInMB": 128},
+  "selection_metric": "pooled validation MAE including fallback on all eligible targets",
+  "fallback": "RF incomplete features -> seasonal naive; unavailable weekly lag -> train zone mean -> train global mean",
+  "prediction_floor": 0,
+  "pilot": {"train_start": "2024-01-01T00:00:00", "train_end": "2024-02-01T00:00:00", "validation_start": "2024-02-01T00:00:00", "validation_end": "2024-02-08T00:00:00"}
+}

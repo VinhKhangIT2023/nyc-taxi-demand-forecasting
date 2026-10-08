@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "checks": [
+    "known lags/windows cross year boundary",
+    "target and future mutations do not affect target features",
+    "masked history stays missing; windows require full valid coverage; zones isolated",
+    "missing hour and start boundary never substitute adjacent row",
+    "valid zero is retained as observed history"
+  ],
+  "spark_version": "3.5.7"
+}

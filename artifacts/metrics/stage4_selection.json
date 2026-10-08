@@ -1,0 +1,130 @@
+{
+  "complete": true,
+  "locked_at_utc": "2026-10-08T11:50:32.095422+00:00",
+  "selection_data": "2024-10 through 2024-12 only",
+  "criterion": "pooled MAE on all eligible targets",
+  "context_sha256": {
+    "configs/stage4_model.json": "3e8223c247640784188ed382ed9a5e475d0b1349b76f50666155f41167e604ff",
+    "configs/temporal_splits.json": "be7b86e843a06dcb14b5826345b8309dca3e732625f143ae8f040e085b69b854",
+    "artifacts/metrics/stage4_features.json": "a5d00e5e0b9c8c485357eb3f40006240c4e6778bb422c036089d2a7c8b0629d2",
+    "src/models/train.py": "62804be4bbd26f976ee483457f32ed2ab439a72e48806fa28285c1a76ce00842",
+    "src/models/features.py": "6d13a4072ddec8d3d86d69e0a547f35eb21b38cca208638f57146fc552854431",
+    "src/models/evaluation.py": "cf9d0c911b10d25db2a17695cb16f2009ce1675dd87a90b37148c72ffb10f39b",
+    "src/models/choose_model.py": "d72e4885cf7df32422f0b4aa85c3ffcf13c94aa9ec6f08087a87ce4d8dafa8c1",
+    "artifacts/metrics/stage4_feature_tests.json": "d7c57f608dc9fc1d7e43d80a86263b0dd7fe3770d20d88baf10af1c8bd98b078"
+  },
+  "validation_sha256": {
+    "stage4_validation_A_2024_only_f0_d8.json": "67bf44f1724c410986b7976f840725b002ea389260535c8c505db57056112b94",
+    "stage4_validation_A_2024_only_f1_d8.json": "5cf57d61e23d20e6f0b873c9d5344dacb4a08e85d6317dec1b5ebfb42b67d810",
+    "stage4_validation_A_2024_only_f2_d8.json": "e0d9df698dc8d9ff02807f5e719afc89ec7f6fa8741827dcd132e7af35303d8c",
+    "stage4_validation_A_2024_only_f0_d12.json": "359a5467c8dca2fa10f03ca1096a0cf25a8ec67a80a861f96572b458d3b00613",
+    "stage4_validation_A_2024_only_f1_d12.json": "06a6e54adacfa7a7a3e4db019567aba03bd3d4a91b78c9ac8dde805a3936c941",
+    "stage4_validation_A_2024_only_f2_d12.json": "4d693556a323348792c7bdd7f050a4695b5787735bb21288ee1931624dc0caaf",
+    "stage4_validation_B_add_2023_f0_d8.json": "f756fe741f981f0ccde95e6b0e5f47d39a35cb856709fcb195c46c35b5a4b635",
+    "stage4_validation_B_add_2023_f1_d8.json": "32c62c91f97bed4e9ec0284c732edd3f14c554a60c74b5b2e371c9940eb3a2bd",
+    "stage4_validation_B_add_2023_f2_d8.json": "8966317223e365b2e6d723d7e351235e9bda78883a8b86a49cadfa2de1431cc0",
+    "stage4_validation_B_add_2023_f0_d12.json": "88460394f496eed152d19cc0239a87725765e9eeb4024cb8d4864372a3665d86",
+    "stage4_validation_B_add_2023_f1_d12.json": "584db38eb742837fe051597550b3d118f1d8efb4da9b2c784b961a1f284e41ee",
+    "stage4_validation_B_add_2023_f2_d12.json": "45d2c2b7a180265de30382c00d2effc77b70c383383b2bdcfbf6f3c093958760"
+  },
+  "candidates": [
+    {
+      "model": "random_forest",
+      "experiment": "B_add_2023",
+      "depth": 12,
+      "metrics": {
+        "n": 574392,
+        "absolute_error": 2015479.5582534852,
+        "squared_error": 79659679.2428745,
+        "actual_sum": 10988206,
+        "mae": 3.5088921124484416,
+        "rmse": 11.77646878902788,
+        "wape": 0.18342207620183726
+      }
+    },
+    {
+      "model": "random_forest",
+      "experiment": "A_2024_only",
+      "depth": 12,
+      "metrics": {
+        "n": 574392,
+        "absolute_error": 2028016.770876097,
+        "squared_error": 79967538.95197527,
+        "actual_sum": 10988206,
+        "mae": 3.5307190400912565,
+        "rmse": 11.79920302664181,
+        "wape": 0.1845630461311061
+      }
+    },
+    {
+      "model": "random_forest",
+      "experiment": "B_add_2023",
+      "depth": 8,
+      "metrics": {
+        "n": 574392,
+        "absolute_error": 2174284.6302956445,
+        "squared_error": 91945254.91598436,
+        "actual_sum": 10988206,
+        "mae": 3.785367188776384,
+        "rmse": 12.652037467101618,
+        "wape": 0.19787439644794105
+      }
+    },
+    {
+      "model": "random_forest",
+      "experiment": "A_2024_only",
+      "depth": 8,
+      "metrics": {
+        "n": 574392,
+        "absolute_error": 2174609.9156064126,
+        "squared_error": 90773842.2905112,
+        "actual_sum": 10988206,
+        "mae": 3.785933501174133,
+        "rmse": 12.571183567227143,
+        "wape": 0.19790399957976876
+      }
+    },
+    {
+      "model": "seasonal_naive",
+      "experiment": "B_add_2023",
+      "depth": null,
+      "metrics": {
+        "n": 574392,
+        "absolute_error": 3059653.5825837087,
+        "squared_error": 220388135.06666306,
+        "actual_sum": 10988206,
+        "mae": 5.326769144736884,
+        "rmse": 19.58799180668821,
+        "wape": 0.2784488735088975
+      }
+    },
+    {
+      "model": "seasonal_naive",
+      "experiment": "A_2024_only",
+      "depth": null,
+      "metrics": {
+        "n": 574392,
+        "absolute_error": 3059699.987938597,
+        "squared_error": 220381926.13484073,
+        "actual_sum": 10988206,
+        "mae": 5.3268499351289655,
+        "rmse": 19.587715881302675,
+        "wape": 0.2784530967055584
+      }
+    }
+  ],
+  "winner": {
+    "model": "random_forest",
+    "experiment": "B_add_2023",
+    "depth": 12,
+    "metrics": {
+      "n": 574392,
+      "absolute_error": 2015479.5582534852,
+      "squared_error": 79659679.2428745,
+      "actual_sum": 10988206,
+      "mae": 3.5088921124484416,
+      "rmse": 11.77646878902788,
+      "wape": 0.18342207620183726
+    }
+  }
+}

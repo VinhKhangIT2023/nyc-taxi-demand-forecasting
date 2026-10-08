@@ -1,0 +1,19 @@
+{
+  "complete": false,
+  "sources": {
+    "2023": {
+      "file": "data/processed/hourly_grid_v1/2023/zone_hours.parquet",
+      "sha256": "ddafd49e65955e00bf0150c225336f6f4e1e2ee86e8ad5b9167ba022c69ef86e"
+    },
+    "2024": {
+      "file": "data/processed/hourly_grid_v1/2024/zone_hours.parquet",
+      "sha256": "ef2ef62ff5ce140215337d0726a3db93b0d530b1d5b4959e6ff4cb22fc8713da"
+    },
+    "2025": {
+      "file": "data/processed/hourly_grid_v1/2025/zone_hours.parquet",
+      "sha256": "ac04dd1e8db46b599b2738182c80955411540e5049c89dae7f84e903ebd9ae7e"
+    }
+  },
+  "timezone_axis": "UTC for naive wall-clock arithmetic",
+  "error": "[DATATYPE_MISMATCH.CAST_WITHOUT_SUGGESTION] Cannot resolve \"CAST(pickup_hour AS BIGINT)\" due to data type mismatch: cannot cast \"TIMESTAMP_NTZ\" to \"BIGINT\".;\n'Project [PULocationID#0L, pickup_hour#1, recorded_trip_count#2L, target_trip_count#3L, q_source_hour_missing#4, q_dst_day#5, q_zero_recorded#6, model_eligible#7, cast(pickup_hour#1 as bigint) AS _seconds#79]\n+- RepartitionByExpression [PULocationID#0L], 8\n   +- Relation [PULocationID#0L,pickup_hour#1,recorded_trip_count#2L,target_trip_count#3L,q_source_hour_missing#4,q_dst_day#5,q_zero_recorded#6,model_eligible#7] parquet\n"
+}

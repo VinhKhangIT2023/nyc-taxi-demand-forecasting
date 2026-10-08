@@ -6,6 +6,7 @@
 |---|---|
 | Mục tiêu, yêu cầu môn học và tiến độ | [Kế hoạch](KE_HOACH.md) |
 | Những quyết định đã thống nhất | [Nhật ký quyết định](QUYET_DINH.md) |
+| Đặc trưng, huấn luyện và đánh giá giai đoạn 4 | [Mô hình](MO_HINH.md) |
 | Phân công và nhật ký công việc | [Nhật ký nhóm](NHAT_KY_NHOM.md) |
 | Kết quả, số liệu và bằng chứng từng giai đoạn | [Thư mục tổng kết](tong-ket/) |
 | Khảo sát và hướng dẫn cũ | [Thư mục lịch sử](lich-su/) |

@@ -1,5 +1,15 @@
 # Nhật ký quyết định
 
+## Quyết định 014 — Mô hình và dự phòng giai đoạn 4 (08/10/2026)
+
+Người dùng đã trả lời “Duyệt baseline + Random Forest và chính sách dự phòng”. Triển khai seasonal naive cùng giờ tuần trước và Random Forest trong Spark. So sánh lịch sử 2024 với 2023–2024 trên ba fold cuối 2024 theo temporal_splits.json; khóa lựa chọn trước khi tính sai số 2025.
+
+Đặc trưng chỉ dùng nhãn giờ quá khứ hợp lệ. Thiếu do DST/nguồn không được đổi thành 0: RF dùng baseline khi đầu vào chưa đầy đủ; baseline thiếu dùng trung bình vùng chỉ học trên train của fold, rồi trung bình toàn train nếu cần. Đếm và công bố các lượt dự phòng; đo toàn hệ thống trên cùng mọi nhãn hợp lệ, đồng thời báo riêng phần đủ đặc trưng. Chi tiết, tham số khởi đầu và nghiệm thu ở [MO_HINH.md](MO_HINH.md).
+
+Phát hiện chuẩn bị: image ETL chưa có NumPy, Spark ML yêu cầu thư viện này. Tạo image mở rộng từ image hiện có với numpy 1.26.4 cho Python 3.11, không thay image/bằng chứng giai đoạn 3. Dữ liệu, model và file tạm gắn thư mục D.
+
+Cập nhật nghiệm thu 08/10/2026: 12 lượt validation đã khóa RF 20 cây/depth 12 với lịch sử B (2023–2024). MAE validation 3,508892 so với 3,530719 của RF tốt nhất chỉ dùng 2024, lợi ích lịch sử bổ sung khoảng 0,62%, chưa kiểm định ý nghĩa thống kê. Test 2025 đủ 2.291.256 nhãn: MAE 3,851490 so với baseline 5,320124; không đổi lựa chọn sau khi thấy test. Model lưu/nạp lại và 27 tests/5 nhóm Spark window đạt. Xem [tổng kết giai đoạn 4](tong-ket/TONG_KET_GIAI_DOAN_4.md).
+
 ## Quyết định 012 — Thử ghi dữ liệu giờ vào HBase, ngày 07/10/2026
 
 Người dùng trả lời “Duyệt phương án thử 168 giờ”: dùng bảng `transport_demand_hourly_trial_v1`, khóa vùng 3 chữ số + nhãn giờ, families d/q/m, null không thành 0. Mẫu vùng 161 trong 01–07/01/2024 giúp kiểm chứng luồng và ghi lặp trước khi mở rộng. Thiết kế và kết quả tại lich-su/THIET_KE_HBASE_THU.md. Chưa phê duyệt nạp toàn bộ dataset hoặc dùng bảng thử làm schema ứng dụng cuối cùng.

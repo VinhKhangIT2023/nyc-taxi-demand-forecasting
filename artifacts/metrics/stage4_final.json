@@ -1,0 +1,3185 @@
+{
+  "complete": true,
+  "mode": "final",
+  "experiment": "B_add_2023",
+  "depth": 12,
+  "context_sha256": {
+    "configs/stage4_model.json": "3e8223c247640784188ed382ed9a5e475d0b1349b76f50666155f41167e604ff",
+    "configs/temporal_splits.json": "be7b86e843a06dcb14b5826345b8309dca3e732625f143ae8f040e085b69b854",
+    "artifacts/metrics/stage4_features.json": "a5d00e5e0b9c8c485357eb3f40006240c4e6778bb422c036089d2a7c8b0629d2",
+    "src/models/train.py": "62804be4bbd26f976ee483457f32ed2ab439a72e48806fa28285c1a76ce00842",
+    "src/models/features.py": "6d13a4072ddec8d3d86d69e0a547f35eb21b38cca208638f57146fc552854431",
+    "src/models/evaluation.py": "cf9d0c911b10d25db2a17695cb16f2009ce1675dd87a90b37148c72ffb10f39b",
+    "src/models/choose_model.py": "d72e4885cf7df32422f0b4aa85c3ffcf13c94aa9ec6f08087a87ce4d8dafa8c1",
+    "artifacts/metrics/stage4_feature_tests.json": "d7c57f608dc9fc1d7e43d80a86263b0dd7fe3770d20d88baf10af1c8bd98b078"
+  },
+  "started_at_utc": "2026-10-08T11:52:05.113697+00:00",
+  "selection_sha256": "356db8eb4d15a08e142f828de4391d33c565c903027a462b3602d50912dc3fcf",
+  "intervals": {
+    "train_start": "2023-01-01T00:00:00",
+    "train_end": "2025-01-01T00:00:00",
+    "evaluation_start": "2025-01-01T00:00:00",
+    "evaluation_end": "2026-01-01T00:00:00"
+  },
+  "baseline": {
+    "n": 2291256,
+    "absolute_error": 12189767.173773758,
+    "squared_error": 687372574.8024914,
+    "actual_sum": 47809126,
+    "mae": 5.3201244966838095,
+    "rmse": 17.32045484238207,
+    "wape": 0.2549673711620195
+  },
+  "baseline_methods": {
+    "weekly": 2278632,
+    "train_zone_mean": 12624
+  },
+  "training_eligible_rows": 4588824,
+  "rf_training_rows": 4367904,
+  "training_seconds": 300.81048482000006,
+  "system": {
+    "n": 2291256,
+    "absolute_error": 8824749.507804364,
+    "squared_error": 316523262.16041327,
+    "actual_sum": 47809126,
+    "mae": 3.8514899722267453,
+    "rmse": 11.753467448981779,
+    "wape": 0.18458294987037338
+  },
+  "methods": {
+    "random_forest": 2202888,
+    "fallback_train_zone_mean": 12624,
+    "fallback_weekly": 75744
+  },
+  "features_ready_evaluation_rows": 2202888,
+  "system_on_complete_features": {
+    "n": 2202888,
+    "absolute_error": 8303086.334030862,
+    "squared_error": 281968263.357932,
+    "actual_sum": 45892917,
+    "mae": 3.769182243505281,
+    "rmse": 11.313680399373753,
+    "wape": 0.1809230460123261
+  },
+  "baseline_on_complete_features": {
+    "n": 2202888,
+    "absolute_error": 11668104.0,
+    "squared_error": 652817576.0,
+    "actual_sum": 45892917,
+    "mae": 5.296730473814375,
+    "rmse": 17.21470998962017,
+    "wape": 0.25424629251611963
+  },
+  "reload_sample_rows": 100,
+  "save_reload_predictions_equal": true,
+  "feature_importances": {
+    "lag_1": 0.2435944706248793,
+    "lag_2": 0.15189347128603586,
+    "lag_24": 0.23563461458436175,
+    "lag_168": 0.2838569433614744,
+    "mean_24": 0.06419901678048703,
+    "mean_168": 0.008859978658962254,
+    "hour": 0.005461844233996856,
+    "weekday": 0.0015107252093660753,
+    "zone_index": 0.004988935260436492
+  },
+  "model_directory": "artifacts/models/stage4_final",
+  "model_files_sha256": {
+    "artifacts/models/stage4_final/fallback_zone_means/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/fallback_zone_means/.part-00000-541e78f6-195f-4b29-ba80-06fb682fdd86-c000.snappy.parquet.crc": "93dfcf539b4125dddcff573bcf3e9552cb587f797acf83096000c6e59b3fce0b",
+    "artifacts/models/stage4_final/fallback_zone_means/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/fallback_zone_means/part-00000-541e78f6-195f-4b29-ba80-06fb682fdd86-c000.snappy.parquet": "3277bc4e67ca6792932500c98c618d9b8f838d8c75defac9048c97265cb957ff",
+    "artifacts/models/stage4_final/metadata.json": "095fd5d939566683de52a546a541a8673453225cea0de5bf4e5d5426f7b6b9ea",
+    "artifacts/models/stage4_final/pipeline/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/metadata/.part-00000.crc": "5b12b44b91c3a7baca84ff4a8ef5b723b77713817d04ecfff9d5bade46130a14",
+    "artifacts/models/stage4_final/pipeline/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/metadata/part-00000": "6127bf844f21f807a9a39ea8ef72e3aea959171ebc2108005bf4bf1261be3487",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/data/.part-00000-1f8e21f5-eda0-4db6-89d4-4b2e4a0d9baf-c000.snappy.parquet.crc": "94f95041cecb2ae9495808ee8dd02a48e248c848e9b56239167395018277ec91",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/data/part-00000-1f8e21f5-eda0-4db6-89d4-4b2e4a0d9baf-c000.snappy.parquet": "55cc5aa648081194babcd5b6c8bb47e149af78b7d1d8ba7a8f60f89dda6790ef",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/metadata/.part-00000.crc": "c2f546338caee2599465be9a655803b24c3c1089a154d9489f6df327a487987e",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/stages/0_StringIndexer_f684eec9889c/metadata/part-00000": "e0f5bd6cc6c1295ebce8e417652b07965648a74fe25c44e4d534936c7782092d",
+    "artifacts/models/stage4_final/pipeline/stages/1_VectorAssembler_4da7ad25852d/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/stages/1_VectorAssembler_4da7ad25852d/metadata/.part-00000.crc": "8fcbab190479b2cad13fc7e1668d1de954dfbde0e6b7fbf59de3d15c621a878f",
+    "artifacts/models/stage4_final/pipeline/stages/1_VectorAssembler_4da7ad25852d/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/stages/1_VectorAssembler_4da7ad25852d/metadata/part-00000": "34e85e148792983967f45de0ebefaf906e7d79a9ef6f9976dcb4f510f3cd2c0a",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/data/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/data/.part-00000-58089b93-7e0e-464d-82a3-dba5b31aab33-c000.snappy.parquet.crc": "31690668bf41f60a3e4654920363d6b336ba55c25fe7d8ff0b012b3f38f27f95",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/data/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/data/part-00000-58089b93-7e0e-464d-82a3-dba5b31aab33-c000.snappy.parquet": "e3d2b3e5055f56ec25cf8290d8fcf5b468d32c53e1864b5c6ac7bdafa0d84268",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/metadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/metadata/.part-00000.crc": "b2da3b075ebe86d03c89426536879999e07937f360389f291a04c4709224fb96",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/metadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/metadata/part-00000": "b49ac2182664a48e0dd122913e4417f69227ebdc0c855b7bfd20489a90408032",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/treesMetadata/._SUCCESS.crc": "1d44f510ec2ed7595badbec80583316defc14e8dd89130d719724149adfaa07d",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/treesMetadata/.part-00000-72bb0fff-0c20-40f2-bf66-a7b4a057d827-c000.snappy.parquet.crc": "48953217b664da1330785f93a2741bdb5574845b221ba9bb729bcfbd1a3e9c1e",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/treesMetadata/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/models/stage4_final/pipeline/stages/2_RandomForestRegressor_5d801bcd7feb/treesMetadata/part-00000-72bb0fff-0c20-40f2-bf66-a7b4a057d827-c000.snappy.parquet": "acf6b8219ffaf48fd417fcbc60c829b9c6d2de722fdc452ede2564fae0802a6e"
+  },
+  "by_zone": [
+    {
+      "PULocationID": 1,
+      "n": 8712,
+      "absolute_error": 6371.112264404097,
+      "squared_error": 10258.835071018742,
+      "actual_sum": 5981,
+      "mae": 0.7313030606524445,
+      "rmse": 1.0851507890452001,
+      "wape": 1.0652252573823937
+    },
+    {
+      "PULocationID": 2,
+      "n": 8712,
+      "absolute_error": 149.69820537894572,
+      "squared_error": 78.87988882750761,
+      "actual_sum": 69,
+      "mae": 0.017182989598134264,
+      "rmse": 0.09515337820719243,
+      "wape": 2.1695392083905176
+    },
+    {
+      "PULocationID": 3,
+      "n": 8712,
+      "absolute_error": 5202.068338533592,
+      "squared_error": 5705.834670501085,
+      "actual_sum": 4622,
+      "mae": 0.5971152822008255,
+      "rmse": 0.8092834487809198,
+      "wape": 1.1255015877398513
+    },
+    {
+      "PULocationID": 4,
+      "n": 8712,
+      "absolute_error": 45676.74327690166,
+      "squared_error": 640872.2690798871,
+      "actual_sum": 155911,
+      "mae": 5.242968695695783,
+      "rmse": 8.576830087928492,
+      "wape": 0.29296677769305346
+    },
+    {
+      "PULocationID": 5,
+      "n": 8712,
+      "absolute_error": 94.66802047865423,
+      "squared_error": 20.538922182901693,
+      "actual_sum": 20,
+      "mae": 0.010866393535199062,
+      "rmse": 0.04855454529249347,
+      "wape": 4.733401023932712
+    },
+    {
+      "PULocationID": 6,
+      "n": 8712,
+      "absolute_error": 1948.2839301921897,
+      "squared_error": 1287.0285450105791,
+      "actual_sum": 1152,
+      "mae": 0.22363222339212463,
+      "rmse": 0.38435731974770376,
+      "wape": 1.6912186894029424
+    },
+    {
+      "PULocationID": 7,
+      "n": 8712,
+      "absolute_error": 35310.533886150944,
+      "squared_error": 303931.96379652544,
+      "actual_sum": 96619,
+      "mae": 4.05309158472807,
+      "rmse": 5.906487031153794,
+      "wape": 0.36546159540205286
+    },
+    {
+      "PULocationID": 8,
+      "n": 8712,
+      "absolute_error": 1101.1948198823084,
+      "squared_error": 778.9293234461732,
+      "actual_sum": 619,
+      "mae": 0.1263997727137636,
+      "rmse": 0.29901301590898327,
+      "wape": 1.778990015964957
+    },
+    {
+      "PULocationID": 9,
+      "n": 8712,
+      "absolute_error": 3042.961733354724,
+      "squared_error": 2332.2750521711414,
+      "actual_sum": 2007,
+      "mae": 0.349283945518219,
+      "rmse": 0.5174053916628202,
+      "wape": 1.5161742567786367
+    },
+    {
+      "PULocationID": 10,
+      "n": 8712,
+      "absolute_error": 13434.000544921812,
+      "squared_error": 38027.90865448068,
+      "actual_sum": 23707,
+      "mae": 1.542011081832164,
+      "rmse": 2.089259028718508,
+      "wape": 0.5666680957068297
+    },
+    {
+      "PULocationID": 11,
+      "n": 8712,
+      "absolute_error": 4353.034479873559,
+      "squared_error": 4208.793879993179,
+      "actual_sum": 3497,
+      "mae": 0.49965960512781893,
+      "rmse": 0.6950561577612452,
+      "wape": 1.244791100907509
+    },
+    {
+      "PULocationID": 12,
+      "n": 8712,
+      "absolute_error": 10703.290359907298,
+      "squared_error": 33386.943614186705,
+      "actual_sum": 17368,
+      "mae": 1.228568682266678,
+      "rmse": 1.9576245307211755,
+      "wape": 0.6162649907823179
+    },
+    {
+      "PULocationID": 13,
+      "n": 8712,
+      "absolute_error": 59865.725605888016,
+      "squared_error": 888393.1313487758,
+      "actual_sum": 305854,
+      "mae": 6.871639761924703,
+      "rmse": 10.098192903943247,
+      "wape": 0.1957330151179583
+    },
+    {
+      "PULocationID": 14,
+      "n": 8712,
+      "absolute_error": 12629.220985903554,
+      "squared_error": 33368.919229446285,
+      "actual_sum": 21181,
+      "mae": 1.4496350993920517,
+      "rmse": 1.9570960345868984,
+      "wape": 0.5962523481376495
+    },
+    {
+      "PULocationID": 15,
+      "n": 8712,
+      "absolute_error": 2857.7793865983936,
+      "squared_error": 2209.961284903778,
+      "actual_sum": 1839,
+      "mae": 0.328027936937373,
+      "rmse": 0.5036552895588582,
+      "wape": 1.553985528329741
+    },
+    {
+      "PULocationID": 16,
+      "n": 8712,
+      "absolute_error": 4772.664395386815,
+      "squared_error": 5137.666840382182,
+      "actual_sum": 3635,
+      "mae": 0.5478264916651533,
+      "rmse": 0.7679342467881334,
+      "wape": 1.3129750743842683
+    },
+    {
+      "PULocationID": 17,
+      "n": 8712,
+      "absolute_error": 21162.605780216338,
+      "squared_error": 96192.21330546279,
+      "actual_sum": 48307,
+      "mae": 2.4291328948824997,
+      "rmse": 3.3228522082915006,
+      "wape": 0.4380856973154271
+    },
+    {
+      "PULocationID": 18,
+      "n": 8712,
+      "absolute_error": 8297.21525249803,
+      "squared_error": 14179.785962849193,
+      "actual_sum": 10336,
+      "mae": 0.9523892622242918,
+      "rmse": 1.2757803371453103,
+      "wape": 0.8027491536859549
+    },
+    {
+      "PULocationID": 19,
+      "n": 8712,
+      "absolute_error": 5562.699464500513,
+      "squared_error": 6556.60391927075,
+      "actual_sum": 4974,
+      "mae": 0.6385100395432178,
+      "rmse": 0.8675220878565851,
+      "wape": 1.118355340671595
+    },
+    {
+      "PULocationID": 20,
+      "n": 8712,
+      "absolute_error": 5838.460511545712,
+      "squared_error": 7125.446504573177,
+      "actual_sum": 5738,
+      "mae": 0.6701630522894526,
+      "rmse": 0.9043720015776189,
+      "wape": 1.0175079316043416
+    },
+    {
+      "PULocationID": 21,
+      "n": 8712,
+      "absolute_error": 6204.470329630996,
+      "squared_error": 8042.999613566437,
+      "actual_sum": 6223,
+      "mae": 0.7121751985343201,
+      "rmse": 0.960837822962187,
+      "wape": 0.9970223894634415
+    },
+    {
+      "PULocationID": 22,
+      "n": 8712,
+      "absolute_error": 7726.8532958900205,
+      "squared_error": 13121.857631288853,
+      "actual_sum": 9013,
+      "mae": 0.8869207180773669,
+      "rmse": 1.2272660695334217,
+      "wape": 0.857300931531124
+    },
+    {
+      "PULocationID": 23,
+      "n": 8712,
+      "absolute_error": 724.8511721965004,
+      "squared_error": 426.90740042068563,
+      "actual_sum": 375,
+      "mae": 0.08320146604643026,
+      "rmse": 0.22136446612290445,
+      "wape": 1.932936459190668
+    },
+    {
+      "PULocationID": 24,
+      "n": 8712,
+      "absolute_error": 33579.70431222954,
+      "squared_error": 239714.23786146689,
+      "actual_sum": 132850,
+      "mae": 3.8544196868950347,
+      "rmse": 5.245513167107909,
+      "wape": 0.25276405203033153
+    },
+    {
+      "PULocationID": 25,
+      "n": 8712,
+      "absolute_error": 23264.590797802306,
+      "squared_error": 121563.10193121119,
+      "actual_sum": 57003,
+      "mae": 2.6704075755053154,
+      "rmse": 3.735441620048067,
+      "wape": 0.40812923526485106
+    },
+    {
+      "PULocationID": 26,
+      "n": 8712,
+      "absolute_error": 9323.829464031154,
+      "squared_error": 19016.5681153497,
+      "actual_sum": 12748,
+      "mae": 1.0702283590485715,
+      "rmse": 1.4774307652586924,
+      "wape": 0.7313954709782832
+    },
+    {
+      "PULocationID": 27,
+      "n": 8712,
+      "absolute_error": 697.9915844326157,
+      "squared_error": 489.6619662973018,
+      "actual_sum": 397,
+      "mae": 0.08011840959970336,
+      "rmse": 0.23707690705687376,
+      "wape": 1.7581652000821555
+    },
+    {
+      "PULocationID": 28,
+      "n": 8712,
+      "absolute_error": 10367.153389127845,
+      "squared_error": 22154.28128881733,
+      "actual_sum": 14444,
+      "mae": 1.1899854670716075,
+      "rmse": 1.5946666047932279,
+      "wape": 0.7177480884192637
+    },
+    {
+      "PULocationID": 29,
+      "n": 8712,
+      "absolute_error": 6247.6079546732835,
+      "squared_error": 8642.760041288851,
+      "actual_sum": 6473,
+      "mae": 0.7171267165602943,
+      "rmse": 0.9960182459860383,
+      "wape": 0.9651796623935244
+    },
+    {
+      "PULocationID": 30,
+      "n": 8712,
+      "absolute_error": 431.6818415987067,
+      "squared_error": 259.2334400908371,
+      "actual_sum": 242,
+      "mae": 0.04955025730012703,
+      "rmse": 0.17249899857670922,
+      "wape": 1.783809262804573
+    },
+    {
+      "PULocationID": 31,
+      "n": 8712,
+      "absolute_error": 2059.5062253152173,
+      "squared_error": 1589.8659574116969,
+      "actual_sum": 1248,
+      "mae": 0.23639878619320676,
+      "rmse": 0.42719023991696503,
+      "wape": 1.6502453728487319
+    },
+    {
+      "PULocationID": 32,
+      "n": 8712,
+      "absolute_error": 6050.50319548556,
+      "squared_error": 7947.510998235048,
+      "actual_sum": 6108,
+      "mae": 0.6945022033385629,
+      "rmse": 0.9551171326969006,
+      "wape": 0.99058663973241
+    },
+    {
+      "PULocationID": 33,
+      "n": 8712,
+      "absolute_error": 24279.5905154242,
+      "squared_error": 134745.86790238981,
+      "actual_sum": 63933,
+      "mae": 2.7869135118714645,
+      "rmse": 3.9327722305810804,
+      "wape": 0.3797661695122112
+    },
+    {
+      "PULocationID": 34,
+      "n": 8712,
+      "absolute_error": 8704.270702754822,
+      "squared_error": 60154.05979151418,
+      "actual_sum": 8526,
+      "mae": 0.9991127987551449,
+      "rmse": 2.6276864296175115,
+      "wape": 1.0209090667082832
+    },
+    {
+      "PULocationID": 35,
+      "n": 8712,
+      "absolute_error": 15415.789502918018,
+      "squared_error": 49502.4670552927,
+      "actual_sum": 31262,
+      "mae": 1.7694891532275043,
+      "rmse": 2.3837158724983047,
+      "wape": 0.493115907584864
+    },
+    {
+      "PULocationID": 36,
+      "n": 8712,
+      "absolute_error": 20324.39778892037,
+      "squared_error": 142268.0654687121,
+      "actual_sum": 43927,
+      "mae": 2.3329198563958187,
+      "rmse": 4.041055170416266,
+      "wape": 0.46268576932001665
+    },
+    {
+      "PULocationID": 37,
+      "n": 8712,
+      "absolute_error": 27934.573097052886,
+      "squared_error": 218796.9756420562,
+      "actual_sum": 69353,
+      "mae": 3.206447784326548,
+      "rmse": 5.011430639764356,
+      "wape": 0.4027882441574681
+    },
+    {
+      "PULocationID": 38,
+      "n": 8712,
+      "absolute_error": 5236.864580496649,
+      "squared_error": 5877.563195504395,
+      "actual_sum": 4624,
+      "mae": 0.6011093411956668,
+      "rmse": 0.8213716715398249,
+      "wape": 1.132539917927476
+    },
+    {
+      "PULocationID": 39,
+      "n": 8712,
+      "absolute_error": 17378.93856952631,
+      "squared_error": 63704.88679910112,
+      "actual_sum": 37557,
+      "mae": 1.994827659495674,
+      "rmse": 2.704129218439126,
+      "wape": 0.4627350046469716
+    },
+    {
+      "PULocationID": 40,
+      "n": 8712,
+      "absolute_error": 11827.845865263906,
+      "squared_error": 34724.870493591225,
+      "actual_sum": 18526,
+      "mae": 1.35764989270706,
+      "rmse": 1.9964635427198416,
+      "wape": 0.638445744643415
+    },
+    {
+      "PULocationID": 41,
+      "n": 8712,
+      "absolute_error": 50494.591792461244,
+      "squared_error": 573032.6881953545,
+      "actual_sum": 211956,
+      "mae": 5.795981610704918,
+      "rmse": 8.110185075002807,
+      "wape": 0.23823148102653968
+    },
+    {
+      "PULocationID": 42,
+      "n": 8712,
+      "absolute_error": 41114.77328373084,
+      "squared_error": 365547.6019846748,
+      "actual_sum": 145381,
+      "mae": 4.719326593633017,
+      "rmse": 6.477583742175799,
+      "wape": 0.2828070606456885
+    },
+    {
+      "PULocationID": 43,
+      "n": 8712,
+      "absolute_error": 110823.92588951773,
+      "squared_error": 3241484.422891283,
+      "actual_sum": 626194,
+      "mae": 12.720836305041063,
+      "rmse": 19.289147589999146,
+      "wape": 0.1769801784902406
+    },
+    {
+      "PULocationID": 44,
+      "n": 8712,
+      "absolute_error": 119.80538704612431,
+      "squared_error": 48.389335814796254,
+      "actual_sum": 39,
+      "mae": 0.013751766189867344,
+      "rmse": 0.07452738741917347,
+      "wape": 3.0719330011826744
+    },
+    {
+      "PULocationID": 45,
+      "n": 8712,
+      "absolute_error": 30340.59578506422,
+      "squared_error": 203091.5478302801,
+      "actual_sum": 106209,
+      "mae": 3.482621187449979,
+      "rmse": 4.8282193405769025,
+      "wape": 0.28566878310749766
+    },
+    {
+      "PULocationID": 46,
+      "n": 8712,
+      "absolute_error": 1412.4616970968873,
+      "squared_error": 929.0289915208884,
+      "actual_sum": 821,
+      "mae": 0.16212829397347192,
+      "rmse": 0.3265545204981391,
+      "wape": 1.7204161962203255
+    },
+    {
+      "PULocationID": 47,
+      "n": 8712,
+      "absolute_error": 7493.944634205489,
+      "squared_error": 11734.198567325167,
+      "actual_sum": 8691,
+      "mae": 0.8601864823468192,
+      "rmse": 1.160560494760113,
+      "wape": 0.8622649446790345
+    },
+    {
+      "PULocationID": 48,
+      "n": 8712,
+      "absolute_error": 158302.72037941386,
+      "squared_error": 6228190.910787591,
+      "actual_sum": 1133375,
+      "mae": 18.170652017839057,
+      "rmse": 26.737575555778484,
+      "wape": 0.13967373585919388
+    },
+    {
+      "PULocationID": 49,
+      "n": 8712,
+      "absolute_error": 19243.60281326869,
+      "squared_error": 83270.04549827229,
+      "actual_sum": 42388,
+      "mae": 2.2088616635983347,
+      "rmse": 3.091615440277761,
+      "wape": 0.4539870438159076
+    },
+    {
+      "PULocationID": 50,
+      "n": 8712,
+      "absolute_error": 76353.17828015846,
+      "squared_error": 1531807.5241966234,
+      "actual_sum": 328784,
+      "mae": 8.764138921046655,
+      "rmse": 13.259989062586914,
+      "wape": 0.23222899618034473
+    },
+    {
+      "PULocationID": 51,
+      "n": 8712,
+      "absolute_error": 9719.994172650955,
+      "squared_error": 20040.22776325172,
+      "actual_sum": 13823,
+      "mae": 1.1157018104512115,
+      "rmse": 1.5166745286044725,
+      "wape": 0.7031754447407187
+    },
+    {
+      "PULocationID": 52,
+      "n": 8712,
+      "absolute_error": 11016.050713819732,
+      "squared_error": 27971.64649229482,
+      "actual_sum": 18096,
+      "mae": 1.264468631062871,
+      "rmse": 1.7918435268046558,
+      "wape": 0.6087561181376951
+    },
+    {
+      "PULocationID": 53,
+      "n": 8712,
+      "absolute_error": 5125.468542846667,
+      "squared_error": 5593.607486471393,
+      "actual_sum": 4148,
+      "mae": 0.5883228354966331,
+      "rmse": 0.8012850880271616,
+      "wape": 1.2356481540131792
+    },
+    {
+      "PULocationID": 54,
+      "n": 8712,
+      "absolute_error": 5636.005714717822,
+      "squared_error": 7360.878009528738,
+      "actual_sum": 5239,
+      "mae": 0.6469244392467657,
+      "rmse": 0.9191912399109395,
+      "wape": 1.0757789109978664
+    },
+    {
+      "PULocationID": 55,
+      "n": 8712,
+      "absolute_error": 10042.778572929006,
+      "squared_error": 22354.353053675863,
+      "actual_sum": 14486,
+      "mae": 1.1527523614473147,
+      "rmse": 1.6018510102546064,
+      "wape": 0.6932747875831151
+    },
+    {
+      "PULocationID": 56,
+      "n": 8712,
+      "absolute_error": 10077.089210561284,
+      "squared_error": 27812.386373270554,
+      "actual_sum": 13497,
+      "mae": 1.1566906807347663,
+      "rmse": 1.7867352009435888,
+      "wape": 0.7466169675158394
+    },
+    {
+      "PULocationID": 57,
+      "n": 8712,
+      "absolute_error": 1818.3290904370801,
+      "squared_error": 1924.9194161594007,
+      "actual_sum": 1079,
+      "mae": 0.20871546033483473,
+      "rmse": 0.470053556743762,
+      "wape": 1.6851984156043376
+    },
+    {
+      "PULocationID": 58,
+      "n": 8712,
+      "absolute_error": 1088.0318262570133,
+      "squared_error": 681.203358258222,
+      "actual_sum": 623,
+      "mae": 0.12488886894593818,
+      "rmse": 0.2796272275606869,
+      "wape": 1.746439528502429
+    },
+    {
+      "PULocationID": 59,
+      "n": 8712,
+      "absolute_error": 500.3445438553551,
+      "squared_error": 303.86879609472265,
+      "actual_sum": 281,
+      "mae": 0.05743165103941174,
+      "rmse": 0.18676010921690706,
+      "wape": 1.7805855653215483
+    },
+    {
+      "PULocationID": 60,
+      "n": 8712,
+      "absolute_error": 6656.467106118336,
+      "squared_error": 9442.72585988522,
+      "actual_sum": 7031,
+      "mae": 0.7640572894993499,
+      "rmse": 1.0410935536283357,
+      "wape": 0.946731205535249
+    },
+    {
+      "PULocationID": 61,
+      "n": 8712,
+      "absolute_error": 29420.36801156557,
+      "squared_error": 181273.75719357948,
+      "actual_sum": 84540,
+      "mae": 3.376993573412026,
+      "rmse": 4.561508986344818,
+      "wape": 0.34800529940342523
+    },
+    {
+      "PULocationID": 62,
+      "n": 8712,
+      "absolute_error": 13190.412436579329,
+      "squared_error": 35502.30981669176,
+      "actual_sum": 24201,
+      "mae": 1.5140510142997392,
+      "rmse": 2.0186887904246884,
+      "wape": 0.5450358430056332
+    },
+    {
+      "PULocationID": 63,
+      "n": 8712,
+      "absolute_error": 10911.218396108192,
+      "squared_error": 24989.518191728126,
+      "actual_sum": 15781,
+      "mae": 1.2524355367433646,
+      "rmse": 1.693635733059414,
+      "wape": 0.6914148910783976
+    },
+    {
+      "PULocationID": 64,
+      "n": 8712,
+      "absolute_error": 3018.82100694352,
+      "squared_error": 2523.5649094765304,
+      "actual_sum": 1937,
+      "mae": 0.34651297141224974,
+      "rmse": 0.5382057168497372,
+      "wape": 1.5585033592893753
+    },
+    {
+      "PULocationID": 65,
+      "n": 8712,
+      "absolute_error": 24063.277796051443,
+      "squared_error": 129501.12760948898,
+      "actual_sum": 64872,
+      "mae": 2.7620842281969056,
+      "rmse": 3.8554745582147776,
+      "wape": 0.37093472986884085
+    },
+    {
+      "PULocationID": 66,
+      "n": 8712,
+      "absolute_error": 23550.957589288562,
+      "squared_error": 131308.6620742491,
+      "actual_sum": 62040,
+      "mae": 2.703277960203003,
+      "rmse": 3.8822880466088785,
+      "wape": 0.3796092454753153
+    },
+    {
+      "PULocationID": 67,
+      "n": 8712,
+      "absolute_error": 5760.736871891528,
+      "squared_error": 7972.940511499182,
+      "actual_sum": 5568,
+      "mae": 0.6612416060481552,
+      "rmse": 0.9566439482128863,
+      "wape": 1.0346150991184497
+    },
+    {
+      "PULocationID": 68,
+      "n": 8712,
+      "absolute_error": 162360.23886534575,
+      "squared_error": 6089454.291391947,
+      "actual_sum": 1229591,
+      "mae": 18.636391054332616,
+      "rmse": 26.438100800607085,
+      "wape": 0.13204410154705568
+    },
+    {
+      "PULocationID": 69,
+      "n": 8712,
+      "absolute_error": 11370.735948753052,
+      "squared_error": 27235.346738146683,
+      "actual_sum": 18223,
+      "mae": 1.3051808940258325,
+      "rmse": 1.768102836975181,
+      "wape": 0.6239771688938732
+    },
+    {
+      "PULocationID": 70,
+      "n": 8712,
+      "absolute_error": 44275.017296692284,
+      "squared_error": 431931.7811103843,
+      "actual_sum": 134396,
+      "mae": 5.082072692457792,
+      "rmse": 7.041231881456988,
+      "wape": 0.3294370167020766
+    },
+    {
+      "PULocationID": 71,
+      "n": 8712,
+      "absolute_error": 13605.059926284035,
+      "squared_error": 38886.08880267277,
+      "actual_sum": 26424,
+      "mae": 1.5616459970482135,
+      "rmse": 2.112701781069394,
+      "wape": 0.5148751107434164
+    },
+    {
+      "PULocationID": 72,
+      "n": 8712,
+      "absolute_error": 14860.394645639,
+      "squared_error": 45603.187801158594,
+      "actual_sum": 29834,
+      "mae": 1.7057385956885904,
+      "rmse": 2.287908584021272,
+      "wape": 0.49810265621904537
+    },
+    {
+      "PULocationID": 73,
+      "n": 8712,
+      "absolute_error": 2891.1207928731965,
+      "squared_error": 2225.416392160202,
+      "actual_sum": 1852,
+      "mae": 0.3318550037733237,
+      "rmse": 0.5054133485682295,
+      "wape": 1.561080341724188
+    },
+    {
+      "PULocationID": 74,
+      "n": 8712,
+      "absolute_error": 44818.44721344578,
+      "squared_error": 443444.8909242266,
+      "actual_sum": 188217,
+      "mae": 5.144449863802317,
+      "rmse": 7.134456501618599,
+      "wape": 0.2381211432200374
+    },
+    {
+      "PULocationID": 75,
+      "n": 8712,
+      "absolute_error": 64214.74259392638,
+      "squared_error": 908729.0876781244,
+      "actual_sum": 353896,
+      "mae": 7.37083822244334,
+      "rmse": 10.213116396062839,
+      "wape": 0.18145088555374003
+    },
+    {
+      "PULocationID": 76,
+      "n": 8712,
+      "absolute_error": 23214.007313441918,
+      "squared_error": 112023.00374064494,
+      "actual_sum": 56729,
+      "mae": 2.664601390431809,
+      "rmse": 3.585871094134189,
+      "wape": 0.409208822884978
+    },
+    {
+      "PULocationID": 77,
+      "n": 8712,
+      "absolute_error": 10326.936565805758,
+      "squared_error": 21732.51192149952,
+      "actual_sum": 14848,
+      "mae": 1.185369210951074,
+      "rmse": 1.579414169440499,
+      "wape": 0.6955102751754956
+    },
+    {
+      "PULocationID": 78,
+      "n": 8712,
+      "absolute_error": 8563.708814010915,
+      "squared_error": 15709.132593968334,
+      "actual_sum": 11183,
+      "mae": 0.982978514004926,
+      "rmse": 1.3428180468437751,
+      "wape": 0.7657792018251736
+    },
+    {
+      "PULocationID": 79,
+      "n": 8712,
+      "absolute_error": 228353.22778416585,
+      "squared_error": 26351209.181299523,
+      "actual_sum": 1201386,
+      "mae": 26.211343868705907,
+      "rmse": 54.99729643294633,
+      "wape": 0.19007482006962445
+    },
+    {
+      "PULocationID": 80,
+      "n": 8712,
+      "absolute_error": 27396.39427463367,
+      "squared_error": 247814.44733921345,
+      "actual_sum": 63087,
+      "mae": 3.1446733556742044,
+      "rmse": 5.333402712823671,
+      "wape": 0.4342637036890908
+    },
+    {
+      "PULocationID": 81,
+      "n": 8712,
+      "absolute_error": 6852.92023622526,
+      "squared_error": 10090.255128269862,
+      "actual_sum": 7413,
+      "mae": 0.786607005994635,
+      "rmse": 1.076197900082122,
+      "wape": 0.9244462749528207
+    },
+    {
+      "PULocationID": 82,
+      "n": 8712,
+      "absolute_error": 17726.94025803876,
+      "squared_error": 69956.83936318164,
+      "actual_sum": 34620,
+      "mae": 2.0347727568915017,
+      "rmse": 2.833714918462397,
+      "wape": 0.5120433350097852
+    },
+    {
+      "PULocationID": 83,
+      "n": 8712,
+      "absolute_error": 9984.774409831703,
+      "squared_error": 21359.162516098375,
+      "actual_sum": 13279,
+      "mae": 1.1460943996592865,
+      "rmse": 1.5657887800352852,
+      "wape": 0.7519221635538598
+    },
+    {
+      "PULocationID": 84,
+      "n": 8712,
+      "absolute_error": 93.78633206790151,
+      "squared_error": 39.28455175278667,
+      "actual_sum": 29,
+      "mae": 0.010765189631301826,
+      "rmse": 0.06715092009020293,
+      "wape": 3.2340114506172934
+    },
+    {
+      "PULocationID": 85,
+      "n": 8712,
+      "absolute_error": 12075.408501489292,
+      "squared_error": 31956.899855056257,
+      "actual_sum": 19679,
+      "mae": 1.3860661732655293,
+      "rmse": 1.91524081156466,
+      "wape": 0.6136190101879817
+    },
+    {
+      "PULocationID": 86,
+      "n": 8712,
+      "absolute_error": 7795.951436233442,
+      "squared_error": 12963.517100564912,
+      "actual_sum": 9299,
+      "mae": 0.8948520932315704,
+      "rmse": 1.2198389292770628,
+      "wape": 0.838364494701951
+    },
+    {
+      "PULocationID": 87,
+      "n": 8712,
+      "absolute_error": 72900.78561608252,
+      "squared_error": 1405836.5368760775,
+      "actual_sum": 340314,
+      "mae": 8.367858771359334,
+      "rmse": 12.703063812322421,
+      "wape": 0.21421624034298475
+    },
+    {
+      "PULocationID": 88,
+      "n": 8712,
+      "absolute_error": 42065.19019983886,
+      "squared_error": 456790.9541945675,
+      "actual_sum": 171310,
+      "mae": 4.828419444425948,
+      "rmse": 7.241021118951833,
+      "wape": 0.24555011499526505
+    },
+    {
+      "PULocationID": 89,
+      "n": 8712,
+      "absolute_error": 20732.961667482592,
+      "squared_error": 91948.43600941378,
+      "actual_sum": 48017,
+      "mae": 2.3798165366715556,
+      "rmse": 3.2487271649188196,
+      "wape": 0.43178377798451784
+    },
+    {
+      "PULocationID": 90,
+      "n": 8712,
+      "absolute_error": 112974.07508113296,
+      "squared_error": 3111920.592337633,
+      "actual_sum": 723913,
+      "mae": 12.9676394721227,
+      "rmse": 18.899717811969794,
+      "wape": 0.15606029326884993
+    },
+    {
+      "PULocationID": 91,
+      "n": 8712,
+      "absolute_error": 13830.806969221034,
+      "squared_error": 40746.682401780956,
+      "actual_sum": 26299,
+      "mae": 1.5875581920593473,
+      "rmse": 2.1626547514861114,
+      "wape": 0.5259061929815215
+    },
+    {
+      "PULocationID": 92,
+      "n": 8712,
+      "absolute_error": 11230.790244311713,
+      "squared_error": 31123.39093160087,
+      "actual_sum": 15616,
+      "mae": 1.2891173375013445,
+      "rmse": 1.890098861585223,
+      "wape": 0.7191848260957808
+    },
+    {
+      "PULocationID": 93,
+      "n": 8712,
+      "absolute_error": 18562.490648015137,
+      "squared_error": 675397.1605350955,
+      "actual_sum": 27851,
+      "mae": 2.130680744721664,
+      "rmse": 8.80482405272978,
+      "wape": 0.6664927883384847
+    },
+    {
+      "PULocationID": 94,
+      "n": 8712,
+      "absolute_error": 5494.049861776901,
+      "squared_error": 6267.751733722542,
+      "actual_sum": 5032,
+      "mae": 0.6306301494234275,
+      "rmse": 0.8481974441355766,
+      "wape": 1.091822309574106
+    },
+    {
+      "PULocationID": 95,
+      "n": 8712,
+      "absolute_error": 17240.167875919462,
+      "squared_error": 86638.6338205706,
+      "actual_sum": 31322,
+      "mae": 1.9788989756565039,
+      "rmse": 3.153529255524131,
+      "wape": 0.5504172107757953
+    },
+    {
+      "PULocationID": 96,
+      "n": 8712,
+      "absolute_error": 1674.7688437652664,
+      "squared_error": 1168.0835441715963,
+      "actual_sum": 989,
+      "mae": 0.19223701145147687,
+      "rmse": 0.3661660030657508,
+      "wape": 1.6933962019871247
+    },
+    {
+      "PULocationID": 97,
+      "n": 8712,
+      "absolute_error": 27143.724729454745,
+      "squared_error": 194174.18679444617,
+      "actual_sum": 63830,
+      "mae": 3.1156708826279553,
+      "rmse": 4.72103058635954,
+      "wape": 0.4252502699272246
+    },
+    {
+      "PULocationID": 98,
+      "n": 8712,
+      "absolute_error": 4018.354834550805,
+      "squared_error": 3505.513056252171,
+      "actual_sum": 2927,
+      "mae": 0.46124366787773247,
+      "rmse": 0.634332351145191,
+      "wape": 1.3728578184321165
+    },
+    {
+      "PULocationID": 99,
+      "n": 8712,
+      "absolute_error": 60.008353525904646,
+      "squared_error": 9.288332056063723,
+      "actual_sum": 7,
+      "mae": 0.006888011194433499,
+      "rmse": 0.03265201092231317,
+      "wape": 8.572621932272092
+    },
+    {
+      "PULocationID": 100,
+      "n": 8712,
+      "absolute_error": 102914.30206512801,
+      "squared_error": 2274080.5251846034,
+      "actual_sum": 666405,
+      "mae": 11.812936417025712,
+      "rmse": 16.156377278520996,
+      "wape": 0.15443206768425807
+    },
+    {
+      "PULocationID": 101,
+      "n": 8712,
+      "absolute_error": 4680.966161621659,
+      "squared_error": 5604.413011807927,
+      "actual_sum": 3391,
+      "mae": 0.5373009827389416,
+      "rmse": 0.8020586611573676,
+      "wape": 1.380408776650445
+    },
+    {
+      "PULocationID": 102,
+      "n": 8712,
+      "absolute_error": 7183.006531692498,
+      "squared_error": 10735.030775119954,
+      "actual_sum": 7907,
+      "mae": 0.8244956992300847,
+      "rmse": 1.1100504405725165,
+      "wape": 0.9084363894893763
+    },
+    {
+      "PULocationID": 103,
+      "n": 8712,
+      "absolute_error": 50.4047904948971,
+      "squared_error": 0.30638411958502404,
+      "actual_sum": 0,
+      "mae": 0.00578567384009379,
+      "rmse": 0.005930266250650723,
+      "wape": null
+    },
+    {
+      "PULocationID": 104,
+      "n": 8712,
+      "absolute_error": 50.4047904948971,
+      "squared_error": 0.30638411958502404,
+      "actual_sum": 0,
+      "mae": 0.00578567384009379,
+      "rmse": 0.005930266250650723,
+      "wape": null
+    },
+    {
+      "PULocationID": 105,
+      "n": 8712,
+      "absolute_error": 59.559572831960075,
+      "squared_error": 7.264338405451496,
+      "actual_sum": 7,
+      "mae": 0.0068364982589485855,
+      "rmse": 0.02887613744525155,
+      "wape": 8.508510404565724
+    },
+    {
+      "PULocationID": 106,
+      "n": 8712,
+      "absolute_error": 10230.622709417423,
+      "squared_error": 23812.63096771532,
+      "actual_sum": 14373,
+      "mae": 1.1743139014482809,
+      "rmse": 1.6532737012052177,
+      "wape": 0.7117945251107927
+    },
+    {
+      "PULocationID": 107,
+      "n": 8712,
+      "absolute_error": 131754.3013649812,
+      "squared_error": 4591635.090056016,
+      "actual_sum": 907765,
+      "mae": 15.12331282885459,
+      "rmse": 22.957508284775773,
+      "wape": 0.1451414202629328
+    },
+    {
+      "PULocationID": 108,
+      "n": 8712,
+      "absolute_error": 5542.448768682479,
+      "squared_error": 6781.371788640005,
+      "actual_sum": 5231,
+      "mae": 0.6361855795090081,
+      "rmse": 0.8822666117846538,
+      "wape": 1.0595390496429895
+    },
+    {
+      "PULocationID": 109,
+      "n": 8712,
+      "absolute_error": 168.7403330376808,
+      "squared_error": 89.68982898956384,
+      "actual_sum": 79,
+      "mae": 0.019368725096152527,
+      "rmse": 0.10146416007307552,
+      "wape": 2.1359535827554534
+    },
+    {
+      "PULocationID": 110,
+      "n": 8712,
+      "absolute_error": 50.41029255817083,
+      "squared_error": 0.30638475026627965,
+      "actual_sum": 0,
+      "mae": 0.00578630539005634,
+      "rmse": 0.005930272354272943,
+      "wape": null
+    },
+    {
+      "PULocationID": 111,
+      "n": 8712,
+      "absolute_error": 307.1898096048609,
+      "squared_error": 188.41047194120864,
+      "actual_sum": 167,
+      "mae": 0.03526053829256898,
+      "rmse": 0.1470596694069138,
+      "wape": 1.839459937753658
+    },
+    {
+      "PULocationID": 112,
+      "n": 8712,
+      "absolute_error": 28549.647543853083,
+      "squared_error": 239081.5826346845,
+      "actual_sum": 68791,
+      "mae": 3.2770486161447523,
+      "rmse": 5.238586599324146,
+      "wape": 0.4150200977432089
+    },
+    {
+      "PULocationID": 113,
+      "n": 8712,
+      "absolute_error": 99985.70615565589,
+      "squared_error": 2387963.276035969,
+      "actual_sum": 669492,
+      "mae": 11.476779861760319,
+      "rmse": 16.555979821942014,
+      "wape": 0.1493456324431896
+    },
+    {
+      "PULocationID": 114,
+      "n": 8712,
+      "absolute_error": 116368.16050997491,
+      "squared_error": 4993390.028546841,
+      "actual_sum": 696473,
+      "mae": 13.357226872127516,
+      "rmse": 23.940808427109907,
+      "wape": 0.16708208431622606
+    },
+    {
+      "PULocationID": 115,
+      "n": 8712,
+      "absolute_error": 671.3294398913927,
+      "squared_error": 467.78194112061396,
+      "actual_sum": 376,
+      "mae": 0.07705801651645922,
+      "rmse": 0.2317196119218184,
+      "wape": 1.7854506380090231
+    },
+    {
+      "PULocationID": 116,
+      "n": 8712,
+      "absolute_error": 31801.86608422506,
+      "squared_error": 232134.97605360718,
+      "actual_sum": 92286,
+      "mae": 3.6503519380423626,
+      "rmse": 5.161921041622559,
+      "wape": 0.3446011971937787
+    },
+    {
+      "PULocationID": 117,
+      "n": 8712,
+      "absolute_error": 7552.44865801777,
+      "squared_error": 12794.348296296415,
+      "actual_sum": 8907,
+      "mae": 0.8669018202499736,
+      "rmse": 1.2118535829685724,
+      "wape": 0.8479228312583104
+    },
+    {
+      "PULocationID": 118,
+      "n": 8712,
+      "absolute_error": 536.1611408824285,
+      "squared_error": 343.585288793934,
+      "actual_sum": 299,
+      "mae": 0.06154283067980126,
+      "rmse": 0.19859044403523962,
+      "wape": 1.7931810731853797
+    },
+    {
+      "PULocationID": 119,
+      "n": 8712,
+      "absolute_error": 8582.501711105308,
+      "squared_error": 16886.7300312874,
+      "actual_sum": 10540,
+      "mae": 0.9851356417705817,
+      "rmse": 1.3922391653011568,
+      "wape": 0.8142790997253613
+    },
+    {
+      "PULocationID": 120,
+      "n": 8712,
+      "absolute_error": 1647.99871348767,
+      "squared_error": 1122.352957433874,
+      "actual_sum": 968,
+      "mae": 0.1891642233112569,
+      "rmse": 0.35892672333858,
+      "wape": 1.7024780098013121
+    },
+    {
+      "PULocationID": 121,
+      "n": 8712,
+      "absolute_error": 7360.745909191216,
+      "squared_error": 11520.0559631711,
+      "actual_sum": 8092,
+      "mae": 0.844897372496696,
+      "rmse": 1.1499219422530034,
+      "wape": 0.9096324652979753
+    },
+    {
+      "PULocationID": 122,
+      "n": 8712,
+      "absolute_error": 5759.5834581638555,
+      "squared_error": 7205.968754590552,
+      "actual_sum": 5256,
+      "mae": 0.6611092123695885,
+      "rmse": 0.9094676463439424,
+      "wape": 1.0958111602290441
+    },
+    {
+      "PULocationID": 123,
+      "n": 8712,
+      "absolute_error": 7120.840740486482,
+      "squared_error": 11220.016472658333,
+      "actual_sum": 8189,
+      "mae": 0.8173600482652068,
+      "rmse": 1.1348483064620531,
+      "wape": 0.8695616974583565
+    },
+    {
+      "PULocationID": 124,
+      "n": 8712,
+      "absolute_error": 6559.319029739982,
+      "squared_error": 9113.243709936767,
+      "actual_sum": 6687,
+      "mae": 0.7529062247176288,
+      "rmse": 1.0227690064401265,
+      "wape": 0.9809060908838018
+    },
+    {
+      "PULocationID": 125,
+      "n": 8712,
+      "absolute_error": 52861.19220631305,
+      "squared_error": 620334.4519668719,
+      "actual_sum": 241681,
+      "mae": 6.067629959402324,
+      "rmse": 8.438281657612754,
+      "wape": 0.21872299521399302
+    },
+    {
+      "PULocationID": 126,
+      "n": 8712,
+      "absolute_error": 7399.10002138571,
+      "squared_error": 11301.94615892302,
+      "actual_sum": 8444,
+      "mae": 0.8492998188000126,
+      "rmse": 1.1389841582043112,
+      "wape": 0.8762553317605056
+    },
+    {
+      "PULocationID": 127,
+      "n": 8712,
+      "absolute_error": 12219.833836397633,
+      "squared_error": 33033.753290482666,
+      "actual_sum": 19918,
+      "mae": 1.4026439206149717,
+      "rmse": 1.9472424431786546,
+      "wape": 0.6135070708102035
+    },
+    {
+      "PULocationID": 128,
+      "n": 8712,
+      "absolute_error": 2533.5611387515273,
+      "squared_error": 2073.0734851073557,
+      "actual_sum": 1638,
+      "mae": 0.29081280288699807,
+      "rmse": 0.48780743468286947,
+      "wape": 1.5467406219484294
+    },
+    {
+      "PULocationID": 129,
+      "n": 8712,
+      "absolute_error": 23848.550832794554,
+      "squared_error": 118326.22126105764,
+      "actual_sum": 55469,
+      "mae": 2.73743696427853,
+      "rmse": 3.6853739729014974,
+      "wape": 0.4299437673798798
+    },
+    {
+      "PULocationID": 130,
+      "n": 8712,
+      "absolute_error": 23192.58427185253,
+      "squared_error": 116181.60786528917,
+      "actual_sum": 54117,
+      "mae": 2.6621423636194366,
+      "rmse": 3.65182332198414,
+      "wape": 0.42856374654641854
+    },
+    {
+      "PULocationID": 131,
+      "n": 8712,
+      "absolute_error": 7351.870996146987,
+      "squared_error": 11356.516739278979,
+      "actual_sum": 8160,
+      "mae": 0.8438786726523171,
+      "rmse": 1.141730595789026,
+      "wape": 0.9009645828611503
+    },
+    {
+      "PULocationID": 132,
+      "n": 8712,
+      "absolute_error": 326160.7249849317,
+      "squared_error": 24606298.69053566,
+      "actual_sum": 2036728,
+      "mae": 37.43809974574514,
+      "rmse": 53.145220389468136,
+      "wape": 0.16013955961961132
+    },
+    {
+      "PULocationID": 133,
+      "n": 8712,
+      "absolute_error": 8926.93146511686,
+      "squared_error": 16578.40450042063,
+      "actual_sum": 11927,
+      "mae": 1.0246707375019353,
+      "rmse": 1.3794705477983051,
+      "wape": 0.7484641121083978
+    },
+    {
+      "PULocationID": 134,
+      "n": 8712,
+      "absolute_error": 9919.600867096295,
+      "squared_error": 20859.207296753462,
+      "actual_sum": 13619,
+      "mae": 1.1386135063241845,
+      "rmse": 1.5473550145165986,
+      "wape": 0.7283648481603858
+    },
+    {
+      "PULocationID": 135,
+      "n": 8712,
+      "absolute_error": 6527.319097562202,
+      "squared_error": 8998.398279077095,
+      "actual_sum": 6814,
+      "mae": 0.749233137920363,
+      "rmse": 1.0163040878476242,
+      "wape": 0.9579276632759322
+    },
+    {
+      "PULocationID": 136,
+      "n": 8712,
+      "absolute_error": 6374.00237010112,
+      "squared_error": 8578.989976453111,
+      "actual_sum": 6737,
+      "mae": 0.731634799139247,
+      "rmse": 0.9923369136023933,
+      "wape": 0.9461188021524595
+    },
+    {
+      "PULocationID": 137,
+      "n": 8712,
+      "absolute_error": 85147.21495386769,
+      "squared_error": 1743516.2575733825,
+      "actual_sum": 526590,
+      "mae": 9.773555435476089,
+      "rmse": 14.146664933436073,
+      "wape": 0.1616954650750445
+    },
+    {
+      "PULocationID": 138,
+      "n": 8712,
+      "absolute_error": 264094.1112526419,
+      "squared_error": 18013046.82996363,
+      "actual_sum": 1268319,
+      "mae": 30.313832788411602,
+      "rmse": 45.47101574072796,
+      "wape": 0.20822372861452196
+    },
+    {
+      "PULocationID": 139,
+      "n": 8712,
+      "absolute_error": 6026.156463846419,
+      "squared_error": 7707.636595070483,
+      "actual_sum": 5763,
+      "mae": 0.6917075830861362,
+      "rmse": 0.9405928685343891,
+      "wape": 1.0456631032181882
+    },
+    {
+      "PULocationID": 140,
+      "n": 8712,
+      "absolute_error": 111725.04309012777,
+      "squared_error": 3076957.4658057285,
+      "actual_sum": 903165,
+      "mae": 12.824270327149652,
+      "rmse": 18.79324662384255,
+      "wape": 0.12370391134524453
+    },
+    {
+      "PULocationID": 141,
+      "n": 8712,
+      "absolute_error": 127008.63515733939,
+      "squared_error": 4053768.1547692707,
+      "actual_sum": 1008925,
+      "mae": 14.578585302724907,
+      "rmse": 21.57101197695582,
+      "wape": 0.12588511054571885
+    },
+    {
+      "PULocationID": 142,
+      "n": 8712,
+      "absolute_error": 211678.51770869872,
+      "squared_error": 15141482.52927641,
+      "actual_sum": 1360587,
+      "mae": 24.297350517527402,
+      "rmse": 41.68936369317623,
+      "wape": 0.15557881833995085
+    },
+    {
+      "PULocationID": 143,
+      "n": 8712,
+      "absolute_error": 87993.83012926334,
+      "squared_error": 1900917.9183879332,
+      "actual_sum": 531863,
+      "mae": 10.100301897298364,
+      "rmse": 14.771437078033868,
+      "wape": 0.16544454141247528
+    },
+    {
+      "PULocationID": 144,
+      "n": 8712,
+      "absolute_error": 88922.815316176,
+      "squared_error": 2260802.796991906,
+      "actual_sum": 537883,
+      "mae": 10.206934724078971,
+      "rmse": 16.109141916374668,
+      "wape": 0.16531999582841622
+    },
+    {
+      "PULocationID": 145,
+      "n": 8712,
+      "absolute_error": 39592.34001353184,
+      "squared_error": 434828.81590889895,
+      "actual_sum": 102610,
+      "mae": 4.544575299992176,
+      "rmse": 7.0648057472700305,
+      "wape": 0.38585264607281783
+    },
+    {
+      "PULocationID": 146,
+      "n": 8712,
+      "absolute_error": 21819.115060172877,
+      "squared_error": 120485.3380337256,
+      "actual_sum": 46063,
+      "mae": 2.504489791112589,
+      "rmse": 3.718845765004181,
+      "wape": 0.47367985281403463
+    },
+    {
+      "PULocationID": 147,
+      "n": 8712,
+      "absolute_error": 6411.030850218155,
+      "squared_error": 8753.609834798746,
+      "actual_sum": 6540,
+      "mae": 0.7358850838175109,
+      "rmse": 1.002385231254134,
+      "wape": 0.9802799465165375
+    },
+    {
+      "PULocationID": 148,
+      "n": 8712,
+      "absolute_error": 111068.49790737595,
+      "squared_error": 5104597.853807833,
+      "actual_sum": 592416,
+      "mae": 12.748909309845724,
+      "rmse": 24.205933364219582,
+      "wape": 0.1874839604389077
+    },
+    {
+      "PULocationID": 149,
+      "n": 8712,
+      "absolute_error": 6039.216939693914,
+      "squared_error": 8090.039394089842,
+      "actual_sum": 6180,
+      "mae": 0.6932067194322675,
+      "rmse": 0.963643474464535,
+      "wape": 0.9772195695297596
+    },
+    {
+      "PULocationID": 150,
+      "n": 8712,
+      "absolute_error": 4642.875897288182,
+      "squared_error": 4549.1461593963595,
+      "actual_sum": 3738,
+      "mae": 0.5329288220027758,
+      "rmse": 0.7226134018194114,
+      "wape": 1.2420748788892944
+    },
+    {
+      "PULocationID": 151,
+      "n": 8712,
+      "absolute_error": 62002.2321508493,
+      "squared_error": 857653.7894010568,
+      "actual_sum": 370683,
+      "mae": 7.116876968646613,
+      "rmse": 9.921950865442048,
+      "wape": 0.16726483855706709
+    },
+    {
+      "PULocationID": 152,
+      "n": 8712,
+      "absolute_error": 23426.647363684817,
+      "squared_error": 125255.46850692944,
+      "actual_sum": 61248,
+      "mae": 2.6890091096975226,
+      "rmse": 3.7917475471488897,
+      "wape": 0.382488364741458
+    },
+    {
+      "PULocationID": 153,
+      "n": 8712,
+      "absolute_error": 3271.5147413347613,
+      "squared_error": 2630.162501020047,
+      "actual_sum": 2229,
+      "mae": 0.3755182209980213,
+      "rmse": 0.5494552880115728,
+      "wape": 1.4677051329451598
+    },
+    {
+      "PULocationID": 154,
+      "n": 8712,
+      "absolute_error": 1512.7127928918685,
+      "squared_error": 970.8107802330335,
+      "actual_sum": 808,
+      "mae": 0.17363553637418142,
+      "rmse": 0.333816932296039,
+      "wape": 1.8721692981335005
+    },
+    {
+      "PULocationID": 155,
+      "n": 8712,
+      "absolute_error": 8628.314323037685,
+      "squared_error": 15510.429932760291,
+      "actual_sum": 11537,
+      "mae": 0.9903942060419748,
+      "rmse": 1.334298459788297,
+      "wape": 0.7478819730465186
+    },
+    {
+      "PULocationID": 156,
+      "n": 8712,
+      "absolute_error": 298.29901404835556,
+      "squared_error": 195.4938906526436,
+      "actual_sum": 160,
+      "mae": 0.034240015386634015,
+      "rmse": 0.14979856793860172,
+      "wape": 1.8643688378022223
+    },
+    {
+      "PULocationID": 157,
+      "n": 8712,
+      "absolute_error": 13860.992419132988,
+      "squared_error": 75589.54457235285,
+      "actual_sum": 21892,
+      "mae": 1.5910230049509857,
+      "rmse": 2.945587519062294,
+      "wape": 0.6331533171538913
+    },
+    {
+      "PULocationID": 158,
+      "n": 8712,
+      "absolute_error": 88795.82134768565,
+      "squared_error": 2155400.5728148217,
+      "actual_sum": 487311,
+      "mae": 10.192357822277966,
+      "rmse": 15.729143101308026,
+      "wape": 0.18221591826920724
+    },
+    {
+      "PULocationID": 159,
+      "n": 8712,
+      "absolute_error": 10664.050821099094,
+      "squared_error": 23124.07592644325,
+      "actual_sum": 16533,
+      "mae": 1.2240646029728068,
+      "rmse": 1.6291957180180257,
+      "wape": 0.6450160782132156
+    },
+    {
+      "PULocationID": 160,
+      "n": 8712,
+      "absolute_error": 8016.526072071549,
+      "squared_error": 13192.84605367904,
+      "actual_sum": 9537,
+      "mae": 0.9201705776023357,
+      "rmse": 1.2305813077994852,
+      "wape": 0.8405710466678776
+    },
+    {
+      "PULocationID": 161,
+      "n": 8712,
+      "absolute_error": 287779.50896672875,
+      "squared_error": 26990205.75588772,
+      "actual_sum": 2053927,
+      "mae": 33.032542351552884,
+      "rmse": 55.66012333069533,
+      "wape": 0.14011184865222998
+    },
+    {
+      "PULocationID": 162,
+      "n": 8712,
+      "absolute_error": 187297.3930042066,
+      "squared_error": 9473497.837086977,
+      "actual_sum": 1479091,
+      "mae": 21.498782484413063,
+      "rmse": 32.97586881898932,
+      "wape": 0.12663006738882637
+    },
+    {
+      "PULocationID": 163,
+      "n": 8712,
+      "absolute_error": 151951.4821203557,
+      "squared_error": 6225256.395721478,
+      "actual_sum": 1215975,
+      "mae": 17.44163017910419,
+      "rmse": 26.731275888367254,
+      "wape": 0.12496266956175556
+    },
+    {
+      "PULocationID": 164,
+      "n": 8712,
+      "absolute_error": 140804.1374385758,
+      "squared_error": 5021477.702777502,
+      "actual_sum": 1020017,
+      "mae": 16.16209107421669,
+      "rmse": 24.00804718255767,
+      "wape": 0.13804097131574847
+    },
+    {
+      "PULocationID": 165,
+      "n": 8712,
+      "absolute_error": 8643.61559335983,
+      "squared_error": 16408.866845487733,
+      "actual_sum": 11393,
+      "mae": 0.9921505502020006,
+      "rmse": 1.3723989023554264,
+      "wape": 0.7586777489124752
+    },
+    {
+      "PULocationID": 166,
+      "n": 8712,
+      "absolute_error": 60034.70848283289,
+      "squared_error": 886446.5843747088,
+      "actual_sum": 278426,
+      "mae": 6.891036327230589,
+      "rmse": 10.087123825798253,
+      "wape": 0.21562177556274517
+    },
+    {
+      "PULocationID": 167,
+      "n": 8712,
+      "absolute_error": 9064.94221809816,
+      "squared_error": 17556.736270342728,
+      "actual_sum": 12471,
+      "mae": 1.0405121921600275,
+      "rmse": 1.4195900913143837,
+      "wape": 0.7268817430918258
+    },
+    {
+      "PULocationID": 168,
+      "n": 8712,
+      "absolute_error": 17264.838776776312,
+      "squared_error": 62853.29369525532,
+      "actual_sum": 33613,
+      "mae": 1.9817308054150955,
+      "rmse": 2.6859943023054553,
+      "wape": 0.5136357592829058
+    },
+    {
+      "PULocationID": 169,
+      "n": 8712,
+      "absolute_error": 9091.53729305011,
+      "squared_error": 17161.015931695445,
+      "actual_sum": 12189,
+      "mae": 1.0435648867137408,
+      "rmse": 1.4035004747450819,
+      "wape": 0.7458804900361072
+    },
+    {
+      "PULocationID": 170,
+      "n": 8712,
+      "absolute_error": 154347.9614610684,
+      "squared_error": 5674057.216304246,
+      "actual_sum": 1273201,
+      "mae": 17.71670815668829,
+      "rmse": 25.520426145184185,
+      "wape": 0.12122827539490497
+    },
+    {
+      "PULocationID": 171,
+      "n": 8712,
+      "absolute_error": 4891.846794280906,
+      "squared_error": 5109.875521963704,
+      "actual_sum": 3954,
+      "mae": 0.5615067486548331,
+      "rmse": 0.7658544267549957,
+      "wape": 1.2371893763988127
+    },
+    {
+      "PULocationID": 172,
+      "n": 8712,
+      "absolute_error": 403.39962045133615,
+      "squared_error": 245.96285549485307,
+      "actual_sum": 229,
+      "mae": 0.046303905010483946,
+      "rmse": 0.16802574504531084,
+      "wape": 1.7615703949840007
+    },
+    {
+      "PULocationID": 173,
+      "n": 8712,
+      "absolute_error": 7715.246483409488,
+      "squared_error": 13947.258169332816,
+      "actual_sum": 8248,
+      "mae": 0.8855884393261579,
+      "rmse": 1.2652766300561349,
+      "wape": 0.9354081575423725
+    },
+    {
+      "PULocationID": 174,
+      "n": 8712,
+      "absolute_error": 7208.13690265081,
+      "squared_error": 10718.545042898993,
+      "actual_sum": 7999,
+      "mae": 0.8273802688993125,
+      "rmse": 1.1091977636729091,
+      "wape": 0.9011297540506076
+    },
+    {
+      "PULocationID": 175,
+      "n": 8712,
+      "absolute_error": 3610.52401580335,
+      "squared_error": 3015.375705047365,
+      "actual_sum": 2512,
+      "mae": 0.414431131290559,
+      "rmse": 0.5883175207069105,
+      "wape": 1.4373105158452826
+    },
+    {
+      "PULocationID": 176,
+      "n": 8712,
+      "absolute_error": 198.29238982633353,
+      "squared_error": 115.10498384443923,
+      "actual_sum": 104,
+      "mae": 0.022760834461241223,
+      "rmse": 0.1149444828685731,
+      "wape": 1.9066575944839763
+    },
+    {
+      "PULocationID": 177,
+      "n": 8712,
+      "absolute_error": 15461.111083597929,
+      "squared_error": 50434.669261868505,
+      "actual_sum": 30209,
+      "mae": 1.7746913548666126,
+      "rmse": 2.4060555792889944,
+      "wape": 0.5118047960408464
+    },
+    {
+      "PULocationID": 178,
+      "n": 8712,
+      "absolute_error": 3923.0407540677843,
+      "squared_error": 3695.0629443553307,
+      "actual_sum": 2980,
+      "mae": 0.450303116858102,
+      "rmse": 0.6512563742909243,
+      "wape": 1.3164566288818067
+    },
+    {
+      "PULocationID": 179,
+      "n": 8712,
+      "absolute_error": 17591.68735630222,
+      "squared_error": 69182.57368162548,
+      "actual_sum": 36076,
+      "mae": 2.019247859997959,
+      "rmse": 2.817989845237798,
+      "wape": 0.4876285440819997
+    },
+    {
+      "PULocationID": 180,
+      "n": 8712,
+      "absolute_error": 6819.556879435423,
+      "squared_error": 9385.61749325594,
+      "actual_sum": 6866,
+      "mae": 0.7827774195862515,
+      "rmse": 1.0379405806232322,
+      "wape": 0.9932357820325405
+    },
+    {
+      "PULocationID": 181,
+      "n": 8712,
+      "absolute_error": 26276.048130143867,
+      "squared_error": 200114.67367221112,
+      "actual_sum": 57576,
+      "mae": 3.016075313377395,
+      "rmse": 4.792703189749811,
+      "wape": 0.4563715459591473
+    },
+    {
+      "PULocationID": 182,
+      "n": 8712,
+      "absolute_error": 9427.976840352152,
+      "squared_error": 20249.943067070002,
+      "actual_sum": 12614,
+      "mae": 1.082182832914618,
+      "rmse": 1.5245896596422621,
+      "wape": 0.7474216616737079
+    },
+    {
+      "PULocationID": 183,
+      "n": 8712,
+      "absolute_error": 3854.9827328816314,
+      "squared_error": 3373.288401614174,
+      "actual_sum": 2848,
+      "mae": 0.4424911309551918,
+      "rmse": 0.622254152058219,
+      "wape": 1.3535753977814717
+    },
+    {
+      "PULocationID": 184,
+      "n": 8712,
+      "absolute_error": 1097.9988179690747,
+      "squared_error": 813.4549590479444,
+      "actual_sum": 635,
+      "mae": 0.1260329221727588,
+      "rmse": 0.3055679651756568,
+      "wape": 1.7291319968016925
+    },
+    {
+      "PULocationID": 185,
+      "n": 8712,
+      "absolute_error": 5728.734515778101,
+      "squared_error": 6822.598028774393,
+      "actual_sum": 5548,
+      "mae": 0.6575682410213615,
+      "rmse": 0.8849443459887858,
+      "wape": 1.0325765169030463
+    },
+    {
+      "PULocationID": 186,
+      "n": 8712,
+      "absolute_error": 248619.50621781393,
+      "squared_error": 15333552.627517784,
+      "actual_sum": 1514640,
+      "mae": 28.537592541071387,
+      "rmse": 41.95294577030307,
+      "wape": 0.16414428921579646
+    },
+    {
+      "PULocationID": 187,
+      "n": 8712,
+      "absolute_error": 154.11160995400158,
+      "squared_error": 83.4678322503401,
+      "actual_sum": 73,
+      "mae": 0.017689578736685214,
+      "rmse": 0.09788150400252651,
+      "wape": 2.1111179445753643
+    },
+    {
+      "PULocationID": 188,
+      "n": 8712,
+      "absolute_error": 21351.974022476996,
+      "squared_error": 93008.00406163448,
+      "actual_sum": 50576,
+      "mae": 2.450869378153925,
+      "rmse": 3.2673919062967665,
+      "wape": 0.42217601278228795
+    },
+    {
+      "PULocationID": 189,
+      "n": 8712,
+      "absolute_error": 13151.220528394575,
+      "squared_error": 40015.30550575502,
+      "actual_sum": 22672,
+      "mae": 1.5095524022491478,
+      "rmse": 2.1431577305585066,
+      "wape": 0.5800644199186034
+    },
+    {
+      "PULocationID": 190,
+      "n": 8712,
+      "absolute_error": 5121.993595392843,
+      "squared_error": 6783.011778045576,
+      "actual_sum": 4459,
+      "mae": 0.5879239664133199,
+      "rmse": 0.8823732878726763,
+      "wape": 1.1486866103146094
+    },
+    {
+      "PULocationID": 191,
+      "n": 8712,
+      "absolute_error": 9339.365016807657,
+      "squared_error": 19427.808120157693,
+      "actual_sum": 11698,
+      "mae": 1.0720115951340285,
+      "rmse": 1.4933203016881806,
+      "wape": 0.7983728002058178
+    },
+    {
+      "PULocationID": 192,
+      "n": 8712,
+      "absolute_error": 4381.1514751800205,
+      "squared_error": 4207.328734935945,
+      "actual_sum": 3329,
+      "mae": 0.5028869921005533,
+      "rmse": 0.6949351674294552,
+      "wape": 1.3160563157645
+    },
+    {
+      "PULocationID": 193,
+      "n": 8712,
+      "absolute_error": 18660.869815957114,
+      "squared_error": 76438.45024430667,
+      "actual_sum": 36359,
+      "mae": 2.1419731193706513,
+      "rmse": 2.962081497143405,
+      "wape": 0.5132393579569602
+    },
+    {
+      "PULocationID": 194,
+      "n": 8712,
+      "absolute_error": 3585.971061631607,
+      "squared_error": 4108.386001734121,
+      "actual_sum": 2458,
+      "mae": 0.41161283994853154,
+      "rmse": 0.6867152422150755,
+      "wape": 1.4588979095327936
+    },
+    {
+      "PULocationID": 195,
+      "n": 8712,
+      "absolute_error": 13722.273043356747,
+      "squared_error": 83367.50977964919,
+      "actual_sum": 19743,
+      "mae": 1.57510021158824,
+      "rmse": 3.0934242177052225,
+      "wape": 0.695044980162931
+    },
+    {
+      "PULocationID": 196,
+      "n": 8712,
+      "absolute_error": 9824.867609727531,
+      "squared_error": 19714.08473214953,
+      "actual_sum": 14021,
+      "mae": 1.1277396246243723,
+      "rmse": 1.504282405983042,
+      "wape": 0.700725170082557
+    },
+    {
+      "PULocationID": 197,
+      "n": 8712,
+      "absolute_error": 18193.04860479613,
+      "squared_error": 69176.98690815912,
+      "actual_sum": 34866,
+      "mae": 2.088274633241062,
+      "rmse": 2.817876060884975,
+      "wape": 0.5217991339642096
+    },
+    {
+      "PULocationID": 198,
+      "n": 8712,
+      "absolute_error": 14339.159425630285,
+      "squared_error": 49191.06646754928,
+      "actual_sum": 24203,
+      "mae": 1.6459090249805195,
+      "rmse": 2.37620653388627,
+      "wape": 0.5924538043065027
+    },
+    {
+      "PULocationID": 199,
+      "n": 8712,
+      "absolute_error": 79.7547750999155,
+      "squared_error": 32.096369102210595,
+      "actual_sum": 18,
+      "mae": 0.009154588510091311,
+      "rmse": 0.06069725062172183,
+      "wape": 4.430820838884195
+    },
+    {
+      "PULocationID": 200,
+      "n": 8712,
+      "absolute_error": 5574.157593123542,
+      "squared_error": 6924.810972904526,
+      "actual_sum": 5128,
+      "mae": 0.6398252517359437,
+      "rmse": 0.8915486117431122,
+      "wape": 1.0870042108275237
+    },
+    {
+      "PULocationID": 201,
+      "n": 8712,
+      "absolute_error": 4056.098626541858,
+      "squared_error": 3812.15771594177,
+      "actual_sum": 3019,
+      "mae": 0.46557605906127847,
+      "rmse": 0.6614948944640071,
+      "wape": 1.3435238908717648
+    },
+    {
+      "PULocationID": 202,
+      "n": 8712,
+      "absolute_error": 6136.9340254667895,
+      "squared_error": 7691.4746501324125,
+      "actual_sum": 6232,
+      "mae": 0.7044230975053707,
+      "rmse": 0.9396061985350965,
+      "wape": 0.9847455111467891
+    },
+    {
+      "PULocationID": 203,
+      "n": 8712,
+      "absolute_error": 5740.784781140405,
+      "squared_error": 6745.838301943893,
+      "actual_sum": 5360,
+      "mae": 0.658951421159367,
+      "rmse": 0.8799520959825293,
+      "wape": 1.0710419367799264
+    },
+    {
+      "PULocationID": 204,
+      "n": 8712,
+      "absolute_error": 92.20909892708545,
+      "squared_error": 33.11716095344845,
+      "actual_sum": 29,
+      "mae": 0.010584148178040112,
+      "rmse": 0.061654902601971866,
+      "wape": 3.179624100933981
+    },
+    {
+      "PULocationID": 205,
+      "n": 8712,
+      "absolute_error": 10795.643465001001,
+      "squared_error": 24845.019333612683,
+      "actual_sum": 15522,
+      "mae": 1.2391693600781681,
+      "rmse": 1.6887320123818725,
+      "wape": 0.6955059570287979
+    },
+    {
+      "PULocationID": 206,
+      "n": 8712,
+      "absolute_error": 339.84246080207544,
+      "squared_error": 206.30758595699754,
+      "actual_sum": 181,
+      "mae": 0.03900854692402152,
+      "rmse": 0.153885842047199,
+      "wape": 1.8775826563650577
+    },
+    {
+      "PULocationID": 207,
+      "n": 8712,
+      "absolute_error": 4650.253511984934,
+      "squared_error": 6758.6232265748695,
+      "actual_sum": 3591,
+      "mae": 0.5337756556456537,
+      "rmse": 0.880785557694188,
+      "wape": 1.2949745229699066
+    },
+    {
+      "PULocationID": 208,
+      "n": 8712,
+      "absolute_error": 6985.787138729229,
+      "squared_error": 10517.691252230356,
+      "actual_sum": 7351,
+      "mae": 0.8018580278614817,
+      "rmse": 1.0987560403085825,
+      "wape": 0.9503179348019628
+    },
+    {
+      "PULocationID": 209,
+      "n": 8712,
+      "absolute_error": 32347.35347908945,
+      "squared_error": 259236.9075178495,
+      "actual_sum": 110648,
+      "mae": 3.712965275377577,
+      "rmse": 5.454933777400322,
+      "wape": 0.29234467391267305
+    },
+    {
+      "PULocationID": 210,
+      "n": 8712,
+      "absolute_error": 8197.10696983938,
+      "squared_error": 13687.966366867802,
+      "actual_sum": 10244,
+      "mae": 0.9408984125159987,
+      "rmse": 1.253460149736512,
+      "wape": 0.8001861548066557
+    },
+    {
+      "PULocationID": 211,
+      "n": 8712,
+      "absolute_error": 74371.44647299324,
+      "squared_error": 1422611.1255654588,
+      "actual_sum": 410433,
+      "mae": 8.536667409664053,
+      "rmse": 12.778626219530715,
+      "wape": 0.18120240446794783
+    },
+    {
+      "PULocationID": 212,
+      "n": 8712,
+      "absolute_error": 8135.304957901389,
+      "squared_error": 14079.022520420034,
+      "actual_sum": 9593,
+      "mae": 0.9338045176654487,
+      "rmse": 1.2712393232371504,
+      "wape": 0.8480459666320639
+    },
+    {
+      "PULocationID": 213,
+      "n": 8712,
+      "absolute_error": 10538.263000375971,
+      "squared_error": 23399.28654656953,
+      "actual_sum": 15503,
+      "mae": 1.2096261478852126,
+      "rmse": 1.638861958810999,
+      "wape": 0.6797563697591416
+    },
+    {
+      "PULocationID": 214,
+      "n": 8712,
+      "absolute_error": 868.6213464586141,
+      "squared_error": 559.0313977941578,
+      "actual_sum": 472,
+      "mae": 0.09970401130149381,
+      "rmse": 0.2533139849148004,
+      "wape": 1.8402994628360467
+    },
+    {
+      "PULocationID": 215,
+      "n": 8712,
+      "absolute_error": 11806.764808214071,
+      "squared_error": 28781.30955874522,
+      "actual_sum": 18435,
+      "mae": 1.3552301203184196,
+      "rmse": 1.8175917463813085,
+      "wape": 0.640453746038192
+    },
+    {
+      "PULocationID": 216,
+      "n": 8712,
+      "absolute_error": 19569.366052341098,
+      "squared_error": 77742.30081564863,
+      "actual_sum": 41412,
+      "mae": 2.2462541382393364,
+      "rmse": 2.987237561342176,
+      "wape": 0.47255302937170623
+    },
+    {
+      "PULocationID": 217,
+      "n": 8712,
+      "absolute_error": 7648.232048221561,
+      "squared_error": 12211.92598179749,
+      "actual_sum": 8761,
+      "mae": 0.8778962406131269,
+      "rmse": 1.1839494177565004,
+      "wape": 0.87298619429535
+    },
+    {
+      "PULocationID": 218,
+      "n": 8712,
+      "absolute_error": 8643.421730207545,
+      "squared_error": 15334.71865170001,
+      "actual_sum": 10845,
+      "mae": 0.9921282977740524,
+      "rmse": 1.3267190734912822,
+      "wape": 0.7969960101620603
+    },
+    {
+      "PULocationID": 219,
+      "n": 8712,
+      "absolute_error": 9084.600311655271,
+      "squared_error": 16561.53646923274,
+      "actual_sum": 12286,
+      "mae": 1.042768630814425,
+      "rmse": 1.3787685841653936,
+      "wape": 0.739427015436698
+    },
+    {
+      "PULocationID": 220,
+      "n": 8712,
+      "absolute_error": 7465.026006552768,
+      "squared_error": 11691.162357950736,
+      "actual_sum": 8605,
+      "mae": 0.8568670806419615,
+      "rmse": 1.1584303107605325,
+      "wape": 0.867521906630188
+    },
+    {
+      "PULocationID": 221,
+      "n": 8712,
+      "absolute_error": 1266.3186885570526,
+      "squared_error": 924.7173930864204,
+      "actual_sum": 723,
+      "mae": 0.1453533848205983,
+      "rmse": 0.32579587390910997,
+      "wape": 1.751478130784305
+    },
+    {
+      "PULocationID": 222,
+      "n": 8712,
+      "absolute_error": 8198.657792070515,
+      "squared_error": 14881.427524898416,
+      "actual_sum": 10400,
+      "mae": 0.9410764224139709,
+      "rmse": 1.3069632121937578,
+      "wape": 0.7883324800067802
+    },
+    {
+      "PULocationID": 223,
+      "n": 8712,
+      "absolute_error": 16379.372399566757,
+      "squared_error": 63017.24852556318,
+      "actual_sum": 31350,
+      "mae": 1.8800932506389758,
+      "rmse": 2.6894952717905705,
+      "wape": 0.5224680191249365
+    },
+    {
+      "PULocationID": 224,
+      "n": 8712,
+      "absolute_error": 32008.264125421952,
+      "squared_error": 235728.05797763786,
+      "actual_sum": 104745,
+      "mae": 3.6740431732578,
+      "rmse": 5.201716821837434,
+      "wape": 0.30558274023029214
+    },
+    {
+      "PULocationID": 225,
+      "n": 8712,
+      "absolute_error": 21681.58896456015,
+      "squared_error": 100182.61980656024,
+      "actual_sum": 51386,
+      "mae": 2.488703967465582,
+      "rmse": 3.3910739359043087,
+      "wape": 0.42193572110224864
+    },
+    {
+      "PULocationID": 226,
+      "n": 8712,
+      "absolute_error": 32710.41915147029,
+      "squared_error": 237053.6449815195,
+      "actual_sum": 89129,
+      "mae": 3.7546394801963143,
+      "rmse": 5.216321917395862,
+      "wape": 0.3670008543961033
+    },
+    {
+      "PULocationID": 227,
+      "n": 8712,
+      "absolute_error": 7490.590726502421,
+      "squared_error": 11240.390776669123,
+      "actual_sum": 8604,
+      "mae": 0.8598015067151539,
+      "rmse": 1.1358782183765224,
+      "wape": 0.8705939942471432
+    },
+    {
+      "PULocationID": 228,
+      "n": 8712,
+      "absolute_error": 15023.82386273436,
+      "squared_error": 71454.78723898898,
+      "actual_sum": 25049,
+      "mae": 1.7244976885599586,
+      "rmse": 2.863892630007427,
+      "wape": 0.5997773908233606
+    },
+    {
+      "PULocationID": 229,
+      "n": 8712,
+      "absolute_error": 105007.08981314389,
+      "squared_error": 2607477.57644632,
+      "actual_sum": 745086,
+      "mae": 12.053155396366378,
+      "rmse": 17.30020931883406,
+      "wape": 0.14093284508519002
+    },
+    {
+      "PULocationID": 230,
+      "n": 8712,
+      "absolute_error": 215273.54393179,
+      "squared_error": 13885260.293837951,
+      "actual_sum": 1492982,
+      "mae": 24.710002746991506,
+      "rmse": 39.92253215507327,
+      "wape": 0.14419031437203528
+    },
+    {
+      "PULocationID": 231,
+      "n": 8712,
+      "absolute_error": 106474.24414707081,
+      "squared_error": 2805602.4895825963,
+      "actual_sum": 669149,
+      "mae": 12.221561541215658,
+      "rmse": 17.945441015976,
+      "wape": 0.1591188870446953
+    },
+    {
+      "PULocationID": 232,
+      "n": 8712,
+      "absolute_error": 38191.440402404805,
+      "squared_error": 327827.1316799315,
+      "actual_sum": 131009,
+      "mae": 4.383774150872911,
+      "rmse": 6.134278842259511,
+      "wape": 0.29151768506289494
+    },
+    {
+      "PULocationID": 233,
+      "n": 8712,
+      "absolute_error": 86043.47701264774,
+      "squared_error": 1762550.5293717564,
+      "actual_sum": 515652,
+      "mae": 9.876432163986196,
+      "rmse": 14.223676124976851,
+      "wape": 0.16686346026515506
+    },
+    {
+      "PULocationID": 234,
+      "n": 8712,
+      "absolute_error": 157436.42518909936,
+      "squared_error": 6585603.541714344,
+      "actual_sum": 1272249,
+      "mae": 18.071215012522885,
+      "rmse": 27.494058840895825,
+      "wape": 0.12374655054875214
+    },
+    {
+      "PULocationID": 235,
+      "n": 8712,
+      "absolute_error": 9301.632597117657,
+      "squared_error": 18224.258796379254,
+      "actual_sum": 12656,
+      "mae": 1.067680509311026,
+      "rmse": 1.4463253680591606,
+      "wape": 0.7349583278379944
+    },
+    {
+      "PULocationID": 236,
+      "n": 8712,
+      "absolute_error": 221972.4899871256,
+      "squared_error": 13639942.416137613,
+      "actual_sum": 1831246,
+      "mae": 25.478935948935444,
+      "rmse": 39.568294832335916,
+      "wape": 0.12121391117693942
+    },
+    {
+      "PULocationID": 237,
+      "n": 8712,
+      "absolute_error": 246428.00076079794,
+      "squared_error": 17037851.752798367,
+      "actual_sum": 2079110,
+      "mae": 28.286042327915283,
+      "rmse": 44.22302884431483,
+      "wape": 0.11852571569604202
+    },
+    {
+      "PULocationID": 238,
+      "n": 8712,
+      "absolute_error": 120639.67590493443,
+      "squared_error": 3607524.4047827222,
+      "actual_sum": 853469,
+      "mae": 13.847529373844631,
+      "rmse": 20.349123404268976,
+      "wape": 0.14135214741828284
+    },
+    {
+      "PULocationID": 239,
+      "n": 8712,
+      "absolute_error": 155827.94041665006,
+      "squared_error": 6384620.614553553,
+      "actual_sum": 1195565,
+      "mae": 17.886586365547526,
+      "rmse": 27.07126901152912,
+      "wape": 0.13033832574276602
+    },
+    {
+      "PULocationID": 240,
+      "n": 8712,
+      "absolute_error": 2243.0562006686664,
+      "squared_error": 1529.891761243911,
+      "actual_sum": 1367,
+      "mae": 0.2574674243191766,
+      "rmse": 0.4190553789311156,
+      "wape": 1.6408604247759082
+    },
+    {
+      "PULocationID": 241,
+      "n": 8712,
+      "absolute_error": 7518.594584167598,
+      "squared_error": 12396.864156114925,
+      "actual_sum": 8684,
+      "mae": 0.8630159072735994,
+      "rmse": 1.1928806332770063,
+      "wape": 0.8657985472325654
+    },
+    {
+      "PULocationID": 242,
+      "n": 8712,
+      "absolute_error": 7381.129331210627,
+      "squared_error": 11205.272293211649,
+      "actual_sum": 8469,
+      "mae": 0.8472370674025054,
+      "rmse": 1.134102411492632,
+      "wape": 0.8715467388370087
+    },
+    {
+      "PULocationID": 243,
+      "n": 8712,
+      "absolute_error": 20536.19576935769,
+      "squared_error": 96561.07366394316,
+      "actual_sum": 45630,
+      "mae": 2.3572309193477605,
+      "rmse": 3.329217046304974,
+      "wape": 0.4500590788813871
+    },
+    {
+      "PULocationID": 244,
+      "n": 8712,
+      "absolute_error": 33638.61848950544,
+      "squared_error": 257568.07313027696,
+      "actual_sum": 102263,
+      "mae": 3.8611821039377228,
+      "rmse": 5.437347394291795,
+      "wape": 0.328942222402095
+    },
+    {
+      "PULocationID": 245,
+      "n": 8712,
+      "absolute_error": 248.79948957266524,
+      "squared_error": 145.44571897017204,
+      "actual_sum": 134,
+      "mae": 0.02855825178749601,
+      "rmse": 0.12920863486424441,
+      "wape": 1.8567126087512331
+    },
+    {
+      "PULocationID": 246,
+      "n": 8712,
+      "absolute_error": 145250.20234765866,
+      "squared_error": 5805054.282104408,
+      "actual_sum": 869463,
+      "mae": 16.672429103266605,
+      "rmse": 25.8133404420626,
+      "wape": 0.16705737029368548
+    },
+    {
+      "PULocationID": 247,
+      "n": 8712,
+      "absolute_error": 13277.046225780381,
+      "squared_error": 49261.86593505949,
+      "actual_sum": 21119,
+      "mae": 1.5239952049793826,
+      "rmse": 2.377915926252539,
+      "wape": 0.6286777889947621
+    },
+    {
+      "PULocationID": 248,
+      "n": 8712,
+      "absolute_error": 7464.421561668579,
+      "squared_error": 12767.480084302293,
+      "actual_sum": 8486,
+      "mae": 0.8567976999160444,
+      "rmse": 1.210580464149997,
+      "wape": 0.8796160218793989
+    },
+    {
+      "PULocationID": 249,
+      "n": 8712,
+      "absolute_error": 159169.30232235018,
+      "squared_error": 8841301.011768451,
+      "actual_sum": 1043990,
+      "mae": 18.270121937827156,
+      "rmse": 31.856580386651377,
+      "wape": 0.1524624779187063
+    },
+    {
+      "PULocationID": 250,
+      "n": 8712,
+      "absolute_error": 7494.37812630686,
+      "squared_error": 11857.921046070715,
+      "actual_sum": 8670,
+      "mae": 0.8602362403933494,
+      "rmse": 1.166662782661319,
+      "wape": 0.8644034747758778
+    },
+    {
+      "PULocationID": 251,
+      "n": 8712,
+      "absolute_error": 373.9180194959875,
+      "squared_error": 242.61072702309758,
+      "actual_sum": 210,
+      "mae": 0.042919882862257515,
+      "rmse": 0.1668768395974093,
+      "wape": 1.7805619975999405
+    },
+    {
+      "PULocationID": 252,
+      "n": 8712,
+      "absolute_error": 4488.682115068067,
+      "squared_error": 4217.84200567748,
+      "actual_sum": 3516,
+      "mae": 0.5152298111877947,
+      "rmse": 0.695802877517412,
+      "wape": 1.276644515093307
+    },
+    {
+      "PULocationID": 253,
+      "n": 8712,
+      "absolute_error": 836.2276779384871,
+      "squared_error": 721.8693747434352,
+      "actual_sum": 459,
+      "mae": 0.09598572979091909,
+      "rmse": 0.2878527449829893,
+      "wape": 1.8218467928943074
+    },
+    {
+      "PULocationID": 254,
+      "n": 8712,
+      "absolute_error": 9982.828012619444,
+      "squared_error": 21057.432944810964,
+      "actual_sum": 13769,
+      "mae": 1.1458709840013135,
+      "rmse": 1.5546899094385291,
+      "wape": 0.7250220068719184
+    },
+    {
+      "PULocationID": 255,
+      "n": 8712,
+      "absolute_error": 33445.36087846169,
+      "squared_error": 383142.66230583854,
+      "actual_sum": 100075,
+      "mae": 3.8389991825598817,
+      "rmse": 6.631645810806745,
+      "wape": 0.3342029565671915
+    },
+    {
+      "PULocationID": 256,
+      "n": 8712,
+      "absolute_error": 29303.664264407806,
+      "squared_error": 231491.3314241048,
+      "actual_sum": 76024,
+      "mae": 3.363597826493091,
+      "rmse": 5.154759800650225,
+      "wape": 0.3854528078555168
+    },
+    {
+      "PULocationID": 257,
+      "n": 8712,
+      "absolute_error": 6816.056580517929,
+      "squared_error": 10339.91144529637,
+      "actual_sum": 7422,
+      "mae": 0.7823756405553179,
+      "rmse": 1.0894303659194424,
+      "wape": 0.9183584721797264
+    },
+    {
+      "PULocationID": 258,
+      "n": 8712,
+      "absolute_error": 10689.395798345824,
+      "squared_error": 24406.510827686747,
+      "actual_sum": 14756,
+      "mae": 1.2269738060543876,
+      "rmse": 1.6737628144695014,
+      "wape": 0.7244101245829374
+    },
+    {
+      "PULocationID": 259,
+      "n": 8712,
+      "absolute_error": 7000.448166475398,
+      "squared_error": 10358.661284419068,
+      "actual_sum": 7704,
+      "mae": 0.8035408822859731,
+      "rmse": 1.0904176757453752,
+      "wape": 0.9086770724916144
+    },
+    {
+      "PULocationID": 260,
+      "n": 8712,
+      "absolute_error": 18344.353067689983,
+      "squared_error": 74210.56997058558,
+      "actual_sum": 35948,
+      "mae": 2.1056419958321837,
+      "rmse": 2.9185957801861626,
+      "wape": 0.5103024665541889
+    },
+    {
+      "PULocationID": 261,
+      "n": 8712,
+      "absolute_error": 49841.76474430382,
+      "squared_error": 571581.0566185866,
+      "actual_sum": 248775,
+      "mae": 5.721047376527069,
+      "rmse": 8.099906022498018,
+      "wape": 0.20034876794012188
+    },
+    {
+      "PULocationID": 262,
+      "n": 8712,
+      "absolute_error": 96031.21134139215,
+      "squared_error": 2243654.7518411633,
+      "actual_sum": 629904,
+      "mae": 11.022866315586795,
+      "rmse": 16.047932220073665,
+      "wape": 0.1524537252365315
+    },
+    {
+      "PULocationID": 263,
+      "n": 8712,
+      "absolute_error": 114348.29818867585,
+      "squared_error": 3237025.5831357045,
+      "actual_sum": 840991,
+      "mae": 13.125378579967384,
+      "rmse": 19.27587638394457,
+      "wape": 0.13596851593973758
+    }
+  ],
+  "by_hour": [
+    {
+      "hour": 0.0,
+      "n": 95469,
+      "absolute_error": 394145.57004639524,
+      "squared_error": 21762482.841193747,
+      "actual_sum": 1502723,
+      "mae": 4.128518891434866,
+      "rmse": 15.098125606244622,
+      "wape": 0.26228757398828345
+    },
+    {
+      "hour": 1.0,
+      "n": 95469,
+      "absolute_error": 294378.2919827664,
+      "squared_error": 17838979.026774194,
+      "actual_sum": 984405,
+      "mae": 3.083496129453188,
+      "rmse": 13.669537183487098,
+      "wape": 0.2990418496277106
+    },
+    {
+      "hour": 2.0,
+      "n": 95469,
+      "absolute_error": 207645.62700088546,
+      "squared_error": 9501437.275179408,
+      "actual_sum": 656606,
+      "mae": 2.1750057819908606,
+      "rmse": 9.976161383323369,
+      "wape": 0.3162408308801404
+    },
+    {
+      "hour": 3.0,
+      "n": 95469,
+      "absolute_error": 155609.16302397795,
+      "squared_error": 4052151.966512169,
+      "actual_sum": 442771,
+      "mae": 1.6299444115260235,
+      "rmse": 6.514958825741483,
+      "wape": 0.35144389091421513
+    },
+    {
+      "hour": 4.0,
+      "n": 95469,
+      "absolute_error": 145467.8572693719,
+      "squared_error": 2315295.5231920313,
+      "actual_sum": 351108,
+      "mae": 1.5237182464399113,
+      "rmse": 4.924612116047495,
+      "wape": 0.41431085953430824
+    },
+    {
+      "hour": 5.0,
+      "n": 95469,
+      "absolute_error": 158549.01904323007,
+      "squared_error": 1872294.4127544903,
+      "actual_sum": 378468,
+      "mae": 1.6607382400908155,
+      "rmse": 4.4284921979790015,
+      "wape": 0.4189231825233047
+    },
+    {
+      "hour": 6.0,
+      "n": 95469,
+      "absolute_error": 215507.7301869455,
+      "squared_error": 2644768.3893864015,
+      "actual_sum": 746700,
+      "mae": 2.2573582020021736,
+      "rmse": 5.263354671849916,
+      "wape": 0.2886135398244884
+    },
+    {
+      "hour": 7.0,
+      "n": 95469,
+      "absolute_error": 330221.0861044804,
+      "squared_error": 6785427.189364197,
+      "actual_sum": 1360571,
+      "mae": 3.45893521566666,
+      "rmse": 8.430579159412536,
+      "wape": 0.24270772058531334
+    },
+    {
+      "hour": 8.0,
+      "n": 95469,
+      "absolute_error": 367778.735839049,
+      "squared_error": 8114544.962711489,
+      "actual_sum": 1837648,
+      "mae": 3.85233673589384,
+      "rmse": 9.219362653461172,
+      "wape": 0.2001355732104565
+    },
+    {
+      "hour": 9.0,
+      "n": 95469,
+      "absolute_error": 329297.7273427227,
+      "squared_error": 6097056.764579977,
+      "actual_sum": 1961113,
+      "mae": 3.4492633979901615,
+      "rmse": 7.991511567698686,
+      "wape": 0.16791369357233504
+    },
+    {
+      "hour": 10.0,
+      "n": 95469,
+      "absolute_error": 328413.41402685345,
+      "squared_error": 6445191.864262015,
+      "actual_sum": 2042941,
+      "mae": 3.4400005659099127,
+      "rmse": 8.216497706223086,
+      "wape": 0.16075521222925843
+    },
+    {
+      "hour": 11.0,
+      "n": 95469,
+      "absolute_error": 326423.277825209,
+      "squared_error": 6638532.139986284,
+      "actual_sum": 2191047,
+      "mae": 3.419154676651154,
+      "rmse": 8.33882470400073,
+      "wape": 0.1489805001103167
+    },
+    {
+      "hour": 12.0,
+      "n": 95469,
+      "absolute_error": 335380.6132178352,
+      "squared_error": 7250770.568187952,
+      "actual_sum": 2386323,
+      "mae": 3.512979220666763,
+      "rmse": 8.714869633567643,
+      "wape": 0.1405428406874657
+    },
+    {
+      "hour": 13.0,
+      "n": 95469,
+      "absolute_error": 356026.86792874953,
+      "squared_error": 8412869.205690738,
+      "actual_sum": 2502070,
+      "mae": 3.729240569491139,
+      "rmse": 9.387303986813746,
+      "wape": 0.14229292862659698
+    },
+    {
+      "hour": 14.0,
+      "n": 95469,
+      "absolute_error": 391099.51320573775,
+      "squared_error": 11589264.015110686,
+      "actual_sum": 2685764,
+      "mae": 4.0966126512872005,
+      "rmse": 11.01784711000346,
+      "wape": 0.14561946366312817
+    },
+    {
+      "hour": 15.0,
+      "n": 95469,
+      "absolute_error": 405405.8337949261,
+      "squared_error": 12689948.790200897,
+      "actual_sum": 2797930,
+      "mae": 4.246465698760081,
+      "rmse": 11.529188715670106,
+      "wape": 0.1448949165257623
+    },
+    {
+      "hour": 16.0,
+      "n": 95469,
+      "absolute_error": 420214.3989387399,
+      "squared_error": 13920768.312977482,
+      "actual_sum": 2879130,
+      "mae": 4.401579559215451,
+      "rmse": 12.075369142771292,
+      "wape": 0.14595186703578508
+    },
+    {
+      "hour": 17.0,
+      "n": 95469,
+      "absolute_error": 515395.7573687389,
+      "squared_error": 22007211.569627296,
+      "actual_sum": 3230983,
+      "mae": 5.3985666275831825,
+      "rmse": 15.18278081968068,
+      "wape": 0.15951670354462988
+    },
+    {
+      "hour": 18.0,
+      "n": 95469,
+      "absolute_error": 535573.13693313,
+      "squared_error": 24976611.70147433,
+      "actual_sum": 3409989,
+      "mae": 5.609916694771392,
+      "rmse": 16.174675417847695,
+      "wape": 0.15706007759354354
+    },
+    {
+      "hour": 19.0,
+      "n": 95469,
+      "absolute_error": 511237.6491078699,
+      "squared_error": 21320996.601010058,
+      "actual_sum": 3015683,
+      "mae": 5.3550120888232815,
+      "rmse": 14.944196302996245,
+      "wape": 0.1695263225968611
+    },
+    {
+      "hour": 20.0,
+      "n": 95469,
+      "absolute_error": 500119.32359593106,
+      "squared_error": 21752853.68624267,
+      "actual_sum": 2777199,
+      "mae": 5.238552028364507,
+      "rmse": 15.094785034371093,
+      "wape": 0.1800804780629444
+    },
+    {
+      "hour": 21.0,
+      "n": 95469,
+      "absolute_error": 540749.6824414906,
+      "squared_error": 28304234.830320723,
+      "actual_sum": 2854373,
+      "mae": 5.6641389607253725,
+      "rmse": 17.21846858694277,
+      "wape": 0.18944604732510104
+    },
+    {
+      "hour": 22.0,
+      "n": 95469,
+      "absolute_error": 535636.0133361403,
+      "squared_error": 25328161.825491205,
+      "actual_sum": 2689925,
+      "mae": 5.610575300214104,
+      "rmse": 16.288108340783182,
+      "wape": 0.19912674640971043
+    },
+    {
+      "hour": 23.0,
+      "n": 95469,
+      "absolute_error": 524473.2182416744,
+      "squared_error": 24901408.697944224,
+      "actual_sum": 2123656,
+      "mae": 5.493649438474001,
+      "rmse": 16.15030659668528,
+      "wape": 0.2469671256746264
+    }
+  ],
+  "by_month": [
+    {
+      "month": 1,
+      "n": 195672,
+      "absolute_error": 687978.1426659786,
+      "squared_error": 29108465.91261841,
+      "actual_sum": 3463680,
+      "mae": 3.51597644356872,
+      "rmse": 12.196783553534612,
+      "wape": 0.1986263577079807
+    },
+    {
+      "month": 2,
+      "n": 176736,
+      "absolute_error": 657681.667914534,
+      "squared_error": 25010337.948959466,
+      "actual_sum": 3563756,
+      "mae": 3.721266000783847,
+      "rmse": 11.895899028960415,
+      "wape": 0.18454733374409865
+    },
+    {
+      "month": 3,
+      "n": 189360,
+      "absolute_error": 796972.2594672653,
+      "squared_error": 35174711.91331252,
+      "actual_sum": 3997181,
+      "mae": 4.208767741166378,
+      "rmse": 13.629224715133926,
+      "wape": 0.19938358044513504
+    },
+    {
+      "month": 4,
+      "n": 189360,
+      "absolute_error": 696867.5378225164,
+      "squared_error": 24355890.76131526,
+      "actual_sum": 3926849,
+      "mae": 3.6801200772207245,
+      "rmse": 11.341170676320784,
+      "wape": 0.17746227008538307
+    },
+    {
+      "month": 5,
+      "n": 195672,
+      "absolute_error": 803072.4184260647,
+      "squared_error": 27764702.202198304,
+      "actual_sum": 4517934,
+      "mae": 4.1041764709619395,
+      "rmse": 11.911930965224842,
+      "wape": 0.17775213591567843
+    },
+    {
+      "month": 6,
+      "n": 189360,
+      "absolute_error": 771030.7952074198,
+      "squared_error": 24197317.110450357,
+      "actual_sum": 4245804,
+      "mae": 4.071772260284219,
+      "rmse": 11.304190964743887,
+      "wape": 0.18159830157195664
+    },
+    {
+      "month": 7,
+      "n": 195672,
+      "absolute_error": 715206.2747350936,
+      "squared_error": 21450565.386466254,
+      "actual_sum": 3834587,
+      "mae": 3.655128351195335,
+      "rmse": 10.470201259198557,
+      "wape": 0.18651455156320448
+    },
+    {
+      "month": 8,
+      "n": 195672,
+      "absolute_error": 621796.8564937197,
+      "squared_error": 14789567.10106891,
+      "actual_sum": 3518693,
+      "mae": 3.1777508099969323,
+      "rmse": 8.693874948185439,
+      "wape": 0.17671244876825565
+    },
+    {
+      "month": 9,
+      "n": 189360,
+      "absolute_error": 735197.0956821591,
+      "squared_error": 24931868.909667067,
+      "actual_sum": 4185680,
+      "mae": 3.882536415727498,
+      "rmse": 11.474487439842957,
+      "wape": 0.17564579606710476
+    },
+    {
+      "month": 10,
+      "n": 195672,
+      "absolute_error": 723687.0530618071,
+      "squared_error": 24046318.15728993,
+      "actual_sum": 4352236,
+      "mae": 3.698470159561956,
+      "rmse": 11.08561910609144,
+      "wape": 0.1662793683664689
+    },
+    {
+      "month": 11,
+      "n": 183048,
+      "absolute_error": 824520.3929620531,
+      "squared_error": 38329079.93946879,
+      "actual_sum": 3963318,
+      "mae": 4.504394437317278,
+      "rmse": 14.470438878885583,
+      "wape": 0.20803790989318877
+    },
+    {
+      "month": 12,
+      "n": 195672,
+      "absolute_error": 790739.0133641805,
+      "squared_error": 27364436.81735067,
+      "actual_sum": 4239408,
+      "mae": 4.041145454455315,
+      "rmse": 11.82575603296506,
+      "wape": 0.18652109288942711
+    }
+  ],
+  "macro_zone_mae": 3.8514899722260187,
+  "by_train_demand_group": [
+    {
+      "train_demand_group": "10_plus",
+      "n": 453024,
+      "absolute_error": 6614812.487483455,
+      "squared_error": 305725942.0121345,
+      "actual_sum": 43421663,
+      "mae": 14.601461484343996,
+      "rmse": 25.977989727140507,
+      "wape": 0.15233899465074507
+    },
+    {
+      "train_demand_group": "1_to_under_10",
+      "n": 365904,
+      "absolute_error": 1087332.3039302882,
+      "squared_error": 8132481.087407964,
+      "actual_sum": 2867399,
+      "mae": 2.9716327340785784,
+      "rmse": 4.714416547079617,
+      "wape": 0.37920509281418047
+    },
+    {
+      "train_demand_group": "under_1_trip_per_hour",
+      "n": 1472328,
+      "absolute_error": 1122604.7163888859,
+      "squared_error": 2664839.060630399,
+      "actual_sum": 1520064,
+      "mae": 0.7624691756109276,
+      "rmse": 1.3453435690508853,
+      "wape": 0.7385246386921116
+    }
+  ],
+  "predictions_directory": "data/processed/model_predictions_v1/test_2025",
+  "prediction_files_sha256": {
+    "data/processed/model_predictions_v1/test_2025/month=1/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "07589cf7cadf4cf94e710cab363925520935868a73916df787d7793785707db9",
+    "data/processed/model_predictions_v1/test_2025/month=1/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "bca818f12b7d09d1d55ed148994238cd9a5107fe684032879771ce04ef868432",
+    "data/processed/model_predictions_v1/test_2025/month=10/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "69aa69c6503bdea93f208814b94bc70b9bef2b82f41b8cbb84c6174192aecd81",
+    "data/processed/model_predictions_v1/test_2025/month=10/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "e38d5a454ee9b6858dda6e8b2f5ca83c25bf0f1ec49224ff7c729d9530d36653",
+    "data/processed/model_predictions_v1/test_2025/month=11/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "0f4a69d5bea50e3d26f7151f914c0908da130f159dfb0bfc09cddd13f98aa0b9",
+    "data/processed/model_predictions_v1/test_2025/month=11/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "b63c9d6951e7c44eafe4fb6825bbddb718a3af594ba14d3ee4fb7bf84637f2e3",
+    "data/processed/model_predictions_v1/test_2025/month=11/part-00002-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "5268517b7648d1bf22d8530c1d23f0eba0f664f966666abc319b76ecf16a26e3",
+    "data/processed/model_predictions_v1/test_2025/month=11/part-00003-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "d02a0b922958d349c2383ec2e6ca50e6886cf4ae6c562d7089643fcd40046f57",
+    "data/processed/model_predictions_v1/test_2025/month=12/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "cc25ad307ac99feb2e8aa625a0c5a3890ace48baf1be17473458729d0cb6a185",
+    "data/processed/model_predictions_v1/test_2025/month=12/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "4441765cc99774c86c04399b9e7822216b360a38c58a2e5f70b5efb417b76052",
+    "data/processed/model_predictions_v1/test_2025/month=2/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "3b5017b72a6dcf6266d123940f1febd5b65c61122d72954109e098376873df35",
+    "data/processed/model_predictions_v1/test_2025/month=2/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "044bf01404120d3dde55ed44a872377fbe986affc2ced85808ee05c51a51ac74",
+    "data/processed/model_predictions_v1/test_2025/month=3/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "10652185c378c4aeb1bf33de270b5d9c22d011123d6ae0e7ad8ce4b34f2f3074",
+    "data/processed/model_predictions_v1/test_2025/month=3/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "cfceccb219a56a9c88c8c8c224df187704c9210da9df27360c78798eb24688f4",
+    "data/processed/model_predictions_v1/test_2025/month=3/part-00002-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "47a92642b6e53eaee79ffbebd3ddef196adf46c01091f3ec1ff1e900dbf1a69d",
+    "data/processed/model_predictions_v1/test_2025/month=3/part-00003-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "a51913bbbd196e3b83d574ed6d113552c5ab4aa9ba4b0596d2379877c194c189",
+    "data/processed/model_predictions_v1/test_2025/month=4/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "f66172f7a7589d51ae82d4b4cf79009192dcf47ee29c14491ae4c8879393951f",
+    "data/processed/model_predictions_v1/test_2025/month=4/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "d43972d149366d69017717f57931ee2ae8783ae5a054258178247d5e7b8d71d4",
+    "data/processed/model_predictions_v1/test_2025/month=5/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "17380d44fcef9d450a6eb9543b61f53cb675d21b5d913a28a3827150d3848dfc",
+    "data/processed/model_predictions_v1/test_2025/month=5/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "f773bcab1de7f70f158941962d6421f151b9501760c39271eb5eed394cab26fa",
+    "data/processed/model_predictions_v1/test_2025/month=6/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "b9902404a39f5ed8d68f8175a440451b378e1002b9e4a9775e7a87ff118f12fa",
+    "data/processed/model_predictions_v1/test_2025/month=6/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "a5c83ae87df4ddece27761e924179a6e86ba7aba074aacefd9cf0ca5fca3744c",
+    "data/processed/model_predictions_v1/test_2025/month=7/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "55736b9046e8eb18ae2b49d4183d6eda296ee4ff49b7687ab3bf1d48e5c0725a",
+    "data/processed/model_predictions_v1/test_2025/month=7/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "1dbd7032e917224666c22a47958a4a497994919473486a5248d5c41e1c34de6e",
+    "data/processed/model_predictions_v1/test_2025/month=8/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "780863221d0d36a7264b3b93037b871abf13a9aa95d5935ecbf69510a3fed245",
+    "data/processed/model_predictions_v1/test_2025/month=8/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "01fa20dc298ac9a7bfbbf6fcd2933e777373105565dc709d80fa72844a61d9c6",
+    "data/processed/model_predictions_v1/test_2025/month=9/part-00000-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "3de3e9798d620c4e14d81e1ea44cb600adfd2d89fb874b8d6c04f47a2d2819a1",
+    "data/processed/model_predictions_v1/test_2025/month=9/part-00001-818f121e-6147-4b32-9990-36bc43692211.c000.snappy.parquet": "116cd934d4e1cb5a36a671efafb8787cb6e097deb16453a854809da13cd632a5"
+  },
+  "spark_version": "3.5.7",
+  "elapsed_seconds": 415.86971865600026,
+  "ended_at_utc": "2026-10-08T11:59:00.965123+00:00"
+}

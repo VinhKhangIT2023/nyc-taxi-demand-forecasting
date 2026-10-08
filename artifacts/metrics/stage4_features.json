@@ -1,0 +1,260 @@
+{
+  "complete": true,
+  "sources": {
+    "2023": {
+      "file": "data/processed/hourly_grid_v1/2023/zone_hours.parquet",
+      "sha256": "ddafd49e65955e00bf0150c225336f6f4e1e2ee86e8ad5b9167ba022c69ef86e"
+    },
+    "2024": {
+      "file": "data/processed/hourly_grid_v1/2024/zone_hours.parquet",
+      "sha256": "ef2ef62ff5ce140215337d0726a3db93b0d530b1d5b4959e6ff4cb22fc8713da"
+    },
+    "2025": {
+      "file": "data/processed/hourly_grid_v1/2025/zone_hours.parquet",
+      "sha256": "ac04dd1e8db46b599b2738182c80955411540e5049c89dae7f84e903ebd9ae7e"
+    }
+  },
+  "timezone_axis": "UTC for naive wall-clock arithmetic",
+  "by_year": [
+    {
+      "year": 2023,
+      "rows": 2303880,
+      "eligible": 2291256,
+      "rf_ready": 2158704
+    },
+    {
+      "year": 2024,
+      "rows": 2310192,
+      "eligible": 2297568,
+      "rf_ready": 2209200
+    },
+    {
+      "year": 2025,
+      "rows": 2303880,
+      "eligible": 2291256,
+      "rf_ready": 2202888
+    }
+  ],
+  "files": {
+    "data/processed/model_features_v1/features/year=2023/part-00000-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1956412,
+      "sha256": "041a4d181987ca5362060a6ea227dd5c34b71e897827284e6ec42ceb3565d0d5"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00001-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2354568,
+      "sha256": "872374d1cabc5d21e3bf3b16828beb9fc7a4d2d02594464acf74b159280eddc3"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00002-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1797731,
+      "sha256": "775bfcd22337d9dcea2cf38c6c59772812dcfa91e5fcd860a2ec4360e3959c1d"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00003-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2208475,
+      "sha256": "7ee39af56d8490a8dbf6b3f7c25d39f2996bf937623edb31d30887a26e50b5ac"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00004-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1936096,
+      "sha256": "fe31ddb2f0f2a5efdde3dcafb30a3ac45314ca41dcf1fdba323f6eb4bff1af5e"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00005-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1497523,
+      "sha256": "e08d407ce7b322b9fa1396328d41151a782e8f1f38f9f660e6ae6701f00049e2"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00006-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1971069,
+      "sha256": "3c4015ba01f42d25211fe6c793e227df09d18f92b043f59c163402fa9beeb117"
+    },
+    "data/processed/model_features_v1/features/year=2023/part-00007-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2106824,
+      "sha256": "125e4227f6647b9cb3a5fad62d3f78413d18d9f066473d152c6abcc92d75c157"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00000-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2266920,
+      "sha256": "2e6a399ffebc5ca6819f79ba4ea484706bbc17a5bab572d1942cb1aec3cbd448"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00001-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2812607,
+      "sha256": "0d2ceb5a3cf258fea9647c496e0f2d9c0c9904da303b60303400022e5b2ec54e"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00002-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2142828,
+      "sha256": "fdff56b17363a658454c574c4e1de71a3bb497b8a249c469a6f7912d72b4d4ce"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00003-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2564602,
+      "sha256": "0c50d8893cc039af193078dcebdd1299fc6bc1a77234a658b2e96da866f1594d"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00004-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2274267,
+      "sha256": "693ee3423fe4f770c22907a4e7b749a801da8bc3520d637e87318264610c979c"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00005-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1752131,
+      "sha256": "e22975d80034c51e0a67eeb0ec26167eb184994966e8aa4e4c5ab1a14118479c"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00006-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2330321,
+      "sha256": "21c7c9e792d7403e57e711b4bc88804f875174eed3d17135ff549d0454ccc83d"
+    },
+    "data/processed/model_features_v1/features/year=2024/part-00007-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2526169,
+      "sha256": "ae41f5ab57a64bb2253cd7179cf1b3e7b7252cc3853dda2a944b7ae298facaa2"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00000-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2466941,
+      "sha256": "0fcddccced0e58843e6811cddc9f7365219c40563f9e93a780293f1a0ec2bd18"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00001-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 3167413,
+      "sha256": "6153ebc6c61e29cadf0677a0b9894778638e30cae8379b64adf721be434505d5"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00002-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2414648,
+      "sha256": "6c933706ae3df8047e3f4bfbb22e273c4031e9b69f5ee6f90dfccf987a0a53a0"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00003-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2850236,
+      "sha256": "22a8b0e0f3512e60c884308248de0ad1fd3184adf1631bc1120d53c84ff180d3"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00004-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2546448,
+      "sha256": "2fe7ef8e62020aafb0b65f45c9370bad6f7b3b45cfdd99de376122dad50de56a"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00005-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 1952967,
+      "sha256": "2ec9865a75abce4030b18487c492045cc4c176f53549ccc0cdd7c5928280c2bd"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00006-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2607719,
+      "sha256": "8e89ecea683bc8c8b2238bb81d4d8ec6dfd1ab0e3ad3c63cd4b19f2ac14ac084"
+    },
+    "data/processed/model_features_v1/features/year=2025/part-00007-92cfb63a-dbb4-4e08-b18a-212189cbccdc.c000.snappy.parquet": {
+      "bytes": 2959617,
+      "sha256": "64596ff14a5b1e7888b8b063aa4cae2b85dfcf8f3f5a76489249cdfbe935464f"
+    }
+  },
+  "output": "data/processed/model_features_v1/features",
+  "rows": 6917952,
+  "schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "name": "PULocationID",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "pickup_hour",
+        "type": "timestamp_ntz",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "recorded_trip_count",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "target_trip_count",
+        "type": "long",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "q_source_hour_missing",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "q_dst_day",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "q_zero_recorded",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "model_eligible",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "lag_1",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "lag_2",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "lag_24",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "lag_168",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "mean_24",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "mean_168",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "hour",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "weekday",
+        "type": "double",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "zone",
+        "type": "string",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "features_complete",
+        "type": "boolean",
+        "nullable": true,
+        "metadata": {}
+      },
+      {
+        "name": "year",
+        "type": "integer",
+        "nullable": true,
+        "metadata": {}
+      }
+    ]
+  },
+  "elapsed_seconds": 63.56430095199994,
+  "built_at_utc": "2026-10-08T11:19:08.924321+00:00",
+  "spark_version": "3.5.7"
+}

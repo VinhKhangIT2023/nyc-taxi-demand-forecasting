@@ -1,0 +1,24 @@
+name: bigdata-models
+services:
+  spark:
+    image: bigdata-spark-ml:3.5.7-py311-np1264
+    platform: linux/amd64
+    cpus: 2.0
+    mem_limit: 4g
+    memswap_limit: 4g
+    init: true
+    environment:
+      PYTHONPATH: /workspace
+      TMPDIR: /workspace/.tools
+      SPARK_LOCAL_DIRS: /workspace/.tools/spark-local
+    volumes:
+      - ../../src:/workspace/src:ro
+      - ../../configs:/workspace/configs:ro
+      - ../../tests:/workspace/tests:ro
+      - ../../data/processed/hourly_grid_v1:/workspace/data/processed/hourly_grid_v1:ro
+      - ../../data/processed/model_features_v1:/workspace/data/processed/model_features_v1
+      - ../../data/processed/model_predictions_v1:/workspace/data/processed/model_predictions_v1
+      - ../../artifacts/metrics:/workspace/artifacts/metrics
+      - ../../artifacts/models:/workspace/artifacts/models
+      - ../../reports/figures:/workspace/reports/figures
+      - ../../.tools/stage4-tmp:/workspace/.tools
