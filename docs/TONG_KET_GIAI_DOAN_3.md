@@ -28,6 +28,8 @@ Spark xử lý đủ 36 tháng Yellow Taxi 2023–2025, đối chiếu với gia
 | Đọc kiểm tra lần 1 | Đủ 6.917.952 dòng, 0 sai lệch, 310,31 giây |
 | Nạp/đọc kiểm tra lần 2 | 6.917.952 dòng, 0 sai lệch; nạp 341,98 giây, đọc 352,32 giây; fingerprint giống lượt 1 |
 | Phục hồi bản sao lưu đầy đủ | Đủ 6.917.952 dòng, 0 sai lệch, fingerprint giống hai lượt nạp; đọc đối chiếu 326,17 giây |
+| Đối chiếu sau khởi động lại | Đủ 6.917.952 dòng, 0 sai lệch, 279,56 giây |
+| Kiểm tra sau khi người dùng bật lại Docker | Spark chạy được; 24 point query và 3 range query khớp |
 | Unit tests cuối giai đoạn | 21/21 đạt |
 
 | Năm | Dòng vùng–giờ | Tổng chuyến ghi nhận | Tổng nhãn đủ điều kiện |
@@ -61,7 +63,7 @@ Bản sao lưu dùng volume đã dừng sạch và được kiểm tra trên vol
 
 ## 6. Hạn chế và vấn đề
 
-- Phát sinh ở bước bàn giao: log ghi khoảng dừng 50.314 ms, các phiên ZooKeeper hết hạn và HMaster abort; Docker báo OOMKilled=false. Chưa xác định được nguyên nhân khoảng dừng là GC hay lịch chạy/suspend của máy/VM. Đã khởi động lại HBase managed, trở lại healthy; đang đối chiếu toàn bộ lần nữa. Bằng chứng: `hbase_runtime_incident.json` và `hbase_full_post_restart.json`. Không đổi heap, timeout hoặc chính sách dữ liệu để che lỗi.
+- Phát sinh ở bước bàn giao: log ghi khoảng dừng 50.314 ms, các phiên ZooKeeper hết hạn và HMaster abort; Docker báo OOMKilled=false. Chưa xác định được nguyên nhân khoảng dừng là GC hay lịch chạy/suspend của máy/VM. Đã khởi động lại HBase managed, trở lại healthy; đối chiếu lại đủ 6.917.952 dòng đạt 0 sai lệch trong 279,56 giây, cùng fingerprint trước đó. Người dùng sau đó báo đã tắt máy/Docker rồi bật lại: đã bật lại HBase và chạy Spark kiểm tra 24 point query cùng 3 range query ở cả ba năm, đều khớp. Bằng chứng: `hbase_runtime_incident.json` và `hbase_full_post_restart.json`. Không đổi heap, timeout hoặc chính sách dữ liệu để che lỗi.
 
 - HBase standalone/local filesystem, Java 8 và image HBase cũ phù hợp môi trường học tập hiện tại; chưa chứng minh khả năng chịu lỗi nhiều máy hoặc phục hồi khi mất điện đột ngột.
 - Nạp bảng lớn không có giao dịch nguyên tử cho toàn bộ tập; khi gián đoạn phải nạp lại và đối chiếu trước khi sử dụng.

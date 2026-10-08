@@ -1,6 +1,6 @@
 {
-  "complete": false,
-  "verified_at_utc": "2026-10-08T00:58:16.941856+07:00",
+  "complete": true,
+  "verified_at_utc": "2026-10-08T05:44:33.733006+00:00",
   "scope": "Spark all 36 months, full hourly HBase twice, full offline restore",
   "raw_rows": 128202548,
   "retained_trips": 126994028,
@@ -14,13 +14,16 @@
     "hbase_full_load_pass2.json": "02290fcf3ac924af9f8031275c891fd820ab36e7aba378244e21dd408a188555",
     "hbase_full_verify_pass2.json": "880ce5825c8636d1f692533291505358349d0b36722b55483a639e284fd7e9db",
     "hbase_full_after_restore.json": "248a34413f7bc7b0755456e990fe43ce69acb828eb5da1875238aa02b0beec11",
+    "hbase_full_post_restart.json": "e960fd340166e263f2ea3140992f188386c2981ab6358d04b3aef3d961ba7e97",
+    "stage3_services_ready.json": "d2239e3d6588a5a45aeb539aede6c694df20c8339c822ead3bfac6540b555945",
     "hbase_full_recovery.json": "b6c2df5149a76afc9cd45e62b7f8547c5da23332c1701705ea8d7cb9d730d40c",
-    "hbase_full_restored_trial_readback.json": "728010d446391238e6bcad1836b5100a798f01c77a358f5862d7eb46bdd9ab20"
+    "hbase_full_restored_trial_readback.json": "728010d446391238e6bcad1836b5100a798f01c77a358f5862d7eb46bdd9ab20",
+    "hbase_runtime_incident.json": "3f9b5561326d408264d0930d05f5e1cf895712a75261d7187b4f0bd782e5aabc"
   },
   "limitations": [
     "Single-machine local[2] Spark and standalone HBase; no cluster performance claim.",
     "Offline clean-shutdown backup verified; abrupt crash recovery is not proven.",
-    "Trips remain in Parquet. HBase stores the full 2023–2025 hourly grid.",
+    "Trips remain in Parquet. HBase stores the full 2023\u20132025 hourly grid.",
     "Models, dashboard and final Word/PPT are later phases."
   ],
   "code_sha256": {
@@ -32,6 +35,5 @@
     "docker/spark/compose.full.yaml": "9570c26e35276479babfde31c9efc5b6decd6115ff581371104b84c9c16f594c",
     "docker/hbase/compose.yaml": "7fd085218313869946d9f2c180531bdda00c240be1de6bc8a5b61bb42836f7f6",
     "docker/hbase/hbase-site.xml": "6758a3b6659d0ad78d08ec79f7b713767db2397a10858880e03a7ea25fb3d2d6"
-  },
-  "status": "Final source readback pending after ZooKeeper session expiry and restart"
+  }
 }

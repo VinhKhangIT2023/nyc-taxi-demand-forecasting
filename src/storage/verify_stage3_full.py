@@ -34,6 +34,9 @@ def main():
         restarted = read('hbase_full_post_restart.json')
         assert restarted['rows'] == 6917952 and restarted['mismatches'] == 0
         assert restarted['content_sha256'] == restored['content_sha256']
+    if (root / 'stage3_services_ready.json').exists():
+        ready = read('stage3_services_ready.json')
+        assert ready['mismatches'] == 0 and ready['point_queries'] == 24 and ready['range_queries'] == 3
     recovery = read('hbase_full_recovery.json')
     assert recovery['clean_stop_exit_code'] == 0 and recovery['source_volume'] != recovery['restored_volume'] and recovery['source_container'] != recovery['restored_container']
     assert checksum(recovery['archive']).upper() == recovery['archive_sha256'].upper()

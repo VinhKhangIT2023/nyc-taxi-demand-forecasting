@@ -6,6 +6,8 @@
   "docker_oom_killed": false,
   "container_exit_code": 0,
   "cause_of_pause": "Not established; log suggests long pause, cannot distinguish GC from host/VM scheduling or suspend with available evidence",
-  "action": "Restarted managed HBase; health became healthy; full readback requested",
-  "readback_report": "artifacts/metrics/hbase_full_post_restart.json"
+  "action": "Restarted managed HBase; full 6,917,952-row readback matched. After user-reported computer/Docker shutdown, started HBase and passed Spark read-only readiness check.",
+  "readback_report": "artifacts/metrics/hbase_full_post_restart.json",
+  "user_reported_context": "User reported shutting down the computer and Docker Desktop, then restarting. Exact cause of the earlier logged pause is not proven.",
+  "readiness_report": "artifacts/metrics/stage3_services_ready.json"
 }

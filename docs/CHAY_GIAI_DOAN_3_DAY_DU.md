@@ -62,6 +62,14 @@ Lệnh tổng hợp cho lần nghiệm thu đầu, sau khi Spark hoàn thành:
 
 Chỉ bật Docker Desktop và `docker compose -p bigdata-hbase -f docker/hbase/compose.yaml start`. Không nạp lại toàn bộ mỗi lần mở máy. `stop` giữ dữ liệu; không dùng `down -v` khi còn cần volume.
 
+Sau khi tắt máy/Docker rồi bật lại, chờ HBase `healthy` và kiểm tra cả Spark lẫn HBase bằng job chỉ đọc:
+
+```powershell
+docker compose -f docker/spark/compose.full.yaml run --rm spark /workspace/src/storage/check_stage3_services.py
+```
+
+Job kiểm tra 24 point query và 3 range query ở ba năm, gồm đầu/cuối năm và DST; kết quả tại `artifacts/metrics/stage3_services_ready.json`. Đây là kiểm tra sẵn sàng có giới hạn, không thay thế các lượt đối chiếu toàn bộ lúc nghiệm thu. Spark tự kết thúc sau job; không cần một container Spark chạy thường trực. Nếu máy/VM dừng lâu làm phiên ZooKeeper hết hạn, kiểm tra log, khởi động lại HBase và đọc kiểm tra trước khi sử dụng; không xóa volume hoặc nạp lại raw để xử lý lỗi kết nối.
+
 Đưa code, cấu hình Docker, requirements, tài liệu và các JSON metrics nhỏ lên GitHub. `.gitignore` loại dữ liệu lớn, `.venv`, `.tools` (gồm archive), cache và log. Volume Docker nằm ngoài cây repo; không push volume hay image vào Git. Hiếu cần dựng môi trường và chuẩn bị dữ liệu theo hướng dẫn, hoặc nhận archive ngoài Git để phục hồi vào volume riêng.
 
 126.994.028 chuyến chi tiết nằm trong Parquet; HBase chứa toàn bộ lưới theo giờ phục vụ ứng dụng. Mô hình, dashboard và báo cáo Word/PPT cuối kỳ là các giai đoạn tiếp theo.
