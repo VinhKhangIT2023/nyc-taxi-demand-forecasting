@@ -1,8 +1,0 @@
-# Adds the dashboard to the already validated stage 4 environment.
--r requirements-stage4-windows-lock.txt
-pandas==2.3.3
-streamlit==1.65.0
-plotly==6.3.1
-python-dotenv==1.1.1
-pyshp==2.3.1
-pyproj==3.7.2

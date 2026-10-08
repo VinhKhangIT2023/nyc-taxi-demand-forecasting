@@ -1,7 +1,7 @@
 {
   "complete": true,
   "stage": 5,
-  "checked_at_utc": "2026-10-08T16:37:40.595850+00:00",
+  "checked_at_utc": "2026-10-08T17:09:19.687882+00:00",
   "scope": "HBase-backed historical replay; one-hour forecasts and actual comparison, 2025",
   "unit_tests": 36,
   "failures": 0,
@@ -23,11 +23,12 @@
     "src\\dashboard\\service.py": "cfd0a3f72ddb63f36c467027b9ef18d120016ef34c71d689e8cbe926cfcbcd4d",
     "src\\dashboard\\prepare.py": "cc0222859848bbaea1fdf5a46e40a5c7553fcd32237276fcbb1a250cd2acc93d",
     "src\\dashboard\\verify.py": "73f4dd75e5413e6f4042a3184d1b3b4097c3467e4ea576320bbddc71ebf7f8a2",
-    "src\\dashboard\\acceptance.py": "97270fe431845b477925096ff2b3c533f88e9987c4218a977c301e7e3c747b27",
+    "src\\dashboard\\acceptance.py": "d227f3e80a8c71b1d9aeb7f74541b9dc1e289cdfecfbce2f87c65dd9302a6094",
     "configs\\stage5_dashboard.json": "0aa8c5fb2cea48a326dd33121d9048b1b287502efceb8af25a0598494e7e8fa1",
     ".streamlit\\config.toml": "1d4ec9f43773845eb24055e7cda1c696d3dd02b7eb54230be3dc72c013e56284",
-    "requirements-stage5-windows-lock.txt": "5993bd39f33af7a72f6400780434707fdd65a3bce6d6a432ef7b0da90d9aeec1",
-    "scripts\\run_stage5.ps1": "1cfbe88f058baf2a0f52601c327975ee519623c5d555a1e00264ff5104b92039"
+    "requirements.txt": "0836637995e9e4c4609c910b476df98041145e2d584d60d302ce167cd6e9dcef",
+    "requirements\\requirements-stage5-windows-lock.txt": "5993bd39f33af7a72f6400780434707fdd65a3bce6d6a432ef7b0da90d9aeec1",
+    "scripts\\run_stage5.ps1": "37281ff9293284b9c175fdbed288eb7eb6b05c1f5896e68b1ebe0612d63f1a04"
   },
   "limitations": [
     "Historical replay, not live streaming",

@@ -79,7 +79,7 @@ def main():
         report['unit_tests_passed'] = test_result.testsRun
         tracked_code = list(Path('src/models').glob('*.py')) + list(Path('tests').glob('test_model*.py'))
         tracked_code += [Path('scripts/run_stage4.ps1'), Path('docker/spark/Dockerfile.models'),
-                         Path('docker/spark/compose.models.yaml'), Path('requirements-stage4-windows-lock.txt')]
+                         Path('docker/spark/compose.models.yaml'), Path('requirements/requirements-stage4-windows-lock.txt')]
         report['code_sha256'] = {str(path): checksum(path) for path in tracked_code}
         report.update(complete=True, verified_at_utc=datetime.now(timezone.utc).isoformat(),
                       scope='263 zones, one-step forecasting, 12 validation fits, locked 2025 holdout',

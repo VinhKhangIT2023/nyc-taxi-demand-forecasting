@@ -2,7 +2,7 @@ param([ValidateSet('Prepare','Geometry','Load','Verify','App')][string]$Step='Ap
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 $taskPython=Join-Path (Get-Location) '.venv\Scripts\python.exe'
-if (-not (Test-Path -LiteralPath $taskPython)) { throw 'Tạo .venv và cài requirements-stage5-windows.txt trước.' }
+if (-not (Test-Path -LiteralPath $taskPython)) { throw 'Tạo .venv và cài requirements.txt trước.' }
 if ($Step -eq 'App') {
     & $taskPython -m streamlit run src/dashboard/app.py
 } else {

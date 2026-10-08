@@ -36,7 +36,7 @@ def main():
     if checked.returncode:raise ValueError(checked.stdout+checked.stderr)
     sources=[ROOT/'src/dashboard'/f for f in ['app.py','service.py','prepare.py','verify.py','acceptance.py']]
     sources += [ROOT/'configs/stage5_dashboard.json',ROOT/'.streamlit/config.toml',
-                ROOT/'requirements-stage5-windows-lock.txt',ROOT/'scripts/run_stage5.ps1']
+                ROOT/'requirements.txt',ROOT/'requirements/requirements-stage5-windows-lock.txt',ROOT/'scripts/run_stage5.ps1']
     report=dict(complete=True,stage=5,checked_at_utc=datetime.now(timezone.utc).isoformat(),
         scope='HBase-backed historical replay; one-hour forecasts and actual comparison, 2025',
         unit_tests=result.testsRun,failures=len(result.failures),errors=len(result.errors),

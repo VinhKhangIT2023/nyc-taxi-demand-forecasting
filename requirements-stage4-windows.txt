@@ -1,4 +1,0 @@
-# Reporting only on Python 3.13 Windows; training stays in the Spark container.
--r requirements-stage3-windows.txt
-numpy==2.2.6
-matplotlib==3.10.0

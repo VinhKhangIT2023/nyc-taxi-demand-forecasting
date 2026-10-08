@@ -160,6 +160,7 @@ reports/                 Biểu đồ kết quả, báo cáo và slide
 docs/                    Hướng dẫn, kế hoạch, quyết định và tổng kết
 .streamlit/              Cấu hình giao diện/máy chủ Web
 .vscode/                 Cấu hình editor dùng đường dẫn tương đối
+requirements/            Lock Windows hiện hành và môi trường thực nghiệm trước
 ```
 
 ## Tài liệu
@@ -191,7 +192,9 @@ docs/                    Hướng dẫn, kế hoạch, quyết định và tổn
 | `.tools/` | Công cụ/file tạm cục bộ; backup tạo từ volume nguồn |
 | Docker image/container/volume | Build/run Compose; volume cần nạp hoặc phục hồi |
 
-Giữ **`docker/`, `.streamlit/`, code, configs và requirements** trên Git vì cần chạy lại. Giữ JSON/CSV kết quả nhỏ và biểu đồ được chọn để người đọc kiểm tra thực nghiệm; có thể sinh lại nhưng chúng không phải file rác. Lock theo giai đoạn giữ môi trường đã kiểm thử; `requirements.txt` trỏ tới lock hiện hành. `.gitkeep` chỉ giữ các thư mục trống cần cho dữ liệu/model/báo cáo.
+Giữ **`docker/`, `.streamlit/`, code, configs và requirements** trên Git vì cần chạy lại. Giữ JSON/CSV kết quả nhỏ và biểu đồ được chọn để người đọc kiểm tra thực nghiệm; có thể sinh lại nhưng chúng không phải file rác. `.gitkeep` chỉ giữ các thư mục trống cần cho dữ liệu/model/báo cáo.
+
+Hai điểm cài đặt chính: `requirements.txt` cho Windows/Web (trỏ tới lock trong `requirements/`) và `requirements-spark.txt` cho Linux trong Docker. Không gộp hai môi trường này. `requirements/` giữ nguyên các phiên bản đã kiểm thử cho xử lý dữ liệu và mô hình trước đây; cài toàn bộ ứng dụng chỉ cần `pip install -r requirements.txt`.
 
 ## Giới hạn và hướng phát triển
 

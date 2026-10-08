@@ -1,6 +1,6 @@
 {
   "complete": true,
-  "unit_tests_passed": 27,
+  "unit_tests_passed": 36,
   "code_sha256": {
     "src\\models\\check_features.py": "f2446eca891254b40b6e8b9e5cfe2a567c3307de11df93fe8f1abfefd499f213",
     "src\\models\\check_saved_model.py": "f94b9b15310b0c193ca4ac63d2288b7eac45eba7a0e18f8ce5cf6184ca23cb22",
@@ -11,15 +11,15 @@
     "src\\models\\report.py": "b6aac19e72a731e4a5a58960d76d6111954e5148bc8d1a22be6f6df99a5b46cd",
     "src\\models\\spark_smoke.py": "d02d038ca95f579bd7a7517ef9d10117e3552d6d0036025267941be808cf6258",
     "src\\models\\train.py": "62804be4bbd26f976ee483457f32ed2ab439a72e48806fa28285c1a76ce00842",
-    "src\\models\\verify.py": "adde5d7b9e4eb8d961183bd21225c55ace9db93030e2dbaa8e95cff60ba8ee75",
+    "src\\models\\verify.py": "515aa315985491aaa6e685131579725a979fb6620379fa007040fdf4332e1879",
     "tests\\test_model_evaluation.py": "620a7ef96d80faf55cdbf31c6973809c5e17d19abf90c592ab1c32a8928920f1",
     "tests\\test_model_selection.py": "a354234ed31d460b50cad13b2e4e3040db486b11e598508ff1f59a61bab58a5e",
     "scripts\\run_stage4.ps1": "5a89d41bf89410b2babe77f28fd0f4d2a45f8496eebb394e2fe1bb642a57c7ed",
     "docker\\spark\\Dockerfile.models": "12d6f78aebc94ed66ff247a47774473936df956c82c23d4c4ff016fe84818644",
     "docker\\spark\\compose.models.yaml": "518d4c7db3f4a9344f241e7a654546a540e8c0502e5996c551bbdc7e50c20e9e",
-    "requirements-stage4-windows-lock.txt": "933eba17f79d94a121baf9b650535aa362067aa5113d19b5e980842a94428560"
+    "requirements\\requirements-stage4-windows-lock.txt": "933eba17f79d94a121baf9b650535aa362067aa5113d19b5e980842a94428560"
   },
-  "verified_at_utc": "2026-10-08T12:14:03.620595+00:00",
+  "verified_at_utc": "2026-10-08T17:09:00.746008+00:00",
   "scope": "263 zones, one-step forecasting, 12 validation fits, locked 2025 holdout",
   "winner": {
     "model": "random_forest",

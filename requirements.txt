@@ -1,2 +1,2 @@
 # Current validated Windows dashboard environment.
--r requirements-stage5-windows-lock.txt
+-r requirements/requirements-stage5-windows-lock.txt

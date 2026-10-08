@@ -13,7 +13,7 @@ New-Item -ItemType Directory -Force data/processed/spark_full_v1 | Out-Null
 
 - Docker Desktop Linux containers đang chạy.
 - Image `bigdata-spark:3.5.7-py311` build theo `docker/spark/Dockerfile`: Spark 3.5.7, Python 3.11.17, Java 17. Base image khóa digest; gói Java tải từ Debian khi build nên image rebuild không nhất thiết giống từng byte.
-- Windows `.venv` dùng Python 3.13 và `requirements.txt` cho môi trường hiện hành. `requirements-stage3-windows.txt` là môi trường tối thiểu từng dùng riêng cho dữ liệu/client HBase.
+- Windows `.venv` dùng Python 3.13 và `requirements.txt` cho môi trường hiện hành. `requirements/requirements-stage3-windows.txt` là môi trường tối thiểu từng dùng riêng cho dữ liệu/client HBase.
 - Có dữ liệu raw đủ 36 tháng, lookup, các manifest và dữ liệu giai đoạn 2 đã nghiệm thu. Dữ liệu không được tải kèm khi clone GitHub.
 
 ```powershell

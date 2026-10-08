@@ -11,7 +11,7 @@ Xác định bài toán dự báo lượt đón theo vùng/giờ, chuẩn bị c
 - Đọc yêu cầu đồ án, ghi nhận công nghệ đăng ký Apache HBase; lập kế hoạch sản phẩm, báo cáo Word, slide và demo.
 - Tổ chức các thư mục code, dữ liệu, cấu hình, kiểm thử, tài liệu và kết quả.
 - Cài CPython 3.11.17 tại `.python/`, tạo `.venv/`; đặt uv và cache trong dự án theo yêu cầu người dùng.
-- Cài PyArrow 19.0.1 cho bước khảo sát/xử lý Parquet, lưu phiên bản trong `requirements-profile.txt`.
+- Cài PyArrow 19.0.1 cho bước khảo sát/xử lý Parquet, lưu phiên bản trong `requirements/requirements-profile.txt`.
 - Cấu hình VSCode gợi ý interpreter của venv; thêm `.gitignore` để bỏ qua môi trường, dữ liệu lớn và cấu hình riêng.
 - Ghi nhận container HBase có sẵn từ kết quả lệnh do người dùng cung cấp: `hbase-demo`, image `dajobe/hbase`, cổng 9090 và 16010, volume gắn `/data`.
 
@@ -26,7 +26,7 @@ Có workspace và Python riêng dùng được để thực thi pipeline. Việc
 | [KE_HOACH.md](../KE_HOACH.md) | Bài toán, yêu cầu, kiến trúc dự kiến, lịch và hồ sơ nộp |
 | [CAI_DAT.md](../CAI_DAT.md) | Cách dùng Python riêng, VSCode và môi trường dự kiến |
 | [QUYET_DINH.md](../QUYET_DINH.md) | Quyết định nguồn dữ liệu, Python và PyArrow |
-| [requirements-profile.txt](../../requirements-profile.txt) | Phiên bản thư viện xử lý dữ liệu |
+| [requirements/requirements-profile.txt](../../requirements/requirements-profile.txt) | Phiên bản thư viện xử lý dữ liệu |
 | [.vscode/settings.json](../../.vscode/settings.json) | Interpreter workspace và cấu hình editor |
 | [.gitignore](../../.gitignore) | Loại dữ liệu/môi trường khỏi Git |
 

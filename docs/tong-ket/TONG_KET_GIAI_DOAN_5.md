@@ -40,7 +40,7 @@ Thời gian đo bước phục vụ: Prepare 69,55 giây; nạp forecast 177,67 
 | [src/dashboard](../../src/dashboard/) | Giao diện, truy vấn giới hạn, chuẩn bị snapshot, đối chiếu/nghiệm thu | 36 tests; kiểm thử trình duyệt |
 | [run_stage5.ps1](../../scripts/run_stage5.ps1) | Prepare/Geometry/Load/Verify/App | Đã chạy với môi trường thật |
 | [stage5_dashboard.json](../../configs/stage5_dashboard.json) và [.streamlit](../../.streamlit/) | Bảng, model, giới hạn, theme/localhost | Cấu hình được ghi checksum |
-| [requirements-stage5-windows-lock.txt](../../requirements-stage5-windows-lock.txt) | Tái lập môi trường | pip check đạt |
+| [requirements/requirements-stage5-windows-lock.txt](../../requirements/requirements-stage5-windows-lock.txt) | Tái lập môi trường | pip check đạt |
 | data/processed/dashboard_v1 | Snapshot dự báo/tổng hợp, không push | stage5_prepared.json |
 | data/reference/taxi_zones.geojson | Bản đồ 263 vùng, không push | stage5_geometry.json |
 | [stage5_storage.json](../../artifacts/metrics/stage5_storage.json) | Toàn bộ lần nạp và đối chiếu | 2.291.256 + 297.716 dòng, 0 sai lệch |
@@ -75,3 +75,4 @@ Giai đoạn 6 còn: viết báo cáo Word cuối kỳ theo yêu cầu môn họ
 
 - 08/10/2026: nghiệm thu giai đoạn 5 sau đối chiếu lại HBase và kiểm thử Web.
 - 08/10/2026: bổ sung Light/Dark native qua menu ⋮, cấu hình cả hai nền và màu biểu đồ nhất quán; sidebar bổ sung phạm vi dữ liệu, chỉ số kiểm chứng và hướng dẫn nhanh. Kiểm tra bổ sung ghi trong mục `appearance` của `stage5_browser.json`; dữ liệu và mô hình giữ nguyên.
+- 09/10/2026: gom lock/danh sách thư viện Windows vào `requirements/`, giữ điểm cài đặt `requirements.txt`, bỏ hai danh sách bổ sung stage 4/5 trùng chức năng với lock. Cập nhật đường dẫn trong tài liệu và công cụ kiểm chứng; nội dung lock, phiên bản, dữ liệu và model giữ nguyên.

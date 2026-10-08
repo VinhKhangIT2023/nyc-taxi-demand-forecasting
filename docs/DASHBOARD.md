@@ -11,7 +11,7 @@ Demo phát lại lịch sử, dự báo một giờ trên năm 2025. Dự báo �
 Từ thư mục gốc project trong PowerShell:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements-stage5-windows.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 docker compose -p bigdata-hbase -f docker/hbase/compose.yaml up -d
 docker compose -p bigdata-hbase -f docker/hbase/compose.yaml ps
 # Lần đầu trên máy đã hoàn thành giai đoạn 1–4:
@@ -26,7 +26,7 @@ Mở http://127.0.0.1:8501. Ctrl+C ở terminal dừng Web; không xóa dữ li�
 
 Máy clone mới cần tái lập dữ liệu, HBase và model giai đoạn 1–4 trước. Repo chỉ chứa code, cấu hình, bằng chứng nhỏ và tài liệu; dataset, snapshot dashboard, ranh giới bản đồ, model và venv bị Git bỏ qua. Các bước Prepare/Geometry đã hoàn thành với cùng checksum thì bỏ qua; Load đã nghiệm thu thì không nạp lại. Muốn kiểm tra chỉ đọc: `run_stage5.ps1 -Step Verify`. Nếu input thay đổi, công cụ dừng để giữ bằng chứng cũ; phải tạo phiên bản mới sau khi chốt phạm vi.
 
-Streamlit 1.65.0 được chọn sau khi kiểm tra metadata chính thức, vì 1.49.1 yêu cầu packaging <26 và không tương thích với lock giai đoạn 4 (packaging 26.3). Không đổi thư viện đã khóa của giai đoạn 4 để ép tương thích. `requirements-stage5-windows-lock.txt` lưu môi trường cài thành công; kiểm tra bằng `python -m pip check`.
+Streamlit 1.65.0 được chọn sau khi kiểm tra metadata chính thức, vì 1.49.1 yêu cầu packaging <26 và không tương thích với lock giai đoạn 4 (packaging 26.3). Không đổi thư viện đã khóa của giai đoạn 4 để ép tương thích. `requirements/requirements-stage5-windows-lock.txt` lưu môi trường cài thành công; kiểm tra bằng `python -m pip check`.
 
 ## Các trang và kịch bản demo
 

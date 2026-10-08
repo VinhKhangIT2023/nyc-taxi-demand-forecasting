@@ -34,6 +34,8 @@ Python nền được cài ngoài repo. Xóa `.venv` hoặc xóa repo không g�
 
 ## Docker và dữ liệu
 
+`requirements.txt` là điểm cài đặt Windows/Web hiện hành; các lock và danh sách môi trường thực nghiệm trước đây được gom trong `requirements/`. `requirements-spark.txt` ở gốc dùng riêng khi build Docker Spark. Di chuyển file cấu hình không thay đổi phiên bản thư viện hoặc yêu cầu huấn luyện lại.
+
 1. Bật Docker Desktop và kiểm tra `docker version` có phần Server.
 2. Làm theo [chuẩn bị dữ liệu](DU_LIEU.md). Dataset và lookup không đi kèm Git.
 3. Build image và chạy theo [hướng dẫn vận hành](VAN_HANH.md). Spark dùng Python trong image, không dùng venv Windows.

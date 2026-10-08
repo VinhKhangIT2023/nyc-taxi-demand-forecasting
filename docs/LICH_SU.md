@@ -30,17 +30,17 @@ Cách tạo trên máy khác có Python 3.13.16 chính thức (chỉ tạo khi c
 
 ```powershell
 py -3.13 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-stage3-windows.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements/requirements-stage3-windows.txt
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Trong VSCode chọn `.venv/Scripts/python.exe`, đóng terminal cũ và mở terminal mới. Gọi executable tường minh nếu chưa kích hoạt. `python` ngoài venv vẫn có thể trả về 3.14; đó không phải lỗi. File `requirements-stage3-windows.txt` khóa thư viện đã kiểm tra cho xử lý dữ liệu và client HBase, chưa phải toàn bộ dashboard. Spark trong Docker vẫn là môi trường riêng theo kế hoạch; không áp dụng Python Windows 3.13 cho Spark một cách tự động.
+Trong VSCode chọn `.venv/Scripts/python.exe`, đóng terminal cũ và mở terminal mới. Gọi executable tường minh nếu chưa kích hoạt. `python` ngoài venv vẫn có thể trả về 3.14; đó không phải lỗi. File `requirements/requirements-stage3-windows.txt` khóa thư viện đã kiểm tra cho xử lý dữ liệu và client HBase, chưa phải toàn bộ dashboard. Spark trong Docker vẫn là môi trường riêng theo kế hoạch; không áp dụng Python Windows 3.13 cho Spark một cách tự động.
 
 ##### Lịch sử thiết lập và đề xuất ban đầu (được thay thế bởi mục hiện hành ở trên)
 
 Cập nhật: theo yêu cầu của người dùng, Python 3.11.17 đã được cài riêng tại `.python/cpython-3.11.17-windows-x86_64-none/`; `.venv` được tạo từ Python này. Không cần cài Python 3.11 toàn máy theo phương án ban đầu bên dưới. Công cụ tải là uv cục bộ trong `.tools/uv/`, dùng bản CPython độc lập của Astral. `.tools/`, `.python/`, `.uv-cache/` và `.venv/` đều được Git bỏ qua.
 
-Trong VSCode chọn **Python: Select Interpreter → Enter interpreter path → .venv/Scripts/python.exe**. Kiểm tra bằng `.\.venv\Scripts\python.exe --version`. Đã cài PyArrow 19.0.1 để khảo sát, ghi phiên bản trong `requirements-profile.txt`; chưa cài toàn bộ thư viện ứng dụng. Python 3.14 của người dùng không bị thay thế.
+Trong VSCode chọn **Python: Select Interpreter → Enter interpreter path → .venv/Scripts/python.exe**. Kiểm tra bằng `.\.venv\Scripts\python.exe --version`. Đã cài PyArrow 19.0.1 để khảo sát, ghi phiên bản trong `requirements/requirements-profile.txt`; chưa cài toàn bộ thư viện ứng dụng. Python 3.14 của người dùng không bị thay thế.
 
 Xóa toàn bộ thư mục dự án sẽ xóa cả Python nền cục bộ và venv; chỉ xóa `.venv` sẽ giữ lại `.python`. Docker container và volume nằm ngoài thư mục nên không được xóa theo. Không di chuyển hoặc gửi nguyên venv sang máy khác: tạo lại môi trường ở đường dẫn mới.
 
@@ -411,7 +411,7 @@ Không nạp ngay toàn bộ 126.994.028 chuyến vào HBase khi chưa chốt nh
 
 Venv chính mới đạt 15/15 kiểm thử, `pip check` thành công, chạy lại `src.processing.verify_stage2` nghiệm thu cả ba năm đạt. HappyBase kết nối `127.0.0.1:9090` với buffered/binary và timeout 5000 ms, lệnh `tables()` trả về `[b'users']`. Chưa ghi bảng thử hoặc restart container để kiểm tra lưu bền.
 
-Các phiên bản lưu trong `requirements-stage3-windows.txt`. HappyBase 1.2.0 cần setuptools 80.9.0 để có `pkg_resources`; hiện còn cảnh báo API deprecated, không phải lỗi kết nối. Đây là môi trường xử lý dữ liệu và client HBase đã kiểm tra, chưa xác nhận toàn bộ dashboard. Hướng dẫn hiện hành nằm đầu CAI_DAT.md.
+Các phiên bản lưu trong `requirements/requirements-stage3-windows.txt`. HappyBase 1.2.0 cần setuptools 80.9.0 để có `pkg_resources`; hiện còn cảnh báo API deprecated, không phải lỗi kết nối. Đây là môi trường xử lý dữ liệu và client HBase đã kiểm tra, chưa xác nhận toàn bộ dashboard. Hướng dẫn hiện hành nằm đầu CAI_DAT.md.
 
 ##### Kiểm thử HBase ghi/đọc và restart — 07/10/2026
 
@@ -521,7 +521,7 @@ Chưa quyết định loại các dòng thiếu passenger_count, tiền âm, qu�
 Từ thư mục gốc, sử dụng Python của dự án:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install --no-cache-dir -r requirements-profile.txt
+.\.venv\Scripts\python.exe -m pip install --no-cache-dir -r requirements/requirements-profile.txt
 .\.venv\Scripts\python.exe src/ingestion/profile_yellow.py
 ```
 

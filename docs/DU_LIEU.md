@@ -100,7 +100,7 @@ Get-FileHash data/reference/taxi_zone_lookup.csv -Algorithm SHA256
 
 Checksum snapshot đã nghiệm thu: `1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed`. Nếu nguồn đã thay đổi, kiểm tra phiên bản và ảnh hưởng trước khi thay manifest hoặc ép kết quả kiểm thử thành công.
 
-Chạy từ thư mục gốc bằng Python trong venv, cài thư viện tại `requirements-profile.txt`. Trên máy chưa có đầu ra, thực hiện lần lượt cho từng năm 2023, 2024, 2025:
+Chạy từ thư mục gốc bằng Python trong venv, cài thư viện tại `requirements/requirements-profile.txt`. Trên máy chưa có đầu ra, thực hiện lần lượt cho từng năm 2023, 2024, 2025:
 
 ```powershell
 .\.venv\Scripts\python.exe -m src.ingestion.download_year --year 2023

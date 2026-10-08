@@ -22,7 +22,7 @@ Người dùng đồng ý PySpark 3.5.7, Python 3.11, Java 17 trong Docker; loca
 
 Người dùng xác nhận máy cá nhân, Smart App Control On và đồng ý cài Python 3.13 chính thức ngoài dự án để thử trước khi thay venv. Python 3.14 hiện có được giữ; PyArrow 19 hỗ trợ đến 3.13 nên chưa dùng 3.14 cho bộ thư viện hiện tại. Đã kiểm tra checksum/chữ ký bộ cài Python 3.13.16, cài theo tài khoản, không đổi PATH. Venv thử chạy được và đạt 15 kiểm thử; HappyBase đọc danh sách bảng HBase thành công sau khi bổ sung setuptools 80.9.0 (HappyBase 1.2.0 cần pkg_resources). Sau đó tạo lại `.venv` ở đúng đường dẫn, giữ bản cũ trong `.tools/venv311-blocked-backup/`.
 
-Không tắt Smart App Control. Các phiên bản đã thử được lưu trong requirements-stage3-windows.txt; chưa xác nhận toàn bộ dashboard hoặc Spark chạy trên Python 3.13. Không còn áp dụng yêu cầu xóa project là xóa Python nền cho môi trường Windows mới; người dùng đã đồng ý thay đổi này. Xem CAI_DAT.md mục môi trường hiện hành.
+Không tắt Smart App Control. Các phiên bản đã thử được lưu trong requirements/requirements-stage3-windows.txt; chưa xác nhận toàn bộ dashboard hoặc Spark chạy trên Python 3.13. Không còn áp dụng yêu cầu xóa project là xóa Python nền cho môi trường Windows mới; người dùng đã đồng ý thay đổi này. Xem CAI_DAT.md mục môi trường hiện hành.
 
 ## Quyết định 001 — Phạm vi khảo sát ban đầu
 
@@ -60,7 +60,7 @@ Phạm vi mở rộng dữ liệu chưa được duyệt. Một tháng phục v�
 
 ## Quyết định 003 — Khảo sát bằng PyArrow
 
-Người dùng đã đồng ý cài PyArrow và khảo sát file gốc theo lô. Đã cài PyArrow 19.0.1 trong `.venv`; phiên bản được lưu ở `requirements-profile.txt`. Chỉ thống kê dữ liệu, không xóa dòng, điền thiếu hoặc sửa giá trị. Phạm vi dataset cuối cùng sẽ được thống nhất sau thử nghiệm.
+Người dùng đã đồng ý cài PyArrow và khảo sát file gốc theo lô. Đã cài PyArrow 19.0.1 trong `.venv`; phiên bản được lưu ở `requirements/requirements-profile.txt`. Chỉ thống kê dữ liệu, không xóa dòng, điền thiếu hoặc sửa giá trị. Phạm vi dataset cuối cùng sẽ được thống nhất sau thử nghiệm.
 
 ## Quyết định 004 — Giới hạn thời điểm đón cho tập thử tháng 01/2024
 

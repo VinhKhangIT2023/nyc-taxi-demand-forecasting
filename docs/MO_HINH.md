@@ -74,7 +74,7 @@ Tạo image bigdata-spark-ml:3.5.7-py311-np1264 mở rộng image bigdata-spark:
 
 ### Lệnh chạy hiện hành
 
-Từ PowerShell ở thư mục gốc, Docker Desktop đang bật. Môi trường Windows dùng requirements-stage4-windows-lock.txt sau khi cài thành công; phần NumPy/Matplotlib Windows phục vụ biểu đồ, không huấn luyện Spark.
+Từ PowerShell ở thư mục gốc, Docker Desktop đang bật. Môi trường Windows dùng requirements/requirements-stage4-windows-lock.txt sau khi cài thành công; phần NumPy/Matplotlib Windows phục vụ biểu đồ, không huấn luyện Spark.
 
 **Máy mới clone Git, đã hoàn thành lại giai đoạn 2–3 và chưa có feature/model/dự báo cục bộ:** các metrics stage4 đi kèm repo là bằng chứng lịch sử, không phải cache cho máy mới. Chuyển chúng vào archive cục bộ trước khi chạy các bước dưới. Folder archive giữ nguyên bằng chứng, không xóa dữ liệu nguồn:
 
@@ -87,7 +87,7 @@ Get-ChildItem -LiteralPath artifacts/metrics -File -Filter 'stage4_*' |
 Trên máy đã có đầy đủ kết quả giai đoạn 4, dùng bước Verify để kiểm tra lại. Nếu chỉ có một phần output hoặc muốn đổi code/config, kiểm tra manifest và giữ bản cũ trước khi tạo một lượt thử mới; các lệnh train cố ý từ chối ghi đè kết quả khác context. Không dùng metrics đã commit làm bằng chứng rằng máy mới vừa huấn luyện thành công.
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install --no-cache-dir -r requirements-stage4-windows-lock.txt
+.\.venv\Scripts\python.exe -m pip install --no-cache-dir -r requirements/requirements-stage4-windows-lock.txt
 .\scripts\run_stage4.ps1 -Step Prepare
 .\scripts\run_stage4.ps1 -Step Pilot
 .\scripts\run_stage4.ps1 -Step Validation
